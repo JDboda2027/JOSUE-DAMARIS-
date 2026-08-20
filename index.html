@@ -1,134 +1,380 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Josue & Damaris</title>
+<title>Josué & Damaris | Nuestra Boda</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        body {
-            font-family: Georgia, serif;
-            background: #f7f1eb;
-            color: #4a3830;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .portada {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 25px;
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f8f4ef;
+    color:#4b4039;
+}
 
-            background:
-                linear-gradient(
-                    rgba(255,255,255,0.55),
-                    rgba(255,255,255,0.65)
-                ),
-                url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80");
+.cover{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+    background:
+        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)),
+        radial-gradient(circle at top,#ead8c5,#f8f4ef 60%);
+}
 
-            background-size: cover;
-            background-position: center;
-        }
+.cover-content{
+    max-width:600px;
+    width:100%;
+    padding:45px 25px;
+}
 
-        .tarjeta {
-            width: 100%;
-            max-width: 480px;
-            padding: 45px 25px;
-            background: rgba(255,255,255,0.88);
-            border-radius: 25px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.18);
-        }
+.small{
+    font-size:15px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:25px;
+}
 
-        .anillos {
-            font-size: 45px;
-            margin-bottom: 20px;
-        }
+.names{
+    font-size:55px;
+    font-weight:normal;
+    line-height:1.2;
+    color:#80634f;
+}
 
-        .frase {
-            font-size: 14px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
+.amp{
+    font-size:35px;
+    font-style:italic;
+    margin:10px;
+}
 
-        h1 {
-            font-size: 48px;
-            font-weight: normal;
-            letter-spacing: 2px;
-        }
+.date{
+    margin:25px 0 35px;
+    font-size:18px;
+    letter-spacing:3px;
+}
 
-        .ampersand {
-            font-size: 28px;
-            font-style: italic;
-            margin: 5px 0;
-        }
+.open-btn{
+    border:none;
+    padding:16px 32px;
+    border-radius:40px;
+    background:#80634f;
+    color:white;
+    font-size:14px;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
 
-        .mensaje {
-            margin-top: 30px;
-            font-size: 19px;
-            font-style: italic;
-        }
+.open-btn:hover{
+    transform:scale(1.05);
+}
 
-        .fecha {
-            margin-top: 20px;
-            font-size: 17px;
-            letter-spacing: 3px;
-        }
+.invitation{
+    display:none;
+}
 
-        .boton {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 32px;
-            border-radius: 30px;
-            background: #947064;
-            color: white;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-        }
-    </style>
+section{
+    padding:70px 25px;
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+.divider{
+    width:80px;
+    height:1px;
+    background:#a98c75;
+    margin:25px auto;
+}
+
+h2{
+    font-size:35px;
+    font-weight:normal;
+    color:#80634f;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.names-large{
+    font-size:48px;
+    color:#80634f;
+    margin:25px 0;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:30px 20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#80634f;
+    margin-bottom:10px;
+}
+
+.map-btn,
+.confirm-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:13px 25px;
+    border-radius:30px;
+    background:#80634f;
+    color:white;
+    text-decoration:none;
+    letter-spacing:1px;
+}
+
+.confirm{
+    background:#eee5dc;
+}
+
+footer{
+    text-align:center;
+    padding:45px 20px;
+    background:#80634f;
+    color:white;
+}
+
+footer .names{
+    color:white;
+    font-size:35px;
+}
+
+@media(max-width:600px){
+
+    .names{
+        font-size:43px;
+    }
+
+    .names-large{
+        font-size:38px;
+    }
+
+    h2{
+        font-size:30px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    section{
+        padding:55px 20px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <section class="portada">
+<!-- PORTADA -->
+<div class="cover" id="cover">
 
-        <div class="tarjeta">
+    <div class="cover-content">
 
-            <div class="anillos">💍</div>
+        <div class="small">
+            Con la bendición de Dios
+        </div>
 
-            <div class="frase">
-                Con la bendición de Dios
+        <div class="names">
+            JOSUÉ
+            <div class="amp">&</div>
+            DAMARIS
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="date">
+            ¡NOS CASAMOS!
+        </div>
+
+        <button class="open-btn" onclick="abrirInvitacion()">
+            ABRIR INVITACIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- INVITACIÓN -->
+<div class="invitation" id="invitation">
+
+    <section>
+
+        <div class="small">
+            Nuestra historia de amor
+        </div>
+
+        <div class="names-large">
+            Josué & Damaris
+        </div>
+
+        <div class="divider"></div>
+
+        <p>
+            Con mucha alegría y gratitud a Dios,
+            queremos compartir contigo uno de los
+            momentos más importantes de nuestras vidas.
+        </p>
+
+        <p style="margin-top:20px;">
+            ¡Nuestra boda!
+        </p>
+
+    </section>
+
+
+    <!-- FECHA -->
+    <section>
+
+        <h2>El gran día</h2>
+
+        <div class="divider"></div>
+
+        <div class="info">
+
+            <div class="card">
+                <div class="icon">📅</div>
+                <h3>Fecha</h3>
+                <p>
+                    Aquí puedes colocar<br>
+                    la fecha de la boda
+                </p>
             </div>
 
-            <h1>JOSUE</h1>
-
-            <div class="ampersand">&</div>
-
-            <h1>DAMARIS</h1>
-
-            <div class="mensaje">
-                ¡Nos casamos!
+            <div class="card">
+                <div class="icon">🕐</div>
+                <h3>Hora</h3>
+                <p>
+                    Aquí puedes colocar<br>
+                    la hora de la ceremonia
+                </p>
             </div>
 
-            <div class="fecha">
-                NUESTRA BODA · 2026
-            </div>
+            <div class="card">
+                <div class="icon">📍</div>
+                <h3>Lugar</h3>
+                <p>
+                    Aquí puedes colocar<br>
+                    el lugar de la boda
+                </p>
 
-            <a href="#invitacion" class="boton">
-                Abrir invitación
-            </a>
+                <a class="map-btn"
+                   href="https://maps.google.com"
+                   target="_blank">
+                    VER UBICACIÓN
+                </a>
+            </div>
 
         </div>
 
     </section>
 
+
+    <!-- MENSAJE -->
+    <section>
+
+        <h2>Con amor</h2>
+
+        <div class="divider"></div>
+
+        <p>
+            “Las muchas aguas no podrán apagar el amor,
+            ni lo ahogarán los ríos.”
+        </p>
+
+        <p style="margin-top:15px;">
+            Cantares 8:7
+        </p>
+
+    </section>
+
+
+    <!-- CONFIRMACIÓN -->
+    <section class="confirm">
+
+        <h2>Confirma tu asistencia</h2>
+
+        <div class="divider"></div>
+
+        <p>
+            Nos encantaría contar con tu presencia
+            en este día tan especial.
+        </p>
+
+        <a class="confirm-btn"
+           href="https://wa.me/"
+           target="_blank">
+            CONFIRMAR ASISTENCIA
+        </a>
+
+    </section>
+
+
+    <footer>
+
+        <div class="names">
+            JOSUÉ & DAMARIS
+        </div>
+
+        <p style="margin-top:15px;">
+            Con amor, para siempre ❤️
+        </p>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+function abrirInvitacion(){
+
+    document.getElementById("cover").style.display = "none";
+
+    document.getElementById("invitation").style.display = "block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
 </body>
-  </html>
+</html>
