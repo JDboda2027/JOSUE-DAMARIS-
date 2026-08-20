@@ -7,191 +7,343 @@
 <title>Josué & Damaris | Nuestra Boda</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:Georgia, "Times New Roman", serif;
-    background:#f8f4ef;
-    color:#4b4039;
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #faf7f2;
+    color: #4a4038;
+    overflow-x: hidden;
 }
 
-.cover{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px;
+/* =========================
+   PORTADA
+========================= */
+
+.portada {
+    height: 100vh;
+    min-height: 650px;
     background:
-        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.78)),
-        radial-gradient(circle at top,#ead8c5,#f8f4ef 60%);
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.45)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
 }
 
-.cover-content{
-    max-width:600px;
-    width:100%;
-    padding:45px 25px;
+.portada-contenido {
+    padding: 25px;
+    animation: aparecer 2s ease;
 }
 
-.small{
-    font-size:15px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    margin-bottom:25px;
+.pequeno {
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
 }
 
-.names{
-    font-size:55px;
-    font-weight:normal;
-    line-height:1.2;
-    color:#80634f;
+.nombres {
+    font-size: clamp(50px, 12vw, 100px);
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 20px;
 }
 
-.amp{
-    font-size:35px;
-    font-style:italic;
-    margin:10px;
+.fecha {
+    font-size: 22px;
+    letter-spacing: 4px;
 }
 
-.date{
-    margin:25px 0 35px;
-    font-size:18px;
-    letter-spacing:3px;
+.boton {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 15px 35px;
+    border: 1px solid white;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+    background: rgba(255,255,255,.1);
 }
 
-.open-btn{
-    border:none;
-    padding:16px 32px;
-    border-radius:40px;
-    background:#80634f;
-    color:white;
-    font-size:14px;
-    letter-spacing:2px;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+.boton:hover {
+    background: white;
+    color: #5a4b40;
 }
 
-.open-btn:hover{
-    transform:scale(1.05);
+/* =========================
+   SECCIONES
+========================= */
+
+section {
+    padding: 80px 20px;
+    text-align: center;
 }
 
-.invitation{
-    display:none;
+.titulo {
+    font-size: 38px;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #675548;
 }
 
-section{
-    padding:70px 25px;
-    text-align:center;
-    max-width:900px;
-    margin:auto;
+.subtitulo {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 18px;
 }
 
-.divider{
-    width:80px;
-    height:1px;
-    background:#a98c75;
-    margin:25px auto;
+/* =========================
+   CUENTA REGRESIVA
+========================= */
+
+.contador {
+    background: #eee5db;
 }
 
-h2{
-    font-size:35px;
-    font-weight:normal;
-    color:#80634f;
-    margin-bottom:20px;
+.reloj {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
 }
 
-p{
-    font-size:18px;
-    line-height:1.8;
+.numero {
+    background: white;
+    width: 100px;
+    padding: 20px 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
 }
 
-.names-large{
-    font-size:48px;
-    color:#80634f;
-    margin:25px 0;
+.numero strong {
+    display: block;
+    font-size: 32px;
 }
 
-.info{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-    margin-top:40px;
+.numero span {
+    font-size: 13px;
+    text-transform: uppercase;
 }
 
-.card{
-    background:white;
-    padding:30px 20px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+/* =========================
+   HISTORIA
+========================= */
+
+.historia {
+    max-width: 800px;
+    margin: auto;
+    line-height: 2;
+    font-size: 18px;
 }
 
-.icon{
-    font-size:35px;
-    margin-bottom:15px;
+/* =========================
+   GALERIA
+========================= */
+
+.galeria {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
-.card h3{
-    color:#80634f;
-    margin-bottom:10px;
+.galeria img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: .5s;
 }
 
-.map-btn,
-.confirm-btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:13px 25px;
-    border-radius:30px;
-    background:#80634f;
-    color:white;
-    text-decoration:none;
-    letter-spacing:1px;
+.galeria img:hover {
+    transform: scale(1.03);
 }
 
-.confirm{
-    background:#eee5dc;
+/* =========================
+   VIDEO
+========================= */
+
+.video-contenedor {
+    max-width: 850px;
+    margin: 40px auto;
 }
 
-footer{
-    text-align:center;
-    padding:45px 20px;
-    background:#80634f;
-    color:white;
+.video-contenedor video {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
 
-footer .names{
-    color:white;
-    font-size:35px;
+/* =========================
+   INFORMACION
+========================= */
+
+.informacion {
+    background: #eee5db;
 }
 
-@media(max-width:600px){
+.tarjetas {
+    max-width: 1000px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
-    .names{
-        font-size:43px;
+.tarjeta {
+    background: white;
+    padding: 35px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.icono {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.tarjeta h3 {
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+/* =========================
+   CONFIRMACION
+========================= */
+
+.confirmacion {
+    background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+
+    color: white;
+}
+
+.confirmacion .titulo {
+    color: white;
+}
+
+.boton-confirmar {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 16px 35px;
+    background: white;
+    color: #5b4b40;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* =========================
+   FRASE
+========================= */
+
+.frase {
+    padding: 100px 20px;
+}
+
+.frase p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 27px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* =========================
+   PIE
+========================= */
+
+footer {
+    background: #3f352e;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+footer h2 {
+    font-size: 40px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+footer p {
+    margin-top: 15px;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
 
-    .names-large{
-        font-size:38px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 700px) {
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    h2{
-        font-size:30px;
+    .galeria img {
+        height: 220px;
     }
 
-    p{
-        font-size:16px;
+    .tarjetas {
+        grid-template-columns: 1fr;
     }
 
-    section{
-        padding:55px 20px;
+    section {
+        padding: 60px 15px;
+    }
+}
+
+@media(max-width: 450px) {
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria img {
+        height: 300px;
+    }
+
+    .pequeno {
+        font-size: 14px;
+    }
+
+    .fecha {
+        font-size: 17px;
     }
 }
 </style>
@@ -199,180 +351,381 @@ footer .names{
 
 <body>
 
-<!-- PORTADA -->
-<div class="cover" id="cover">
+<!-- =========================
+     PORTADA
+========================= -->
 
-    <div class="cover-content">
+<header class="portada">
 
-        <div class="small">
-            Con la bendición de Dios
+    <div class="portada-contenido">
+
+        <div class="pequeno">
+            NUESTRA BODA
         </div>
 
-        <div class="names">
-            JOSUÉ
-            <div class="amp">&</div>
-            DAMARIS
+        <h1 class="nombres">
+            Josué & Damaris
+        </h1>
+
+        <div class="fecha">
+            2026
         </div>
 
-        <div class="divider"></div>
-
-        <div class="date">
-            ¡NOS CASAMOS!
-        </div>
-
-        <button class="open-btn" onclick="abrirInvitacion()">
-            ABRIR INVITACIÓN
-        </button>
+        <a href="#inicio" class="boton">
+            ✨ ABRIR INVITACIÓN ✨
+        </a>
 
     </div>
 
-</div>
+</header>
 
 
-<!-- INVITACIÓN -->
-<div class="invitation" id="invitation">
+<!-- =========================
+     BIENVENIDA
+========================= -->
 
-    <section>
+<section id="inicio">
 
-        <div class="small">
-            Nuestra historia de amor
+    <h2 class="titulo">
+        ¡Nos casamos!
+    </h2>
+
+    <p class="subtitulo">
+        Con mucha alegría queremos compartir contigo
+        uno de los días más importantes de nuestras vidas.
+        Tu presencia hará que este momento sea todavía más especial.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CUENTA REGRESIVA
+========================= -->
+
+<section class="contador">
+
+    <h2 class="titulo">
+        Falta poco para nuestro gran día
+    </h2>
+
+    <div class="reloj">
+
+        <div class="numero">
+            <strong id="dias">0</strong>
+            <span>Días</span>
         </div>
 
-        <div class="names-large">
-            Josué & Damaris
+        <div class="numero">
+            <strong id="horas">0</strong>
+            <span>Horas</span>
         </div>
 
-        <div class="divider"></div>
+        <div class="numero">
+            <strong id="minutos">0</strong>
+            <span>Minutos</span>
+        </div>
+
+        <div class="numero">
+            <strong id="segundos">0</strong>
+            <span>Segundos</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NUESTRA HISTORIA
+========================= -->
+
+<section>
+
+    <h2 class="titulo">
+        Nuestra historia
+    </h2>
+
+    <div class="historia">
 
         <p>
-            Con mucha alegría y gratitud a Dios,
-            queremos compartir contigo uno de los
-            momentos más importantes de nuestras vidas.
+            Dos corazones, una historia y un mismo sueño.
         </p>
 
-        <p style="margin-top:20px;">
-            ¡Nuestra boda!
+        <br>
+
+        <p>
+            Hoy comenzamos una nueva etapa juntos,
+            rodeados de las personas que amamos y
+            agradecidos con Dios por permitirnos llegar
+            hasta este momento.
         </p>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FECHA -->
-    <section>
+<!-- =========================
+     GALERIA
+========================= -->
 
-        <h2>El gran día</h2>
+<section>
 
-        <div class="divider"></div>
+    <h2 class="titulo">
+        Nuestros momentos
+    </h2>
 
-        <div class="info">
+    <p class="subtitulo">
+        Algunos recuerdos que queremos compartir contigo.
+    </p>
 
-            <div class="card">
-                <div class="icon">📅</div>
-                <h3>Fecha</h3>
-                <p>
-                    Aquí puedes colocar<br>
-                    la fecha de la boda
-                </p>
-            </div>
+    <div class="galeria">
 
-            <div class="card">
-                <div class="icon">🕐</div>
-                <h3>Hora</h3>
-                <p>
-                    Aquí puedes colocar<br>
-                    la hora de la ceremonia
-                </p>
-            </div>
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80">
 
-            <div class="card">
-                <div class="icon">📍</div>
-                <h3>Lugar</h3>
-                <p>
-                    Aquí puedes colocar<br>
-                    el lugar de la boda
-                </p>
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80">
 
-                <a class="map-btn"
-                   href="https://maps.google.com"
-                   target="_blank">
-                    VER UBICACIÓN
-                </a>
-            </div>
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80">
+
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80">
+
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80">
+
+        <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80">
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VIDEO
+========================= -->
+
+<section>
+
+    <h2 class="titulo">
+        Un recuerdo especial
+    </h2>
+
+    <p class="subtitulo">
+        Queremos compartir también este pequeño video
+        como parte de nuestra historia.
+    </p>
+
+    <div class="video-contenedor">
+
+        <video controls poster="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+
+            <source
+                src="https://cdn.coverr.co/videos/coverr-a-couple-in-love-1574/1080p.mp4"
+                type="video/mp4">
+
+            Tu navegador no puede reproducir este video.
+
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INFORMACION DE LA BODA
+========================= -->
+
+<section class="informacion">
+
+    <h2 class="titulo">
+        Detalles de nuestro día
+    </h2>
+
+    <div class="tarjetas">
+
+        <div class="tarjeta">
+
+            <div class="icono">📅</div>
+
+            <h3>Fecha</h3>
+
+            <p>
+                Próximamente
+            </p>
 
         </div>
 
-    </section>
 
+        <div class="tarjeta">
 
-    <!-- MENSAJE -->
-    <section>
+            <div class="icono">⛪</div>
 
-        <h2>Con amor</h2>
+            <h3>Ceremonia</h3>
 
-        <div class="divider"></div>
+            <p>
+                Lugar de la ceremonia
+            </p>
 
-        <p>
-            “Las muchas aguas no podrán apagar el amor,
-            ni lo ahogarán los ríos.”
-        </p>
-
-        <p style="margin-top:15px;">
-            Cantares 8:7
-        </p>
-
-    </section>
-
-
-    <!-- CONFIRMACIÓN -->
-    <section class="confirm">
-
-        <h2>Confirma tu asistencia</h2>
-
-        <div class="divider"></div>
-
-        <p>
-            Nos encantaría contar con tu presencia
-            en este día tan especial.
-        </p>
-
-        <a class="confirm-btn"
-           href="https://wa.me/"
-           target="_blank">
-            CONFIRMAR ASISTENCIA
-        </a>
-
-    </section>
-
-
-    <footer>
-
-        <div class="names">
-            JOSUÉ & DAMARIS
         </div>
 
-        <p style="margin-top:15px;">
-            Con amor, para siempre ❤️
-        </p>
 
-    </footer>
+        <div class="tarjeta">
 
-</div>
+            <div class="icono">🥂</div>
 
+            <h3>Recepción</h3>
+
+            <p>
+                Lugar de la recepción
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FRASE
+========================= -->
+
+<section class="frase">
+
+    <p>
+        “Y sobre todas estas cosas vestíos de amor,
+        que es el vínculo perfecto.”
+    </p>
+
+    <br>
+
+    <p>
+        — Colosenses 3:14
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CONFIRMACION
+========================= -->
+
+<section class="confirmacion">
+
+    <h2 class="titulo">
+        ¿Nos acompañas?
+    </h2>
+
+    <p class="subtitulo">
+        Será un honor compartir contigo este día
+        tan especial para nosotros.
+    </p>
+
+    <a
+        class="boton-confirmar"
+        href="https://wa.me/50242008319?text=Hola%20Josué%20y%20Damaris,%20confirmo%20mi%20asistencia%20a%20su%20boda."
+        target="_blank">
+
+        💌 CONFIRMAR ASISTENCIA
+
+    </a>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<footer>
+
+    <h2>
+        Josué & Damaris
+    </h2>
+
+    <p>
+        Con amor, para siempre ❤️
+    </p>
+
+    <p>
+        © 2026
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-function abrirInvitacion(){
+/*
+   CAMBIA ESTA FECHA
+   POR LA FECHA REAL DE LA BODA.
 
-    document.getElementById("cover").style.display = "none";
+   FORMATO:
+   Año-Mes-DíaTHora:Minuto:Segundo
 
-    document.getElementById("invitation").style.display = "block";
+   EJEMPLO:
+   2026-12-20T16:00:00
+*/
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+const fechaBoda = new Date("2026-12-20T16:00:00").getTime();
 
-}
+
+const contador = setInterval(function() {
+
+    const ahora = new Date().getTime();
+
+    const distancia = fechaBoda - ahora;
+
+
+    const dias = Math.floor(
+        distancia / (1000 * 60 * 60 * 24)
+    );
+
+    const horas = Math.floor(
+        (distancia % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutos = Math.floor(
+        (distancia % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const segundos = Math.floor(
+        (distancia % (1000 * 60))
+        / 1000
+    );
+
+
+    document.getElementById("dias").innerHTML =
+        dias >= 0 ? dias : 0;
+
+    document.getElementById("horas").innerHTML =
+        horas >= 0 ? horas : 0;
+
+    document.getElementById("minutos").innerHTML =
+        minutos >= 0 ? minutos : 0;
+
+    document.getElementById("segundos").innerHTML =
+        segundos >= 0 ? segundos : 0;
+
+
+    if (distancia < 0) {
+
+        clearInterval(contador);
+
+        document.getElementById("dias").innerHTML = "0";
+        document.getElementById("horas").innerHTML = "0";
+        document.getElementById("minutos").innerHTML = "0";
+        document.getElementById("segundos").innerHTML = "0";
+
+    }
+
+}, 1000);
 
 </script>
 
