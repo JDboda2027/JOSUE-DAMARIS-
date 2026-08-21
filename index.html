@@ -1883,56 +1883,7 @@ if (invitado) {
         "—";
 
     document.getElementById("numeroMesa").textContent =
-        "—";
-}
- 
-
-
-
-/* =========================================================
-   IDENTIFICAR LA FAMILIA SEGÚN EL ENLACE
-========================================================= */
-
-const parametros = new URLSearchParams(window.location.search);
-
-const codigoFamilia = parametros.get("familia") || "lopez";
-
-const familiaSeleccionada = familias[codigoFamilia];
-
-
-/* =========================================================
-   DATOS DE LA INVITACIÓN
-========================================================= */
-
-const nombreFamilia = familiaSeleccionada.nombre;
-
-const cantidadInvitados = familiaSeleccionada.lugares;
-
-
-/* =========================================================
-   MOSTRAR NOMBRE DE LA FAMILIA
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const elementosFamilia = document.querySelectorAll(
-        ".nombre-familia, #nombreFamilia"
-    );
-
-    elementosFamilia.forEach(function(elemento) {
-        elemento.textContent = nombreFamilia;
-    });
-
-
-    /* Mostrar cantidad de lugares */
-
-    const elementosLugares = document.querySelectorAll(
-        ".cantidad-lugares, #cantidadInvitados"
-    );
-
-    elementosLugares.forEach(function(elemento) {
-        elemento.textContent = cantidadInvitados;
-    });
+        
 
 });
 
