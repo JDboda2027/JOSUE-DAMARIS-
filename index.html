@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,411 +9,800 @@
 
 <style>
 
-/* =========================
+/* =====================================================
    CONFIGURACIÓN GENERAL
-========================= */
+===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #faf7f2;
-    color: #4a4038;
-    overflow-x: hidden;
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:#faf7f2;
+    color:#4a4038;
+    overflow-x:hidden;
 }
 
-/* =========================
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =====================================================
+   PANTALLA INICIAL
+===================================================== */
+
+.pantalla-inicial{
+
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.70)
+        ),
+        url("IMG-20260609-WA0011.jpg")
+        center/cover no-repeat;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease,
+        transform 1.2s ease;
+}
+
+.pantalla-inicial.ocultar{
+
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.08);
+}
+
+.inicial-contenido{
+
+    max-width:700px;
+
+    animation:
+        aparecer 1.8s ease;
+}
+
+.inicial-pequeno{
+
+    font-size:14px;
+
+    letter-spacing:5px;
+
+    margin-bottom:25px;
+}
+
+.inicial-titulo{
+
+    font-size:clamp(45px,12vw,85px);
+
+    font-style:italic;
+
+    font-weight:normal;
+
+    margin-bottom:15px;
+}
+
+.inicial-frase{
+
+    font-size:18px;
+
+    letter-spacing:2px;
+
+    margin-bottom:35px;
+}
+
+.boton-abrir{
+
+    border:1px solid white;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    padding:17px 35px;
+
+    border-radius:40px;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.20);
+}
+
+.boton-abrir:hover{
+
+    background:white;
+
+    color:#5a4b40;
+
+    transform:translateY(-3px);
+}
+
+
+/* =====================================================
+   INVITACIÓN PERSONALIZADA
+===================================================== */
+
+.invitacion-personalizada{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fff 0%,
+            #faf5ef 55%,
+            #eee4d8 100%
+        );
+
+    position:relative;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.invitacion-personalizada.mostrar{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.invitacion-contenido{
+
+    width:100%;
+
+    max-width:750px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.adorno{
+
+    font-size:30px;
+
+    color:#9a8068;
+
+    margin-bottom:25px;
+
+    animation:flotar 3s ease-in-out infinite;
+}
+
+.invitacion-label{
+
+    font-size:14px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#9a8068;
+
+    margin-bottom:20px;
+}
+
+.nombre-familia{
+
+    font-size:clamp(40px,9vw,70px);
+
+    font-style:italic;
+
+    font-weight:normal;
+
+    color:#675548;
+
+    margin-bottom:20px;
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+}
+
+.invitacion-personalizada.mostrar
+.nombre-familia{
+
+    animation:
+        nombreEntrada 1.5s .4s ease forwards;
+}
+
+.linea-decorativa{
+
+    width:90px;
+
+    height:1px;
+
+    background:#b89b7d;
+
+    margin:25px auto;
+}
+
+.invitacion-texto{
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    max-width:600px;
+
+    margin:auto;
+}
+
+.cantidad-invitados{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:14px 28px;
+
+    background:#eee5db;
+
+    border-radius:40px;
+
+    color:#675548;
+
+    font-size:17px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.07);
+}
+
+.continuar{
+
+    margin-top:35px;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+    color:#9a8068;
+
+    animation:pulsar 2s infinite;
+}
+
+
+/* =====================================================
    PORTADA
-========================= */
+===================================================== */
 
-.portada {
-    min-height: 100svh;
+.portada{
+
+    min-height:100svh;
 
     background:
         linear-gradient(
             rgba(0,0,0,.48),
             rgba(0,0,0,.58)
         ),
-        url("IMG-20260609-WA0011.jpg");
+        url("IMG-20260609-WA0011.jpg")
+        center/cover no-repeat;
 
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    display:flex;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
 
-    text-align: center;
-    color: white;
+    align-items:center;
 
-    padding: 30px 20px;
+    text-align:center;
+
+    color:white;
+
+    padding:30px 20px;
 }
 
-.portada-contenido {
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
+.portada-contenido{
 
-    animation: aparecer 1.5s ease forwards;
+    width:100%;
+
+    max-width:900px;
+
+    padding:20px;
+
+    animation:aparecer 1.5s ease;
 }
 
-.pequeno {
-    font-size: 18px;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
+.pequeno{
+
+    font-size:18px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
 }
 
-.nombres {
-    font-size: clamp(48px, 11vw, 100px);
-    font-weight: normal;
-    font-style: italic;
-    line-height: 1.1;
-    margin-bottom: 20px;
+.nombres{
+
+    font-size:clamp(48px,11vw,100px);
+
+    font-weight:normal;
+
+    font-style:italic;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
 }
 
-.fecha {
-    font-size: clamp(17px, 4vw, 24px);
-    letter-spacing: 3px;
+.fecha{
+
+    font-size:clamp(17px,4vw,24px);
+
+    letter-spacing:3px;
 }
 
-.boton {
-    display: inline-block;
+.boton{
 
-    margin-top: 35px;
+    display:inline-block;
 
-    padding: 15px 35px;
+    margin-top:35px;
 
-    border: 1px solid white;
-    border-radius: 30px;
+    padding:15px 35px;
 
-    color: white;
-    text-decoration: none;
+    border:1px solid white;
 
-    background: rgba(255,255,255,.12);
+    border-radius:30px;
 
-    transition: .3s;
+    color:white;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,.12);
+
+    transition:.3s;
 }
 
-.boton:hover {
-    background: white;
-    color: #5a4b40;
+.boton:hover{
+
+    background:white;
+
+    color:#5a4b40;
 }
 
-/* =========================
-   INVITACIÓN PERSONALIZADA
-========================= */
 
-.invitacion-personalizada {
-    background: #fff;
-    padding: 55px 20px;
-    text-align: center;
-}
-
-.invitacion-contenido {
-    max-width: 700px;
-    margin: auto;
-}
-
-.invitacion-label {
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #9a8068;
-    margin-bottom: 15px;
-}
-
-.nombre-familia {
-    font-size: clamp(30px, 7vw, 50px);
-    font-style: italic;
-    font-weight: normal;
-    color: #675548;
-    margin-bottom: 15px;
-}
-
-.invitacion-texto {
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-.cantidad-invitados {
-    display: inline-block;
-
-    margin-top: 20px;
-    padding: 12px 25px;
-
-    background: #eee5db;
-    border-radius: 30px;
-
-    font-size: 16px;
-    color: #675548;
-}
-
-/* =========================
+/* =====================================================
    SECCIONES
-========================= */
+===================================================== */
 
-section {
-    padding: 80px 20px;
-    text-align: center;
+section{
+
+    padding:80px 20px;
+
+    text-align:center;
 }
 
-.titulo {
-    font-size: clamp(30px, 6vw, 40px);
-    font-weight: normal;
-    font-style: italic;
+.titulo{
 
-    margin-bottom: 20px;
+    font-size:clamp(30px,6vw,40px);
 
-    color: #675548;
+    font-weight:normal;
+
+    font-style:italic;
+
+    margin-bottom:20px;
+
+    color:#675548;
 }
 
-.subtitulo {
-    max-width: 700px;
-    margin: auto;
+.subtitulo{
 
-    line-height: 1.8;
-    font-size: 18px;
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:1.8;
+
+    font-size:18px;
 }
 
-/* =========================
+
+/* =====================================================
    CUENTA REGRESIVA
-========================= */
+===================================================== */
 
-.contador {
-    background: #eee5db;
+.contador{
+
+    background:#eee5db;
 }
 
-.reloj {
-    display: flex;
+.reloj{
 
-    justify-content: center;
-    align-items: stretch;
+    display:flex;
 
-    flex-wrap: wrap;
+    justify-content:center;
 
-    gap: 15px;
+    align-items:stretch;
 
-    margin-top: 35px;
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-top:35px;
 }
 
-.numero {
-    background: white;
+.numero{
 
-    width: 100px;
+    background:white;
 
-    padding: 20px 10px;
+    width:100px;
 
-    border-radius: 12px;
+    padding:20px 10px;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    border-radius:12px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-.numero strong {
-    display: block;
-    font-size: 32px;
-    color: #675548;
+.numero strong{
+
+    display:block;
+
+    font-size:32px;
+
+    color:#675548;
 }
 
-.numero span {
-    font-size: 13px;
-    text-transform: uppercase;
+.numero span{
+
+    font-size:13px;
+
+    text-transform:uppercase;
 }
 
-/* =========================
+
+/* =====================================================
    HISTORIA
-========================= */
+===================================================== */
 
-.historia {
-    max-width: 800px;
-    margin: auto;
+.historia{
 
-    line-height: 2;
-    font-size: 18px;
+    max-width:800px;
+
+    margin:auto;
+
+    line-height:2;
+
+    font-size:18px;
 }
 
-/* =========================
+
+/* =====================================================
+   DIVISOR DECORATIVO
+===================================================== */
+
+.divisor{
+
+    margin:35px auto;
+
+    color:#a4896d;
+
+    font-size:25px;
+
+    letter-spacing:8px;
+}
+
+
+/* =====================================================
    GALERÍA
-========================= */
+===================================================== */
 
-.galeria {
-    max-width: 1100px;
+.galeria{
 
-    margin: 40px auto 0;
+    max-width:1100px;
 
-    display: grid;
+    margin:40px auto 0;
 
-    grid-template-columns: repeat(3, 1fr);
+    display:grid;
 
-    gap: 15px;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
 }
 
-.galeria img {
-    width: 100%;
-    height: 320px;
+.galeria img{
 
-    object-fit: cover;
+    width:100%;
 
-    border-radius: 15px;
+    height:320px;
 
-    display: block;
+    object-fit:cover;
 
-    transition: .4s;
+    border-radius:15px;
+
+    display:block;
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
 }
 
-.galeria img:hover {
-    transform: scale(1.03);
+.galeria img:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.18);
 }
 
-/* =========================
+
+/* =====================================================
    VIDEO
-========================= */
+===================================================== */
 
-.video-seccion {
-    background: #faf7f2;
+.video-seccion{
+
+    background:#faf7f2;
 }
 
-.video-contenedor {
-    width: 100%;
-    max-width: 360px;
+.video-contenedor{
 
-    margin: 30px auto 0;
+    width:90%;
 
-    display: block;
+    max-width:360px;
 
-    overflow: hidden;
+    margin:30px auto 0;
 
-    border-radius: 20px;
+    display:block;
+
+    overflow:hidden;
+
+    border-radius:20px;
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.15);
+
+    background:#000;
 }
 
-.video-contenedor video {
-    display: block;
+.video-contenedor video{
 
-    width: 100%;
-    max-width: 360px;
+    display:block;
 
-    height: auto;
+    width:100%;
 
-    max-height: 640px;
+    max-width:360px;
 
-    margin: 0 auto;
+    height:auto;
 
-    border-radius: 20px;
+    max-height:600px;
 
-    object-fit: contain;
+    margin:auto;
 
-    background: #000;
+    border-radius:20px;
+
+    object-fit:contain;
+
+    background:#000;
 }
 
-/* =========================
+
+/* =====================================================
+   RECUERDOS
+===================================================== */
+
+.recuerdos{
+
+    background:#fff;
+}
+
+.video-grid{
+
+    max-width:1000px;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:25px;
+}
+
+.video-card{
+
+    background:#f7f1eb;
+
+    padding:12px;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+}
+
+.video-card video{
+
+    width:100%;
+
+    max-height:500px;
+
+    border-radius:15px;
+
+    display:block;
+
+    background:#000;
+}
+
+
+/* =====================================================
    INFORMACIÓN
-========================= */
+===================================================== */
 
-.informacion {
-    background: #eee5db;
+.informacion{
+
+    background:#eee5db;
 }
 
-.tarjetas {
-    max-width: 1000px;
+.tarjetas{
 
-    margin: 40px auto;
+    max-width:1000px;
 
-    display: grid;
+    margin:40px auto;
 
-    grid-template-columns: repeat(3, 1fr);
+    display:grid;
 
-    gap: 20px;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
 }
 
-.tarjeta {
-    background: white;
+.tarjeta{
 
-    padding: 35px 20px;
+    background:white;
 
-    border-radius: 15px;
+    padding:35px 20px;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    border-radius:15px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
+
+    transition:.4s;
 }
 
-.icono {
-    font-size: 40px;
-    margin-bottom: 15px;
+.tarjeta:hover{
+
+    transform:translateY(-7px);
 }
 
-.tarjeta h3 {
-    margin-bottom: 12px;
-    font-size: 22px;
+.icono{
+
+    font-size:40px;
+
+    margin-bottom:15px;
 }
 
-.ubicacion-texto {
-    margin-top: 30px;
+.tarjeta h3{
 
-    line-height: 1.7;
-    font-size: 17px;
+    margin-bottom:12px;
+
+    font-size:22px;
 }
 
-.boton-ubicacion {
-    display: inline-block;
+.ubicacion-texto{
 
-    margin-top: 25px;
+    margin-top:30px;
 
-    padding: 15px 30px;
+    line-height:1.7;
 
-    background: #8b6f47;
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 30px;
-
-    font-size: 16px;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,.15);
-
-    transition: .3s;
+    font-size:17px;
 }
 
-.boton-ubicacion:hover {
-    background: #6f5636;
-    transform: scale(1.03);
+.boton-ubicacion{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:15px 30px;
+
+    background:#8b6f47;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    font-size:16px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.15);
+
+    transition:.3s;
 }
 
-/* =========================
+.boton-ubicacion:hover{
+
+    background:#6f5636;
+
+    transform:scale(1.03);
+}
+
+
+/* =====================================================
    FRASE
-========================= */
+===================================================== */
 
-.frase {
-    padding: 100px 20px;
+.frase{
+
+    padding:100px 20px;
 }
 
-.frase p {
-    max-width: 800px;
+.frase p{
 
-    margin: auto;
+    max-width:800px;
 
-    font-size: clamp(21px, 5vw, 28px);
+    margin:auto;
 
-    line-height: 1.7;
+    font-size:clamp(21px,5vw,28px);
 
-    font-style: italic;
+    line-height:1.7;
+
+    font-style:italic;
 }
 
-/* =========================
+
+/* =====================================================
    CONFIRMACIÓN
-========================= */
+===================================================== */
 
-.confirmacion {
+.confirmacion{
+
     background:
         linear-gradient(
             rgba(0,0,0,.55),
@@ -421,210 +811,493 @@ section {
         url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80")
         center/cover no-repeat;
 
-    color: white;
+    color:white;
 }
 
-.confirmacion .titulo {
-    color: white;
+.confirmacion .titulo{
+
+    color:white;
 }
 
-.boton-confirmar {
-    display: inline-block;
+.confirmacion-contenido{
 
-    margin-top: 25px;
+    max-width:650px;
 
-    padding: 16px 35px;
+    margin:35px auto 0;
 
-    background: white;
+    background:rgba(255,255,255,.10);
 
-    color: #5b4b40;
+    padding:30px 20px;
 
-    text-decoration: none;
+    border-radius:20px;
 
-    border-radius: 30px;
-
-    font-weight: bold;
-
-    transition: .3s;
+    backdrop-filter:blur(5px);
 }
 
-.boton-confirmar:hover {
-    transform: scale(1.05);
+.reservados{
+
+    margin-bottom:25px;
+
+    font-size:17px;
+
+    line-height:1.7;
 }
 
-/* =========================
-   PIE
-========================= */
+.selector-label{
 
-footer {
-    background: #3f352e;
+    display:block;
 
-    color: white;
+    margin-bottom:12px;
 
-    padding: 50px 20px;
-
-    text-align: center;
+    font-size:17px;
 }
 
-footer h2 {
-    font-size: clamp(32px, 8vw, 42px);
+.selector-asistencia{
 
-    font-style: italic;
+    width:100%;
 
-    font-weight: normal;
+    max-width:300px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:30px;
+
+    font-family:inherit;
+
+    font-size:17px;
+
+    text-align:center;
+
+    outline:none;
+
+    background:white;
+
+    color:#5b4b40;
 }
 
-footer p {
-    margin-top: 15px;
+.boton-confirmar{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:16px 35px;
+
+    background:white;
+
+    color:#5b4b40;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    font-size:15px;
 }
 
-/* =========================
-   ANIMACIÓN
-========================= */
+.boton-confirmar:hover{
 
-@keyframes aparecer {
+    transform:scale(1.05);
+}
 
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+
+/* =====================================================
+   CORAZONES DECORATIVOS
+===================================================== */
+
+.corazones{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:999;
+
+    bottom:-30px;
+
+    animation:subirCorazon 6s linear forwards;
+
+    opacity:.7;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#3f352e;
+
+    color:white;
+
+    padding:50px 20px;
+
+    text-align:center;
+}
+
+footer h2{
+
+    font-size:clamp(32px,8vw,42px);
+
+    font-style:italic;
+
+    font-weight:normal;
+}
+
+footer p{
+
+    margin-top:15px;
+}
+
+
+/* =====================================================
+   ANIMACIONES
+===================================================== */
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    to{
 
+        opacity:1;
+
+        transform:translateY(0);
+    }
 }
 
-/* =========================
+@keyframes nombreEntrada{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px)
+            scale(.95);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes flotar{
+
+    0%,100%{
+
+        transform:translateY(0);
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+    }
+}
+
+@keyframes pulsar{
+
+    0%,100%{
+
+        opacity:.5;
+    }
+
+    50%{
+
+        opacity:1;
+    }
+}
+
+@keyframes subirCorazon{
+
+    from{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:.7;
+    }
+
+    to{
+
+        transform:
+            translateY(-100vh)
+            rotate(25deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
    TABLET
-========================= */
+===================================================== */
 
-@media(max-width: 800px) {
+@media(max-width:800px){
 
-    .galeria {
-        grid-template-columns: repeat(2, 1fr);
+    .galeria{
+
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .galeria img {
-        height: 240px;
+    .galeria img{
+
+        height:240px;
     }
 
-    .tarjetas {
-        grid-template-columns: 1fr;
-        max-width: 500px;
+    .tarjetas{
+
+        grid-template-columns:1fr;
+
+        max-width:500px;
     }
 
+    .video-grid{
+
+        grid-template-columns:1fr;
+
+        max-width:500px;
+    }
 }
 
-/* =========================
+
+/* =====================================================
    CELULAR
-========================= */
+===================================================== */
 
-@media(max-width: 500px) {
+@media(max-width:500px){
 
-    section {
-        padding: 60px 15px;
+    section{
+
+        padding:60px 15px;
     }
 
-    .portada {
-        min-height: 100svh;
+    .pequeno{
 
-        background-position: center center;
+        font-size:13px;
+
+        letter-spacing:3px;
     }
 
-    .pequeno {
-        font-size: 13px;
-        letter-spacing: 3px;
+    .nombres{
+
+        font-size:
+            clamp(45px,14vw,70px);
     }
 
-    .nombres {
-        font-size: clamp(45px, 14vw, 70px);
+    .fecha{
+
+        font-size:16px;
+
+        letter-spacing:2px;
     }
 
-    .fecha {
-        font-size: 16px;
-        letter-spacing: 2px;
+    .boton{
+
+        padding:14px 25px;
+
+        font-size:14px;
     }
 
-    .boton {
-        padding: 14px 25px;
-        font-size: 14px;
+    .reloj{
+
+        gap:8px;
     }
 
-    .reloj {
-        gap: 8px;
+    .numero{
+
+        width:78px;
+
+        padding:15px 5px;
     }
 
-    .numero {
-        width: 78px;
-        padding: 15px 5px;
+    .numero strong{
+
+        font-size:26px;
     }
 
-    .numero strong {
-        font-size: 26px;
+    .numero span{
+
+        font-size:11px;
     }
 
-    .numero span {
-        font-size: 11px;
+    .galeria{
+
+        grid-template-columns:1fr;
     }
 
-    .galeria {
-        grid-template-columns: 1fr;
+    .galeria img{
+
+        height:300px;
     }
 
-    .galeria img {
-        height: 300px;
+    .video-contenedor{
+
+        width:90%;
+
+        max-width:340px;
     }
 
-    .video-contenedor {
-        width: 90%;
-        max-width: 340px;
+    .video-contenedor video{
+
+        width:100%;
+
+        max-width:340px;
+
+        max-height:600px;
     }
 
-    .video-contenedor video {
-        width: 100%;
-        max-width: 340px;
-        max-height: 600px;
-    }
+    .nombre-familia{
 
-    .boton-ubicacion,
-    .boton-confirmar {
-        max-width: 100%;
+        font-size:
+            clamp(38px,11vw,55px);
     }
 
 }
 
-/* =========================
+
+/* =====================================================
    CELULARES MUY PEQUEÑOS
-========================= */
+===================================================== */
 
-@media(max-width: 360px) {
+@media(max-width:360px){
 
-    .numero {
-        width: 70px;
+    .numero{
+
+        width:70px;
     }
 
-    .numero strong {
-        font-size: 23px;
+    .numero strong{
+
+        font-size:23px;
     }
 
-    .nombres {
-        font-size: 42px;
-    }
+    .nombres{
 
+        font-size:42px;
+    }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
+     PANTALLA INICIAL
+===================================================== -->
+
+<div
+    class="pantalla-inicial"
+    id="pantallaInicial">
+
+    <div class="inicial-contenido">
+
+        <div class="inicial-pequeno">
+            💍 NUESTRA BODA 💍
+        </div>
+
+        <h1 class="inicial-titulo">
+            Josué & Damaris
+        </h1>
+
+        <p class="inicial-frase">
+            Una historia de amor que queremos compartir contigo
+        </p>
+
+        <button
+            class="boton-abrir"
+            id="abrirInvitacion">
+
+            ✨ ABRIR INVITACIÓN ✨
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     INVITACIÓN PERSONALIZADA
+===================================================== -->
+
+<section
+    class="invitacion-personalizada"
+    id="invitacionPersonalizada">
+
+    <div class="invitacion-contenido">
+
+        <div class="adorno">
+            ❦
+        </div>
+
+        <div class="invitacion-label">
+            Invitación especial para
+        </div>
+
+        <h2
+            class="nombre-familia"
+            id="familia">
+        </h2>
+
+        <div class="linea-decorativa"></div>
+
+        <p class="invitacion-texto">
+
+            Con muchísimo cariño hemos reservado
+            un lugar especial para ustedes
+            en uno de los días más importantes
+            de nuestras vidas.
+
+        </p>
+
+        <div
+            class="cantidad-invitados"
+            id="invitados">
+        </div>
+
+        <div class="continuar">
+
+            ✨ Con amor, Josué & Damaris ✨
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
      PORTADA
-========================= -->
+===================================================== -->
 
 <header class="portada">
 
@@ -642,8 +1315,12 @@ footer p {
             16 DE ENERO DE 2027
         </div>
 
-        <a href="#inicio" class="boton">
-            ✨ ABRIR INVITACIÓN ✨
+        <a
+            href="#inicio"
+            class="boton">
+
+            💕 CONTINUAR 💕
+
         </a>
 
     </div>
@@ -651,50 +1328,19 @@ footer p {
 </header>
 
 
-<!-- =========================
-     INVITACIÓN PERSONALIZADA
-========================= -->
-
-<section class="invitacion-personalizada">
-
-    <div class="invitacion-contenido">
-
-        <div class="invitacion-label">
-            Invitación especial para
-        </div>
-
-        <h2
-            class="nombre-familia"
-            id="familia">
-        </h2>
-
-        <p class="invitacion-texto">
-
-            Con mucho cariño hemos reservado
-            un lugar especial para ustedes
-            en nuestro gran día.
-
-        </p>
-
-        <div
-            class="cantidad-invitados"
-            id="invitados">
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
+<!-- =====================================================
      BIENVENIDA
-========================= -->
+===================================================== -->
 
 <section id="inicio">
 
     <h2 class="titulo">
         ¡Nos casamos!
     </h2>
+
+    <div class="divisor">
+        ✦ ♡ ✦
+    </div>
 
     <p class="subtitulo">
 
@@ -709,9 +1355,9 @@ footer p {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CUENTA REGRESIVA
-========================= -->
+===================================================== -->
 
 <section class="contador">
 
@@ -722,23 +1368,35 @@ footer p {
     <div class="reloj">
 
         <div class="numero">
+
             <strong id="dias">0</strong>
+
             <span>Días</span>
+
         </div>
 
         <div class="numero">
+
             <strong id="horas">0</strong>
+
             <span>Horas</span>
+
         </div>
 
         <div class="numero">
+
             <strong id="minutos">0</strong>
+
             <span>Minutos</span>
+
         </div>
 
         <div class="numero">
+
             <strong id="segundos">0</strong>
+
             <span>Segundos</span>
+
         </div>
 
     </div>
@@ -746,15 +1404,19 @@ footer p {
 </section>
 
 
-<!-- =========================
-     NUESTRA HISTORIA
-========================= -->
+<!-- =====================================================
+     HISTORIA
+===================================================== -->
 
 <section>
 
     <h2 class="titulo">
         Nuestra historia
     </h2>
+
+    <div class="divisor">
+        ✦ ♡ ✦
+    </div>
 
     <div class="historia">
 
@@ -765,10 +1427,21 @@ footer p {
         <br>
 
         <p>
+
             Hoy comenzamos una nueva etapa juntos,
             rodeados de las personas que amamos
             y agradecidos con Dios por permitirnos
             llegar hasta este momento.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Queremos que seas parte de este recuerdo
+            que quedará para siempre en nuestros corazones.
+
         </p>
 
     </div>
@@ -776,9 +1449,9 @@ footer p {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      GALERÍA
-========================= -->
+===================================================== -->
 
 <section>
 
@@ -797,36 +1470,57 @@ footer p {
 
         <img
             src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80"
-            alt="Momento de boda">
+            alt="Momento de boda"
+            loading="lazy">
 
         <img
             src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
-            alt="Pareja de novios">
+            alt="Pareja de novios"
+            loading="lazy">
 
         <img
             src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80"
-            alt="Boda">
+            alt="Boda"
+            loading="lazy">
 
         <img
             src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
-            alt="Decoración de boda">
+            alt="Decoración de boda"
+            loading="lazy">
 
         <img
             src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80"
-            alt="Novios">
+            alt="Novios"
+            loading="lazy">
 
         <img
             src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80"
-            alt="Celebración">
+            alt="Celebración"
+            loading="lazy">
+
+        <img
+            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
+            alt="Celebración de boda"
+            loading="lazy">
+
+        <img
+            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80"
+            alt="Decoración"
+            loading="lazy">
+
+        <img
+            src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=900&q=80"
+            alt="Pareja"
+            loading="lazy">
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     VIDEO
-========================= -->
+<!-- =====================================================
+     VIDEO PRINCIPAL
+===================================================== -->
 
 <section class="video-seccion">
 
@@ -861,9 +1555,69 @@ footer p {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+     MÁS RECUERDOS EN VIDEO
+===================================================== -->
+
+<section class="recuerdos">
+
+    <h2 class="titulo">
+        Más recuerdos
+    </h2>
+
+    <p class="subtitulo">
+
+        Cada momento cuenta una parte de nuestra historia.
+
+    </p>
+
+    <div class="video-grid">
+
+        <div class="video-card">
+
+            <video
+                controls
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="video2.mp4"
+                    type="video/mp4">
+
+            </video>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <video
+                controls
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="video3.mp4"
+                    type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </div>
+
+    <p class="subtitulo">
+
+        💕 Pronto agregaremos más recuerdos de nuestra historia.
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
      INFORMACIÓN
-========================= -->
+===================================================== -->
 
 <section class="informacion">
 
@@ -957,15 +1711,17 @@ footer p {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FRASE
-========================= -->
+===================================================== -->
 
 <section class="frase">
 
     <p>
+
         “Y sobre todas estas cosas vestíos de amor,
         que es el vínculo perfecto.”
+
     </p>
 
     <br>
@@ -977,9 +1733,9 @@ footer p {
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CONFIRMACIÓN
-========================= -->
+===================================================== -->
 
 <section class="confirmacion">
 
@@ -994,23 +1750,52 @@ footer p {
 
     </p>
 
-    <a
-        id="botonWhatsApp"
-        class="boton-confirmar"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer">
 
-        💍 CONFIRMAR ASISTENCIA
+    <div class="confirmacion-contenido">
 
-    </a>
+        <div
+            class="reservados"
+            id="textoReservados">
+        </div>
+
+
+        <label
+            class="selector-label"
+            for="cantidadAsistencia">
+
+            ¿Cuántas personas asistirán?
+
+        </label>
+
+
+        <select
+            id="cantidadAsistencia"
+            class="selector-asistencia">
+        </select>
+
+
+        <br>
+
+
+        <a
+            id="botonWhatsApp"
+            class="boton-confirmar"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            💍 CONFIRMAR ASISTENCIA
+
+        </a>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     FINAL
-========================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -1023,108 +1808,212 @@ footer p {
     </p>
 
     <p>
-        © 2027
+        16 • 01 • 2027
     </p>
 
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      JAVASCRIPT
-========================= -->
+===================================================== -->
 
 <script>
 
-/* =========================================
-   PERSONALIZACIÓN DE LA INVITACIÓN
-========================================= */
 
-/*
-   CAMBIA SOLAMENTE ESTOS DOS DATOS
-   PARA CADA FAMILIA.
-*/
+/* =====================================================
+   PERSONALIZACIÓN
+===================================================== */
 
 const nombreFamilia = "Familia López";
+
+/*
+   AQUÍ COLOCAS LA CANTIDAD DE LUGARES
+   QUE USTEDES RESERVARON PARA ESTA FAMILIA.
+*/
 
 const cantidadInvitados = 4;
 
 
-/* =========================================
+/* =====================================================
+   ABRIR INVITACIÓN
+===================================================== */
+
+const botonAbrir =
+    document.getElementById("abrirInvitacion");
+
+const pantallaInicial =
+    document.getElementById("pantallaInicial");
+
+const invitacionPersonalizada =
+    document.getElementById("invitacionPersonalizada");
+
+
+botonAbrir.addEventListener("click", function(){
+
+    pantallaInicial.classList.add("ocultar");
+
+    setTimeout(function(){
+
+        invitacionPersonalizada.classList.add("mostrar");
+
+        invitacionPersonalizada.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },700);
+
+});
+
+
+/* =====================================================
    MOSTRAR FAMILIA
-========================================= */
+===================================================== */
 
 document.getElementById("familia").textContent =
     nombreFamilia;
 
 
-/* =========================================
-   MOSTRAR CANTIDAD DE INVITADOS
-========================================= */
+/* =====================================================
+   MOSTRAR LUGARES RESERVADOS
+===================================================== */
 
-const textoInvitados =
+const textoReservados =
     cantidadInvitados === 1
-        ? "💍 1 lugar reservado para ustedes"
-        : "💍 " + cantidadInvitados + " lugares reservados para ustedes";
+    ? "💍 Hemos reservado 1 lugar especialmente para ustedes."
+    : "💍 Hemos reservado " +
+      cantidadInvitados +
+      " lugares especialmente para ustedes.";
 
 document.getElementById("invitados").textContent =
-    textoInvitados;
+    textoReservados;
 
 
-/* =========================================
-   WHATSAPP
-========================================= */
+/* =====================================================
+   CONFIRMACIÓN DE ASISTENCIA
+===================================================== */
 
-const mensajeWhatsApp =
-    "💍💕 Hola Josué y Damaris 💕💍\n\n" +
+const selector =
+    document.getElementById("cantidadAsistencia");
 
-    "Somos " + nombreFamilia + ".\n\n" +
-
-    "Con mucha alegría queremos confirmar " +
-    "nuestra asistencia a su boda. 🥰✨\n\n" +
-
-    "👨‍👩‍👧‍👦 Invitados: " +
-    cantidadInvitados + " persona" +
-    (cantidadInvitados === 1 ? "" : "s") +
-    ".\n\n" +
-
-    "Será un honor acompañarlos en este día " +
-    "tan especial y celebrar junto a ustedes " +
-    "el inicio de esta hermosa etapa. 🥂💍\n\n" +
-
-    "💕 ¡Nos vemos en su gran día! 🥳🎉";
-
-
-const numeroWhatsApp = "50242008319";
-
-const enlaceWhatsApp =
-    "https://wa.me/" +
-    numeroWhatsApp +
-    "?text=" +
-    encodeURIComponent(mensajeWhatsApp);
-
-
-document.getElementById("botonWhatsApp").href =
-    enlaceWhatsApp;
-
-
-/* =========================================
-   CUENTA REGRESIVA
-========================================= */
 
 /*
-   FECHA DE LA BODA:
-
-   16 de enero de 2027
-   4:30 PM
-
-   Guatemala utiliza UTC-6.
+   CREA AUTOMÁTICAMENTE LAS OPCIONES
+   SEGÚN LA CANTIDAD RESERVADA.
 */
 
+for(
+    let i = 1;
+    i <= cantidadInvitados;
+    i++
+){
+
+    const opcion =
+        document.createElement("option");
+
+    opcion.value = i;
+
+    opcion.textContent =
+        i === 1
+        ? "1 persona"
+        : i + " personas";
+
+    selector.appendChild(opcion);
+}
+
+
+/* =====================================================
+   TEXTO DE CONFIRMACIÓN
+===================================================== */
+
+document.getElementById("textoReservados").textContent =
+    cantidadInvitados === 1
+    ? "💍 Tienen 1 lugar reservado para esta invitación."
+    : "💍 Tienen " +
+      cantidadInvitados +
+      " lugares reservados para esta invitación.";
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+const numeroWhatsApp =
+    "50242008319";
+
+
+function actualizarWhatsApp(){
+
+    const cantidadAsistencia =
+        Number(selector.value);
+
+
+    const mensajeWhatsApp =
+
+        "💍💕 Hola Josué y Damaris 💕💍\n\n" +
+
+        "Somos " +
+        nombreFamilia +
+        ".\n\n" +
+
+        "Con mucha alegría queremos confirmar " +
+        "nuestra asistencia a su boda. 🥰✨\n\n" +
+
+        "👨‍👩‍👧‍👦 Familia invitada: " +
+        nombreFamilia +
+        "\n\n" +
+
+        "💺 Lugares reservados: " +
+        cantidadInvitados +
+        "\n\n" +
+
+        "✅ Personas que asistirán: " +
+        cantidadAsistencia +
+        "\n\n" +
+
+        "Será un honor acompañarlos en este día " +
+        "tan especial y celebrar junto a ustedes " +
+        "el inicio de esta hermosa etapa. 🥂💍\n\n" +
+
+        "💕 ¡Nos vemos en su gran día! 🥳🎉";
+
+
+    const enlaceWhatsApp =
+
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
+        encodeURIComponent(
+            mensajeWhatsApp
+        );
+
+
+    document.getElementById(
+        "botonWhatsApp"
+    ).href = enlaceWhatsApp;
+
+}
+
+
+selector.addEventListener(
+    "change",
+    actualizarWhatsApp
+);
+
+actualizarWhatsApp();
+
+
+/* =====================================================
+   CUENTA REGRESIVA
+===================================================== */
+
 const fechaBoda =
-    new Date("2027-01-16T16:30:00-06:00").getTime();
+    new Date(
+        "2027-01-16T16:30:00-06:00"
+    ).getTime();
 
 
-function actualizarContador() {
+function actualizarContador(){
 
     const ahora =
         new Date().getTime();
@@ -1133,15 +2022,21 @@ function actualizarContador() {
         fechaBoda - ahora;
 
 
-    if (distancia <= 0) {
+    if(distancia <= 0){
 
-        document.getElementById("dias").textContent = "0";
-        document.getElementById("horas").textContent = "0";
-        document.getElementById("minutos").textContent = "0";
-        document.getElementById("segundos").textContent = "0";
+        document.getElementById("dias")
+            .textContent = "0";
+
+        document.getElementById("horas")
+            .textContent = "0";
+
+        document.getElementById("minutos")
+            .textContent = "0";
+
+        document.getElementById("segundos")
+            .textContent = "0";
 
         return;
-
     }
 
 
@@ -1176,27 +2071,77 @@ function actualizarContador() {
         );
 
 
-    document.getElementById("dias").textContent =
-        dias;
+    document.getElementById("dias")
+        .textContent = dias;
 
-    document.getElementById("horas").textContent =
-        horas;
+    document.getElementById("horas")
+        .textContent = horas;
 
-    document.getElementById("minutos").textContent =
-        minutos;
+    document.getElementById("minutos")
+        .textContent = minutos;
 
-    document.getElementById("segundos").textContent =
-        segundos;
+    document.getElementById("segundos")
+        .textContent = segundos;
 
 }
 
 
 actualizarContador();
 
-setInterval(actualizarContador, 1000);
+setInterval(
+    actualizarContador,
+    1000
+);
+
+
+/* =====================================================
+   CORAZONES FLOTANTES
+===================================================== */
+
+function crearCorazon(){
+
+    const corazon =
+        document.createElement("div");
+
+    corazon.className =
+        "corazones";
+
+    corazon.textContent =
+        Math.random() > .5
+        ? "♡"
+        : "♥";
+
+    corazon.style.left =
+        Math.random() * 100 + "vw";
+
+    corazon.style.fontSize =
+        (15 + Math.random() * 15) + "px";
+
+    corazon.style.animationDuration =
+        (5 + Math.random() * 4) + "s";
+
+    document.body.appendChild(
+        corazon
+    );
+
+
+    setTimeout(function(){
+
+        corazon.remove();
+
+    },9000);
+
+}
+
+
+setInterval(
+    crearCorazon,
+    3000
+);
+
 
 </script>
 
 
 </body>
-    </html>
+   </html>
