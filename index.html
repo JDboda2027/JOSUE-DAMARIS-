@@ -1828,37 +1828,67 @@ footer p{
 
 const familias = {
 
-    velasquez: {
-        nombre: "Familia Velasquez Diaz",
-        lugares: 4
-    },
+  <script>
+const familias = {
 
     garcia: {
         nombre: "Familia García",
-        lugares: 3
+        lugares: 4,
+        mesa: 7
     },
 
-    hernandez: {
-        nombre: "Familia Hernández",
-        lugares: 6
-    },
-
-    perez: {
-        nombre: "Familia Pérez",
-        lugares: 2
+    lopez: {
+        nombre: "Familia López",
+        lugares: 3,
+        mesa: 5
     },
 
     martinez: {
         nombre: "Familia Martínez",
-        lugares: 5
+        lugares: 6,
+        mesa: 2
     },
 
-    rodriguez: {
-        nombre: "Familia Rodríguez",
-        lugares: 4
+    ejemplo: {
+        nombre: "Familia Ejemplo",
+        lugares: 2,
+        mesa: 1
     }
 
 };
+
+// Obtener familia desde el enlace
+const parametros = new URLSearchParams(window.location.search);
+const familiaSeleccionada = parametros.get("familia");
+
+// Buscar los datos
+const invitado = familias[familiaSeleccionada];
+
+// Mostrar los datos
+if (invitado) {
+
+    document.getElementById("nombreFamilia").textContent =
+        invitado.nombre;
+
+    document.getElementById("cantidadLugares").textContent =
+        invitado.lugares;
+
+    document.getElementById("numeroMesa").textContent =
+        "#" + invitado.mesa;
+
+} else {
+
+    document.getElementById("nombreFamilia").textContent =
+        "Familia Invitada";
+
+    document.getElementById("cantidadLugares").textContent =
+        "—";
+
+    document.getElementById("numeroMesa").textContent =
+        "—";
+}
+ 
+
 
 
 /* =========================================================
