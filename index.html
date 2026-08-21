@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -31,7 +32,8 @@ body{
 }
 
 button,
-a{
+a,
+select{
     -webkit-tap-highlight-color:transparent;
 }
 
@@ -60,7 +62,7 @@ a{
     background:
         linear-gradient(
             rgba(0,0,0,.55),
-            rgba(0,0,0,.70)
+            rgba(0,0,0,.72)
         ),
         url("IMG-20260609-WA0011.jpg")
         center/cover no-repeat;
@@ -82,36 +84,28 @@ a{
 
     max-width:700px;
 
-    animation:
-        aparecer 1.8s ease;
+    animation:aparecer 1.8s ease;
 }
 
 .inicial-pequeno{
 
     font-size:14px;
-
     letter-spacing:5px;
-
     margin-bottom:25px;
 }
 
 .inicial-titulo{
 
     font-size:clamp(45px,12vw,85px);
-
     font-style:italic;
-
     font-weight:normal;
-
     margin-bottom:15px;
 }
 
 .inicial-frase{
 
     font-size:18px;
-
     letter-spacing:2px;
-
     margin-bottom:35px;
 }
 
@@ -144,9 +138,7 @@ a{
 .boton-abrir:hover{
 
     background:white;
-
     color:#5a4b40;
-
     transform:translateY(-3px);
 }
 
@@ -162,7 +154,6 @@ a{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
@@ -193,27 +184,21 @@ a{
 .invitacion-personalizada.mostrar{
 
     opacity:1;
-
     transform:translateY(0);
 }
 
 .invitacion-contenido{
 
     width:100%;
-
     max-width:750px;
-
     position:relative;
-
     z-index:2;
 }
 
 .adorno{
 
-    font-size:30px;
-
+    font-size:34px;
     color:#9a8068;
-
     margin-bottom:25px;
 
     animation:flotar 3s ease-in-out infinite;
@@ -222,13 +207,9 @@ a{
 .invitacion-label{
 
     font-size:14px;
-
     letter-spacing:4px;
-
     text-transform:uppercase;
-
     color:#9a8068;
-
     margin-bottom:20px;
 }
 
@@ -237,7 +218,6 @@ a{
     font-size:clamp(40px,9vw,70px);
 
     font-style:italic;
-
     font-weight:normal;
 
     color:#675548;
@@ -245,9 +225,7 @@ a{
     margin-bottom:20px;
 
     opacity:0;
-
     transform:translateY(25px);
-
 }
 
 .invitacion-personalizada.mostrar
@@ -260,43 +238,77 @@ a{
 .linea-decorativa{
 
     width:90px;
-
     height:1px;
-
     background:#b89b7d;
-
     margin:25px auto;
 }
 
 .invitacion-texto{
 
     font-size:19px;
-
     line-height:1.8;
-
     max-width:600px;
-
     margin:auto;
 }
 
-.cantidad-invitados{
+.info-familia{
 
-    display:inline-block;
+    display:flex;
 
-    margin-top:25px;
+    justify-content:center;
+    align-items:stretch;
 
-    padding:14px 28px;
+    flex-wrap:wrap;
 
-    background:#eee5db;
+    gap:15px;
 
-    border-radius:40px;
+    margin-top:30px;
+}
 
-    color:#675548;
+.info-caja{
 
-    font-size:17px;
+    min-width:145px;
+
+    padding:18px 22px;
+
+    background:rgba(255,255,255,.75);
+
+    border:1px solid #e3d4c5;
+
+    border-radius:18px;
 
     box-shadow:
         0 8px 25px rgba(0,0,0,.07);
+}
+
+.info-icono{
+
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.info-caja small{
+
+    display:block;
+
+    color:#9a8068;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:5px;
+}
+
+.info-caja strong{
+
+    display:block;
+
+    color:#675548;
+
+    font-size:20px;
 }
 
 .continuar{
@@ -332,7 +344,6 @@ a{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
@@ -345,9 +356,7 @@ a{
 .portada-contenido{
 
     width:100%;
-
     max-width:900px;
-
     padding:20px;
 
     animation:aparecer 1.5s ease;
@@ -356,9 +365,7 @@ a{
 .pequeno{
 
     font-size:18px;
-
     letter-spacing:5px;
-
     margin-bottom:20px;
 }
 
@@ -367,7 +374,6 @@ a{
     font-size:clamp(48px,11vw,100px);
 
     font-weight:normal;
-
     font-style:italic;
 
     line-height:1.1;
@@ -378,7 +384,6 @@ a{
 .fecha{
 
     font-size:clamp(17px,4vw,24px);
-
     letter-spacing:3px;
 }
 
@@ -406,7 +411,6 @@ a{
 .boton:hover{
 
     background:white;
-
     color:#5a4b40;
 }
 
@@ -418,7 +422,6 @@ a{
 section{
 
     padding:80px 20px;
-
     text-align:center;
 }
 
@@ -427,7 +430,6 @@ section{
     font-size:clamp(30px,6vw,40px);
 
     font-weight:normal;
-
     font-style:italic;
 
     margin-bottom:20px;
@@ -461,7 +463,6 @@ section{
     display:flex;
 
     justify-content:center;
-
     align-items:stretch;
 
     flex-wrap:wrap;
@@ -481,7 +482,8 @@ section{
 
     border-radius:12px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
 }
 
 .numero strong{
@@ -496,7 +498,6 @@ section{
 .numero span{
 
     font-size:13px;
-
     text-transform:uppercase;
 }
 
@@ -518,7 +519,7 @@ section{
 
 
 /* =====================================================
-   DIVISOR DECORATIVO
+   DIVISOR
 ===================================================== */
 
 .divisor{
@@ -722,14 +723,12 @@ section{
 .icono{
 
     font-size:40px;
-
     margin-bottom:15px;
 }
 
 .tarjeta h3{
 
     margin-bottom:12px;
-
     font-size:22px;
 }
 
@@ -769,7 +768,6 @@ section{
 .boton-ubicacion:hover{
 
     background:#6f5636;
-
     transform:scale(1.03);
 }
 
@@ -843,6 +841,52 @@ section{
     line-height:1.7;
 }
 
+.resumen-confirmacion{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:25px;
+}
+
+.resumen-item{
+
+    background:rgba(255,255,255,.13);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:15px;
+
+    padding:14px 18px;
+
+    min-width:130px;
+}
+
+.resumen-item span{
+
+    display:block;
+
+    font-size:12px;
+
+    opacity:.8;
+
+    margin-bottom:5px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.resumen-item strong{
+
+    font-size:20px;
+}
+
 .selector-label{
 
     display:block;
@@ -913,7 +957,164 @@ section{
 
 
 /* =====================================================
-   CORAZONES DECORATIVOS
+   ESTADO DE ASIENTOS
+===================================================== */
+
+.estado-asientos{
+
+    margin-top:25px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.20);
+}
+
+.estado-asientos strong{
+
+    display:block;
+
+    font-size:28px;
+
+    margin-top:5px;
+}
+
+
+/* =====================================================
+   PANEL DE CONFIRMACIONES
+===================================================== */
+
+.admin{
+
+    display:none;
+
+    background:#f5eee6;
+
+    padding:60px 20px;
+}
+
+.admin.mostrar{
+
+    display:block;
+}
+
+.admin-contenido{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.08);
+
+    overflow-x:auto;
+}
+
+.admin h2{
+
+    color:#675548;
+
+    margin-bottom:20px;
+
+    text-align:center;
+}
+
+.tabla{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:700px;
+}
+
+.tabla th,
+.tabla td{
+
+    padding:12px;
+
+    border-bottom:1px solid #eadfd3;
+
+    text-align:center;
+}
+
+.tabla th{
+
+    background:#eee5db;
+
+    color:#675548;
+}
+
+.admin-resumen{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:25px;
+}
+
+.admin-caja{
+
+    background:#f8f3ed;
+
+    padding:15px 20px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    min-width:130px;
+}
+
+.admin-caja strong{
+
+    display:block;
+
+    font-size:25px;
+
+    color:#675548;
+}
+
+.boton-admin{
+
+    display:block;
+
+    width:max-content;
+
+    margin:25px auto 0;
+
+    padding:12px 20px;
+
+    border:0;
+
+    border-radius:25px;
+
+    background:#675548;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-family:inherit;
+}
+
+
+/* =====================================================
+   CORAZONES
 ===================================================== */
 
 .corazones{
@@ -926,7 +1127,8 @@ section{
 
     bottom:-30px;
 
-    animation:subirCorazon 6s linear forwards;
+    animation:
+        subirCorazon 6s linear forwards;
 
     opacity:.7;
 }
@@ -971,14 +1173,12 @@ footer p{
     from{
 
         opacity:0;
-
         transform:translateY(30px);
     }
 
     to{
 
         opacity:1;
-
         transform:translateY(0);
     }
 }
@@ -1007,12 +1207,10 @@ footer p{
 @keyframes flotar{
 
     0%,100%{
-
         transform:translateY(0);
     }
 
     50%{
-
         transform:translateY(-8px);
     }
 }
@@ -1020,12 +1218,10 @@ footer p{
 @keyframes pulsar{
 
     0%,100%{
-
         opacity:.5;
     }
 
     50%{
-
         opacity:1;
     }
 }
@@ -1099,7 +1295,6 @@ footer p{
     .pequeno{
 
         font-size:13px;
-
         letter-spacing:3px;
     }
 
@@ -1112,14 +1307,12 @@ footer p{
     .fecha{
 
         font-size:16px;
-
         letter-spacing:2px;
     }
 
     .boton{
 
         padding:14px 25px;
-
         font-size:14px;
     }
 
@@ -1131,7 +1324,6 @@ footer p{
     .numero{
 
         width:78px;
-
         padding:15px 5px;
     }
 
@@ -1158,16 +1350,13 @@ footer p{
     .video-contenedor{
 
         width:90%;
-
         max-width:340px;
     }
 
     .video-contenedor video{
 
         width:100%;
-
         max-width:340px;
-
         max-height:600px;
     }
 
@@ -1175,6 +1364,12 @@ footer p{
 
         font-size:
             clamp(38px,11vw,55px);
+    }
+
+    .info-caja{
+
+        width:100%;
+        max-width:250px;
     }
 
 }
@@ -1279,9 +1474,41 @@ footer p{
 
         </p>
 
-        <div
-            class="cantidad-invitados"
-            id="invitados">
+        <div class="info-familia">
+
+            <div class="info-caja">
+
+                <div class="info-icono">
+                    💺
+                </div>
+
+                <small>
+                    Mesa asignada
+                </small>
+
+                <strong id="mesa">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="info-caja">
+
+                <div class="info-icono">
+                    🎟️
+                </div>
+
+                <small>
+                    Lugares reservados
+                </small>
+
+                <strong id="lugares">
+                    —
+                </strong>
+
+            </div>
+
         </div>
 
         <div class="continuar">
@@ -1556,7 +1783,7 @@ footer p{
 
 
 <!-- =====================================================
-     MÁS RECUERDOS EN VIDEO
+     MÁS RECUERDOS
 ===================================================== -->
 
 <section class="recuerdos">
@@ -1680,8 +1907,6 @@ footer p{
     </div>
 
 
-    <!-- UBICACIÓN -->
-
     <div class="ubicacion-texto">
 
         <h3>
@@ -1759,6 +1984,49 @@ footer p{
         </div>
 
 
+        <div class="resumen-confirmacion">
+
+            <div class="resumen-item">
+
+                <span>
+                    Familia
+                </span>
+
+                <strong id="resumenFamilia">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="resumen-item">
+
+                <span>
+                    Mesa
+                </span>
+
+                <strong id="resumenMesa">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="resumen-item">
+
+                <span>
+                    Reservados
+                </span>
+
+                <strong id="resumenReservados">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
         <label
             class="selector-label"
             for="cantidadAsistencia">
@@ -1774,7 +2042,23 @@ footer p{
         </select>
 
 
-        <br>
+        <div class="estado-asientos">
+
+            🪑 Asientos que ocuparán
+
+            <strong id="asientosOcupados">
+                0
+            </strong>
+
+            <br>
+
+            🪑 Asientos disponibles
+
+            <strong id="asientosDisponibles">
+                0
+            </strong>
+
+        </div>
 
 
         <a
@@ -1787,6 +2071,114 @@ footer p{
             💍 CONFIRMAR ASISTENCIA
 
         </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PANEL DE ADMINISTRACIÓN
+===================================================== -->
+
+<section
+    class="admin"
+    id="panelAdmin">
+
+    <div class="admin-contenido">
+
+        <h2>
+            📋 Control de invitados
+        </h2>
+
+        <div class="admin-resumen">
+
+            <div class="admin-caja">
+
+                Familias
+
+                <strong id="totalFamilias">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="admin-caja">
+
+                Reservados
+
+                <strong id="totalReservados">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="admin-caja">
+
+                Confirmados
+
+                <strong id="totalConfirmados">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="admin-caja">
+
+                Pendientes
+
+                <strong id="totalPendientes">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <table class="tabla">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Familia
+                    </th>
+
+                    <th>
+                        Mesa
+                    </th>
+
+                    <th>
+                        Reservados
+                    </th>
+
+                    <th>
+                        Confirmados
+                    </th>
+
+                    <th>
+                        Faltan
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tablaConfirmaciones">
+            </tbody>
+
+        </table>
+
+
+        <button
+            class="boton-admin"
+            onclick="borrarConfirmaciones()">
+
+            🗑️ Borrar registros de este dispositivo
+
+        </button>
 
     </div>
 
@@ -1820,174 +2212,353 @@ footer p{
 
 <script>
 
-
-
 /* =========================================================
    PERSONALIZACIÓN POR FAMILIA
 ========================================================= */
 
+/*
+   AQUÍ PUEDES CAMBIAR LOS DATOS.
+
+   nombre  = nombre de la familia
+   lugares = cantidad de asientos reservados
+   mesa    = número de mesa
+*/
+
 const familias = {
 
     garcia: {
+
         nombre: "Familia García",
+
         lugares: 4,
+
         mesa: 7
+
     },
+
 
     lopez: {
+
         nombre: "Familia López",
+
         lugares: 3,
+
         mesa: 5
+
     },
+
 
     martinez: {
+
         nombre: "Familia Martínez",
+
         lugares: 6,
+
         mesa: 2
+
     },
 
+
     ejemplo: {
+
         nombre: "Familia Ejemplo",
+
         lugares: 2,
+
         mesa: 1
+
     }
 
 };
 
-// Obtener familia desde el enlace
-const parametros = new URLSearchParams(window.location.search);
-const familiaSeleccionada = parametros.get("familia");
 
-// Buscar los datos
-const invitado = familias[familiaSeleccionada];
+/* =========================================================
+   OBTENER FAMILIA DEL ENLACE
+========================================================= */
 
-// Mostrar los datos
-if (invitado) {
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
 
-    document.getElementById("nombreFamilia").textContent =
+const familiaSeleccionada =
+    parametros.get("familia");
+
+const invitado =
+    familias[familiaSeleccionada];
+
+
+/* =========================================================
+   DATOS PREDETERMINADOS
+========================================================= */
+
+let nombreFamilia =
+    "Familia Invitada";
+
+let cantidadInvitados =
+    0;
+
+let numeroMesa =
+    "—";
+
+
+/* =========================================================
+   CARGAR FAMILIA
+========================================================= */
+
+if(invitado){
+
+    nombreFamilia =
         invitado.nombre;
 
-    document.getElementById("cantidadLugares").textContent =
+    cantidadInvitados =
         invitado.lugares;
 
-    document.getElementById("numeroMesa").textContent =
-        "#" + invitado.mesa;
+    numeroMesa =
+        invitado.mesa;
 
-} else {
-
-    document.getElementById("nombreFamilia").textContent =
-        "Familia Invitada";
-
-    document.getElementById("cantidadLugares").textContent =
-        "—";
-
-    document.getElementById("numeroMesa").textContent =
-        "—";
 }
 
 
-/* =====================================================
-   ABRIR INVITACIÓN
-===================================================== */
+/* =========================================================
+   MOSTRAR INFORMACIÓN
+========================================================= */
 
-const botonAbrir =
-    document.getElementById("abrirInvitacion");
-
-const pantallaInicial =
-    document.getElementById("pantallaInicial");
-
-const invitacionPersonalizada =
-    document.getElementById("invitacionPersonalizada");
-
-
-botonAbrir.addEventListener("click", function(){
-
-    pantallaInicial.classList.add("ocultar");
-
-    setTimeout(function(){
-
-        invitacionPersonalizada.classList.add("mostrar");
-
-        invitacionPersonalizada.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    },700);
-
-});
-
-
-/* =====================================================
-   MOSTRAR FAMILIA
-===================================================== */
-
-document.getElementById("familia").textContent =
+document.getElementById(
+    "familia"
+).textContent =
     nombreFamilia;
 
 
-/* =====================================================
-   MOSTRAR LUGARES RESERVADOS
-===================================================== */
+document.getElementById(
+    "mesa"
+).textContent =
+    numeroMesa;
+
+
+document.getElementById(
+    "lugares"
+).textContent =
+    cantidadInvitados;
+
+
+document.getElementById(
+    "resumenFamilia"
+).textContent =
+    nombreFamilia;
+
+
+document.getElementById(
+    "resumenMesa"
+).textContent =
+    numeroMesa;
+
+
+document.getElementById(
+    "resumenReservados"
+).textContent =
+    cantidadInvitados;
+
+
+/* =========================================================
+   ABRIR INVITACIÓN
+========================================================= */
+
+const botonAbrir =
+    document.getElementById(
+        "abrirInvitacion"
+    );
+
+const pantallaInicial =
+    document.getElementById(
+        "pantallaInicial"
+    );
+
+const invitacionPersonalizada =
+    document.getElementById(
+        "invitacionPersonalizada"
+    );
+
+
+botonAbrir.addEventListener(
+    "click",
+    function(){
+
+        pantallaInicial.classList.add(
+            "ocultar"
+        );
+
+
+        setTimeout(
+            function(){
+
+                invitacionPersonalizada.classList.add(
+                    "mostrar"
+                );
+
+
+                window.scrollTo({
+
+                    top:
+                        invitacionPersonalizada.offsetTop,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            },
+            700
+        );
+
+    }
+);
+
+
+/* =========================================================
+   LUGARES RESERVADOS
+========================================================= */
 
 const textoReservados =
-    cantidadInvitados === 1
-    ? "💍 Hemos reservado 1 lugar especialmente para ustedes."
-    : "💍 Hemos reservado " +
-      cantidadInvitados +
-      " lugares especialmente para ustedes.";
-
-document.getElementById("invitados").textContent =
-    textoReservados;
+    document.getElementById(
+        "textoReservados"
+    );
 
 
-/* =====================================================
-   CONFIRMACIÓN DE ASISTENCIA
-===================================================== */
+if(cantidadInvitados === 1){
 
-const selector =
-    document.getElementById("cantidadAsistencia");
+    textoReservados.textContent =
+        "💍 Tienen 1 lugar reservado para esta invitación.";
 
+}
 
-/*
-   CREA AUTOMÁTICAMENTE LAS OPCIONES
-   SEGÚN LA CANTIDAD RESERVADA.
-*/
+else if(cantidadInvitados > 1){
 
-for(
-    let i = 1;
-    i <= cantidadInvitados;
-    i++
-){
+    textoReservados.textContent =
+        "💍 Tienen " +
+        cantidadInvitados +
+        " lugares reservados para esta invitación.";
 
-    const opcion =
-        document.createElement("option");
+}
 
-    opcion.value = i;
+else{
 
-    opcion.textContent =
-        i === 1
-        ? "1 persona"
-        : i + " personas";
+    textoReservados.textContent =
+        "💍 Invitación personalizada.";
 
-    selector.appendChild(opcion);
 }
 
 
-/* =====================================================
-   TEXTO DE CONFIRMACIÓN
-===================================================== */
+/* =========================================================
+   SELECTOR DE ASISTENCIA
+========================================================= */
 
-document.getElementById("textoReservados").textContent =
-    cantidadInvitados === 1
-    ? "💍 Tienen 1 lugar reservado para esta invitación."
-    : "💍 Tienen " +
-      cantidadInvitados +
-      " lugares reservados para esta invitación.";
+const selector =
+    document.getElementById(
+        "cantidadAsistencia"
+    );
 
 
-/* =====================================================
+if(cantidadInvitados > 0){
+
+    for(
+        let i = 1;
+        i <= cantidadInvitados;
+        i++
+    ){
+
+        const opcion =
+            document.createElement(
+                "option"
+            );
+
+
+        opcion.value =
+            i;
+
+
+        opcion.textContent =
+            i === 1
+            ? "1 persona"
+            : i + " personas";
+
+
+        selector.appendChild(
+            opcion
+        );
+
+    }
+
+}
+
+else{
+
+    const opcion =
+        document.createElement(
+            "option"
+        );
+
+
+    opcion.value =
+        0;
+
+
+    opcion.textContent =
+        "Sin lugares asignados";
+
+
+    selector.appendChild(
+        opcion
+    );
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR ASIENTOS
+========================================================= */
+
+function actualizarAsientos(){
+
+    const asistentes =
+        Number(
+            selector.value
+        ) || 0;
+
+
+    const disponibles =
+        Math.max(
+            cantidadInvitados - asistentes,
+            0
+        );
+
+
+    document.getElementById(
+        "asientosOcupados"
+    ).textContent =
+        asistentes;
+
+
+    document.getElementById(
+        "asientosDisponibles"
+    ).textContent =
+        disponibles;
+
+}
+
+
+selector.addEventListener(
+    "change",
+    actualizarAsientos
+);
+
+
+actualizarAsientos();
+
+
+/* =========================================================
    WHATSAPP
-===================================================== */
+========================================================= */
 
 const numeroWhatsApp =
     "50242008319";
@@ -1996,7 +2567,9 @@ const numeroWhatsApp =
 function actualizarWhatsApp(){
 
     const cantidadAsistencia =
-        Number(selector.value);
+        Number(
+            selector.value
+        ) || 0;
 
 
     const mensajeWhatsApp =
@@ -2014,7 +2587,11 @@ function actualizarWhatsApp(){
         nombreFamilia +
         "\n\n" +
 
-        "💺 Lugares reservados: " +
+        "💺 Mesa asignada: " +
+        numeroMesa +
+        "\n\n" +
+
+        "🎟️ Lugares reservados: " +
         cantidadInvitados +
         "\n\n" +
 
@@ -2022,9 +2599,17 @@ function actualizarWhatsApp(){
         cantidadAsistencia +
         "\n\n" +
 
-        "Será un honor acompañarlos en este día " +
-        "tan especial y celebrar junto a ustedes " +
-        "el inicio de esta hermosa etapa. 🥂💍\n\n" +
+        "🪑 Asientos disponibles: " +
+        (
+            cantidadInvitados -
+            cantidadAsistencia
+        ) +
+
+        "\n\n" +
+
+        "Será un honor acompañarlos en este " +
+        "día tan especial y celebrar junto a " +
+        "ustedes. 🥂💍\n\n" +
 
         "💕 ¡Nos vemos en su gran día! 🥳🎉";
 
@@ -2032,8 +2617,11 @@ function actualizarWhatsApp(){
     const enlaceWhatsApp =
 
         "https://wa.me/" +
+
         numeroWhatsApp +
+
         "?text=" +
+
         encodeURIComponent(
             mensajeWhatsApp
         );
@@ -2041,7 +2629,8 @@ function actualizarWhatsApp(){
 
     document.getElementById(
         "botonWhatsApp"
-    ).href = enlaceWhatsApp;
+    ).href =
+        enlaceWhatsApp;
 
 }
 
@@ -2051,12 +2640,264 @@ selector.addEventListener(
     actualizarWhatsApp
 );
 
+
 actualizarWhatsApp();
 
 
-/* =====================================================
+/* =========================================================
+   REGISTRAR CONFIRMACIÓN LOCAL
+========================================================= */
+
+document.getElementById(
+    "botonWhatsApp"
+).addEventListener(
+    "click",
+    function(){
+
+        const asistentes =
+            Number(
+                selector.value
+            ) || 0;
+
+
+        if(
+            !familiaSeleccionada ||
+            !invitado ||
+            asistentes <= 0
+        ){
+
+            return;
+
+        }
+
+
+        const confirmaciones =
+            JSON.parse(
+                localStorage.getItem(
+                    "confirmacionesBoda"
+                ) || "{}"
+            );
+
+
+        confirmaciones[
+            familiaSeleccionada
+        ] = {
+
+            familia:
+                nombreFamilia,
+
+            mesa:
+                numeroMesa,
+
+            reservados:
+                cantidadInvitados,
+
+            confirmados:
+                asistentes,
+
+            fecha:
+                new Date().toLocaleString(
+                    "es-MX"
+                )
+
+        };
+
+
+        localStorage.setItem(
+
+            "confirmacionesBoda",
+
+            JSON.stringify(
+                confirmaciones
+            )
+
+        );
+
+
+        actualizarPanel();
+
+    }
+);
+
+
+/* =========================================================
+   PANEL DE ADMINISTRACIÓN
+========================================================= */
+
+function actualizarPanel(){
+
+    const confirmaciones =
+        JSON.parse(
+            localStorage.getItem(
+                "confirmacionesBoda"
+            ) || "{}"
+        );
+
+
+    const tabla =
+        document.getElementById(
+            "tablaConfirmaciones"
+        );
+
+
+    tabla.innerHTML = "";
+
+
+    let totalReservados = 0;
+
+    let totalConfirmados = 0;
+
+    let totalPendientes = 0;
+
+
+    Object.keys(familias).forEach(
+        function(clave){
+
+            const familia =
+                familias[clave];
+
+
+            const registro =
+                confirmaciones[clave];
+
+
+            const confirmados =
+                registro
+                ? registro.confirmados
+                : 0;
+
+
+            const pendientes =
+                Math.max(
+                    familia.lugares -
+                    confirmados,
+                    0
+                );
+
+
+            totalReservados +=
+                familia.lugares;
+
+
+            totalConfirmados +=
+                confirmados;
+
+
+            totalPendientes +=
+                pendientes;
+
+
+            const fila =
+                document.createElement(
+                    "tr"
+                );
+
+
+            fila.innerHTML =
+
+                "<td>" +
+                familia.nombre +
+                "</td>" +
+
+                "<td>" +
+                familia.mesa +
+                "</td>" +
+
+                "<td>" +
+                familia.lugares +
+                "</td>" +
+
+                "<td>" +
+                confirmados +
+                "</td>" +
+
+                "<td>" +
+                pendientes +
+                "</td>";
+
+
+            tabla.appendChild(
+                fila
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalFamilias"
+    ).textContent =
+        Object.keys(familias).length;
+
+
+    document.getElementById(
+        "totalReservados"
+    ).textContent =
+        totalReservados;
+
+
+    document.getElementById(
+        "totalConfirmados"
+    ).textContent =
+        totalConfirmados;
+
+
+    document.getElementById(
+        "totalPendientes"
+    ).textContent =
+        totalPendientes;
+
+}
+
+
+/* =========================================================
+   BORRAR CONFIRMACIONES
+========================================================= */
+
+function borrarConfirmaciones(){
+
+    const confirmar =
+        confirm(
+            "¿Quieres borrar todas las confirmaciones guardadas en este dispositivo?"
+        );
+
+
+    if(confirmar){
+
+        localStorage.removeItem(
+            "confirmacionesBoda"
+        );
+
+
+        actualizarPanel();
+
+    }
+
+}
+
+
+/* =========================================================
+   ACTIVAR PANEL CON #admin
+========================================================= */
+
+if(
+    window.location.hash === "#admin"
+){
+
+    document
+        .getElementById(
+            "panelAdmin"
+        )
+        .classList.add(
+            "mostrar"
+        );
+
+}
+
+
+/* =========================================================
    CUENTA REGRESIVA
-===================================================== */
+========================================================= */
 
 const fechaBoda =
     new Date(
@@ -2069,25 +2910,39 @@ function actualizarContador(){
     const ahora =
         new Date().getTime();
 
+
     const distancia =
         fechaBoda - ahora;
 
 
     if(distancia <= 0){
 
-        document.getElementById("dias")
-            .textContent = "0";
+        document.getElementById(
+            "dias"
+        ).textContent =
+            "0";
 
-        document.getElementById("horas")
-            .textContent = "0";
 
-        document.getElementById("minutos")
-            .textContent = "0";
+        document.getElementById(
+            "horas"
+        ).textContent =
+            "0";
 
-        document.getElementById("segundos")
-            .textContent = "0";
+
+        document.getElementById(
+            "minutos"
+        ).textContent =
+            "0";
+
+
+        document.getElementById(
+            "segundos"
+        ).textContent =
+            "0";
+
 
         return;
+
     }
 
 
@@ -2100,44 +2955,62 @@ function actualizarContador(){
 
     const horas =
         Math.floor(
-            (distancia %
-            (1000 * 60 * 60 * 24)) /
+            (
+                distancia %
+                (1000 * 60 * 60 * 24)
+            ) /
             (1000 * 60 * 60)
         );
 
 
     const minutos =
         Math.floor(
-            (distancia %
-            (1000 * 60 * 60)) /
+            (
+                distancia %
+                (1000 * 60 * 60)
+            ) /
             (1000 * 60)
         );
 
 
     const segundos =
         Math.floor(
-            (distancia %
-            (1000 * 60)) /
+            (
+                distancia %
+                (1000 * 60)
+            ) /
             1000
         );
 
 
-    document.getElementById("dias")
-        .textContent = dias;
+    document.getElementById(
+        "dias"
+    ).textContent =
+        dias;
 
-    document.getElementById("horas")
-        .textContent = horas;
 
-    document.getElementById("minutos")
-        .textContent = minutos;
+    document.getElementById(
+        "horas"
+    ).textContent =
+        horas;
 
-    document.getElementById("segundos")
-        .textContent = segundos;
+
+    document.getElementById(
+        "minutos"
+    ).textContent =
+        minutos;
+
+
+    document.getElementById(
+        "segundos"
+    ).textContent =
+        segundos;
 
 }
 
 
 actualizarContador();
+
 
 setInterval(
     actualizarContador,
@@ -2145,42 +3018,62 @@ setInterval(
 );
 
 
-/* =====================================================
+/* =========================================================
    CORAZONES FLOTANTES
-===================================================== */
+========================================================= */
 
 function crearCorazon(){
 
     const corazon =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     corazon.className =
         "corazones";
+
 
     corazon.textContent =
         Math.random() > .5
         ? "♡"
         : "♥";
 
+
     corazon.style.left =
-        Math.random() * 100 + "vw";
+        Math.random() * 100 +
+        "vw";
+
 
     corazon.style.fontSize =
-        (15 + Math.random() * 15) + "px";
+        (
+            15 +
+            Math.random() * 15
+        ) +
+        "px";
+
 
     corazon.style.animationDuration =
-        (5 + Math.random() * 4) + "s";
+        (
+            5 +
+            Math.random() * 4
+        ) +
+        "s";
+
 
     document.body.appendChild(
         corazon
     );
 
 
-    setTimeout(function(){
+    setTimeout(
+        function(){
 
-        corazon.remove();
+            corazon.remove();
 
-    },9000);
+        },
+        9000
+    );
 
 }
 
@@ -2191,8 +3084,13 @@ setInterval(
 );
 
 
+/* =========================================================
+   CARGAR PANEL
+========================================================= */
+
+actualizarPanel();
+
 </script>
 
-
 </body>
-   </html>
+</html>
