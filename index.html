@@ -177,24 +177,28 @@ section {
 }  
   
 /* =========================
-   VIDEO
+   VIDEO FIJO Y RESPONSIVE
 ========================= */
 
 .video-contenedor {
-    width: 65%;
-    max-width: 200px;
-    margin: 20px auto;
-    display: block;
+    width: 90%;
+    max-width: 360px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .video-contenedor video {
-    width: 60%;
-    max-width: 90%;
-    height: auto;
     display: block;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 360px !important;
+    min-width: 0 !important;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,.15);
     object-fit: contain;
+
 }
   
 /* ========================= 
