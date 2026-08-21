@@ -1821,18 +1821,92 @@ footer p{
 <script>
 
 
-/* =====================================================
-   PERSONALIZACIÓN
-===================================================== */
 
-const nombreFamilia = "Familia López";
+/* =========================================================
+   PERSONALIZACIÓN POR FAMILIA
+========================================================= */
 
-/*
-   AQUÍ COLOCAS LA CANTIDAD DE LUGARES
-   QUE USTEDES RESERVARON PARA ESTA FAMILIA.
-*/
+const familias = {
 
-const cantidadInvitados = 4;
+    lopez: {
+        nombre: "Familia López",
+        lugares: 4
+    },
+
+    garcia: {
+        nombre: "Familia García",
+        lugares: 3
+    },
+
+    hernandez: {
+        nombre: "Familia Hernández",
+        lugares: 6
+    },
+
+    perez: {
+        nombre: "Familia Pérez",
+        lugares: 2
+    },
+
+    martinez: {
+        nombre: "Familia Martínez",
+        lugares: 5
+    },
+
+    rodriguez: {
+        nombre: "Familia Rodríguez",
+        lugares: 4
+    }
+
+};
+
+
+/* =========================================================
+   IDENTIFICAR LA FAMILIA SEGÚN EL ENLACE
+========================================================= */
+
+const parametros = new URLSearchParams(window.location.search);
+
+const codigoFamilia = parametros.get("familia") || "lopez";
+
+const familiaSeleccionada = familias[codigoFamilia];
+
+
+/* =========================================================
+   DATOS DE LA INVITACIÓN
+========================================================= */
+
+const nombreFamilia = familiaSeleccionada.nombre;
+
+const cantidadInvitados = familiaSeleccionada.lugares;
+
+
+/* =========================================================
+   MOSTRAR NOMBRE DE LA FAMILIA
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const elementosFamilia = document.querySelectorAll(
+        ".nombre-familia, #nombreFamilia"
+    );
+
+    elementosFamilia.forEach(function(elemento) {
+        elemento.textContent = nombreFamilia;
+    });
+
+
+    /* Mostrar cantidad de lugares */
+
+    const elementosLugares = document.querySelectorAll(
+        ".cantidad-lugares, #cantidadInvitados"
+    );
+
+    elementosLugares.forEach(function(elemento) {
+        elemento.textContent = cantidadInvitados;
+    });
+
+});
 
 
 /* =====================================================
