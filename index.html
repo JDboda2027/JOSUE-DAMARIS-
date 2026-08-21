@@ -180,24 +180,28 @@ section {
    VIDEO  
 ========================= */  
   
-.video-contenedor {  
-      
-    width: 90%;  
-    max-width: 400px;  
-    height: auto;  
-    display: block;  
-    margin: 20px auto;  
-    border-radius: 12px;  
+./* =========================
+   VIDEO
+========================= */
+
+.video-contenedor {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    display: block;
+}
+
+.video-contenedor video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    object-fit: contain;
+}
   
-}  
-  
-.video-contenedor video {  
-      
-    border-radius: 20px auto;  
-    box-shadow: 0 10px 30px rgba(0,0,0,.15);  
-}  
-  
-/* =========================  
+/* ========================= 
    INFORMACION  
 ========================= */  
   
