@@ -31,10 +31,52 @@ body{
     overflow-x:hidden;
 }
 
+body::selection{
+    background:#b89b7d;
+    color:white;
+}
+
 button,
 a,
 select{
     -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+.particulas{
+    position:fixed;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(184,155,125,.45);
+    pointer-events:none;
+    z-index:1;
+    animation:particulaSubir linear forwards;
+}
+
+@keyframes particulaSubir{
+
+    0%{
+        transform:translateY(0) scale(.6);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.7;
+    }
+
+    80%{
+        opacity:.4;
+    }
+
+    100%{
+        transform:translateY(-100vh) scale(1.2);
+        opacity:0;
+    }
 }
 
 
@@ -100,6 +142,9 @@ select{
     font-style:italic;
     font-weight:normal;
     margin-bottom:15px;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.35);
 }
 
 .inicial-frase{
@@ -111,7 +156,7 @@ select{
 
 .boton-abrir{
 
-    border:1px solid white;
+    border:1px solid rgba(255,255,255,.8);
 
     background:rgba(255,255,255,.12);
 
@@ -133,6 +178,8 @@ select{
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.20);
+
+    backdrop-filter:blur(5px);
 }
 
 .boton-abrir:hover{
@@ -269,16 +316,25 @@ select{
 
     min-width:145px;
 
-    padding:18px 22px;
+    padding:20px 22px;
 
-    background:rgba(255,255,255,.75);
+    background:rgba(255,255,255,.80);
 
     border:1px solid #e3d4c5;
 
-    border-radius:18px;
+    border-radius:20px;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,.07);
+        0 10px 30px rgba(0,0,0,.07);
+
+    transition:.4s;
+}
+
+.info-caja:hover{
+
+    transform:translateY(-5px);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
 }
 
 .info-icono{
@@ -351,6 +407,20 @@ select{
     color:white;
 
     padding:30px 20px;
+
+    position:relative;
+}
+
+.portada::before{
+
+    content:"";
+
+    position:absolute;
+    inset:20px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    pointer-events:none;
 }
 
 .portada-contenido{
@@ -360,6 +430,9 @@ select{
     padding:20px;
 
     animation:aparecer 1.5s ease;
+
+    position:relative;
+    z-index:2;
 }
 
 .pequeno{
@@ -379,12 +452,26 @@ select{
     line-height:1.1;
 
     margin-bottom:20px;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.35);
 }
 
 .fecha{
 
     font-size:clamp(17px,4vw,24px);
     letter-spacing:3px;
+}
+
+.hora-portada{
+
+    margin-top:12px;
+
+    font-size:17px;
+
+    letter-spacing:3px;
+
+    opacity:.95;
 }
 
 .boton{
@@ -406,12 +493,79 @@ select{
     background:rgba(255,255,255,.12);
 
     transition:.3s;
+
+    backdrop-filter:blur(5px);
 }
 
 .boton:hover{
 
     background:white;
     color:#5a4b40;
+}
+
+
+/* =====================================================
+   ANIMACIONES DE SCROLL
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(45px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+.reveal-left{
+
+    opacity:0;
+
+    transform:
+        translateX(-45px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal-left.visible{
+
+    opacity:1;
+
+    transform:
+        translateX(0);
+}
+
+.reveal-right{
+
+    opacity:0;
+
+    transform:
+        translateX(45px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal-right.visible{
+
+    opacity:1;
+
+    transform:
+        translateX(0);
 }
 
 
@@ -455,7 +609,47 @@ section{
 
 .contador{
 
-    background:#eee5db;
+    background:
+        linear-gradient(
+            135deg,
+            #eee5db,
+            #f8f2ec
+        );
+
+    position:relative;
+    overflow:hidden;
+}
+
+.contador::before{
+
+    content:"✦";
+
+    position:absolute;
+
+    left:8%;
+    top:20%;
+
+    color:#b89b7d;
+
+    font-size:25px;
+
+    animation:flotar 4s infinite;
+}
+
+.contador::after{
+
+    content:"♡";
+
+    position:absolute;
+
+    right:8%;
+    bottom:20%;
+
+    color:#b89b7d;
+
+    font-size:30px;
+
+    animation:flotar 4s 1s infinite;
 }
 
 .reloj{
@@ -470,20 +664,37 @@ section{
     gap:15px;
 
     margin-top:35px;
+
+    position:relative;
+    z-index:2;
 }
 
 .numero{
 
-    background:white;
+    background:
+        rgba(255,255,255,.9);
 
     width:100px;
 
-    padding:20px 10px;
+    padding:22px 10px;
 
-    border-radius:12px;
+    border-radius:18px;
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,.08);
+        0 10px 30px rgba(0,0,0,.08);
+
+    border:1px solid rgba(184,155,125,.2);
+
+    transition:.4s;
+}
+
+.numero:hover{
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
 }
 
 .numero strong{
@@ -499,6 +710,19 @@ section{
 
     font-size:13px;
     text-transform:uppercase;
+
+    color:#8f7965;
+}
+
+.contador-hora{
+
+    margin-top:30px;
+
+    color:#8f7965;
+
+    font-size:15px;
+
+    letter-spacing:2px;
 }
 
 
@@ -560,13 +784,16 @@ section{
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:18px;
 
     display:block;
 
     transition:
         transform .5s ease,
         box-shadow .5s ease;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.08);
 }
 
 .galeria img:hover{
@@ -602,7 +829,7 @@ section{
     border-radius:20px;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.15);
+        0 15px 35px rgba(0,0,0,.15);
 
     background:#000;
 }
@@ -661,7 +888,14 @@ section{
     border-radius:20px;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,.08);
+        0 10px 30px rgba(0,0,0,.08);
+
+    transition:.4s;
+}
+
+.video-card:hover{
+
+    transform:translateY(-5px);
 }
 
 .video-card video{
@@ -684,7 +918,12 @@ section{
 
 .informacion{
 
-    background:#eee5db;
+    background:
+        linear-gradient(
+            135deg,
+            #eee5db,
+            #f8f3ee
+        );
 }
 
 .tarjetas{
@@ -696,28 +935,34 @@ section{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(4,1fr);
 
     gap:20px;
 }
 
 .tarjeta{
 
-    background:white;
+    background:
+        rgba(255,255,255,.92);
 
     padding:35px 20px;
 
-    border-radius:15px;
+    border-radius:20px;
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,.08);
+        0 8px 25px rgba(0,0,0,.08);
 
     transition:.4s;
+
+    border:1px solid rgba(184,155,125,.15);
 }
 
 .tarjeta:hover{
 
     transform:translateY(-7px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
 }
 
 .icono{
@@ -779,6 +1024,8 @@ section{
 .frase{
 
     padding:100px 20px;
+
+    background:#fff;
 }
 
 .frase p{
@@ -810,6 +1057,10 @@ section{
         center/cover no-repeat;
 
     color:white;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 .confirmacion .titulo{
@@ -823,13 +1074,19 @@ section{
 
     margin:35px auto 0;
 
-    background:rgba(255,255,255,.10);
+    background:
+        rgba(255,255,255,.11);
 
-    padding:30px 20px;
+    padding:35px 25px;
 
-    border-radius:20px;
+    border-radius:25px;
 
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.22);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.2);
 }
 
 .reservados{
@@ -843,13 +1100,12 @@ section{
 
 .resumen-confirmacion{
 
-    display:flex;
+    display:grid;
 
-    justify-content:center;
+    grid-template-columns:
+        repeat(3,1fr);
 
-    flex-wrap:wrap;
-
-    gap:10px;
+    gap:12px;
 
     margin-bottom:25px;
 }
@@ -860,22 +1116,31 @@ section{
 
     border:1px solid rgba(255,255,255,.25);
 
-    border-radius:15px;
+    border-radius:18px;
 
-    padding:14px 18px;
+    padding:17px 12px;
 
-    min-width:130px;
+    min-width:0;
+
+    transition:.3s;
+}
+
+.resumen-item:hover{
+
+    background:rgba(255,255,255,.20);
+
+    transform:translateY(-3px);
 }
 
 .resumen-item span{
 
     display:block;
 
-    font-size:12px;
+    font-size:11px;
 
     opacity:.8;
 
-    margin-bottom:5px;
+    margin-bottom:7px;
 
     text-transform:uppercase;
 
@@ -884,7 +1149,9 @@ section{
 
 .resumen-item strong{
 
-    font-size:20px;
+    font-size:19px;
+
+    word-break:break-word;
 }
 
 .selector-label{
@@ -919,6 +1186,9 @@ section{
     background:white;
 
     color:#5b4b40;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.15);
 }
 
 .boton-confirmar{
@@ -927,7 +1197,7 @@ section{
 
     margin-top:25px;
 
-    padding:16px 35px;
+    padding:17px 35px;
 
     background:white;
 
@@ -935,7 +1205,7 @@ section{
 
     text-decoration:none;
 
-    border-radius:30px;
+    border-radius:35px;
 
     font-weight:bold;
 
@@ -948,11 +1218,16 @@ section{
     font-family:inherit;
 
     font-size:15px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
 }
 
 .boton-confirmar:hover{
 
-    transform:scale(1.05);
+    transform:
+        translateY(-3px)
+        scale(1.03);
 }
 
 
@@ -964,9 +1239,9 @@ section{
 
     margin-top:25px;
 
-    padding:18px;
+    padding:20px;
 
-    border-radius:18px;
+    border-radius:20px;
 
     background:rgba(255,255,255,.12);
 
@@ -980,6 +1255,8 @@ section{
     font-size:28px;
 
     margin-top:5px;
+
+    margin-bottom:8px;
 }
 
 
@@ -1131,6 +1408,30 @@ section{
         subirCorazon 6s linear forwards;
 
     opacity:.7;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.1);
+}
+
+@keyframes subirCorazon{
+
+    from{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:.7;
+    }
+
+    to{
+
+        transform:
+            translateY(-100vh)
+            rotate(25deg);
+
+        opacity:0;
+    }
 }
 
 
@@ -1144,7 +1445,7 @@ footer{
 
     color:white;
 
-    padding:50px 20px;
+    padding:60px 20px;
 
     text-align:center;
 }
@@ -1161,6 +1462,8 @@ footer h2{
 footer p{
 
     margin-top:15px;
+
+    opacity:.9;
 }
 
 
@@ -1226,33 +1529,18 @@ footer p{
     }
 }
 
-@keyframes subirCorazon{
-
-    from{
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity:.7;
-    }
-
-    to{
-
-        transform:
-            translateY(-100vh)
-            rotate(25deg);
-
-        opacity:0;
-    }
-}
-
 
 /* =====================================================
    TABLET
 ===================================================== */
 
-@media(max-width:800px){
+@media(max-width:900px){
+
+    .tarjetas{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
     .galeria{
 
@@ -1262,22 +1550,9 @@ footer p{
 
     .galeria img{
 
-        height:240px;
+        height:260px;
     }
 
-    .tarjetas{
-
-        grid-template-columns:1fr;
-
-        max-width:500px;
-    }
-
-    .video-grid{
-
-        grid-template-columns:1fr;
-
-        max-width:500px;
-    }
 }
 
 
@@ -1285,11 +1560,50 @@ footer p{
    CELULAR
 ===================================================== */
 
-@media(max-width:500px){
+@media(max-width:600px){
 
     section{
 
-        padding:60px 15px;
+        padding:65px 15px;
+    }
+
+    .pantalla-inicial{
+
+        padding:20px;
+    }
+
+    .inicial-pequeno{
+
+        font-size:11px;
+        letter-spacing:3px;
+    }
+
+    .inicial-frase{
+
+        font-size:15px;
+        line-height:1.6;
+    }
+
+    .inicial-titulo{
+
+        font-size:
+            clamp(42px,13vw,65px);
+    }
+
+    .boton-abrir{
+
+        padding:15px 25px;
+        font-size:13px;
+    }
+
+    .portada{
+
+        min-height:100svh;
+    }
+
+    .portada::before{
+
+        inset:12px;
     }
 
     .pequeno{
@@ -1310,6 +1624,12 @@ footer p{
         letter-spacing:2px;
     }
 
+    .hora-portada{
+
+        font-size:14px;
+        letter-spacing:2px;
+    }
+
     .boton{
 
         padding:14px 25px;
@@ -1323,18 +1643,21 @@ footer p{
 
     .numero{
 
-        width:78px;
-        padding:15px 5px;
+        width:calc(50% - 8px);
+
+        max-width:100px;
+
+        padding:17px 5px;
     }
 
     .numero strong{
 
-        font-size:26px;
+        font-size:27px;
     }
 
     .numero span{
 
-        font-size:11px;
+        font-size:10px;
     }
 
     .galeria{
@@ -1372,6 +1695,47 @@ footer p{
         max-width:250px;
     }
 
+    .tarjetas{
+
+        grid-template-columns:1fr;
+
+        max-width:450px;
+    }
+
+    .video-grid{
+
+        grid-template-columns:1fr;
+
+        max-width:500px;
+    }
+
+    .resumen-confirmacion{
+
+        grid-template-columns:1fr;
+    }
+
+    .resumen-item{
+
+        padding:15px;
+    }
+
+    .confirmacion-contenido{
+
+        padding:28px 17px;
+    }
+
+    .estado-asientos{
+
+        font-size:15px;
+    }
+
+    .boton-confirmar{
+
+        width:100%;
+
+        max-width:320px;
+    }
+
 }
 
 
@@ -1395,6 +1759,12 @@ footer p{
 
         font-size:42px;
     }
+
+    .inicial-titulo{
+
+        font-size:42px;
+    }
+
 }
 
 </style>
@@ -1542,6 +1912,10 @@ footer p{
             16 DE ENERO DE 2027
         </div>
 
+        <div class="hora-portada">
+            🕓 INICIO · 4:30 PM
+        </div>
+
         <a
             href="#inicio"
             class="boton">
@@ -1559,7 +1933,9 @@ footer p{
      BIENVENIDA
 ===================================================== -->
 
-<section id="inicio">
+<section
+    id="inicio"
+    class="reveal">
 
     <h2 class="titulo">
         ¡Nos casamos!
@@ -1586,11 +1962,18 @@ footer p{
      CUENTA REGRESIVA
 ===================================================== -->
 
-<section class="contador">
+<section class="contador reveal">
 
     <h2 class="titulo">
         Falta poco para nuestro gran día
     </h2>
+
+    <p class="subtitulo">
+
+        Nuestro gran día comienza a las
+        <strong>4:30 PM</strong>.
+
+    </p>
 
     <div class="reloj">
 
@@ -1628,6 +2011,12 @@ footer p{
 
     </div>
 
+    <div class="contador-hora">
+
+        ⏳ El contador llegará a cero a las 5:00 PM
+
+    </div>
+
 </section>
 
 
@@ -1635,7 +2024,7 @@ footer p{
      HISTORIA
 ===================================================== -->
 
-<section>
+<section class="reveal">
 
     <h2 class="titulo">
         Nuestra historia
@@ -1680,7 +2069,7 @@ footer p{
      GALERÍA
 ===================================================== -->
 
-<section>
+<section class="reveal">
 
     <h2 class="titulo">
         Nuestros momentos
@@ -1696,46 +2085,55 @@ footer p{
     <div class="galeria">
 
         <img
+            class="reveal-left"
             src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80"
             alt="Momento de boda"
             loading="lazy">
 
         <img
+            class="reveal"
             src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
             alt="Pareja de novios"
             loading="lazy">
 
         <img
+            class="reveal-right"
             src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80"
             alt="Boda"
             loading="lazy">
 
         <img
+            class="reveal-left"
             src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
             alt="Decoración de boda"
             loading="lazy">
 
         <img
+            class="reveal"
             src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80"
             alt="Novios"
             loading="lazy">
 
         <img
+            class="reveal-right"
             src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80"
             alt="Celebración"
             loading="lazy">
 
         <img
+            class="reveal-left"
             src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
             alt="Celebración de boda"
             loading="lazy">
 
         <img
+            class="reveal"
             src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80"
             alt="Decoración"
             loading="lazy">
 
         <img
+            class="reveal-right"
             src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=900&q=80"
             alt="Pareja"
             loading="lazy">
@@ -1749,7 +2147,7 @@ footer p{
      VIDEO PRINCIPAL
 ===================================================== -->
 
-<section class="video-seccion">
+<section class="video-seccion reveal">
 
     <h2 class="titulo">
         Un recuerdo especial
@@ -1786,7 +2184,7 @@ footer p{
      MÁS RECUERDOS
 ===================================================== -->
 
-<section class="recuerdos">
+<section class="recuerdos reveal">
 
     <h2 class="titulo">
         Más recuerdos
@@ -1800,7 +2198,7 @@ footer p{
 
     <div class="video-grid">
 
-        <div class="video-card">
+        <div class="video-card reveal-left">
 
             <video
                 controls
@@ -1816,7 +2214,7 @@ footer p{
         </div>
 
 
-        <div class="video-card">
+        <div class="video-card reveal-right">
 
             <video
                 controls
@@ -1846,7 +2244,7 @@ footer p{
      INFORMACIÓN
 ===================================================== -->
 
-<section class="informacion">
+<section class="informacion reveal">
 
     <h2 class="titulo">
         Detalles de nuestro día
@@ -1854,7 +2252,7 @@ footer p{
 
     <div class="tarjetas">
 
-        <div class="tarjeta">
+        <div class="tarjeta reveal-left">
 
             <div class="icono">
                 📅
@@ -1871,7 +2269,24 @@ footer p{
         </div>
 
 
-        <div class="tarjeta">
+        <div class="tarjeta reveal">
+
+            <div class="icono">
+                🕓
+            </div>
+
+            <h3>
+                Hora
+            </h3>
+
+            <p>
+                4:30 PM
+            </p>
+
+        </div>
+
+
+        <div class="tarjeta reveal">
 
             <div class="icono">
                 ⛪
@@ -1888,7 +2303,7 @@ footer p{
         </div>
 
 
-        <div class="tarjeta">
+        <div class="tarjeta reveal-right">
 
             <div class="icono">
                 🥂
@@ -1940,7 +2355,7 @@ footer p{
      FRASE
 ===================================================== -->
 
-<section class="frase">
+<section class="frase reveal">
 
     <p>
 
@@ -1962,7 +2377,7 @@ footer p{
      CONFIRMACIÓN
 ===================================================== -->
 
-<section class="confirmacion">
+<section class="confirmacion reveal">
 
     <h2 class="titulo">
         ¿Nos acompañas?
@@ -2049,8 +2464,6 @@ footer p{
             <strong id="asientosOcupados">
                 0
             </strong>
-
-            <br>
 
             🪑 Asientos disponibles
 
@@ -2216,14 +2629,6 @@ footer p{
    PERSONALIZACIÓN POR FAMILIA
 ========================================================= */
 
-/*
-   AQUÍ PUEDES CAMBIAR LOS DATOS.
-
-   nombre  = nombre de la familia
-   lugares = cantidad de asientos reservados
-   mesa    = número de mesa
-*/
-
 const familias = {
 
     Ramirez: {
@@ -2268,6 +2673,23 @@ const familias = {
         mesa: 1
 
     }
+
+};
+
+
+/* =========================================================
+   DATOS DEL EVENTO
+========================================================= */
+
+const evento = {
+
+    fecha: "16 de enero de 2027",
+
+    dia: "Sábado",
+
+    horaInicio: "4:30 PM",
+
+    horaContador: "5:00 PM"
 
 };
 
@@ -2472,16 +2894,13 @@ if(cantidadInvitados > 0){
                 "option"
             );
 
-
         opcion.value =
             i;
-
 
         opcion.textContent =
             i === 1
             ? "1 persona"
             : i + " personas";
-
 
         selector.appendChild(
             opcion
@@ -2498,14 +2917,11 @@ else{
             "option"
         );
 
-
     opcion.value =
         0;
 
-
     opcion.textContent =
         "Sin lugares asignados";
-
 
     selector.appendChild(
         opcion
@@ -2585,6 +3001,18 @@ function actualizarWhatsApp(){
 
         "👨‍👩‍👧‍👦 Familia invitada: " +
         nombreFamilia +
+        "\n\n" +
+
+        "📅 Fecha: " +
+        evento.fecha +
+        "\n\n" +
+
+        "📆 Día: " +
+        evento.dia +
+        "\n\n" +
+
+        "🕓 Hora de inicio: " +
+        evento.horaInicio +
         "\n\n" +
 
         "💺 Mesa asignada: " +
@@ -2897,11 +3325,14 @@ if(
 
 /* =========================================================
    CUENTA REGRESIVA
+   IMPORTANTE:
+   LA INVITACIÓN INDICA 4:30 PM
+   PERO EL CONTADOR TERMINA A LAS 5:00 PM
 ========================================================= */
 
 const fechaBoda =
     new Date(
-        "2027-01-16T16:30:00-06:00"
+        "2027-01-16T17:00:00-06:00"
     ).getTime();
 
 
@@ -3019,6 +3450,56 @@ setInterval(
 
 
 /* =========================================================
+   ANIMACIONES AL HACER SCROLL
+========================================================= */
+
+const elementosReveal =
+    document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right"
+    );
+
+
+const observador =
+    new IntersectionObserver(
+        function(elementos){
+
+            elementos.forEach(
+                function(elemento){
+
+                    if(elemento.isIntersecting){
+
+                        elemento.target.classList.add(
+                            "visible"
+                        );
+
+                        observador.unobserve(
+                            elemento.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+elementosReveal.forEach(
+    function(elemento){
+
+        observador.observe(
+            elemento
+        );
+
+    }
+);
+
+
+/* =========================================================
    CORAZONES FLOTANTES
 ========================================================= */
 
@@ -3080,7 +3561,65 @@ function crearCorazon(){
 
 setInterval(
     crearCorazon,
-    3000
+    3500
+);
+
+
+/* =========================================================
+   PARTÍCULAS SUTILES
+========================================================= */
+
+function crearParticula(){
+
+    const particula =
+        document.createElement(
+            "div"
+        );
+
+
+    particula.className =
+        "particulas";
+
+
+    particula.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    particula.style.bottom =
+        "-10px";
+
+
+    const duracion =
+        6 +
+        Math.random() * 5;
+
+
+    particula.style.animationDuration =
+        duracion +
+        "s";
+
+
+    document.body.appendChild(
+        particula
+    );
+
+
+    setTimeout(
+        function(){
+
+            particula.remove();
+
+        },
+        duracion * 1000
+    );
+
+}
+
+
+setInterval(
+    crearParticula,
+    1800
 );
 
 
