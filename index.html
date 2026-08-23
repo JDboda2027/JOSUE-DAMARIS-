@@ -10,10 +10,6 @@
 
 <style>
 
-/* =====================================================
-   GENERAL
-===================================================== */
-
 *{
     margin:0;
     padding:0;
@@ -83,7 +79,6 @@ input{
 
 /* =====================================================
    PANTALLA INICIAL
-   PERFECTAMENTE CENTRADA
 ===================================================== */
 
 .pantalla-inicial{
@@ -807,7 +802,7 @@ section{
 
 
 /* =====================================================
-   GALERÍA TIPO HISTORIA
+   GALERÍA
 ===================================================== */
 
 .galeria{
@@ -1393,6 +1388,21 @@ section{
     font-size:15px;
 }
 
+.boton-confirmar:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.boton-confirmar:disabled{
+
+    opacity:.7;
+
+    cursor:wait;
+
+    transform:none;
+}
+
 .estado-asientos{
 
     margin-top:25px;
@@ -1968,7 +1978,7 @@ footer p{
 
 
 <!-- =====================================================
-     PRESENTACIÓN
+     PRESENTACIÓN PERSONALIZADA
 ===================================================== -->
 
 <section
@@ -1985,8 +1995,12 @@ footer p{
             Nuestra celebración
         </div>
 
-        <h2 class="nombre-familia">
+        <h2
+            class="nombre-familia"
+            id="nombreFamiliaPortada">
+
             Josué & Damaris
+
         </h2>
 
         <div class="linea-decorativa"></div>
@@ -2622,20 +2636,111 @@ footer p{
 
         <div class="reservados">
 
-            💍 La confirmación personalizada
-            estará disponible próximamente.
+            💍 Confirma tu asistencia para ayudarnos
+            a preparar todo con mucho cariño.
 
         </div>
 
-        <a
-            class="boton-confirmar"
-            href="https://wa.me/50242008319"
-            target="_blank"
-            rel="noopener noreferrer">
+        <div class="resumen-confirmacion">
 
-            💍 ESCRÍBENOS POR WHATSAPP
+            <div class="resumen-item">
 
-        </a>
+                <span>
+                    Invitación
+                </span>
+
+                <strong id="confirmacionFamilia">
+                    Invitado
+                </strong>
+
+            </div>
+
+            <div class="resumen-item">
+
+                <span>
+                    Invitados
+                </span>
+
+                <strong id="confirmacionLugares">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="resumen-item">
+
+                <span>
+                    Mesa
+                </span>
+
+                <strong id="confirmacionMesa">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+        <label
+            class="selector-label"
+            for="asistencia">
+
+            ¿Nos acompañas?
+
+        </label>
+
+        <select
+            id="asistencia"
+            class="selector-asistencia">
+
+            <option value="">
+                Selecciona una opción
+            </option>
+
+            <option value="Si">
+                ❤️ Sí, asistiré
+            </option>
+
+            <option value="No">
+                😔 No podré asistir
+            </option>
+
+        </select>
+
+        <button
+            type="button"
+            id="botonConfirmar"
+            class="boton-confirmar">
+
+            💍 CONFIRMAR ASISTENCIA
+
+        </button>
+
+        <div
+            id="mensajeConfirmacion"
+            style="
+                display:none;
+                margin-top:20px;
+                line-height:1.7;
+            ">
+
+        </div>
+
+        <div class="estado-asientos">
+
+            <span>
+                🪑 Lugares reservados para ti
+            </span>
+
+            <strong id="lugaresReservados">
+                0
+            </strong>
+
+            <span>
+                Mesa <b id="mesaReservada">-</b>
+            </span>
+
+        </div>
 
     </div>
 
@@ -2666,6 +2771,14 @@ footer p{
 <script>
 
 /* =====================================================
+   GOOGLE SHEETS
+===================================================== */
+
+const GOOGLE_SHEETS_URL =
+"https://script.google.com/macros/s/AKfycbzFo1IPmdem7iv4Gw67txCEyjD8ol3TBJ8ziw-Sp2PFpItSNXG4KOEojs848AKcQk6F/exec";
+
+
+/* =====================================================
    CLOUDINARY
 ===================================================== */
 
@@ -2674,6 +2787,168 @@ const CLOUDINARY_CLOUD_NAME =
 
 const CLOUDINARY_UPLOAD_PRESET =
     "boda_josue_damaris_27";
+
+
+/* =====================================================
+   FAMILIAS
+===================================================== */
+
+const familias = {
+
+    garcia: {
+        nombre:"Familia García",
+        lugares:4,
+        mesa:1
+    },
+
+    lopez: {
+        nombre:"Familia López",
+        lugares:3,
+        mesa:2
+    },
+
+    martinez: {
+        nombre:"Familia Martínez",
+        lugares:5,
+        mesa:3
+    },
+
+    ejemplo: {
+        nombre:"Familia Ejemplo",
+        lugares:2,
+        mesa:4
+    }
+
+};
+
+
+/* =====================================================
+   LEER FAMILIA DESDE LA URL
+===================================================== */
+
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const codigoFamilia =
+    (
+        parametros.get("familia") ||
+        ""
+    )
+    .toLowerCase()
+    .trim();
+
+
+const familiaActual =
+    familias[codigoFamilia] || {
+
+        nombre:"Invitado especial",
+        lugares:0,
+        mesa:"-"
+
+    };
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const nombreFamiliaPortada =
+    document.getElementById(
+        "nombreFamiliaPortada"
+    );
+
+const confirmacionFamilia =
+    document.getElementById(
+        "confirmacionFamilia"
+    );
+
+const confirmacionLugares =
+    document.getElementById(
+        "confirmacionLugares"
+    );
+
+const confirmacionMesa =
+    document.getElementById(
+        "confirmacionMesa"
+    );
+
+const lugaresReservados =
+    document.getElementById(
+        "lugaresReservados"
+    );
+
+const mesaReservada =
+    document.getElementById(
+        "mesaReservada"
+    );
+
+const asistencia =
+    document.getElementById(
+        "asistencia"
+    );
+
+const botonConfirmar =
+    document.getElementById(
+        "botonConfirmar"
+    );
+
+const mensajeConfirmacion =
+    document.getElementById(
+        "mensajeConfirmacion"
+    );
+
+
+/* =====================================================
+   MOSTRAR DATOS FAMILIA
+===================================================== */
+
+function mostrarDatosFamilia(){
+
+    if(nombreFamiliaPortada){
+
+        nombreFamiliaPortada.textContent =
+            familiaActual.nombre;
+
+    }
+
+    if(confirmacionFamilia){
+
+        confirmacionFamilia.textContent =
+            familiaActual.nombre;
+
+    }
+
+    if(confirmacionLugares){
+
+        confirmacionLugares.textContent =
+            familiaActual.lugares;
+
+    }
+
+    if(confirmacionMesa){
+
+        confirmacionMesa.textContent =
+            familiaActual.mesa;
+
+    }
+
+    if(lugaresReservados){
+
+        lugaresReservados.textContent =
+            familiaActual.lugares;
+
+    }
+
+    if(mesaReservada){
+
+        mesaReservada.textContent =
+            familiaActual.mesa;
+
+    }
+
+}
 
 
 /* =====================================================
@@ -2766,6 +3041,7 @@ function actualizarContador(){
         ).textContent = "0";
 
         return;
+
     }
 
 
@@ -2820,6 +3096,7 @@ function actualizarContador(){
     ).textContent = segundos;
 
 }
+
 
 actualizarContador();
 
@@ -2935,6 +3212,7 @@ function crearCorazon(){
 
 }
 
+
 setInterval(
     crearCorazon,
     3500
@@ -2980,6 +3258,7 @@ function crearParticula(){
     );
 
 }
+
 
 setInterval(
     crearParticula,
@@ -3059,8 +3338,6 @@ inputFoto.addEventListener(
         }
 
 
-        /* PREVISUALIZACIÓN */
-
         const lector =
             new FileReader();
 
@@ -3093,7 +3370,7 @@ inputFoto.addEventListener(
 
 
 /* =====================================================
-   SUBIR A CLOUDINARY
+   CLOUDINARY
 ===================================================== */
 
 function subirFotoCloudinary(
@@ -3136,11 +3413,10 @@ function subirFotoCloudinary(
     );
 
 
-    /* Información no secreta */
-
     datos.append(
         "context",
-        "evento=Josue-Damaris|tipo=foto-invitado"
+        "evento=Josue-Damaris|tipo=foto-invitado|familia=" +
+        familiaActual.nombre
     );
 
 
@@ -3223,11 +3499,6 @@ function subirFotoCloudinary(
                     );
 
 
-                    /*
-                       Limpiamos el input para permitir
-                       tomar otra foto inmediatamente.
-                    */
-
                     inputFoto.value="";
 
 
@@ -3285,7 +3556,7 @@ function subirFotoCloudinary(
 
 
 /* =====================================================
-   ERROR CLOUDINARY
+   ERROR FOTO
 ===================================================== */
 
 function mostrarErrorFoto(){
@@ -3306,7 +3577,7 @@ function mostrarErrorFoto(){
 
 
 /* =====================================================
-   GUARDAR URL LOCAL
+   GUARDAR FOTO LOCAL
 ===================================================== */
 
 function guardarFotoLocal(
@@ -3327,9 +3598,12 @@ function guardarFotoLocal(
 
             url:url,
 
+            familia:
+                familiaActual.nombre,
+
             fecha:
                 new Date()
-                .toLocaleString("es-MX")
+                .toLocaleString("es-GT")
 
         });
 
@@ -3358,18 +3632,272 @@ function guardarFotoLocal(
 
 
 /* =====================================================
-   QR / ENTRADA DIRECTA A FOTOS
+   CONFIRMACIÓN
 ===================================================== */
 
-/*
-   Si el invitado entra mediante:
+botonConfirmar.addEventListener(
 
-   TU_URL/#fotos-invitados
+    "click",
 
-   la página bajará automáticamente
-   a la sección de fotografías.
-*/
+    async function(){
 
+        const opcion =
+            asistencia.value;
+
+
+        if(!opcion){
+
+            mostrarMensajeConfirmacion(
+
+                "⚠️ Por favor selecciona si podrás acompañarnos.",
+
+                false
+
+            );
+
+            return;
+
+        }
+
+
+        botonConfirmar.disabled =
+            true;
+
+        botonConfirmar.textContent =
+            "⏳ GUARDANDO CONFIRMACIÓN...";
+
+
+        const fechaHora =
+            new Date()
+            .toLocaleString(
+                "es-GT",
+                {
+                    timeZone:
+                        "America/Guatemala"
+                }
+            );
+
+
+        const datosConfirmacion = {
+
+            familia:
+                familiaActual.nombre,
+
+            invitados:
+                familiaActual.lugares,
+
+            lugares:
+                familiaActual.lugares,
+
+            mesa:
+                familiaActual.mesa,
+
+            asistencia:
+                opcion,
+
+            fecha:
+                fechaHora,
+
+            codigoFamilia:
+                codigoFamilia,
+
+            origen:
+                "Invitación digital Josué & Damaris"
+
+        };
+
+
+        try{
+
+            await fetch(
+
+                GOOGLE_SHEETS_URL,
+
+                {
+
+                    method:"POST",
+
+                    mode:"no-cors",
+
+                    headers:{
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            datosConfirmacion
+                        )
+
+                }
+
+            );
+
+
+            /*
+              Como usamos no-cors,
+              el navegador no puede leer
+              la respuesta del servidor.
+
+              Pero la petición sí se envía.
+            */
+
+
+            mostrarMensajeConfirmacion(
+
+                "❤️ ¡Gracias, " +
+                familiaActual.nombre +
+                "!<br><br>" +
+
+                (
+                    opcion === "Si"
+
+                    ?
+
+                    "Hemos registrado tu confirmación. " +
+                    "¡Te esperamos para celebrar juntos! 💍"
+
+                    :
+
+                    "Hemos registrado que no podrás acompañarnos. " +
+                    "Gracias por avisarnos. ❤️"
+
+                ),
+
+                true
+
+            );
+
+
+            enviarWhatsApp(
+                opcion
+            );
+
+
+            botonConfirmar.textContent =
+                "❤️ CONFIRMACIÓN ENVIADA";
+
+
+        }
+        catch(error){
+
+            console.error(
+                error
+            );
+
+
+            mostrarMensajeConfirmacion(
+
+                "❌ No pudimos registrar la confirmación. " +
+                "Por favor inténtalo nuevamente.",
+
+                false
+
+            );
+
+
+            botonConfirmar.disabled =
+                false;
+
+            botonConfirmar.textContent =
+                "💍 CONFIRMAR ASISTENCIA";
+
+        }
+
+    }
+
+);
+
+
+/* =====================================================
+   MENSAJE CONFIRMACIÓN
+===================================================== */
+
+function mostrarMensajeConfirmacion(
+    mensaje,
+    correcto
+){
+
+    mensajeConfirmacion.style.display =
+        "block";
+
+    mensajeConfirmacion.innerHTML =
+        mensaje;
+
+    mensajeConfirmacion.style.color =
+        correcto
+        ? "#ffffff"
+        : "#ffe0d0";
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function enviarWhatsApp(
+    opcion
+){
+
+    const telefono =
+        "50242008319";
+
+
+    const texto =
+
+        "💍 *CONFIRMACIÓN DE BODA* 💍\n\n" +
+
+        "*Josué & Damaris*\n" +
+
+        "📅 16 de enero de 2027\n\n" +
+
+        "👨‍👩‍👧‍👦 Familia: " +
+        familiaActual.nombre +
+        "\n" +
+
+        "🪑 Lugares: " +
+        familiaActual.lugares +
+        "\n" +
+
+        "🍽️ Mesa: " +
+        familiaActual.mesa +
+        "\n" +
+
+        "❤️ Asistencia: " +
+
+        (
+            opcion === "Si"
+            ? "SÍ, asistiré"
+            : "NO podré asistir"
+        ) +
+
+        "\n\n" +
+
+        "Gracias. ❤️";
+
+
+    const enlace =
+
+        "https://wa.me/" +
+        telefono +
+        "?text=" +
+        encodeURIComponent(
+            texto
+        );
+
+
+    window.open(
+        enlace,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   QR / ENTRADA DIRECTA A FOTOS
+===================================================== */
 
 function irAFotosSiCorresponde(){
 
@@ -3379,6 +3907,7 @@ function irAFotosSiCorresponde(){
     ){
 
         setTimeout(
+
             function(){
 
                 const seccionFotos =
@@ -3400,7 +3929,9 @@ function irAFotosSiCorresponde(){
                 }
 
             },
+
             900
+
         );
 
     }
@@ -3415,11 +3946,29 @@ window.addEventListener(
 
 
 /* =====================================================
-   FINAL
+   INICIALIZAR
 ===================================================== */
+
+mostrarDatosFamilia();
+
 
 console.log(
     "Josué & Damaris - Invitación cargada correctamente."
+);
+
+console.log(
+    "Familia:",
+    familiaActual.nombre
+);
+
+console.log(
+    "Lugares:",
+    familiaActual.lugares
+);
+
+console.log(
+    "Mesa:",
+    familiaActual.mesa
 );
 
 </script>
