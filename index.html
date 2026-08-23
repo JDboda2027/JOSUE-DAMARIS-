@@ -38,7 +38,8 @@ body::selection{
 
 button,
 a,
-select{
+select,
+input{
     -webkit-tap-highlight-color:transparent;
 }
 
@@ -81,25 +82,33 @@ select{
 
 
 /* =====================================================
-   PANTALLA INICIAL
+   PANTALLA INICIAL - PERFECTAMENTE CENTRADA
 ===================================================== */
 
 .pantalla-inicial{
 
     position:fixed;
+
     inset:0;
+
+    width:100vw;
+    height:100vh;
+    height:100dvh;
 
     z-index:9999;
 
     display:flex;
+
     justify-content:center;
     align-items:center;
 
     text-align:center;
 
-    padding:25px;
+    padding:20px;
 
     color:white;
+
+    overflow:hidden;
 
     background:
         linear-gradient(
@@ -124,7 +133,21 @@ select{
 
 .inicial-contenido{
 
+    width:100%;
     max-width:700px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    margin:auto;
+
+    position:relative;
+    z-index:2;
 
     animation:aparecer 1.8s ease;
 }
@@ -139,9 +162,13 @@ select{
 .inicial-titulo{
 
     font-size:clamp(45px,12vw,85px);
+
     font-style:italic;
     font-weight:normal;
+
     margin-bottom:15px;
+
+    line-height:1.1;
 
     text-shadow:
         0 5px 25px rgba(0,0,0,.35);
@@ -151,6 +178,11 @@ select{
 
     font-size:18px;
     letter-spacing:2px;
+
+    line-height:1.6;
+
+    max-width:600px;
+
     margin-bottom:35px;
 }
 
@@ -186,6 +218,7 @@ select{
 
     background:white;
     color:#5a4b40;
+
     transform:translateY(-3px);
 }
 
@@ -238,6 +271,7 @@ select{
 
     width:100%;
     max-width:750px;
+
     position:relative;
     z-index:2;
 }
@@ -246,6 +280,7 @@ select{
 
     font-size:34px;
     color:#9a8068;
+
     margin-bottom:25px;
 
     animation:flotar 3s ease-in-out infinite;
@@ -255,8 +290,11 @@ select{
 
     font-size:14px;
     letter-spacing:4px;
+
     text-transform:uppercase;
+
     color:#9a8068;
+
     margin-bottom:20px;
 }
 
@@ -286,7 +324,9 @@ select{
 
     width:90px;
     height:1px;
+
     background:#b89b7d;
+
     margin:25px auto;
 }
 
@@ -294,7 +334,9 @@ select{
 
     font-size:19px;
     line-height:1.8;
+
     max-width:600px;
+
     margin:auto;
 }
 
@@ -333,8 +375,6 @@ select{
 .info-caja:hover{
 
     transform:translateY(-5px);
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.12);
 }
 
 .info-icono{
@@ -416,6 +456,7 @@ select{
     content:"";
 
     position:absolute;
+
     inset:20px;
 
     border:1px solid rgba(255,255,255,.25);
@@ -427,6 +468,7 @@ select{
 
     width:100%;
     max-width:900px;
+
     padding:20px;
 
     animation:aparecer 1.5s ease;
@@ -439,6 +481,7 @@ select{
 
     font-size:18px;
     letter-spacing:5px;
+
     margin-bottom:20px;
 }
 
@@ -460,6 +503,7 @@ select{
 .fecha{
 
     font-size:clamp(17px,4vw,24px);
+
     letter-spacing:3px;
 }
 
@@ -505,15 +549,14 @@ select{
 
 
 /* =====================================================
-   ANIMACIONES DE SCROLL
+   ANIMACIONES
 ===================================================== */
 
 .reveal{
 
     opacity:0;
 
-    transform:
-        translateY(45px);
+    transform:translateY(45px);
 
     transition:
         opacity 1s ease,
@@ -523,17 +566,14 @@ select{
 .reveal.visible{
 
     opacity:1;
-
-    transform:
-        translateY(0);
+    transform:translateY(0);
 }
 
 .reveal-left{
 
     opacity:0;
 
-    transform:
-        translateX(-45px);
+    transform:translateX(-45px);
 
     transition:
         opacity 1s ease,
@@ -543,17 +583,14 @@ select{
 .reveal-left.visible{
 
     opacity:1;
-
-    transform:
-        translateX(0);
+    transform:translateX(0);
 }
 
 .reveal-right{
 
     opacity:0;
 
-    transform:
-        translateX(45px);
+    transform:translateX(45px);
 
     transition:
         opacity 1s ease,
@@ -563,9 +600,7 @@ select{
 .reveal-right.visible{
 
     opacity:1;
-
-    transform:
-        translateX(0);
+    transform:translateX(0);
 }
 
 
@@ -576,6 +611,7 @@ select{
 section{
 
     padding:80px 20px;
+
     text-align:center;
 }
 
@@ -604,7 +640,7 @@ section{
 
 
 /* =====================================================
-   CUENTA REGRESIVA
+   CONTADOR
 ===================================================== */
 
 .contador{
@@ -617,6 +653,7 @@ section{
         );
 
     position:relative;
+
     overflow:hidden;
 }
 
@@ -671,8 +708,7 @@ section{
 
 .numero{
 
-    background:
-        rgba(255,255,255,.9);
+    background:rgba(255,255,255,.9);
 
     width:100px;
 
@@ -690,11 +726,7 @@ section{
 
 .numero:hover{
 
-    transform:
-        translateY(-6px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.12);
+    transform:translateY(-6px);
 }
 
 .numero strong{
@@ -709,6 +741,7 @@ section{
 .numero span{
 
     font-size:13px;
+
     text-transform:uppercase;
 
     color:#8f7965;
@@ -759,12 +792,12 @@ section{
 
 
 /* =====================================================
-   GALERÍA
+   GALERÍA ESTILO HISTORIA
 ===================================================== */
 
 .galeria{
 
-    max-width:1100px;
+    max-width:1050px;
 
     margin:40px auto 0;
 
@@ -773,18 +806,20 @@ section{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:15px;
+    gap:20px;
 }
 
 .galeria img{
 
     width:100%;
 
-    height:320px;
+    aspect-ratio:9 / 16;
+
+    height:auto;
 
     object-fit:cover;
 
-    border-radius:18px;
+    border-radius:20px;
 
     display:block;
 
@@ -793,12 +828,12 @@ section{
         box-shadow .5s ease;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.08);
+        0 10px 25px rgba(0,0,0,.12);
 }
 
 .galeria img:hover{
 
-    transform:scale(1.03);
+    transform:scale(1.025);
 
     box-shadow:
         0 15px 35px rgba(0,0,0,.18);
@@ -806,7 +841,7 @@ section{
 
 
 /* =====================================================
-   VIDEO
+   VIDEO PRINCIPAL
 ===================================================== */
 
 .video-seccion{
@@ -893,11 +928,6 @@ section{
     transition:.4s;
 }
 
-.video-card:hover{
-
-    transform:translateY(-5px);
-}
-
 .video-card video{
 
     width:100%;
@@ -909,6 +939,172 @@ section{
     display:block;
 
     background:#000;
+}
+
+
+/* =====================================================
+   FOTOS DE INVITADOS
+===================================================== */
+
+.fotos-invitados{
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f5eee7
+        );
+
+    position:relative;
+}
+
+.fotos-invitados-contenido{
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.camara-icono{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+
+    animation:flotar 3s ease-in-out infinite;
+}
+
+.boton-foto{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:30px;
+
+    padding:17px 30px;
+
+    border:0;
+
+    border-radius:40px;
+
+    background:#8b6f47;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
+
+    transition:.3s;
+}
+
+.boton-foto:hover{
+
+    background:#6f5636;
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+}
+
+#fotoInvitado{
+
+    display:none;
+}
+
+.progreso-foto{
+
+    display:none;
+
+    max-width:400px;
+
+    margin:25px auto 0;
+
+    padding:18px;
+
+    background:white;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+}
+
+.progreso-foto.mostrar{
+
+    display:block;
+}
+
+.barra{
+
+    width:100%;
+
+    height:9px;
+
+    margin-top:12px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#eadfd3;
+}
+
+.barra-progreso{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:#8b6f47;
+
+    transition:.3s;
+}
+
+.mensaje-foto{
+
+    margin-top:12px;
+
+    font-size:15px;
+
+    line-height:1.6;
+}
+
+.preview-foto{
+
+    display:none;
+
+    width:100%;
+
+    max-width:360px;
+
+    aspect-ratio:9 / 16;
+
+    object-fit:cover;
+
+    margin:25px auto 0;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+}
+
+.preview-foto.mostrar{
+
+    display:block;
 }
 
 
@@ -942,8 +1138,7 @@ section{
 
 .tarjeta{
 
-    background:
-        rgba(255,255,255,.92);
+    background:rgba(255,255,255,.92);
 
     padding:35px 20px;
 
@@ -960,20 +1155,19 @@ section{
 .tarjeta:hover{
 
     transform:translateY(-7px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.12);
 }
 
 .icono{
 
     font-size:40px;
+
     margin-bottom:15px;
 }
 
 .tarjeta h3{
 
     margin-bottom:12px;
+
     font-size:22px;
 }
 
@@ -1002,18 +1196,7 @@ section{
 
     border-radius:30px;
 
-    font-size:16px;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.15);
-
     transition:.3s;
-}
-
-.boton-ubicacion:hover{
-
-    background:#6f5636;
-    transform:scale(1.03);
 }
 
 
@@ -1074,8 +1257,7 @@ section{
 
     margin:35px auto 0;
 
-    background:
-        rgba(255,255,255,.11);
+    background:rgba(255,255,255,.11);
 
     padding:35px 25px;
 
@@ -1084,9 +1266,6 @@ section{
     backdrop-filter:blur(10px);
 
     border:1px solid rgba(255,255,255,.22);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.2);
 }
 
 .reservados{
@@ -1119,17 +1298,6 @@ section{
     border-radius:18px;
 
     padding:17px 12px;
-
-    min-width:0;
-
-    transition:.3s;
-}
-
-.resumen-item:hover{
-
-    background:rgba(255,255,255,.20);
-
-    transform:translateY(-3px);
 }
 
 .resumen-item span{
@@ -1186,9 +1354,6 @@ section{
     background:white;
 
     color:#5b4b40;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.15);
 }
 
 .boton-confirmar{
@@ -1218,22 +1383,7 @@ section{
     font-family:inherit;
 
     font-size:15px;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.18);
 }
-
-.boton-confirmar:hover{
-
-    transform:
-        translateY(-3px)
-        scale(1.03);
-}
-
-
-/* =====================================================
-   ESTADO DE ASIENTOS
-===================================================== */
 
 .estado-asientos{
 
@@ -1261,7 +1411,7 @@ section{
 
 
 /* =====================================================
-   PANEL DE CONFIRMACIONES
+   PANEL ADMIN
 ===================================================== */
 
 .admin{
@@ -1408,9 +1558,6 @@ section{
         subirCorazon 6s linear forwards;
 
     opacity:.7;
-
-    text-shadow:
-        0 3px 10px rgba(0,0,0,.1);
 }
 
 @keyframes subirCorazon{
@@ -1476,12 +1623,14 @@ footer p{
     from{
 
         opacity:0;
+
         transform:translateY(30px);
     }
 
     to{
 
         opacity:1;
+
         transform:translateY(0);
     }
 }
@@ -1548,11 +1697,6 @@ footer p{
             repeat(2,1fr);
     }
 
-    .galeria img{
-
-        height:260px;
-    }
-
 }
 
 
@@ -1569,30 +1713,54 @@ footer p{
 
     .pantalla-inicial{
 
-        padding:20px;
+        width:100%;
+        height:100dvh;
+
+        padding:
+            max(20px, env(safe-area-inset-top))
+            20px
+            max(20px, env(safe-area-inset-bottom));
+
+    }
+
+    .inicial-contenido{
+
+        width:100%;
+
+        min-height:100%;
+
+        justify-content:center;
     }
 
     .inicial-pequeno{
 
         font-size:11px;
+
         letter-spacing:3px;
+
+        margin-bottom:20px;
+    }
+
+    .inicial-titulo{
+
+        font-size:clamp(42px,13vw,65px);
+
+        white-space:nowrap;
     }
 
     .inicial-frase{
 
         font-size:15px;
+
         line-height:1.6;
-    }
 
-    .inicial-titulo{
-
-        font-size:
-            clamp(42px,13vw,65px);
+        max-width:330px;
     }
 
     .boton-abrir{
 
         padding:15px 25px;
+
         font-size:13px;
     }
 
@@ -1609,30 +1777,33 @@ footer p{
     .pequeno{
 
         font-size:13px;
+
         letter-spacing:3px;
     }
 
     .nombres{
 
-        font-size:
-            clamp(45px,14vw,70px);
+        font-size:clamp(45px,14vw,70px);
     }
 
     .fecha{
 
         font-size:16px;
+
         letter-spacing:2px;
     }
 
     .hora-portada{
 
         font-size:14px;
+
         letter-spacing:2px;
     }
 
     .boton{
 
         padding:14px 25px;
+
         font-size:14px;
     }
 
@@ -1660,38 +1831,59 @@ footer p{
         font-size:10px;
     }
 
+
+    /* HISTORIAS */
+
     .galeria{
 
-        grid-template-columns:1fr;
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:22px;
     }
 
     .galeria img{
 
-        height:300px;
+        width:100%;
+
+        max-width:360px;
+
+        aspect-ratio:9 / 16;
+
+        height:auto;
+
+        border-radius:20px;
     }
+
 
     .video-contenedor{
 
         width:90%;
+
         max-width:340px;
     }
 
     .video-contenedor video{
 
         width:100%;
+
         max-width:340px;
+
         max-height:600px;
     }
 
     .nombre-familia{
 
-        font-size:
-            clamp(38px,11vw,55px);
+        font-size:clamp(38px,11vw,55px);
     }
 
     .info-caja{
 
         width:100%;
+
         max-width:250px;
     }
 
@@ -1714,19 +1906,9 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .resumen-item{
-
-        padding:15px;
-    }
-
     .confirmacion-contenido{
 
         padding:28px 17px;
-    }
-
-    .estado-asientos{
-
-        font-size:15px;
     }
 
     .boton-confirmar{
@@ -1745,16 +1927,6 @@ footer p{
 
 @media(max-width:360px){
 
-    .numero{
-
-        width:70px;
-    }
-
-    .numero strong{
-
-        font-size:23px;
-    }
-
     .nombres{
 
         font-size:42px;
@@ -1770,7 +1942,6 @@ footer p{
 </style>
 
 </head>
-
 
 <body>
 
@@ -1862,7 +2033,6 @@ footer p{
 
             </div>
 
-
             <div class="info-caja">
 
                 <div class="info-icono">
@@ -1882,9 +2052,7 @@ footer p{
         </div>
 
         <div class="continuar">
-
             ✨ Con amor, Josué & Damaris ✨
-
         </div>
 
     </div>
@@ -1978,43 +2146,29 @@ footer p{
     <div class="reloj">
 
         <div class="numero">
-
             <strong id="dias">0</strong>
-
             <span>Días</span>
-
         </div>
 
         <div class="numero">
-
             <strong id="horas">0</strong>
-
             <span>Horas</span>
-
         </div>
 
         <div class="numero">
-
             <strong id="minutos">0</strong>
-
             <span>Minutos</span>
-
         </div>
 
         <div class="numero">
-
             <strong id="segundos">0</strong>
-
             <span>Segundos</span>
-
         </div>
 
     </div>
 
     <div class="contador-hora">
-
         ⏳ El contador llegará a cero a las 5:00 PM
-
     </div>
 
 </section>
@@ -2043,21 +2197,17 @@ footer p{
         <br>
 
         <p>
-
             Hoy comenzamos una nueva etapa juntos,
             rodeados de las personas que amamos
             y agradecidos con Dios por permitirnos
             llegar hasta este momento.
-
         </p>
 
         <br>
 
         <p>
-
             Queremos que seas parte de este recuerdo
             que quedará para siempre en nuestros corazones.
-
         </p>
 
     </div>
@@ -2066,7 +2216,7 @@ footer p{
 
 
 <!-- =====================================================
-     GALERÍA
+     GALERÍA TIPO HISTORIA
 ===================================================== -->
 
 <section class="reveal">
@@ -2123,7 +2273,7 @@ footer p{
         <img
             class="reveal-left"
             src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
-            alt="Celebración de boda"
+            alt="Celebración"
             loading="lazy">
 
         <img
@@ -2191,9 +2341,7 @@ footer p{
     </h2>
 
     <p class="subtitulo">
-
         Cada momento cuenta una parte de nuestra historia.
-
     </p>
 
     <div class="video-grid">
@@ -2213,7 +2361,6 @@ footer p{
 
         </div>
 
-
         <div class="video-card reveal-right">
 
             <video
@@ -2231,11 +2378,78 @@ footer p{
 
     </div>
 
-    <p class="subtitulo">
+</section>
 
-        💕 Pronto agregaremos más recuerdos de nuestra historia.
 
-    </p>
+<!-- =====================================================
+     FOTOS DE LOS INVITADOS
+===================================================== -->
+
+<section class="fotos-invitados reveal">
+
+    <div class="fotos-invitados-contenido">
+
+        <div class="camara-icono">
+            📸
+        </div>
+
+        <h2 class="titulo">
+            ¡Comparte tus fotos!
+        </h2>
+
+        <p class="subtitulo">
+
+            ¿Tomaste una foto durante nuestra boda?
+
+            Compártela con nosotros para guardar
+            este hermoso recuerdo. ❤️
+
+        </p>
+
+        <label
+            for="fotoInvitado"
+            class="boton-foto">
+
+            📷 TOMAR / SUBIR FOTO
+
+        </label>
+
+        <input
+            type="file"
+            id="fotoInvitado"
+            accept="image/*"
+            capture="environment">
+
+        <img
+            id="previewFoto"
+            class="preview-foto"
+            alt="Vista previa">
+
+        <div
+            id="progresoFoto"
+            class="progreso-foto">
+
+            <strong id="tituloProgreso">
+                📤 Preparando foto...
+            </strong>
+
+            <div class="barra">
+
+                <div
+                    id="barraProgreso"
+                    class="barra-progreso">
+                </div>
+
+            </div>
+
+            <div
+                id="mensajeFoto"
+                class="mensaje-foto">
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -2254,13 +2468,9 @@ footer p{
 
         <div class="tarjeta reveal-left">
 
-            <div class="icono">
-                📅
-            </div>
+            <div class="icono">📅</div>
 
-            <h3>
-                Fecha
-            </h3>
+            <h3>Fecha</h3>
 
             <p>
                 16 de Enero de 2027
@@ -2268,16 +2478,11 @@ footer p{
 
         </div>
 
-
         <div class="tarjeta reveal">
 
-            <div class="icono">
-                🕓
-            </div>
+            <div class="icono">🕓</div>
 
-            <h3>
-                Hora
-            </h3>
+            <h3>Hora</h3>
 
             <p>
                 4:30 PM
@@ -2285,16 +2490,11 @@ footer p{
 
         </div>
 
-
         <div class="tarjeta reveal">
 
-            <div class="icono">
-                ⛪
-            </div>
+            <div class="icono">⛪</div>
 
-            <h3>
-                Ceremonia
-            </h3>
+            <h3>Ceremonia</h3>
 
             <p>
                 Mismo lugar del evento
@@ -2302,16 +2502,11 @@ footer p{
 
         </div>
 
-
         <div class="tarjeta reveal-right">
 
-            <div class="icono">
-                🥂
-            </div>
+            <div class="icono">🥂</div>
 
-            <h3>
-                Recepción
-            </h3>
+            <h3>Recepción</h3>
 
             <p>
                 A un costado de la ceremonia
@@ -2320,7 +2515,6 @@ footer p{
         </div>
 
     </div>
-
 
     <div class="ubicacion-texto">
 
@@ -2390,7 +2584,6 @@ footer p{
 
     </p>
 
-
     <div class="confirmacion-contenido">
 
         <div
@@ -2398,14 +2591,11 @@ footer p{
             id="textoReservados">
         </div>
 
-
         <div class="resumen-confirmacion">
 
             <div class="resumen-item">
 
-                <span>
-                    Familia
-                </span>
+                <span>Familia</span>
 
                 <strong id="resumenFamilia">
                     —
@@ -2413,12 +2603,9 @@ footer p{
 
             </div>
 
-
             <div class="resumen-item">
 
-                <span>
-                    Mesa
-                </span>
+                <span>Mesa</span>
 
                 <strong id="resumenMesa">
                     —
@@ -2426,12 +2613,9 @@ footer p{
 
             </div>
 
-
             <div class="resumen-item">
 
-                <span>
-                    Reservados
-                </span>
+                <span>Reservados</span>
 
                 <strong id="resumenReservados">
                     —
@@ -2441,7 +2625,6 @@ footer p{
 
         </div>
 
-
         <label
             class="selector-label"
             for="cantidadAsistencia">
@@ -2450,12 +2633,10 @@ footer p{
 
         </label>
 
-
         <select
             id="cantidadAsistencia"
             class="selector-asistencia">
         </select>
-
 
         <div class="estado-asientos">
 
@@ -2472,7 +2653,6 @@ footer p{
             </strong>
 
         </div>
-
 
         <a
             id="botonWhatsApp"
@@ -2491,7 +2671,7 @@ footer p{
 
 
 <!-- =====================================================
-     PANEL DE ADMINISTRACIÓN
+     PANEL ADMIN
 ===================================================== -->
 
 <section
@@ -2507,47 +2687,26 @@ footer p{
         <div class="admin-resumen">
 
             <div class="admin-caja">
-
                 Familias
-
-                <strong id="totalFamilias">
-                    0
-                </strong>
-
+                <strong id="totalFamilias">0</strong>
             </div>
 
             <div class="admin-caja">
-
                 Reservados
-
-                <strong id="totalReservados">
-                    0
-                </strong>
-
+                <strong id="totalReservados">0</strong>
             </div>
 
             <div class="admin-caja">
-
                 Confirmados
-
-                <strong id="totalConfirmados">
-                    0
-                </strong>
-
+                <strong id="totalConfirmados">0</strong>
             </div>
 
             <div class="admin-caja">
-
                 Pendientes
-
-                <strong id="totalPendientes">
-                    0
-                </strong>
-
+                <strong id="totalPendientes">0</strong>
             </div>
 
         </div>
-
 
         <table class="tabla">
 
@@ -2555,25 +2714,11 @@ footer p{
 
                 <tr>
 
-                    <th>
-                        Familia
-                    </th>
-
-                    <th>
-                        Mesa
-                    </th>
-
-                    <th>
-                        Reservados
-                    </th>
-
-                    <th>
-                        Confirmados
-                    </th>
-
-                    <th>
-                        Faltan
-                    </th>
+                    <th>Familia</th>
+                    <th>Mesa</th>
+                    <th>Reservados</th>
+                    <th>Confirmados</th>
+                    <th>Faltan</th>
 
                 </tr>
 
@@ -2583,7 +2728,6 @@ footer p{
             </tbody>
 
         </table>
-
 
         <button
             class="boton-admin"
@@ -2619,83 +2763,71 @@ footer p{
 </footer>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
 /* =========================================================
-   PERSONALIZACIÓN POR FAMILIA
+   CLOUDINARY
+========================================================= */
+
+const CLOUDINARY_CLOUD_NAME =
+    "hiybqt7g";
+
+const CLOUDINARY_UPLOAD_PRESET =
+    "boda_invitados";
+
+
+/* =========================================================
+   FAMILIAS
 ========================================================= */
 
 const familias = {
 
     Ramirez: {
-
-        nombre: "Familia Ramirez Sosa",
-
-        lugares: 7,
-
-        mesa: 1
-
+        nombre:"Familia Ramirez Sosa",
+        lugares:7,
+        mesa:1
     },
-
 
     lopez: {
-
-        nombre: "Familia López",
-
-        lugares: 3,
-
-        mesa: 5
-
+        nombre:"Familia López",
+        lugares:3,
+        mesa:5
     },
-
 
     martinez: {
-
-        nombre: "Familia Martínez",
-
-        lugares: 6,
-
-        mesa: 2
-
+        nombre:"Familia Martínez",
+        lugares:6,
+        mesa:2
     },
 
-
     simba: {
-
-        nombre: "Familia de Simba",
-
-        lugares: 2,
-
-        mesa: 1
-
+        nombre:"Familia de Simba",
+        lugares:2,
+        mesa:1
     }
 
 };
 
 
 /* =========================================================
-   DATOS DEL EVENTO
+   EVENTO
 ========================================================= */
 
 const evento = {
 
-    fecha: "16 de enero de 2027",
+    fecha:"16 de enero de 2027",
 
-    dia: "Sábado",
+    dia:"Sábado",
 
-    horaInicio: "4:30 PM",
+    horaInicio:"4:30 PM",
 
-    horaContador: "5:00 PM"
+    horaContador:"5:00 PM"
 
 };
 
 
 /* =========================================================
-   OBTENER FAMILIA DEL ENLACE
+   FAMILIA DESDE URL
 ========================================================= */
 
 const parametros =
@@ -2710,10 +2842,6 @@ const invitado =
     familias[familiaSeleccionada];
 
 
-/* =========================================================
-   DATOS PREDETERMINADOS
-========================================================= */
-
 let nombreFamilia =
     "Familia Invitada";
 
@@ -2723,10 +2851,6 @@ let cantidadInvitados =
 let numeroMesa =
     "—";
 
-
-/* =========================================================
-   CARGAR FAMILIA
-========================================================= */
 
 if(invitado){
 
@@ -2743,43 +2867,26 @@ if(invitado){
 
 
 /* =========================================================
-   MOSTRAR INFORMACIÓN
+   INFORMACIÓN
 ========================================================= */
 
-document.getElementById(
-    "familia"
-).textContent =
-    nombreFamilia;
+document.getElementById("familia")
+    .textContent = nombreFamilia;
 
+document.getElementById("mesa")
+    .textContent = numeroMesa;
 
-document.getElementById(
-    "mesa"
-).textContent =
-    numeroMesa;
+document.getElementById("lugares")
+    .textContent = cantidadInvitados;
 
+document.getElementById("resumenFamilia")
+    .textContent = nombreFamilia;
 
-document.getElementById(
-    "lugares"
-).textContent =
-    cantidadInvitados;
+document.getElementById("resumenMesa")
+    .textContent = numeroMesa;
 
-
-document.getElementById(
-    "resumenFamilia"
-).textContent =
-    nombreFamilia;
-
-
-document.getElementById(
-    "resumenMesa"
-).textContent =
-    numeroMesa;
-
-
-document.getElementById(
-    "resumenReservados"
-).textContent =
-    cantidadInvitados;
+document.getElementById("resumenReservados")
+    .textContent = cantidadInvitados;
 
 
 /* =========================================================
@@ -2810,14 +2917,12 @@ botonAbrir.addEventListener(
             "ocultar"
         );
 
-
         setTimeout(
             function(){
 
                 invitacionPersonalizada.classList.add(
                     "mostrar"
                 );
-
 
                 window.scrollTo({
 
@@ -2838,7 +2943,7 @@ botonAbrir.addEventListener(
 
 
 /* =========================================================
-   LUGARES RESERVADOS
+   TEXTO RESERVADOS
 ========================================================= */
 
 const textoReservados =
@@ -2853,7 +2958,6 @@ if(cantidadInvitados === 1){
         "💍 Tienen 1 lugar reservado para esta invitación.";
 
 }
-
 else if(cantidadInvitados > 1){
 
     textoReservados.textContent =
@@ -2862,7 +2966,6 @@ else if(cantidadInvitados > 1){
         " lugares reservados para esta invitación.";
 
 }
-
 else{
 
     textoReservados.textContent =
@@ -2872,7 +2975,7 @@ else{
 
 
 /* =========================================================
-   SELECTOR DE ASISTENCIA
+   SELECTOR
 ========================================================= */
 
 const selector =
@@ -2884,8 +2987,8 @@ const selector =
 if(cantidadInvitados > 0){
 
     for(
-        let i = 1;
-        i <= cantidadInvitados;
+        let i=1;
+        i<=cantidadInvitados;
         i++
     ){
 
@@ -2894,13 +2997,12 @@ if(cantidadInvitados > 0){
                 "option"
             );
 
-        opcion.value =
-            i;
+        opcion.value=i;
 
         opcion.textContent =
-            i === 1
+            i===1
             ? "1 persona"
-            : i + " personas";
+            : i+" personas";
 
         selector.appendChild(
             opcion
@@ -2909,7 +3011,6 @@ if(cantidadInvitados > 0){
     }
 
 }
-
 else{
 
     const opcion =
@@ -2917,8 +3018,7 @@ else{
             "option"
         );
 
-    opcion.value =
-        0;
+    opcion.value=0;
 
     opcion.textContent =
         "Sin lugares asignados";
@@ -2931,43 +3031,35 @@ else{
 
 
 /* =========================================================
-   ACTUALIZAR ASIENTOS
+   ASIENTOS
 ========================================================= */
 
 function actualizarAsientos(){
 
     const asistentes =
-        Number(
-            selector.value
-        ) || 0;
-
+        Number(selector.value)||0;
 
     const disponibles =
         Math.max(
-            cantidadInvitados - asistentes,
+            cantidadInvitados -
+            asistentes,
             0
         );
 
-
     document.getElementById(
         "asientosOcupados"
-    ).textContent =
-        asistentes;
-
+    ).textContent=asistentes;
 
     document.getElementById(
         "asientosDisponibles"
-    ).textContent =
-        disponibles;
+    ).textContent=disponibles;
 
 }
-
 
 selector.addEventListener(
     "change",
     actualizarAsientos
 );
-
 
 actualizarAsientos();
 
@@ -2983,73 +3075,62 @@ const numeroWhatsApp =
 function actualizarWhatsApp(){
 
     const cantidadAsistencia =
-        Number(
-            selector.value
-        ) || 0;
-
+        Number(selector.value)||0;
 
     const mensajeWhatsApp =
 
-        "💍💕 Hola Josué y Damaris 💕💍\n\n" +
+        "💍💕 Hola Josué y Damaris 💕💍\n\n"+
 
-        "Somos " +
-        nombreFamilia +
-        ".\n\n" +
+        "Somos "+
+        nombreFamilia+
+        ".\n\n"+
 
-        "Con mucha alegría queremos confirmar " +
-        "nuestra asistencia a su boda. 🥰✨\n\n" +
+        "Con mucha alegría queremos confirmar "+
+        "nuestra asistencia a su boda. 🥰✨\n\n"+
 
-        "👨‍👩‍👧‍👦 Familia invitada: " +
-        nombreFamilia +
-        "\n\n" +
+        "👨‍👩‍👧‍👦 Familia invitada: "+
+        nombreFamilia+
+        "\n\n"+
 
-        "📅 Fecha: " +
-        evento.fecha +
-        "\n\n" +
+        "📅 Fecha: "+
+        evento.fecha+
+        "\n\n"+
 
-        "📆 Día: " +
-        evento.dia +
-        "\n\n" +
+        "📆 Día: "+
+        evento.dia+
+        "\n\n"+
 
-        "🕓 Hora de inicio: " +
-        evento.horaInicio +
-        "\n\n" +
+        "🕓 Hora de inicio: "+
+        evento.horaInicio+
+        "\n\n"+
 
-        "💺 Mesa asignada: " +
-        numeroMesa +
-        "\n\n" +
+        "💺 Mesa asignada: "+
+        numeroMesa+
+        "\n\n"+
 
-        "🎟️ Lugares reservados: " +
-        cantidadInvitados +
-        "\n\n" +
+        "🎟️ Lugares reservados: "+
+        cantidadInvitados+
+        "\n\n"+
 
-        "✅ Personas que asistirán: " +
-        cantidadAsistencia +
-        "\n\n" +
+        "✅ Personas que asistirán: "+
+        cantidadAsistencia+
+        "\n\n"+
 
-        "🪑 Asientos disponibles: " +
+        "🪑 Asientos disponibles: "+
         (
             cantidadInvitados -
             cantidadAsistencia
-        ) +
-
-        "\n\n" +
-
-        "Será un honor acompañarlos en este " +
-        "día tan especial y celebrar junto a " +
-        "ustedes. 🥂💍\n\n" +
+        )+
+        "\n\n"+
 
         "💕 ¡Nos vemos en su gran día! 🥳🎉";
 
 
     const enlaceWhatsApp =
 
-        "https://wa.me/" +
-
-        numeroWhatsApp +
-
-        "?text=" +
-
+        "https://wa.me/"+
+        numeroWhatsApp+
+        "?text="+
         encodeURIComponent(
             mensajeWhatsApp
         );
@@ -3062,18 +3143,16 @@ function actualizarWhatsApp(){
 
 }
 
-
 selector.addEventListener(
     "change",
     actualizarWhatsApp
 );
 
-
 actualizarWhatsApp();
 
 
 /* =========================================================
-   REGISTRAR CONFIRMACIÓN LOCAL
+   CONFIRMACIONES LOCALES
 ========================================================= */
 
 document.getElementById(
@@ -3083,53 +3162,42 @@ document.getElementById(
     function(){
 
         const asistentes =
-            Number(
-                selector.value
-            ) || 0;
-
+            Number(selector.value)||0;
 
         if(
             !familiaSeleccionada ||
             !invitado ||
-            asistentes <= 0
+            asistentes<=0
         ){
 
             return;
 
         }
 
-
         const confirmaciones =
             JSON.parse(
                 localStorage.getItem(
                     "confirmacionesBoda"
-                ) || "{}"
+                )||"{}"
             );
-
 
         confirmaciones[
             familiaSeleccionada
-        ] = {
+        ]={
 
-            familia:
-                nombreFamilia,
+            familia:nombreFamilia,
 
-            mesa:
-                numeroMesa,
+            mesa:numeroMesa,
 
-            reservados:
-                cantidadInvitados,
+            reservados:cantidadInvitados,
 
-            confirmados:
-                asistentes,
+            confirmados:asistentes,
 
             fecha:
-                new Date().toLocaleString(
-                    "es-MX"
-                )
+                new Date()
+                .toLocaleString("es-MX")
 
         };
-
 
         localStorage.setItem(
 
@@ -3141,7 +3209,6 @@ document.getElementById(
 
         );
 
-
         actualizarPanel();
 
     }
@@ -3149,7 +3216,7 @@ document.getElementById(
 
 
 /* =========================================================
-   PANEL DE ADMINISTRACIÓN
+   PANEL
 ========================================================= */
 
 function actualizarPanel(){
@@ -3158,58 +3225,48 @@ function actualizarPanel(){
         JSON.parse(
             localStorage.getItem(
                 "confirmacionesBoda"
-            ) || "{}"
+            )||"{}"
         );
-
 
     const tabla =
         document.getElementById(
             "tablaConfirmaciones"
         );
 
+    tabla.innerHTML="";
 
-    tabla.innerHTML = "";
-
-
-    let totalReservados = 0;
-
-    let totalConfirmados = 0;
-
-    let totalPendientes = 0;
+    let totalReservados=0;
+    let totalConfirmados=0;
+    let totalPendientes=0;
 
 
-    Object.keys(familias).forEach(
+    Object.keys(familias)
+    .forEach(
         function(clave){
 
             const familia =
                 familias[clave];
 
-
             const registro =
                 confirmaciones[clave];
-
 
             const confirmados =
                 registro
                 ? registro.confirmados
                 : 0;
 
-
             const pendientes =
                 Math.max(
-                    familia.lugares -
+                    familia.lugares-
                     confirmados,
                     0
                 );
 
-
             totalReservados +=
                 familia.lugares;
 
-
             totalConfirmados +=
                 confirmados;
-
 
             totalPendientes +=
                 pendientes;
@@ -3220,33 +3277,30 @@ function actualizarPanel(){
                     "tr"
                 );
 
-
             fila.innerHTML =
 
-                "<td>" +
-                familia.nombre +
-                "</td>" +
+                "<td>"+
+                familia.nombre+
+                "</td>"+
 
-                "<td>" +
-                familia.mesa +
-                "</td>" +
+                "<td>"+
+                familia.mesa+
+                "</td>"+
 
-                "<td>" +
-                familia.lugares +
-                "</td>" +
+                "<td>"+
+                familia.lugares+
+                "</td>"+
 
-                "<td>" +
-                confirmados +
-                "</td>" +
+                "<td>"+
+                confirmados+
+                "</td>"+
 
-                "<td>" +
-                pendientes +
+                "<td>"+
+                pendientes+
                 "</td>";
 
 
-            tabla.appendChild(
-                fila
-            );
+            tabla.appendChild(fila);
 
         }
     );
@@ -3257,18 +3311,15 @@ function actualizarPanel(){
     ).textContent =
         Object.keys(familias).length;
 
-
     document.getElementById(
         "totalReservados"
     ).textContent =
         totalReservados;
 
-
     document.getElementById(
         "totalConfirmados"
     ).textContent =
         totalConfirmados;
-
 
     document.getElementById(
         "totalPendientes"
@@ -3278,24 +3329,17 @@ function actualizarPanel(){
 }
 
 
-/* =========================================================
-   BORRAR CONFIRMACIONES
-========================================================= */
-
 function borrarConfirmaciones(){
 
-    const confirmar =
+    if(
         confirm(
             "¿Quieres borrar todas las confirmaciones guardadas en este dispositivo?"
-        );
-
-
-    if(confirmar){
+        )
+    ){
 
         localStorage.removeItem(
             "confirmacionesBoda"
         );
-
 
         actualizarPanel();
 
@@ -3305,29 +3349,22 @@ function borrarConfirmaciones(){
 
 
 /* =========================================================
-   ACTIVAR PANEL CON #admin
+   ADMIN
 ========================================================= */
 
 if(
-    window.location.hash === "#admin"
+    window.location.hash==="#admin"
 ){
 
     document
-        .getElementById(
-            "panelAdmin"
-        )
-        .classList.add(
-            "mostrar"
-        );
+        .getElementById("panelAdmin")
+        .classList.add("mostrar");
 
 }
 
 
 /* =========================================================
-   CUENTA REGRESIVA
-   IMPORTANTE:
-   LA INVITACIÓN INDICA 4:30 PM
-   PERO EL CONTADOR TERMINA A LAS 5:00 PM
+   CONTADOR
 ========================================================= */
 
 const fechaBoda =
@@ -3341,107 +3378,77 @@ function actualizarContador(){
     const ahora =
         new Date().getTime();
 
-
     const distancia =
-        fechaBoda - ahora;
+        fechaBoda-
+        ahora;
 
 
-    if(distancia <= 0){
+    if(distancia<=0){
 
-        document.getElementById(
-            "dias"
-        ).textContent =
-            "0";
-
-
-        document.getElementById(
-            "horas"
-        ).textContent =
-            "0";
-
-
-        document.getElementById(
-            "minutos"
-        ).textContent =
-            "0";
-
-
-        document.getElementById(
-            "segundos"
-        ).textContent =
-            "0";
-
+        ["dias",
+         "horas",
+         "minutos",
+         "segundos"]
+        .forEach(
+            id=>{
+                document.getElementById(id)
+                .textContent="0";
+            }
+        );
 
         return;
-
     }
 
 
     const dias =
         Math.floor(
-            distancia /
-            (1000 * 60 * 60 * 24)
+            distancia/
+            (1000*60*60*24)
         );
-
 
     const horas =
         Math.floor(
             (
-                distancia %
-                (1000 * 60 * 60 * 24)
-            ) /
-            (1000 * 60 * 60)
+                distancia%
+                (1000*60*60*24)
+            )/
+            (1000*60*60)
         );
-
 
     const minutos =
         Math.floor(
             (
-                distancia %
-                (1000 * 60 * 60)
-            ) /
-            (1000 * 60)
+                distancia%
+                (1000*60*60)
+            )/
+            (1000*60)
         );
-
 
     const segundos =
         Math.floor(
             (
-                distancia %
-                (1000 * 60)
-            ) /
+                distancia%
+                (1000*60)
+            )/
             1000
         );
 
 
-    document.getElementById(
-        "dias"
-    ).textContent =
-        dias;
+    document.getElementById("dias")
+        .textContent=dias;
 
+    document.getElementById("horas")
+        .textContent=horas;
 
-    document.getElementById(
-        "horas"
-    ).textContent =
-        horas;
+    document.getElementById("minutos")
+        .textContent=minutos;
 
-
-    document.getElementById(
-        "minutos"
-    ).textContent =
-        minutos;
-
-
-    document.getElementById(
-        "segundos"
-    ).textContent =
-        segundos;
+    document.getElementById("segundos")
+        .textContent=segundos;
 
 }
 
-
 actualizarContador();
-
 
 setInterval(
     actualizarContador,
@@ -3450,12 +3457,12 @@ setInterval(
 
 
 /* =========================================================
-   ANIMACIONES AL HACER SCROLL
+   ANIMACIONES SCROLL
 ========================================================= */
 
 const elementosReveal =
     document.querySelectorAll(
-        ".reveal, .reveal-left, .reveal-right"
+        ".reveal,.reveal-left,.reveal-right"
     );
 
 
@@ -3466,11 +3473,13 @@ const observador =
             elementos.forEach(
                 function(elemento){
 
-                    if(elemento.isIntersecting){
+                    if(
+                        elemento.isIntersecting
+                    ){
 
-                        elemento.target.classList.add(
-                            "visible"
-                        );
+                        elemento.target
+                            .classList
+                            .add("visible");
 
                         observador.unobserve(
                             elemento.target
@@ -3489,18 +3498,14 @@ const observador =
 
 
 elementosReveal.forEach(
-    function(elemento){
-
-        observador.observe(
-            elemento
-        );
-
+    elemento=>{
+        observador.observe(elemento);
     }
 );
 
 
 /* =========================================================
-   CORAZONES FLOTANTES
+   CORAZONES
 ========================================================= */
 
 function crearCorazon(){
@@ -3510,54 +3515,44 @@ function crearCorazon(){
             "div"
         );
 
-
-    corazon.className =
+    corazon.className=
         "corazones";
 
-
     corazon.textContent =
-        Math.random() > .5
-        ? "♡"
-        : "♥";
-
+        Math.random()>.5
+        ?"♡"
+        :"♥";
 
     corazon.style.left =
-        Math.random() * 100 +
+        Math.random()*100+
         "vw";
-
 
     corazon.style.fontSize =
         (
-            15 +
-            Math.random() * 15
-        ) +
+            15+
+            Math.random()*15
+        )+
         "px";
-
 
     corazon.style.animationDuration =
         (
-            5 +
-            Math.random() * 4
-        ) +
+            5+
+            Math.random()*4
+        )+
         "s";
-
 
     document.body.appendChild(
         corazon
     );
 
-
     setTimeout(
-        function(){
-
+        ()=>{
             corazon.remove();
-
         },
         9000
     );
 
 }
-
 
 setInterval(
     crearCorazon,
@@ -3566,7 +3561,7 @@ setInterval(
 
 
 /* =========================================================
-   PARTÍCULAS SUTILES
+   PARTÍCULAS
 ========================================================= */
 
 function crearParticula(){
@@ -3576,51 +3571,365 @@ function crearParticula(){
             "div"
         );
 
-
-    particula.className =
+    particula.className=
         "particulas";
 
-
     particula.style.left =
-        Math.random() * 100 +
+        Math.random()*100+
         "vw";
 
-
-    particula.style.bottom =
+    particula.style.bottom=
         "-10px";
 
-
     const duracion =
-        6 +
-        Math.random() * 5;
-
+        6+
+        Math.random()*5;
 
     particula.style.animationDuration =
-        duracion +
+        duracion+
         "s";
-
 
     document.body.appendChild(
         particula
     );
 
-
     setTimeout(
-        function(){
-
+        ()=>{
             particula.remove();
-
         },
-        duracion * 1000
+        duracion*1000
     );
 
 }
-
 
 setInterval(
     crearParticula,
     1800
 );
+
+
+/* =========================================================
+   =========================================================
+   SUBIR FOTO DEL INVITADO A CLOUDINARY
+   =========================================================
+========================================================= */
+
+const inputFoto =
+    document.getElementById(
+        "fotoInvitado"
+    );
+
+const previewFoto =
+    document.getElementById(
+        "previewFoto"
+    );
+
+const progresoFoto =
+    document.getElementById(
+        "progresoFoto"
+    );
+
+const barraProgreso =
+    document.getElementById(
+        "barraProgreso"
+    );
+
+const mensajeFoto =
+    document.getElementById(
+        "mensajeFoto"
+    );
+
+const tituloProgreso =
+    document.getElementById(
+        "tituloProgreso"
+    );
+
+
+inputFoto.addEventListener(
+    "change",
+    function(){
+
+        const archivo =
+            this.files[0];
+
+        if(!archivo){
+            return;
+        }
+
+
+        if(
+            !archivo.type.startsWith(
+                "image/"
+            )
+        ){
+
+            alert(
+                "Por favor selecciona una imagen."
+            );
+
+            return;
+        }
+
+
+        /* PREVISUALIZACIÓN */
+
+        const lector =
+            new FileReader();
+
+        lector.onload =
+            function(e){
+
+                previewFoto.src =
+                    e.target.result;
+
+                previewFoto.classList.add(
+                    "mostrar"
+                );
+
+            };
+
+        lector.readAsDataURL(
+            archivo
+        );
+
+
+        subirFotoCloudinary(
+            archivo
+        );
+
+    }
+);
+
+
+/* =========================================================
+   FUNCIÓN DE SUBIDA
+========================================================= */
+
+function subirFotoCloudinary(
+    archivo
+){
+
+    progresoFoto.classList.add(
+        "mostrar"
+    );
+
+    tituloProgreso.textContent =
+        "📤 Subiendo tu foto...";
+
+    mensajeFoto.textContent =
+        "Espera unos segundos mientras guardamos tu recuerdo. ❤️";
+
+    barraProgreso.style.width =
+        "5%";
+
+
+    const url =
+
+        "https://api.cloudinary.com/v1_1/" +
+
+        CLOUDINARY_CLOUD_NAME +
+
+        "/image/upload";
+
+
+    const datos =
+        new FormData();
+
+
+    datos.append(
+        "file",
+        archivo
+    );
+
+
+    datos.append(
+        "upload_preset",
+        CLOUDINARY_UPLOAD_PRESET
+    );
+
+
+    /*
+       Identificamos la familia.
+       Esto NO contiene información secreta.
+    */
+
+    datos.append(
+        "context",
+        "familia=" +
+        encodeURIComponent(
+            nombreFamilia
+        )
+    );
+
+
+    const xhr =
+        new XMLHttpRequest();
+
+
+    xhr.open(
+        "POST",
+        url,
+        true
+    );
+
+
+    xhr.upload.addEventListener(
+        "progress",
+        function(evento){
+
+            if(evento.lengthComputable){
+
+                const porcentaje =
+                    Math.round(
+                        (
+                            evento.loaded/
+                            evento.total
+                        )*100
+                    );
+
+                barraProgreso.style.width =
+                    porcentaje+"%";
+
+                tituloProgreso.textContent =
+                    "📤 Subiendo foto... "+
+                    porcentaje+"%";
+
+            }
+
+        }
+    );
+
+
+    xhr.onload =
+        function(){
+
+            if(
+                xhr.status>=200 &&
+                xhr.status<300
+            ){
+
+                try{
+
+                    const respuesta =
+                        JSON.parse(
+                            xhr.responseText
+                        );
+
+
+                    barraProgreso.style.width =
+                        "100%";
+
+
+                    tituloProgreso.textContent =
+                        "❤️ ¡Foto recibida!";
+
+
+                    mensajeFoto.innerHTML =
+
+                        "Tu foto fue enviada correctamente. " +
+                        "¡Gracias por compartir este recuerdo! 💍💕";
+
+
+                    /*
+                       Guardamos la URL en el dispositivo
+                       para poder verla nuevamente.
+                    */
+
+                    guardarFotoLocal(
+                        respuesta.secure_url
+                    );
+
+
+                }
+                catch(error){
+
+                    mostrarErrorFoto();
+
+                }
+
+            }
+            else{
+
+                mostrarErrorFoto();
+
+            }
+
+        };
+
+
+    xhr.onerror =
+        function(){
+
+            mostrarErrorFoto();
+
+        };
+
+
+    xhr.send(
+        datos
+    );
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function mostrarErrorFoto(){
+
+    tituloProgreso.textContent =
+        "❌ No se pudo subir la foto";
+
+    mensajeFoto.innerHTML =
+
+        "Revisa tu conexión a Internet " +
+        "e inténtalo nuevamente.";
+
+    barraProgreso.style.width =
+        "0%";
+
+}
+
+
+/* =========================================================
+   GUARDAR FOTO LOCAL
+========================================================= */
+
+function guardarFotoLocal(
+    url
+){
+
+    const fotos =
+        JSON.parse(
+            localStorage.getItem(
+                "fotosInvitadosBoda"
+            )||"[]"
+        );
+
+
+    fotos.push({
+
+        url:url,
+
+        familia:nombreFamilia,
+
+        fecha:
+            new Date()
+            .toLocaleString("es-MX")
+
+    });
+
+
+    localStorage.setItem(
+
+        "fotosInvitadosBoda",
+
+        JSON.stringify(fotos)
+
+    );
+
+}
 
 
 /* =========================================================
