@@ -11,7 +11,7 @@
 <style>
 
 /* =====================================================
-   CONFIGURACIÓN GENERAL
+   GENERAL
 ===================================================== */
 
 *{
@@ -31,7 +31,7 @@ body{
     overflow-x:hidden;
 }
 
-body::selection{
+::selection{
     background:#b89b7d;
     color:white;
 }
@@ -82,7 +82,8 @@ input{
 
 
 /* =====================================================
-   PANTALLA INICIAL - PERFECTAMENTE CENTRADA
+   PANTALLA INICIAL
+   PERFECTAMENTE CENTRADA
 ===================================================== */
 
 .pantalla-inicial{
@@ -91,8 +92,8 @@ input{
 
     inset:0;
 
-    width:100vw;
-    height:100vh;
+    width:100%;
+    height:100%;
     height:100dvh;
 
     z-index:9999;
@@ -110,13 +111,16 @@ input{
 
     overflow:hidden;
 
-    background:
+    background-image:
         linear-gradient(
             rgba(0,0,0,.55),
             rgba(0,0,0,.72)
         ),
-        url("IMG-20260609-WA0011.jpg")
-        center/cover no-repeat;
+        url("IMG-20260609-WA0011.jpg");
+
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
 
     transition:
         opacity 1.2s ease,
@@ -136,15 +140,16 @@ input{
     width:100%;
     max-width:700px;
 
+    margin:auto;
+
     display:flex;
+
     flex-direction:column;
 
     justify-content:center;
     align-items:center;
 
     text-align:center;
-
-    margin:auto;
 
     position:relative;
     z-index:2;
@@ -155,7 +160,9 @@ input{
 .inicial-pequeno{
 
     font-size:14px;
+
     letter-spacing:5px;
+
     margin-bottom:25px;
 }
 
@@ -164,6 +171,7 @@ input{
     font-size:clamp(45px,12vw,85px);
 
     font-style:italic;
+
     font-weight:normal;
 
     margin-bottom:15px;
@@ -177,6 +185,7 @@ input{
 .inicial-frase{
 
     font-size:18px;
+
     letter-spacing:2px;
 
     line-height:1.6;
@@ -279,6 +288,7 @@ input{
 .adorno{
 
     font-size:34px;
+
     color:#9a8068;
 
     margin-bottom:25px;
@@ -289,6 +299,7 @@ input{
 .invitacion-label{
 
     font-size:14px;
+
     letter-spacing:4px;
 
     text-transform:uppercase;
@@ -303,26 +314,18 @@ input{
     font-size:clamp(40px,9vw,70px);
 
     font-style:italic;
+
     font-weight:normal;
 
     color:#675548;
 
     margin-bottom:20px;
-
-    opacity:0;
-    transform:translateY(25px);
-}
-
-.invitacion-personalizada.mostrar
-.nombre-familia{
-
-    animation:
-        nombreEntrada 1.5s .4s ease forwards;
 }
 
 .linea-decorativa{
 
     width:90px;
+
     height:1px;
 
     background:#b89b7d;
@@ -333,6 +336,7 @@ input{
 .invitacion-texto{
 
     font-size:19px;
+
     line-height:1.8;
 
     max-width:600px;
@@ -345,6 +349,7 @@ input{
     display:flex;
 
     justify-content:center;
+
     align-items:stretch;
 
     flex-wrap:wrap;
@@ -368,18 +373,12 @@ input{
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.07);
-
-    transition:.4s;
-}
-
-.info-caja:hover{
-
-    transform:translateY(-5px);
 }
 
 .info-icono{
 
     font-size:25px;
+
     margin-bottom:7px;
 }
 
@@ -429,13 +428,16 @@ input{
 
     min-height:100svh;
 
-    background:
+    background-image:
         linear-gradient(
             rgba(0,0,0,.48),
             rgba(0,0,0,.58)
         ),
-        url("IMG-20260609-WA0011.jpg")
-        center/cover no-repeat;
+        url("IMG-20260609-WA0011.jpg");
+
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
 
     display:flex;
 
@@ -467,6 +469,7 @@ input{
 .portada-contenido{
 
     width:100%;
+
     max-width:900px;
 
     padding:20px;
@@ -474,12 +477,14 @@ input{
     animation:aparecer 1.5s ease;
 
     position:relative;
+
     z-index:2;
 }
 
 .pequeno{
 
     font-size:18px;
+
     letter-spacing:5px;
 
     margin-bottom:20px;
@@ -490,6 +495,7 @@ input{
     font-size:clamp(48px,11vw,100px);
 
     font-weight:normal;
+
     font-style:italic;
 
     line-height:1.1;
@@ -544,6 +550,7 @@ input{
 .boton:hover{
 
     background:white;
+
     color:#5a4b40;
 }
 
@@ -566,6 +573,7 @@ input{
 .reveal.visible{
 
     opacity:1;
+
     transform:translateY(0);
 }
 
@@ -583,6 +591,7 @@ input{
 .reveal-left.visible{
 
     opacity:1;
+
     transform:translateX(0);
 }
 
@@ -600,6 +609,7 @@ input{
 .reveal-right.visible{
 
     opacity:1;
+
     transform:translateX(0);
 }
 
@@ -620,6 +630,7 @@ section{
     font-size:clamp(30px,6vw,40px);
 
     font-weight:normal;
+
     font-style:italic;
 
     margin-bottom:20px;
@@ -664,6 +675,7 @@ section{
     position:absolute;
 
     left:8%;
+
     top:20%;
 
     color:#b89b7d;
@@ -680,6 +692,7 @@ section{
     position:absolute;
 
     right:8%;
+
     bottom:20%;
 
     color:#b89b7d;
@@ -694,6 +707,7 @@ section{
     display:flex;
 
     justify-content:center;
+
     align-items:stretch;
 
     flex-wrap:wrap;
@@ -703,6 +717,7 @@ section{
     margin-top:35px;
 
     position:relative;
+
     z-index:2;
 }
 
@@ -792,7 +807,7 @@ section{
 
 
 /* =====================================================
-   GALERÍA ESTILO HISTORIA
+   GALERÍA TIPO HISTORIA
 ===================================================== */
 
 .galeria{
@@ -841,7 +856,7 @@ section{
 
 
 /* =====================================================
-   VIDEO PRINCIPAL
+   VIDEO
 ===================================================== */
 
 .video-seccion{
@@ -924,8 +939,6 @@ section{
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.08);
-
-    transition:.4s;
 }
 
 .video-card video{
@@ -956,6 +969,8 @@ section{
         );
 
     position:relative;
+
+    scroll-margin-top:0;
 }
 
 .fotos-invitados-contenido{
@@ -1147,14 +1162,7 @@ section{
     box-shadow:
         0 8px 25px rgba(0,0,0,.08);
 
-    transition:.4s;
-
     border:1px solid rgba(184,155,125,.15);
-}
-
-.tarjeta:hover{
-
-    transform:translateY(-7px);
 }
 
 .icono{
@@ -1615,7 +1623,7 @@ footer p{
 
 
 /* =====================================================
-   ANIMACIONES
+   KEYFRAMES
 ===================================================== */
 
 @keyframes aparecer{
@@ -1632,27 +1640,6 @@ footer p{
         opacity:1;
 
         transform:translateY(0);
-    }
-}
-
-@keyframes nombreEntrada{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(30px)
-            scale(.95);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
     }
 }
 
@@ -1696,7 +1683,6 @@ footer p{
         grid-template-columns:
             repeat(2,1fr);
     }
-
 }
 
 
@@ -1713,23 +1699,32 @@ footer p{
 
     .pantalla-inicial{
 
-        width:100%;
+        width:100vw;
+
         height:100dvh;
 
-        padding:
-            max(20px, env(safe-area-inset-top))
-            20px
-            max(20px, env(safe-area-inset-bottom));
+        min-height:100dvh;
 
+        padding:
+            max(20px,env(safe-area-inset-top))
+            20px
+            max(20px,env(safe-area-inset-bottom))
+            20px;
+
+        background-position:center center;
     }
 
     .inicial-contenido{
 
         width:100%;
 
+        max-width:100%;
+
         min-height:100%;
 
         justify-content:center;
+
+        align-items:center;
     }
 
     .inicial-pequeno{
@@ -1767,6 +1762,8 @@ footer p{
     .portada{
 
         min-height:100svh;
+
+        background-position:center center;
     }
 
     .portada::before{
@@ -1831,9 +1828,6 @@ footer p{
         font-size:10px;
     }
 
-
-    /* HISTORIAS */
-
     .galeria{
 
         display:flex;
@@ -1858,7 +1852,6 @@ footer p{
         border-radius:20px;
     }
 
-
     .video-contenedor{
 
         width:90%;
@@ -1873,11 +1866,6 @@ footer p{
         max-width:340px;
 
         max-height:600px;
-    }
-
-    .nombre-familia{
-
-        font-size:clamp(38px,11vw,55px);
     }
 
     .info-caja{
@@ -1917,12 +1905,11 @@ footer p{
 
         max-width:320px;
     }
-
 }
 
 
 /* =====================================================
-   CELULARES MUY PEQUEÑOS
+   MUY PEQUEÑO
 ===================================================== */
 
 @media(max-width:360px){
@@ -1936,7 +1923,6 @@ footer p{
 
         font-size:42px;
     }
-
 }
 
 </style>
@@ -1982,7 +1968,7 @@ footer p{
 
 
 <!-- =====================================================
-     INVITACIÓN PERSONALIZADA
+     PRESENTACIÓN
 ===================================================== -->
 
 <section
@@ -1996,21 +1982,19 @@ footer p{
         </div>
 
         <div class="invitacion-label">
-            Invitación especial para
+            Nuestra celebración
         </div>
 
-        <h2
-            class="nombre-familia"
-            id="familia">
+        <h2 class="nombre-familia">
+            Josué & Damaris
         </h2>
 
         <div class="linea-decorativa"></div>
 
         <p class="invitacion-texto">
 
-            Con muchísimo cariño hemos reservado
-            un lugar especial para ustedes
-            en uno de los días más importantes
+            Con muchísimo cariño queremos compartir
+            contigo uno de los días más importantes
             de nuestras vidas.
 
         </p>
@@ -2020,15 +2004,15 @@ footer p{
             <div class="info-caja">
 
                 <div class="info-icono">
-                    💺
+                    📅
                 </div>
 
                 <small>
-                    Mesa asignada
+                    Fecha
                 </small>
 
-                <strong id="mesa">
-                    —
+                <strong>
+                    16 • 01 • 2027
                 </strong>
 
             </div>
@@ -2036,15 +2020,15 @@ footer p{
             <div class="info-caja">
 
                 <div class="info-icono">
-                    🎟️
+                    🕓
                 </div>
 
                 <small>
-                    Lugares reservados
+                    Hora
                 </small>
 
-                <strong id="lugares">
-                    —
+                <strong>
+                    4:30 PM
                 </strong>
 
             </div>
@@ -2127,7 +2111,7 @@ footer p{
 
 
 <!-- =====================================================
-     CUENTA REGRESIVA
+     CONTADOR
 ===================================================== -->
 
 <section class="contador reveal">
@@ -2146,29 +2130,59 @@ footer p{
     <div class="reloj">
 
         <div class="numero">
-            <strong id="dias">0</strong>
-            <span>Días</span>
+
+            <strong id="dias">
+                0
+            </strong>
+
+            <span>
+                Días
+            </span>
+
         </div>
 
         <div class="numero">
-            <strong id="horas">0</strong>
-            <span>Horas</span>
+
+            <strong id="horas">
+                0
+            </strong>
+
+            <span>
+                Horas
+            </span>
+
         </div>
 
         <div class="numero">
-            <strong id="minutos">0</strong>
-            <span>Minutos</span>
+
+            <strong id="minutos">
+                0
+            </strong>
+
+            <span>
+                Minutos
+            </span>
+
         </div>
 
         <div class="numero">
-            <strong id="segundos">0</strong>
-            <span>Segundos</span>
+
+            <strong id="segundos">
+                0
+            </strong>
+
+            <span>
+                Segundos
+            </span>
+
         </div>
 
     </div>
 
     <div class="contador-hora">
+
         ⏳ El contador llegará a cero a las 5:00 PM
+
     </div>
 
 </section>
@@ -2216,7 +2230,7 @@ footer p{
 
 
 <!-- =====================================================
-     GALERÍA TIPO HISTORIA
+     GALERÍA
 ===================================================== -->
 
 <section class="reveal">
@@ -2341,7 +2355,9 @@ footer p{
     </h2>
 
     <p class="subtitulo">
+
         Cada momento cuenta una parte de nuestra historia.
+
     </p>
 
     <div class="video-grid">
@@ -2382,10 +2398,12 @@ footer p{
 
 
 <!-- =====================================================
-     FOTOS DE LOS INVITADOS
+     FOTOS DE INVITADOS
 ===================================================== -->
 
-<section class="fotos-invitados reveal">
+<section
+    class="fotos-invitados reveal"
+    id="fotos-invitados">
 
     <div class="fotos-invitados-contenido">
 
@@ -2468,9 +2486,13 @@ footer p{
 
         <div class="tarjeta reveal-left">
 
-            <div class="icono">📅</div>
+            <div class="icono">
+                📅
+            </div>
 
-            <h3>Fecha</h3>
+            <h3>
+                Fecha
+            </h3>
 
             <p>
                 16 de Enero de 2027
@@ -2480,9 +2502,13 @@ footer p{
 
         <div class="tarjeta reveal">
 
-            <div class="icono">🕓</div>
+            <div class="icono">
+                🕓
+            </div>
 
-            <h3>Hora</h3>
+            <h3>
+                Hora
+            </h3>
 
             <p>
                 4:30 PM
@@ -2492,9 +2518,13 @@ footer p{
 
         <div class="tarjeta reveal">
 
-            <div class="icono">⛪</div>
+            <div class="icono">
+                ⛪
+            </div>
 
-            <h3>Ceremonia</h3>
+            <h3>
+                Ceremonia
+            </h3>
 
             <p>
                 Mismo lugar del evento
@@ -2504,9 +2534,13 @@ footer p{
 
         <div class="tarjeta reveal-right">
 
-            <div class="icono">🥂</div>
+            <div class="icono">
+                🥂
+            </div>
 
-            <h3>Recepción</h3>
+            <h3>
+                Recepción
+            </h3>
 
             <p>
                 A un costado de la ceremonia
@@ -2586,156 +2620,22 @@ footer p{
 
     <div class="confirmacion-contenido">
 
-        <div
-            class="reservados"
-            id="textoReservados">
-        </div>
+        <div class="reservados">
 
-        <div class="resumen-confirmacion">
-
-            <div class="resumen-item">
-
-                <span>Familia</span>
-
-                <strong id="resumenFamilia">
-                    —
-                </strong>
-
-            </div>
-
-            <div class="resumen-item">
-
-                <span>Mesa</span>
-
-                <strong id="resumenMesa">
-                    —
-                </strong>
-
-            </div>
-
-            <div class="resumen-item">
-
-                <span>Reservados</span>
-
-                <strong id="resumenReservados">
-                    —
-                </strong>
-
-            </div>
-
-        </div>
-
-        <label
-            class="selector-label"
-            for="cantidadAsistencia">
-
-            ¿Cuántas personas asistirán?
-
-        </label>
-
-        <select
-            id="cantidadAsistencia"
-            class="selector-asistencia">
-        </select>
-
-        <div class="estado-asientos">
-
-            🪑 Asientos que ocuparán
-
-            <strong id="asientosOcupados">
-                0
-            </strong>
-
-            🪑 Asientos disponibles
-
-            <strong id="asientosDisponibles">
-                0
-            </strong>
+            💍 La confirmación personalizada
+            estará disponible próximamente.
 
         </div>
 
         <a
-            id="botonWhatsApp"
             class="boton-confirmar"
-            href="#"
+            href="https://wa.me/50242008319"
             target="_blank"
             rel="noopener noreferrer">
 
-            💍 CONFIRMAR ASISTENCIA
+            💍 ESCRÍBENOS POR WHATSAPP
 
         </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PANEL ADMIN
-===================================================== -->
-
-<section
-    class="admin"
-    id="panelAdmin">
-
-    <div class="admin-contenido">
-
-        <h2>
-            📋 Control de invitados
-        </h2>
-
-        <div class="admin-resumen">
-
-            <div class="admin-caja">
-                Familias
-                <strong id="totalFamilias">0</strong>
-            </div>
-
-            <div class="admin-caja">
-                Reservados
-                <strong id="totalReservados">0</strong>
-            </div>
-
-            <div class="admin-caja">
-                Confirmados
-                <strong id="totalConfirmados">0</strong>
-            </div>
-
-            <div class="admin-caja">
-                Pendientes
-                <strong id="totalPendientes">0</strong>
-            </div>
-
-        </div>
-
-        <table class="tabla">
-
-            <thead>
-
-                <tr>
-
-                    <th>Familia</th>
-                    <th>Mesa</th>
-                    <th>Reservados</th>
-                    <th>Confirmados</th>
-                    <th>Faltan</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="tablaConfirmaciones">
-            </tbody>
-
-        </table>
-
-        <button
-            class="boton-admin"
-            onclick="borrarConfirmaciones()">
-
-            🗑️ Borrar registros de este dispositivo
-
-        </button>
 
     </div>
 
@@ -2765,133 +2665,20 @@ footer p{
 
 <script>
 
-/* =========================================================
+/* =====================================================
    CLOUDINARY
-========================================================= */
+===================================================== */
 
 const CLOUDINARY_CLOUD_NAME =
     "hiybqt7g";
 
 const CLOUDINARY_UPLOAD_PRESET =
-    "boda_invitados";
+    "boda_josue_damaris_27";
 
 
-/* =========================================================
-   FAMILIAS
-========================================================= */
-
-const familias = {
-
-    Ramirez: {
-        nombre:"Familia Ramirez Sosa",
-        lugares:7,
-        mesa:1
-    },
-
-    lopez: {
-        nombre:"Familia López",
-        lugares:3,
-        mesa:5
-    },
-
-    martinez: {
-        nombre:"Familia Martínez",
-        lugares:6,
-        mesa:2
-    },
-
-    simba: {
-        nombre:"Familia de Simba",
-        lugares:2,
-        mesa:1
-    }
-
-};
-
-
-/* =========================================================
-   EVENTO
-========================================================= */
-
-const evento = {
-
-    fecha:"16 de enero de 2027",
-
-    dia:"Sábado",
-
-    horaInicio:"4:30 PM",
-
-    horaContador:"5:00 PM"
-
-};
-
-
-/* =========================================================
-   FAMILIA DESDE URL
-========================================================= */
-
-const parametros =
-    new URLSearchParams(
-        window.location.search
-    );
-
-const familiaSeleccionada =
-    parametros.get("familia");
-
-const invitado =
-    familias[familiaSeleccionada];
-
-
-let nombreFamilia =
-    "Familia Invitada";
-
-let cantidadInvitados =
-    0;
-
-let numeroMesa =
-    "—";
-
-
-if(invitado){
-
-    nombreFamilia =
-        invitado.nombre;
-
-    cantidadInvitados =
-        invitado.lugares;
-
-    numeroMesa =
-        invitado.mesa;
-
-}
-
-
-/* =========================================================
-   INFORMACIÓN
-========================================================= */
-
-document.getElementById("familia")
-    .textContent = nombreFamilia;
-
-document.getElementById("mesa")
-    .textContent = numeroMesa;
-
-document.getElementById("lugares")
-    .textContent = cantidadInvitados;
-
-document.getElementById("resumenFamilia")
-    .textContent = nombreFamilia;
-
-document.getElementById("resumenMesa")
-    .textContent = numeroMesa;
-
-document.getElementById("resumenReservados")
-    .textContent = cantidadInvitados;
-
-
-/* =========================================================
-   ABRIR INVITACIÓN
-========================================================= */
+/* =====================================================
+   PANTALLA INICIAL
+===================================================== */
 
 const botonAbrir =
     document.getElementById(
@@ -2929,8 +2716,7 @@ botonAbrir.addEventListener(
                     top:
                         invitacionPersonalizada.offsetTop,
 
-                    behavior:
-                        "smooth"
+                    behavior:"smooth"
 
                 });
 
@@ -2942,430 +2728,9 @@ botonAbrir.addEventListener(
 );
 
 
-/* =========================================================
-   TEXTO RESERVADOS
-========================================================= */
-
-const textoReservados =
-    document.getElementById(
-        "textoReservados"
-    );
-
-
-if(cantidadInvitados === 1){
-
-    textoReservados.textContent =
-        "💍 Tienen 1 lugar reservado para esta invitación.";
-
-}
-else if(cantidadInvitados > 1){
-
-    textoReservados.textContent =
-        "💍 Tienen " +
-        cantidadInvitados +
-        " lugares reservados para esta invitación.";
-
-}
-else{
-
-    textoReservados.textContent =
-        "💍 Invitación personalizada.";
-
-}
-
-
-/* =========================================================
-   SELECTOR
-========================================================= */
-
-const selector =
-    document.getElementById(
-        "cantidadAsistencia"
-    );
-
-
-if(cantidadInvitados > 0){
-
-    for(
-        let i=1;
-        i<=cantidadInvitados;
-        i++
-    ){
-
-        const opcion =
-            document.createElement(
-                "option"
-            );
-
-        opcion.value=i;
-
-        opcion.textContent =
-            i===1
-            ? "1 persona"
-            : i+" personas";
-
-        selector.appendChild(
-            opcion
-        );
-
-    }
-
-}
-else{
-
-    const opcion =
-        document.createElement(
-            "option"
-        );
-
-    opcion.value=0;
-
-    opcion.textContent =
-        "Sin lugares asignados";
-
-    selector.appendChild(
-        opcion
-    );
-
-}
-
-
-/* =========================================================
-   ASIENTOS
-========================================================= */
-
-function actualizarAsientos(){
-
-    const asistentes =
-        Number(selector.value)||0;
-
-    const disponibles =
-        Math.max(
-            cantidadInvitados -
-            asistentes,
-            0
-        );
-
-    document.getElementById(
-        "asientosOcupados"
-    ).textContent=asistentes;
-
-    document.getElementById(
-        "asientosDisponibles"
-    ).textContent=disponibles;
-
-}
-
-selector.addEventListener(
-    "change",
-    actualizarAsientos
-);
-
-actualizarAsientos();
-
-
-/* =========================================================
-   WHATSAPP
-========================================================= */
-
-const numeroWhatsApp =
-    "50242008319";
-
-
-function actualizarWhatsApp(){
-
-    const cantidadAsistencia =
-        Number(selector.value)||0;
-
-    const mensajeWhatsApp =
-
-        "💍💕 Hola Josué y Damaris 💕💍\n\n"+
-
-        "Somos "+
-        nombreFamilia+
-        ".\n\n"+
-
-        "Con mucha alegría queremos confirmar "+
-        "nuestra asistencia a su boda. 🥰✨\n\n"+
-
-        "👨‍👩‍👧‍👦 Familia invitada: "+
-        nombreFamilia+
-        "\n\n"+
-
-        "📅 Fecha: "+
-        evento.fecha+
-        "\n\n"+
-
-        "📆 Día: "+
-        evento.dia+
-        "\n\n"+
-
-        "🕓 Hora de inicio: "+
-        evento.horaInicio+
-        "\n\n"+
-
-        "💺 Mesa asignada: "+
-        numeroMesa+
-        "\n\n"+
-
-        "🎟️ Lugares reservados: "+
-        cantidadInvitados+
-        "\n\n"+
-
-        "✅ Personas que asistirán: "+
-        cantidadAsistencia+
-        "\n\n"+
-
-        "🪑 Asientos disponibles: "+
-        (
-            cantidadInvitados -
-            cantidadAsistencia
-        )+
-        "\n\n"+
-
-        "💕 ¡Nos vemos en su gran día! 🥳🎉";
-
-
-    const enlaceWhatsApp =
-
-        "https://wa.me/"+
-        numeroWhatsApp+
-        "?text="+
-        encodeURIComponent(
-            mensajeWhatsApp
-        );
-
-
-    document.getElementById(
-        "botonWhatsApp"
-    ).href =
-        enlaceWhatsApp;
-
-}
-
-selector.addEventListener(
-    "change",
-    actualizarWhatsApp
-);
-
-actualizarWhatsApp();
-
-
-/* =========================================================
-   CONFIRMACIONES LOCALES
-========================================================= */
-
-document.getElementById(
-    "botonWhatsApp"
-).addEventListener(
-    "click",
-    function(){
-
-        const asistentes =
-            Number(selector.value)||0;
-
-        if(
-            !familiaSeleccionada ||
-            !invitado ||
-            asistentes<=0
-        ){
-
-            return;
-
-        }
-
-        const confirmaciones =
-            JSON.parse(
-                localStorage.getItem(
-                    "confirmacionesBoda"
-                )||"{}"
-            );
-
-        confirmaciones[
-            familiaSeleccionada
-        ]={
-
-            familia:nombreFamilia,
-
-            mesa:numeroMesa,
-
-            reservados:cantidadInvitados,
-
-            confirmados:asistentes,
-
-            fecha:
-                new Date()
-                .toLocaleString("es-MX")
-
-        };
-
-        localStorage.setItem(
-
-            "confirmacionesBoda",
-
-            JSON.stringify(
-                confirmaciones
-            )
-
-        );
-
-        actualizarPanel();
-
-    }
-);
-
-
-/* =========================================================
-   PANEL
-========================================================= */
-
-function actualizarPanel(){
-
-    const confirmaciones =
-        JSON.parse(
-            localStorage.getItem(
-                "confirmacionesBoda"
-            )||"{}"
-        );
-
-    const tabla =
-        document.getElementById(
-            "tablaConfirmaciones"
-        );
-
-    tabla.innerHTML="";
-
-    let totalReservados=0;
-    let totalConfirmados=0;
-    let totalPendientes=0;
-
-
-    Object.keys(familias)
-    .forEach(
-        function(clave){
-
-            const familia =
-                familias[clave];
-
-            const registro =
-                confirmaciones[clave];
-
-            const confirmados =
-                registro
-                ? registro.confirmados
-                : 0;
-
-            const pendientes =
-                Math.max(
-                    familia.lugares-
-                    confirmados,
-                    0
-                );
-
-            totalReservados +=
-                familia.lugares;
-
-            totalConfirmados +=
-                confirmados;
-
-            totalPendientes +=
-                pendientes;
-
-
-            const fila =
-                document.createElement(
-                    "tr"
-                );
-
-            fila.innerHTML =
-
-                "<td>"+
-                familia.nombre+
-                "</td>"+
-
-                "<td>"+
-                familia.mesa+
-                "</td>"+
-
-                "<td>"+
-                familia.lugares+
-                "</td>"+
-
-                "<td>"+
-                confirmados+
-                "</td>"+
-
-                "<td>"+
-                pendientes+
-                "</td>";
-
-
-            tabla.appendChild(fila);
-
-        }
-    );
-
-
-    document.getElementById(
-        "totalFamilias"
-    ).textContent =
-        Object.keys(familias).length;
-
-    document.getElementById(
-        "totalReservados"
-    ).textContent =
-        totalReservados;
-
-    document.getElementById(
-        "totalConfirmados"
-    ).textContent =
-        totalConfirmados;
-
-    document.getElementById(
-        "totalPendientes"
-    ).textContent =
-        totalPendientes;
-
-}
-
-
-function borrarConfirmaciones(){
-
-    if(
-        confirm(
-            "¿Quieres borrar todas las confirmaciones guardadas en este dispositivo?"
-        )
-    ){
-
-        localStorage.removeItem(
-            "confirmacionesBoda"
-        );
-
-        actualizarPanel();
-
-    }
-
-}
-
-
-/* =========================================================
-   ADMIN
-========================================================= */
-
-if(
-    window.location.hash==="#admin"
-){
-
-    document
-        .getElementById("panelAdmin")
-        .classList.add("mostrar");
-
-}
-
-
-/* =========================================================
+/* =====================================================
    CONTADOR
-========================================================= */
+===================================================== */
 
 const fechaBoda =
     new Date(
@@ -3379,22 +2744,26 @@ function actualizarContador(){
         new Date().getTime();
 
     const distancia =
-        fechaBoda-
-        ahora;
+        fechaBoda - ahora;
 
 
-    if(distancia<=0){
+    if(distancia <= 0){
 
-        ["dias",
-         "horas",
-         "minutos",
-         "segundos"]
-        .forEach(
-            id=>{
-                document.getElementById(id)
-                .textContent="0";
-            }
-        );
+        document.getElementById(
+            "dias"
+        ).textContent = "0";
+
+        document.getElementById(
+            "horas"
+        ).textContent = "0";
+
+        document.getElementById(
+            "minutos"
+        ).textContent = "0";
+
+        document.getElementById(
+            "segundos"
+        ).textContent = "0";
 
         return;
     }
@@ -3402,49 +2771,53 @@ function actualizarContador(){
 
     const dias =
         Math.floor(
-            distancia/
+            distancia /
             (1000*60*60*24)
         );
 
     const horas =
         Math.floor(
             (
-                distancia%
+                distancia %
                 (1000*60*60*24)
-            )/
+            ) /
             (1000*60*60)
         );
 
     const minutos =
         Math.floor(
             (
-                distancia%
+                distancia %
                 (1000*60*60)
-            )/
+            ) /
             (1000*60)
         );
 
     const segundos =
         Math.floor(
             (
-                distancia%
+                distancia %
                 (1000*60)
-            )/
+            ) /
             1000
         );
 
 
-    document.getElementById("dias")
-        .textContent=dias;
+    document.getElementById(
+        "dias"
+    ).textContent = dias;
 
-    document.getElementById("horas")
-        .textContent=horas;
+    document.getElementById(
+        "horas"
+    ).textContent = horas;
 
-    document.getElementById("minutos")
-        .textContent=minutos;
+    document.getElementById(
+        "minutos"
+    ).textContent = minutos;
 
-    document.getElementById("segundos")
-        .textContent=segundos;
+    document.getElementById(
+        "segundos"
+    ).textContent = segundos;
 
 }
 
@@ -3456,9 +2829,9 @@ setInterval(
 );
 
 
-/* =========================================================
+/* =====================================================
    ANIMACIONES SCROLL
-========================================================= */
+===================================================== */
 
 const elementosReveal =
     document.querySelectorAll(
@@ -3468,9 +2841,11 @@ const elementosReveal =
 
 const observador =
     new IntersectionObserver(
+
         function(elementos){
 
             elementos.forEach(
+
                 function(elemento){
 
                     if(
@@ -3488,25 +2863,34 @@ const observador =
                     }
 
                 }
+
             );
 
         },
+
         {
             threshold:.12
         }
+
     );
 
 
 elementosReveal.forEach(
+
     elemento=>{
-        observador.observe(elemento);
+
+        observador.observe(
+            elemento
+        );
+
     }
+
 );
 
 
-/* =========================================================
+/* =====================================================
    CORAZONES
-========================================================= */
+===================================================== */
 
 function crearCorazon(){
 
@@ -3515,31 +2899,28 @@ function crearCorazon(){
             "div"
         );
 
-    corazon.className=
+    corazon.className =
         "corazones";
 
     corazon.textContent =
-        Math.random()>.5
-        ?"♡"
-        :"♥";
+        Math.random() > .5
+        ? "♡"
+        : "♥";
 
     corazon.style.left =
-        Math.random()*100+
-        "vw";
+        Math.random()*100+"vw";
 
     corazon.style.fontSize =
         (
             15+
             Math.random()*15
-        )+
-        "px";
+        )+"px";
 
     corazon.style.animationDuration =
         (
             5+
             Math.random()*4
-        )+
-        "s";
+        )+"s";
 
     document.body.appendChild(
         corazon
@@ -3560,9 +2941,9 @@ setInterval(
 );
 
 
-/* =========================================================
+/* =====================================================
    PARTÍCULAS
-========================================================= */
+===================================================== */
 
 function crearParticula(){
 
@@ -3571,14 +2952,13 @@ function crearParticula(){
             "div"
         );
 
-    particula.className=
+    particula.className =
         "particulas";
 
     particula.style.left =
-        Math.random()*100+
-        "vw";
+        Math.random()*100+"vw";
 
-    particula.style.bottom=
+    particula.style.bottom =
         "-10px";
 
     const duracion =
@@ -3586,8 +2966,7 @@ function crearParticula(){
         Math.random()*5;
 
     particula.style.animationDuration =
-        duracion+
-        "s";
+        duracion+"s";
 
     document.body.appendChild(
         particula
@@ -3608,11 +2987,9 @@ setInterval(
 );
 
 
-/* =========================================================
-   =========================================================
-   SUBIR FOTO DEL INVITADO A CLOUDINARY
-   =========================================================
-========================================================= */
+/* =====================================================
+   FOTOS DE INVITADOS
+===================================================== */
 
 const inputFoto =
     document.getElementById(
@@ -3645,15 +3022,23 @@ const tituloProgreso =
     );
 
 
+/* =====================================================
+   SELECCIONAR FOTO
+===================================================== */
+
 inputFoto.addEventListener(
+
     "change",
+
     function(){
 
         const archivo =
             this.files[0];
 
         if(!archivo){
+
             return;
+
         }
 
 
@@ -3667,7 +3052,10 @@ inputFoto.addEventListener(
                 "Por favor selecciona una imagen."
             );
 
+            this.value="";
+
             return;
+
         }
 
 
@@ -3675,6 +3063,7 @@ inputFoto.addEventListener(
 
         const lector =
             new FileReader();
+
 
         lector.onload =
             function(e){
@@ -3688,6 +3077,7 @@ inputFoto.addEventListener(
 
             };
 
+
         lector.readAsDataURL(
             archivo
         );
@@ -3698,12 +3088,13 @@ inputFoto.addEventListener(
         );
 
     }
+
 );
 
 
-/* =========================================================
-   FUNCIÓN DE SUBIDA
-========================================================= */
+/* =====================================================
+   SUBIR A CLOUDINARY
+===================================================== */
 
 function subirFotoCloudinary(
     archivo
@@ -3724,11 +3115,8 @@ function subirFotoCloudinary(
 
 
     const url =
-
         "https://api.cloudinary.com/v1_1/" +
-
         CLOUDINARY_CLOUD_NAME +
-
         "/image/upload";
 
 
@@ -3748,17 +3136,11 @@ function subirFotoCloudinary(
     );
 
 
-    /*
-       Identificamos la familia.
-       Esto NO contiene información secreta.
-    */
+    /* Información no secreta */
 
     datos.append(
         "context",
-        "familia=" +
-        encodeURIComponent(
-            nombreFamilia
-        )
+        "evento=Josue-Damaris|tipo=foto-invitado"
     );
 
 
@@ -3774,21 +3156,27 @@ function subirFotoCloudinary(
 
 
     xhr.upload.addEventListener(
+
         "progress",
+
         function(evento){
 
-            if(evento.lengthComputable){
+            if(
+                evento.lengthComputable
+            ){
 
                 const porcentaje =
                     Math.round(
                         (
-                            evento.loaded/
+                            evento.loaded /
                             evento.total
-                        )*100
+                        ) * 100
                     );
+
 
                 barraProgreso.style.width =
                     porcentaje+"%";
+
 
                 tituloProgreso.textContent =
                     "📤 Subiendo foto... "+
@@ -3797,6 +3185,7 @@ function subirFotoCloudinary(
             }
 
         }
+
     );
 
 
@@ -3804,8 +3193,8 @@ function subirFotoCloudinary(
         function(){
 
             if(
-                xhr.status>=200 &&
-                xhr.status<300
+                xhr.status >= 200 &&
+                xhr.status < 300
             ){
 
                 try{
@@ -3825,23 +3214,29 @@ function subirFotoCloudinary(
 
 
                     mensajeFoto.innerHTML =
-
                         "Tu foto fue enviada correctamente. " +
                         "¡Gracias por compartir este recuerdo! 💍💕";
 
-
-                    /*
-                       Guardamos la URL en el dispositivo
-                       para poder verla nuevamente.
-                    */
 
                     guardarFotoLocal(
                         respuesta.secure_url
                     );
 
 
+                    /*
+                       Limpiamos el input para permitir
+                       tomar otra foto inmediatamente.
+                    */
+
+                    inputFoto.value="";
+
+
                 }
                 catch(error){
+
+                    console.error(
+                        error
+                    );
 
                     mostrarErrorFoto();
 
@@ -3849,6 +3244,11 @@ function subirFotoCloudinary(
 
             }
             else{
+
+                console.error(
+                    "Cloudinary:",
+                    xhr.responseText
+                );
 
                 mostrarErrorFoto();
 
@@ -3865,6 +3265,18 @@ function subirFotoCloudinary(
         };
 
 
+    xhr.ontimeout =
+        function(){
+
+            mostrarErrorFoto();
+
+        };
+
+
+    xhr.timeout =
+        60000;
+
+
     xhr.send(
         datos
     );
@@ -3872,19 +3284,20 @@ function subirFotoCloudinary(
 }
 
 
-/* =========================================================
-   ERROR
-========================================================= */
+/* =====================================================
+   ERROR CLOUDINARY
+===================================================== */
 
 function mostrarErrorFoto(){
 
     tituloProgreso.textContent =
         "❌ No se pudo subir la foto";
 
-    mensajeFoto.innerHTML =
 
+    mensajeFoto.innerHTML =
         "Revisa tu conexión a Internet " +
         "e inténtalo nuevamente.";
+
 
     barraProgreso.style.width =
         "0%";
@@ -3892,53 +3305,125 @@ function mostrarErrorFoto(){
 }
 
 
-/* =========================================================
-   GUARDAR FOTO LOCAL
-========================================================= */
+/* =====================================================
+   GUARDAR URL LOCAL
+===================================================== */
 
 function guardarFotoLocal(
     url
 ){
 
-    const fotos =
-        JSON.parse(
-            localStorage.getItem(
-                "fotosInvitadosBoda"
-            )||"[]"
+    try{
+
+        const fotos =
+            JSON.parse(
+                localStorage.getItem(
+                    "fotosInvitadosBoda"
+                ) || "[]"
+            );
+
+
+        fotos.push({
+
+            url:url,
+
+            fecha:
+                new Date()
+                .toLocaleString("es-MX")
+
+        });
+
+
+        localStorage.setItem(
+
+            "fotosInvitadosBoda",
+
+            JSON.stringify(
+                fotos
+            )
+
         );
 
+    }
+    catch(error){
 
-    fotos.push({
+        console.log(
+            "No se pudo guardar localmente:",
+            error
+        );
 
-        url:url,
-
-        familia:nombreFamilia,
-
-        fecha:
-            new Date()
-            .toLocaleString("es-MX")
-
-    });
-
-
-    localStorage.setItem(
-
-        "fotosInvitadosBoda",
-
-        JSON.stringify(fotos)
-
-    );
+    }
 
 }
 
 
-/* =========================================================
-   CARGAR PANEL
-========================================================= */
+/* =====================================================
+   QR / ENTRADA DIRECTA A FOTOS
+===================================================== */
 
-actualizarPanel();
+/*
+   Si el invitado entra mediante:
+
+   TU_URL/#fotos-invitados
+
+   la página bajará automáticamente
+   a la sección de fotografías.
+*/
+
+
+function irAFotosSiCorresponde(){
+
+    if(
+        window.location.hash ===
+        "#fotos-invitados"
+    ){
+
+        setTimeout(
+            function(){
+
+                const seccionFotos =
+                    document.getElementById(
+                        "fotos-invitados"
+                    );
+
+
+                if(seccionFotos){
+
+                    seccionFotos.scrollIntoView({
+
+                        behavior:"smooth",
+
+                        block:"start"
+
+                    });
+
+                }
+
+            },
+            900
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "load",
+    irAFotosSiCorresponde
+);
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+console.log(
+    "Josué & Damaris - Invitación cargada correctamente."
+);
 
 </script>
 
 </body>
+
 </html>
