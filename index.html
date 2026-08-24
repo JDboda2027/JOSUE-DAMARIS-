@@ -2164,23 +2164,19 @@ footer p{
 
 </footer>
 
-
 <!-- =====================================================
      JAVASCRIPT
-     PARTE 2 CONTINÚA AQUÍ
+     PARTE 2
 ===================================================== -->
 
 <script>
-
 
 /* =====================================================
    CONFIGURACIÓN
 ===================================================== */
 
 const URL_APPS_SCRIPT =
-    "https://script.google.com/macros/s/AKfycbxOk30Yn_R8BTxI4g--JnbkwxqXnlpOGEJfthzym5JMzUZVl8ZGZrZLuf0tTp_sUi5q/exec"
-   
-";
+    "https://script.google.com/macros/s/AKfycbxOk30Yn_R8BTxI4g--JnbkwxqXnlpOGEJfthzym5JMzUZVl8ZGZrZLuf0tTp_sUi5q/exec";
 
 
 /* =====================================================
@@ -2267,13 +2263,21 @@ const numeroMesaVisual =
 ===================================================== */
 
 const parametros =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
 
 const familiaURL =
-    (parametros.get("familia") || "ejemplo").toLowerCase().trim();
+    (
+        parametros.get("familia") ||
+        "ejemplo"
+    )
+    .toLowerCase()
+    .trim();
 
 const familia =
-    familias[familiaURL] || familias.ejemplo;
+    familias[familiaURL] ||
+    familias.ejemplo;
 
 
 /* =====================================================
@@ -2282,32 +2286,50 @@ const familia =
 
 function cargarDatosFamilia(){
 
-    nombreFamiliaPortada.textContent =
-        familia.nombre;
+    if(nombreFamiliaPortada){
+        nombreFamiliaPortada.textContent =
+            familia.nombre;
+    }
 
-    lugaresFamiliaPortada.textContent =
-        familia.lugares;
+    if(lugaresFamiliaPortada){
+        lugaresFamiliaPortada.textContent =
+            familia.lugares;
+    }
 
-    mesaFamiliaPortada.textContent =
-        familia.mesa;
+    if(mesaFamiliaPortada){
+        mesaFamiliaPortada.textContent =
+            familia.mesa;
+    }
 
-    confirmacionFamilia.textContent =
-        familia.nombre;
+    if(confirmacionFamilia){
+        confirmacionFamilia.textContent =
+            familia.nombre;
+    }
 
-    confirmacionLugares.textContent =
-        familia.lugares;
+    if(confirmacionLugares){
+        confirmacionLugares.textContent =
+            familia.lugares;
+    }
 
-    confirmacionMesa.textContent =
-        familia.mesa;
+    if(confirmacionMesa){
+        confirmacionMesa.textContent =
+            familia.mesa;
+    }
 
-    lugaresReservados.textContent =
-        familia.lugares;
+    if(lugaresReservados){
+        lugaresReservados.textContent =
+            familia.lugares;
+    }
 
-    mesaReservada.textContent =
-        familia.mesa;
+    if(mesaReservada){
+        mesaReservada.textContent =
+            familia.mesa;
+    }
 
-    numeroMesaVisual.textContent =
-        familia.mesa;
+    if(numeroMesaVisual){
+        numeroMesaVisual.textContent =
+            familia.mesa;
+    }
 
 }
 
@@ -2320,30 +2342,51 @@ cargarDatosFamilia();
 
 if(botonAbrir){
 
-    botonAbrir.addEventListener("click", function(){
+    botonAbrir.addEventListener(
+        "click",
+        function(){
 
-        if(pantallaInicial){
-            pantallaInicial.classList.add("ocultar");
-        }
+            if(pantallaInicial){
 
-        if(invitacionPersonalizada){
-            invitacionPersonalizada.classList.add("mostrar");
-        }
+                pantallaInicial.classList.add(
+                    "ocultar"
+                );
 
-        document.body.style.overflowX = "hidden";
-
-        setTimeout(function(){
-
-            if(invitacionPersonalizada){
-                invitacionPersonalizada.scrollIntoView({
-                    behavior:"smooth",
-                    block:"start"
-                });
             }
 
-        }, 300);
+            if(invitacionPersonalizada){
 
-    });
+                invitacionPersonalizada.classList.add(
+                    "mostrar"
+                );
+
+            }
+
+            document.body.style.overflowX =
+                "hidden";
+
+            document.body.style.overflowY =
+                "auto";
+
+
+            setTimeout(
+                function(){
+
+                    if(invitacionPersonalizada){
+
+                        invitacionPersonalizada.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+
+                },
+                300
+            );
+
+        }
+    );
 
 }
 
@@ -2353,7 +2396,10 @@ if(botonAbrir){
 ===================================================== */
 
 const fechaObjetivo =
-    new Date("January 16, 2027 17:00:00").getTime();
+    new Date(
+        "January 16, 2027 17:00:00"
+    ).getTime();
+
 
 function actualizarContador(){
 
@@ -2362,6 +2408,7 @@ function actualizarContador(){
 
     const diferencia =
         fechaObjetivo - ahora;
+
 
     const dias =
         document.getElementById("dias");
@@ -2376,6 +2423,16 @@ function actualizarContador(){
         document.getElementById("segundos");
 
 
+    if(
+        !dias ||
+        !horas ||
+        !minutos ||
+        !segundos
+    ){
+        return;
+    }
+
+
     if(diferencia <= 0){
 
         dias.textContent = "0";
@@ -2384,20 +2441,30 @@ function actualizarContador(){
         segundos.textContent = "0";
 
         return;
+
     }
 
 
     const totalSegundos =
-        Math.floor(diferencia / 1000);
+        Math.floor(
+            diferencia / 1000
+        );
+
 
     const d =
-        Math.floor(totalSegundos / 86400);
+        Math.floor(
+            totalSegundos / 86400
+        );
 
     const h =
-        Math.floor((totalSegundos % 86400) / 3600);
+        Math.floor(
+            (totalSegundos % 86400) / 3600
+        );
 
     const m =
-        Math.floor((totalSegundos % 3600) / 60);
+        Math.floor(
+            (totalSegundos % 3600) / 60
+        );
 
     const s =
         totalSegundos % 60;
@@ -2410,9 +2477,13 @@ function actualizarContador(){
 
 }
 
+
 actualizarContador();
 
-setInterval(actualizarContador,1000);
+setInterval(
+    actualizarContador,
+    1000
+);
 
 
 /* =====================================================
@@ -2425,36 +2496,65 @@ const elementosReveal =
     );
 
 
-const observerReveal =
-    new IntersectionObserver(
-        function(entries){
+if(
+    "IntersectionObserver" in window
+){
 
-            entries.forEach(function(entry){
+    const observerReveal =
+        new IntersectionObserver(
+            function(entries){
 
-                if(entry.isIntersecting){
+                entries.forEach(
+                    function(entry){
 
-                    entry.target.classList.add("visible");
+                        if(
+                            entry.isIntersecting
+                        ){
 
-                    observerReveal.unobserve(
-                        entry.target
-                    );
+                            entry.target.classList.add(
+                                "visible"
+                            );
 
-                }
+                            observerReveal.unobserve(
+                                entry.target
+                            );
 
-            });
+                        }
 
-        },
-        {
-            threshold:0.12
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    elementosReveal.forEach(
+        function(elemento){
+
+            observerReveal.observe(
+                elemento
+            );
+
         }
     );
 
+}
+else{
 
-elementosReveal.forEach(function(elemento){
+    elementosReveal.forEach(
+        function(elemento){
 
-    observerReveal.observe(elemento);
+            elemento.classList.add(
+                "visible"
+            );
 
-});
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -2470,30 +2570,46 @@ function crearCorazon(){
         "corazones";
 
     corazon.textContent =
-        Math.random() > .5 ? "♡" : "♥";
+        Math.random() > 0.5
+            ? "♡"
+            : "♥";
 
     corazon.style.left =
         Math.random() * 100 + "vw";
 
     corazon.style.fontSize =
-        (14 + Math.random() * 18) + "px";
+        (
+            14 +
+            Math.random() * 18
+        ) + "px";
 
     corazon.style.animationDuration =
-        (7 + Math.random() * 7) + "s";
+        (
+            7 +
+            Math.random() * 7
+        ) + "s";
 
-    document.body.appendChild(corazon);
+    document.body.appendChild(
+        corazon
+    );
 
 
-    setTimeout(function(){
+    setTimeout(
+        function(){
 
-        corazon.remove();
+            corazon.remove();
 
-    },15000);
+        },
+        15000
+    );
 
 }
 
 
-setInterval(crearCorazon,1800);
+setInterval(
+    crearCorazon,
+    1800
+);
 
 
 /* =====================================================
@@ -2515,21 +2631,32 @@ function crearParticula(){
         "-10px";
 
     particula.style.animationDuration =
-        (8 + Math.random() * 8) + "s";
+        (
+            8 +
+            Math.random() * 8
+        ) + "s";
 
-    document.body.appendChild(particula);
+    document.body.appendChild(
+        particula
+    );
 
 
-    setTimeout(function(){
+    setTimeout(
+        function(){
 
-        particula.remove();
+            particula.remove();
 
-    },18000);
+        },
+        18000
+    );
 
 }
 
 
-setInterval(crearParticula,1200);
+setInterval(
+    crearParticula,
+    1200
+);
 
 
 /* =====================================================
@@ -2537,40 +2664,64 @@ setInterval(crearParticula,1200);
 ===================================================== */
 
 const asistencia =
-    document.getElementById("asistencia");
+    document.getElementById(
+        "asistencia"
+    );
 
 const personasConfirmacion =
-    document.getElementById("personasConfirmacion");
+    document.getElementById(
+        "personasConfirmacion"
+    );
 
 const cantidadAsistiran =
-    document.getElementById("cantidadAsistiran");
+    document.getElementById(
+        "cantidadAsistiran"
+    );
 
 const personasAsistiran =
-    document.getElementById("personasAsistiran");
+    document.getElementById(
+        "personasAsistiran"
+    );
 
 const personasNoAsistiran =
-    document.getElementById("personasNoAsistiran");
+    document.getElementById(
+        "personasNoAsistiran"
+    );
 
 const personasDisponibles =
-    document.getElementById("personasDisponibles");
+    document.getElementById(
+        "personasDisponibles"
+    );
 
 const asientosVisuales =
-    document.getElementById("asientosVisuales");
+    document.getElementById(
+        "asientosVisuales"
+    );
 
 const sillas =
-    document.getElementById("sillas");
+    document.getElementById(
+        "sillas"
+    );
 
 const textoAsientosDisponibles =
-    document.getElementById("textoAsientosDisponibles");
+    document.getElementById(
+        "textoAsientosDisponibles"
+    );
 
 const estadoDisponiblesFinal =
-    document.getElementById("estadoDisponiblesFinal");
+    document.getElementById(
+        "estadoDisponiblesFinal"
+    );
 
 const botonConfirmar =
-    document.getElementById("botonConfirmar");
+    document.getElementById(
+        "botonConfirmar"
+    );
 
 const mensajeConfirmacion =
-    document.getElementById("mensajeConfirmacion");
+    document.getElementById(
+        "mensajeConfirmacion"
+    );
 
 
 /* =====================================================
@@ -2579,15 +2730,24 @@ const mensajeConfirmacion =
 
 function prepararCantidadPersonas(){
 
+    if(!cantidadAsistiran){
+        return;
+    }
+
+
     cantidadAsistiran.innerHTML = "";
 
+
     const opcionInicial =
-        document.createElement("option");
+        document.createElement(
+            "option"
+        );
 
     opcionInicial.value = "";
 
     opcionInicial.textContent =
         "Selecciona la cantidad";
+
 
     cantidadAsistiran.appendChild(
         opcionInicial
@@ -2601,7 +2761,9 @@ function prepararCantidadPersonas(){
     ){
 
         const opcion =
-            document.createElement("option");
+            document.createElement(
+                "option"
+            );
 
         opcion.value = i;
 
@@ -2609,6 +2771,7 @@ function prepararCantidadPersonas(){
             i === 1
                 ? "1 persona"
                 : i + " personas";
+
 
         cantidadAsistiran.appendChild(
             opcion
@@ -2618,6 +2781,7 @@ function prepararCantidadPersonas(){
 
 }
 
+
 prepararCantidadPersonas();
 
 
@@ -2625,68 +2789,105 @@ prepararCantidadPersonas();
    MOSTRAR / OCULTAR PERSONAS
 ===================================================== */
 
-asistencia.addEventListener(
-    "change",
-    function(){
+if(asistencia){
 
-        if(this.value === "Si"){
+    asistencia.addEventListener(
+        "change",
+        function(){
 
-            personasConfirmacion.style.display =
-                "block";
+            if(this.value === "Si"){
 
-            asientosVisuales.style.display =
-                "block";
+                if(personasConfirmacion){
+                    personasConfirmacion.style.display =
+                        "block";
+                }
 
-            cantidadAsistiran.value = "";
+                if(asientosVisuales){
+                    asientosVisuales.style.display =
+                        "block";
+                }
 
-            actualizarPersonas();
+                if(cantidadAsistiran){
+                    cantidadAsistiran.value = "";
+                }
+
+                actualizarPersonas();
+
+            }
+
+            else{
+
+                if(personasConfirmacion){
+                    personasConfirmacion.style.display =
+                        "none";
+                }
+
+                if(asientosVisuales){
+                    asientosVisuales.style.display =
+                        "none";
+                }
+
+                if(cantidadAsistiran){
+                    cantidadAsistiran.value = "";
+                }
+
+                if(personasAsistiran){
+                    personasAsistiran.textContent =
+                        "0";
+                }
+
+                if(personasNoAsistiran){
+                    personasNoAsistiran.textContent =
+                        familia.lugares;
+                }
+
+                if(personasDisponibles){
+                    personasDisponibles.textContent =
+                        familia.lugares;
+                }
+
+                if(sillas){
+                    sillas.innerHTML = "";
+                }
+
+                if(textoAsientosDisponibles){
+                    textoAsientosDisponibles.textContent =
+                        "Selecciona la cantidad de personas.";
+                }
+
+                if(estadoDisponiblesFinal){
+                    estadoDisponiblesFinal.textContent =
+                        "Selecciona cuántas personas asistirán.";
+                }
+
+            }
 
         }
+    );
 
-        else{
-
-            personasConfirmacion.style.display =
-                "none";
-
-            asientosVisuales.style.display =
-                "none";
-
-            cantidadAsistiran.value = "";
-
-            personasAsistiran.textContent =
-                "0";
-
-            personasNoAsistiran.textContent =
-                familia.lugares;
-
-            personasDisponibles.textContent =
-                familia.lugares;
-
-            sillas.innerHTML = "";
-
-            textoAsientosDisponibles.textContent =
-                "Selecciona la cantidad de personas.";
-
-            estadoDisponiblesFinal.textContent =
-                "Selecciona cuántas personas asistirán.";
-
-        }
-
-    }
-);
+}
 
 
 /* =====================================================
    ACTUALIZAR PERSONAS Y ASIENTOS
 ===================================================== */
 
-cantidadAsistiran.addEventListener(
-    "change",
-    actualizarPersonas
-);
+if(cantidadAsistiran){
+
+    cantidadAsistiran.addEventListener(
+        "change",
+        actualizarPersonas
+    );
+
+}
 
 
 function actualizarPersonas(){
+
+    if(!cantidadAsistiran){
+        return;
+    }
+
 
     const cantidad =
         parseInt(
@@ -2698,14 +2899,20 @@ function actualizarPersonas(){
         familia.lugares - cantidad;
 
 
-    personasAsistiran.textContent =
-        cantidad;
+    if(personasAsistiran){
+        personasAsistiran.textContent =
+            cantidad;
+    }
 
-    personasNoAsistiran.textContent =
-        noAsistiran;
+    if(personasNoAsistiran){
+        personasNoAsistiran.textContent =
+            noAsistiran;
+    }
 
-    personasDisponibles.textContent =
-        noAsistiran;
+    if(personasDisponibles){
+        personasDisponibles.textContent =
+            noAsistiran;
+    }
 
 
     crearSillas(
@@ -2716,34 +2923,52 @@ function actualizarPersonas(){
 
     if(cantidad > 0){
 
-        textoAsientosDisponibles.innerHTML =
-            "❤️ <strong>" +
-            cantidad +
-            "</strong> de " +
-            familia.lugares +
-            " lugares serán utilizados.<br>" +
-            "🪑 Quedan <strong>" +
-            noAsistiran +
-            "</strong> lugares disponibles.";
+        if(textoAsientosDisponibles){
 
-        estadoDisponiblesFinal.innerHTML =
-            "🪑 En tu invitación hay " +
-            "<strong>" +
-            familia.lugares +
-            "</strong> lugares asignados. " +
-            "Has confirmado " +
-            "<strong>" +
-            cantidad +
-            "</strong>.";
+            textoAsientosDisponibles.innerHTML =
+                "❤️ <strong>" +
+                cantidad +
+                "</strong> de " +
+                familia.lugares +
+                " lugares serán utilizados.<br>" +
+                "🪑 Quedan <strong>" +
+                noAsistiran +
+                "</strong> lugares disponibles.";
+
+        }
+
+
+        if(estadoDisponiblesFinal){
+
+            estadoDisponiblesFinal.innerHTML =
+                "🪑 En tu invitación hay " +
+                "<strong>" +
+                familia.lugares +
+                "</strong> lugares asignados. " +
+                "Has confirmado " +
+                "<strong>" +
+                cantidad +
+                "</strong>.";
+
+        }
 
     }
+
     else{
 
-        textoAsientosDisponibles.textContent =
-            "Selecciona la cantidad de personas.";
+        if(textoAsientosDisponibles){
 
-        estadoDisponiblesFinal.textContent =
-            "Selecciona cuántas personas asistirán.";
+            textoAsientosDisponibles.textContent =
+                "Selecciona la cantidad de personas.";
+
+        }
+
+        if(estadoDisponiblesFinal){
+
+            estadoDisponiblesFinal.textContent =
+                "Selecciona cuántas personas asistirán.";
+
+        }
 
     }
 
@@ -2759,6 +2984,11 @@ function crearSillas(
     total
 ){
 
+    if(!sillas){
+        return;
+    }
+
+
     sillas.innerHTML = "";
 
 
@@ -2769,7 +2999,10 @@ function crearSillas(
     ){
 
         const silla =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         silla.className =
             "silla " +
@@ -2779,18 +3012,24 @@ function crearSillas(
                     : "disponible"
             );
 
+
         silla.textContent =
             i <= ocupadas
                 ? "❤️"
                 : "🪑";
+
 
         silla.title =
             i <= ocupadas
                 ? "Lugar confirmado"
                 : "Lugar disponible";
 
+
         silla.style.animationDelay =
-            ((i - 1) * 0.08) + "s";
+            (
+                (i - 1) * 0.08
+            ) + "s";
+
 
         sillas.appendChild(
             silla
@@ -2805,179 +3044,204 @@ function crearSillas(
    CONFIRMAR ASISTENCIA
 ===================================================== */
 
-botonConfirmar.addEventListener(
-    "click",
-    async function(){
+if(botonConfirmar){
 
-        const respuesta =
-            asistencia.value;
+    botonConfirmar.addEventListener(
+        "click",
+        async function(){
 
-
-        if(!respuesta){
-
-            mostrarMensaje(
-                "⚠️ Por favor selecciona si podrás acompañarnos.",
-                false
-            );
-
-            return;
-        }
+            const respuesta =
+                asistencia
+                    ? asistencia.value
+                    : "";
 
 
-        let cantidad = 0;
-
-
-        if(respuesta === "Si"){
-
-            cantidad =
-                parseInt(
-                    cantidadAsistiran.value
-                ) || 0;
-
-
-            if(cantidad <= 0){
+            if(!respuesta){
 
                 mostrarMensaje(
-                    "⚠️ Selecciona cuántas personas asistirán.",
+                    "⚠️ Por favor selecciona si podrás acompañarnos.",
                     false
                 );
 
                 return;
-            }
-
-
-            if(cantidad > familia.lugares){
-
-                mostrarMensaje(
-                    "⚠️ La cantidad seleccionada supera los lugares asignados.",
-                    false
-                );
-
-                return;
-            }
-
-        }
-
-
-        botonConfirmar.disabled =
-            true;
-
-        botonConfirmar.textContent =
-            "⏳ GUARDANDO...";
-
-
-        const datos = {
-
-            familia: familia.nombre,
-
-            codigoFamilia: familiaURL,
-
-            lugaresAsignados:
-                familia.lugares,
-
-            mesa:
-                familia.mesa,
-
-            asistencia:
-                respuesta,
-
-            personasAsistiran:
-                cantidad,
-
-            personasNoAsistiran:
-                familia.lugares - cantidad,
-
-            fechaRegistro:
-                new Date().toLocaleString(
-                    "es-GT"
-                )
-
-        };
-
-
-        try{
-
-            if(
-                URL_APPS_SCRIPT &&
-                !URL_APPS_SCRIPT.includes(
-                    "PEGA_AQUI"
-                )
-            ){
-
-                await fetch(
-                    URL_APPS_SCRIPT,
-                    {
-                        method:"POST",
-                        mode:"no-cors",
-                        headers:{
-                            "Content-Type":
-                                "application/json"
-                        },
-                        body:
-                            JSON.stringify(datos)
-                    }
-                );
 
             }
 
 
-            mostrarMensaje(
-                respuesta === "Si"
-                    ? "💍 ¡Gracias! Hemos registrado tu confirmación. Te esperamos con mucho cariño. ❤️"
-                    : "❤️ Gracias por avisarnos. Sentiremos mucho que no puedas acompañarnos.",
-                true
-            );
-
-
-            botonConfirmar.textContent =
-                "✅ CONFIRMACIÓN REGISTRADA";
+            let cantidad = 0;
 
 
             if(respuesta === "Si"){
 
-                lugaresReservados.textContent =
-                    cantidad;
+                cantidad =
+                    parseInt(
+                        cantidadAsistiran
+                            ? cantidadAsistiran.value
+                            : 0
+                    ) || 0;
 
-                estadoDisponiblesFinal.innerHTML =
-                    "✅ Confirmados: " +
-                    "<strong>" +
-                    cantidad +
-                    "</strong> · " +
-                    "Disponibles: " +
-                    "<strong>" +
-                    (
-                        familia.lugares - cantidad
-                    ) +
-                    "</strong>";
+
+                if(cantidad <= 0){
+
+                    mostrarMensaje(
+                        "⚠️ Selecciona cuántas personas asistirán.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                if(cantidad > familia.lugares){
+
+                    mostrarMensaje(
+                        "⚠️ La cantidad seleccionada supera los lugares asignados.",
+                        false
+                    );
+
+                    return;
+
+                }
 
             }
 
 
-        }
-        catch(error){
-
-            console.error(
-                "Error al guardar:",
-                error
-            );
-
-
-            mostrarMensaje(
-                "⚠️ No se pudo completar el registro. Intenta nuevamente.",
-                false
-            );
-
-
             botonConfirmar.disabled =
-                false;
+                true;
 
             botonConfirmar.textContent =
-                "💍 CONFIRMAR ASISTENCIA";
+                "⏳ GUARDANDO...";
+
+
+            const datos = {
+
+                familia:
+                    familia.nombre,
+
+                codigoFamilia:
+                    familiaURL,
+
+                lugaresAsignados:
+                    familia.lugares,
+
+                mesa:
+                    familia.mesa,
+
+                asistencia:
+                    respuesta,
+
+                personasAsistiran:
+                    cantidad,
+
+                personasNoAsistiran:
+                    familia.lugares -
+                    cantidad,
+
+                fechaRegistro:
+                    new Date().toLocaleString(
+                        "es-GT"
+                    )
+
+            };
+
+
+            try{
+
+                if(
+                    URL_APPS_SCRIPT &&
+                    !URL_APPS_SCRIPT.includes(
+                        "PEGA_AQUI"
+                    )
+                ){
+
+                    await fetch(
+                        URL_APPS_SCRIPT,
+                        {
+                            method: "POST",
+                            mode: "no-cors",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+                            body:
+                                JSON.stringify(
+                                    datos
+                                )
+                        }
+                    );
+
+                }
+
+
+                mostrarMensaje(
+                    respuesta === "Si"
+                        ? "💍 ¡Gracias! Hemos registrado tu confirmación. Te esperamos con mucho cariño. ❤️"
+                        : "❤️ Gracias por avisarnos. Sentiremos mucho que no puedas acompañarnos.",
+                    true
+                );
+
+
+                botonConfirmar.textContent =
+                    "✅ CONFIRMACIÓN REGISTRADA";
+
+
+                if(respuesta === "Si"){
+
+                    if(lugaresReservados){
+
+                        lugaresReservados.textContent =
+                            cantidad;
+
+                    }
+
+
+                    if(estadoDisponiblesFinal){
+
+                        estadoDisponiblesFinal.innerHTML =
+                            "✅ Confirmados: " +
+                            "<strong>" +
+                            cantidad +
+                            "</strong> · " +
+                            "Disponibles: " +
+                            "<strong>" +
+                            (
+                                familia.lugares -
+                                cantidad
+                            ) +
+                            "</strong>";
+
+                    }
+
+                }
+
+            }
+            catch(error){
+
+                console.error(
+                    "Error al guardar:",
+                    error
+                );
+
+
+                mostrarMensaje(
+                    "⚠️ No se pudo completar el registro. Intenta nuevamente.",
+                    false
+                );
+
+
+                botonConfirmar.disabled =
+                    false;
+
+                botonConfirmar.textContent =
+                    "💍 CONFIRMAR ASISTENCIA";
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 /* =====================================================
@@ -2989,11 +3253,18 @@ function mostrarMensaje(
     correcto
 ){
 
+    if(!mensajeConfirmacion){
+        return;
+    }
+
+
     mensajeConfirmacion.style.display =
         "block";
 
+
     mensajeConfirmacion.textContent =
         mensaje;
+
 
     mensajeConfirmacion.style.color =
         correcto
@@ -3008,22 +3279,34 @@ function mostrarMensaje(
 ===================================================== */
 
 const fotoInvitado =
-    document.getElementById("fotoInvitado");
+    document.getElementById(
+        "fotoInvitado"
+    );
 
 const previewFoto =
-    document.getElementById("previewFoto");
+    document.getElementById(
+        "previewFoto"
+    );
 
 const progresoFoto =
-    document.getElementById("progresoFoto");
+    document.getElementById(
+        "progresoFoto"
+    );
 
 const barraProgreso =
-    document.getElementById("barraProgreso");
+    document.getElementById(
+        "barraProgreso"
+    );
 
 const tituloProgreso =
-    document.getElementById("tituloProgreso");
+    document.getElementById(
+        "tituloProgreso"
+    );
 
 const mensajeFoto =
-    document.getElementById("mensajeFoto");
+    document.getElementById(
+        "mensajeFoto"
+    );
 
 
 if(fotoInvitado){
@@ -3041,7 +3324,11 @@ if(fotoInvitado){
             }
 
 
-            if(!archivo.type.startsWith("image/")){
+            if(
+                !archivo.type.startsWith(
+                    "image/"
+                )
+            ){
 
                 alert(
                     "Selecciona una imagen válida."
@@ -3050,6 +3337,7 @@ if(fotoInvitado){
                 this.value = "";
 
                 return;
+
             }
 
 
@@ -3060,12 +3348,16 @@ if(fotoInvitado){
             lector.onload =
                 function(e){
 
-                    previewFoto.src =
-                        e.target.result;
+                    if(previewFoto){
 
-                    previewFoto.classList.add(
-                        "mostrar"
-                    );
+                        previewFoto.src =
+                            e.target.result;
+
+                        previewFoto.classList.add(
+                            "mostrar"
+                        );
+
+                    }
 
                 };
 
@@ -3075,18 +3367,37 @@ if(fotoInvitado){
             );
 
 
-            progresoFoto.classList.add(
-                "mostrar"
-            );
+            if(progresoFoto){
 
-            barraProgreso.style.width =
-                "0%";
+                progresoFoto.classList.add(
+                    "mostrar"
+                );
 
-            tituloProgreso.textContent =
-                "📤 Foto seleccionada";
+            }
 
-            mensajeFoto.innerHTML =
-                "La foto está lista para ser compartida. ❤️";
+
+            if(barraProgreso){
+
+                barraProgreso.style.width =
+                    "0%";
+
+            }
+
+
+            if(tituloProgreso){
+
+                tituloProgreso.textContent =
+                    "📤 Foto seleccionada";
+
+            }
+
+
+            if(mensajeFoto){
+
+                mensajeFoto.innerHTML =
+                    "La foto está lista para ser compartida. ❤️";
+
+            }
 
 
             let progreso = 0;
@@ -3098,8 +3409,13 @@ if(fotoInvitado){
 
                         progreso += 10;
 
-                        barraProgreso.style.width =
-                            progreso + "%";
+
+                        if(barraProgreso){
+
+                            barraProgreso.style.width =
+                                progreso + "%";
+
+                        }
 
 
                         if(progreso >= 100){
@@ -3108,8 +3424,13 @@ if(fotoInvitado){
                                 intervalo
                             );
 
-                            tituloProgreso.textContent =
-                                "✅ Foto preparada";
+
+                            if(tituloProgreso){
+
+                                tituloProgreso.textContent =
+                                    "✅ Foto preparada";
+
+                            }
 
                         }
 
@@ -3159,8 +3480,10 @@ window.addEventListener(
 /* =====================================================
    FIN JAVASCRIPT
 ===================================================== */
-<script>
+
+</script>
 
 </body>
 
 </html>
+                                                
