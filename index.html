@@ -39,14 +39,22 @@ input{
 
 section{
     position:relative;
+    width:100%;
     padding:80px 20px;
     text-align:center;
+}
+
+section > *{
+    max-width:1200px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .titulo{
     font-size:clamp(30px,7vw,48px);
     margin-bottom:20px;
     color:#7a4e3a;
+    line-height:1.2;
 }
 
 .subtitulo{
@@ -85,6 +93,11 @@ button:hover,
     background:#6f4938;
 }
 
+button:active,
+.boton:active{
+    transform:scale(.97);
+}
+
 
 /* =====================================================
    PANTALLA INICIAL
@@ -94,22 +107,26 @@ button:hover,
     position:fixed;
     inset:0;
     z-index:9999;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
+    padding:20px;
 
     background:
         linear-gradient(
             rgba(40,25,20,.55),
-            rgba(40,25,20,.65)
+            rgba(40,25,20,.70)
         ),
         url("IMG-20260609-WA0011.jpg")
         center/cover no-repeat;
 
     transition:
-        opacity .7s ease,
-        visibility .7s ease;
+        opacity .8s ease,
+        visibility .8s ease;
 }
 
 #pantallaInicial.ocultar{
@@ -119,34 +136,49 @@ button:hover,
 }
 
 .pantalla-contenido{
-    width:min(90%,600px);
+    width:min(92%,600px);
+
     padding:45px 25px;
 
-    border:1px solid rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.55);
 
     background:rgba(255,255,255,.12);
 
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(7px);
 
-    border-radius:20px;
+    -webkit-backdrop-filter:blur(7px);
+
+    border-radius:25px;
 
     color:white;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.pantalla-contenido .adorno{
+    font-size:45px;
+    margin-bottom:10px;
 }
 
 .pantalla-contenido h1{
     font-size:clamp(38px,10vw,70px);
+    font-weight:normal;
     margin-bottom:15px;
 }
 
 .pantalla-contenido p{
     margin-bottom:30px;
-    line-height:1.7;
+    line-height:1.8;
+    font-size:18px;
 }
 
 #abrirInvitacion{
     background:#fff;
     color:#704b3a;
     font-weight:bold;
+    padding:16px 28px;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
 }
 
 
@@ -162,9 +194,14 @@ button:hover,
     justify-content:center;
 
     background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.9),
+            transparent 55%
+        ),
         linear-gradient(
-            rgba(255,248,242,.92),
-            rgba(255,248,242,.96)
+            rgba(255,248,242,.95),
+            rgba(255,248,242,.98)
         );
 
     opacity:0;
@@ -185,8 +222,9 @@ button:hover,
 }
 
 .invitacion-contenido{
-    width:min(100%,900px);
+    width:min(100%,950px);
     padding:30px 10px;
+    text-align:center;
 }
 
 .adorno{
@@ -206,6 +244,7 @@ button:hover,
 .nombre-familia{
     font-size:clamp(34px,8vw,60px);
     color:#76503e;
+    font-weight:normal;
 }
 
 .linea-decorativa{
@@ -223,10 +262,10 @@ button:hover,
 }
 
 .info-familia{
+    width:min(100%,850px);
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
-    max-width:850px;
     margin:auto;
 }
 
@@ -244,7 +283,7 @@ button:hover,
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.75);
+    background:rgba(255,255,255,.78);
 
     box-shadow:
         0 8px 30px rgba(90,60,45,.12);
@@ -271,6 +310,8 @@ button:hover,
     overflow:hidden;
 }
 
+/* MARCA DE AGUA MÁS PEQUEÑA */
+
 .marca-agua-mesa{
     position:absolute;
     inset:0;
@@ -279,8 +320,9 @@ button:hover,
     justify-content:center;
     align-items:center;
 
-    font-size:70px;
-    opacity:.08;
+    font-size:42px;
+
+    opacity:.055;
 
     pointer-events:none;
 }
@@ -331,8 +373,9 @@ button:hover,
 }
 
 .portada-contenido{
-    width:min(95%,800px);
+    width:min(95%,850px);
     padding:30px;
+    text-align:center;
 }
 
 .pequeno{
@@ -345,6 +388,7 @@ button:hover,
     font-size:clamp(55px,12vw,100px);
     font-weight:normal;
     margin-bottom:25px;
+    line-height:1.05;
 }
 
 .fecha{
@@ -751,8 +795,9 @@ button:hover,
     justify-content:center;
     align-items:center;
 
-    font-size:70px;
-    opacity:.08;
+    font-size:42px;
+
+    opacity:.055;
 }
 
 .mesa-confirmacion-contenido{
@@ -861,6 +906,20 @@ button:hover,
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.2);
+
+    position:relative;
+}
+
+.mesa-visual::after{
+    content:"💍";
+    position:absolute;
+    font-size:28px;
+    opacity:.45;
+}
+
+.mesa-visual span{
+    position:relative;
+    z-index:2;
 }
 
 .sillas{
@@ -935,6 +994,17 @@ button:hover,
     cursor:not-allowed;
 }
 
+.boton-whatsapp{
+    margin-top:15px;
+
+    background:#25D366;
+    color:white;
+}
+
+.boton-whatsapp:hover{
+    background:#1da851;
+}
+
 .estado-asientos{
     margin-top:30px;
 
@@ -950,6 +1020,47 @@ button:hover,
 .estado-asientos span,
 .estado-asientos strong{
     margin:0 8px;
+}
+
+
+/* =====================================================
+   DIBUJITO DE NOVIOS
+===================================================== */
+
+.novios-dibujo{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+
+    gap:12px;
+
+    margin:20px auto 30px;
+
+    font-size:42px;
+
+    animation:
+        flotarNovios 3s ease-in-out infinite;
+}
+
+.novios-dibujo .novia{
+    transform:translateY(4px);
+}
+
+.novios-dibujo .novio{
+    transform:translateY(0);
+}
+
+@keyframes flotarNovios{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
 }
 
 
@@ -1177,6 +1288,10 @@ footer p{
         font-size:23px;
     }
 
+    .novios-dibujo{
+        font-size:35px;
+    }
+
 }
 
 
@@ -1203,6 +1318,12 @@ footer p{
 
         <div class="adorno">
             ❦
+        </div>
+
+        <div class="novios-dibujo">
+            <span class="novio">🤵🏻</span>
+            <span>💍</span>
+            <span class="novia">👰🏻</span>
         </div>
 
         <h1>
@@ -1242,8 +1363,14 @@ footer p{
             ❦
         </div>
 
+        <div class="novios-dibujo">
+            <span class="novio">🤵🏻</span>
+            <span>💍</span>
+            <span class="novia">👰🏻</span>
+        </div>
+
         <div class="invitacion-label">
-            Nuestra celebración
+            Invitación especial para
         </div>
 
         <h2
@@ -1367,6 +1494,12 @@ footer p{
 <header class="portada">
 
     <div class="portada-contenido">
+
+        <div class="novios-dibujo">
+            <span class="novio">🤵🏻</span>
+            <span>💍</span>
+            <span class="novia">👰🏻</span>
+        </div>
 
         <div class="pequeno">
             NUESTRA BODA
@@ -1891,6 +2024,12 @@ footer p{
 
 <section class="confirmacion reveal">
 
+    <div class="novios-dibujo">
+        <span class="novio">🤵🏻</span>
+        <span>💍</span>
+        <span class="novia">👰🏻</span>
+    </div>
+
     <h2 class="titulo">
         ¿Nos acompañas?
     </h2>
@@ -2104,6 +2243,17 @@ footer p{
         </button>
 
 
+        <button
+            type="button"
+            id="botonWhatsApp"
+            class="boton-whatsapp"
+            style="display:none;">
+
+            📲 ENVIAR CONFIRMACIÓN POR WHATSAPP
+
+        </button>
+
+
         <div
             id="mensajeConfirmacion"
             style="
@@ -2150,6 +2300,12 @@ footer p{
 
 <footer>
 
+    <div class="novios-dibujo">
+        <span class="novio">🤵🏻</span>
+        <span>💍</span>
+        <span class="novia">👰🏻</span>
+    </div>
+
     <h2>
         Josué & Damaris
     </h2>
@@ -2164,9 +2320,9 @@ footer p{
 
 </footer>
 
+
 <!-- =====================================================
      JAVASCRIPT
-     PARTE 2
 ===================================================== -->
 
 <script>
@@ -2179,6 +2335,10 @@ const URL_APPS_SCRIPT =
     "https://script.google.com/macros/s/AKfycbxOk30Yn_R8BTxI4g--JnbkwxqXnlpOGEJfthzym5JMzUZVl8ZGZrZLuf0tTp_sUi5q/exec";
 
 
+const NUMERO_WHATSAPP =
+    "50242008319";
+
+
 /* =====================================================
    DATOS DE FAMILIAS
 ===================================================== */
@@ -2186,27 +2346,27 @@ const URL_APPS_SCRIPT =
 const familias = {
 
     garcia: {
-        nombre: "Familia García",
-        lugares: 4,
-        mesa: 1
+        nombre:"Familia García",
+        lugares:4,
+        mesa:1
     },
 
     lopez: {
-        nombre: "Familia López",
-        lugares: 3,
-        mesa: 2
+        nombre:"Familia López",
+        lugares:3,
+        mesa:2
     },
 
     martinez: {
-        nombre: "Familia Martínez",
-        lugares: 5,
-        mesa: 3
+        nombre:"Familia Martínez",
+        lugares:5,
+        mesa:3
     },
 
     ejemplo: {
-        nombre: "Familia Ejemplo",
-        lugares: 2,
-        mesa: 4
+        nombre:"Familia Ejemplo",
+        lugares:2,
+        mesa:4
     }
 
 };
@@ -2217,49 +2377,73 @@ const familias = {
 ===================================================== */
 
 const pantallaInicial =
-    document.getElementById("pantallaInicial");
+    document.getElementById(
+        "pantallaInicial"
+    );
 
 const botonAbrir =
-    document.getElementById("abrirInvitacion");
+    document.getElementById(
+        "abrirInvitacion"
+    );
 
 const invitacionPersonalizada =
-    document.getElementById("invitacionPersonalizada");
+    document.getElementById(
+        "invitacionPersonalizada"
+    );
 
 
 /* =====================================================
-   ELEMENTOS DE FAMILIA
+   ELEMENTOS FAMILIA
 ===================================================== */
 
 const nombreFamiliaPortada =
-    document.getElementById("nombreFamiliaPortada");
+    document.getElementById(
+        "nombreFamiliaPortada"
+    );
 
 const lugaresFamiliaPortada =
-    document.getElementById("lugaresFamiliaPortada");
+    document.getElementById(
+        "lugaresFamiliaPortada"
+    );
 
 const mesaFamiliaPortada =
-    document.getElementById("mesaFamiliaPortada");
+    document.getElementById(
+        "mesaFamiliaPortada"
+    );
 
 const confirmacionFamilia =
-    document.getElementById("confirmacionFamilia");
+    document.getElementById(
+        "confirmacionFamilia"
+    );
 
 const confirmacionLugares =
-    document.getElementById("confirmacionLugares");
+    document.getElementById(
+        "confirmacionLugares"
+    );
 
 const confirmacionMesa =
-    document.getElementById("confirmacionMesa");
+    document.getElementById(
+        "confirmacionMesa"
+    );
 
 const lugaresReservados =
-    document.getElementById("lugaresReservados");
+    document.getElementById(
+        "lugaresReservados"
+    );
 
 const mesaReservada =
-    document.getElementById("mesaReservada");
+    document.getElementById(
+        "mesaReservada"
+    );
 
 const numeroMesaVisual =
-    document.getElementById("numeroMesaVisual");
+    document.getElementById(
+        "numeroMesaVisual"
+    );
 
 
 /* =====================================================
-   FAMILIA DESDE LA URL
+   FAMILIA DESDE URL
 ===================================================== */
 
 const parametros =
@@ -2281,7 +2465,7 @@ const familia =
 
 
 /* =====================================================
-   CARGAR DATOS DE FAMILIA
+   CARGAR DATOS FAMILIA
 ===================================================== */
 
 function cargarDatosFamilia(){
@@ -2375,8 +2559,8 @@ if(botonAbrir){
                     if(invitacionPersonalizada){
 
                         invitacionPersonalizada.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
+                            behavior:"smooth",
+                            block:"start"
                         });
 
                     }
@@ -2393,18 +2577,19 @@ if(botonAbrir){
 
 /* =====================================================
    CONTADOR
+   16 ENERO 2027 - 5:00 PM
 ===================================================== */
 
 const fechaObjetivo =
     new Date(
-        "January 16, 2027 17:00:00"
+        "2027-01-16T17:00:00-06:00"
     ).getTime();
 
 
 function actualizarContador(){
 
     const ahora =
-        new Date().getTime();
+        Date.now();
 
     const diferencia =
         fechaObjetivo - ahora;
@@ -2429,7 +2614,9 @@ function actualizarContador(){
         !minutos ||
         !segundos
     ){
+
         return;
+
     }
 
 
@@ -2451,29 +2638,23 @@ function actualizarContador(){
         );
 
 
-    const d =
+    dias.textContent =
         Math.floor(
             totalSegundos / 86400
         );
 
-    const h =
+    horas.textContent =
         Math.floor(
             (totalSegundos % 86400) / 3600
         );
 
-    const m =
+    minutos.textContent =
         Math.floor(
             (totalSegundos % 3600) / 60
         );
 
-    const s =
+    segundos.textContent =
         totalSegundos % 60;
-
-
-    dias.textContent = d;
-    horas.textContent = h;
-    minutos.textContent = m;
-    segundos.textContent = s;
 
 }
 
@@ -2487,7 +2668,7 @@ setInterval(
 
 
 /* =====================================================
-   ANIMACIONES REVEAL
+   REVEAL
 ===================================================== */
 
 const elementosReveal =
@@ -2526,7 +2707,7 @@ if(
 
             },
             {
-                threshold: 0.12
+                threshold:.12
             }
         );
 
@@ -2564,30 +2745,35 @@ else{
 function crearCorazon(){
 
     const corazon =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     corazon.className =
         "corazones";
 
     corazon.textContent =
-        Math.random() > 0.5
+        Math.random() > .5
             ? "♡"
             : "♥";
 
     corazon.style.left =
-        Math.random() * 100 + "vw";
+        Math.random() * 100 +
+        "vw";
 
     corazon.style.fontSize =
         (
             14 +
             Math.random() * 18
-        ) + "px";
+        ) +
+        "px";
 
     corazon.style.animationDuration =
         (
             7 +
             Math.random() * 7
-        ) + "s";
+        ) +
+        "s";
 
     document.body.appendChild(
         corazon
@@ -2619,13 +2805,16 @@ setInterval(
 function crearParticula(){
 
     const particula =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     particula.className =
         "particulas";
 
     particula.style.left =
-        Math.random() * 100 + "vw";
+        Math.random() * 100 +
+        "vw";
 
     particula.style.bottom =
         "-10px";
@@ -2634,7 +2823,8 @@ function crearParticula(){
         (
             8 +
             Math.random() * 8
-        ) + "s";
+        ) +
+        "s";
 
     document.body.appendChild(
         particula
@@ -2660,7 +2850,7 @@ setInterval(
 
 
 /* =====================================================
-   CONFIRMACIÓN DE ASISTENCIA
+   CONFIRMACIÓN
 ===================================================== */
 
 const asistencia =
@@ -2718,6 +2908,11 @@ const botonConfirmar =
         "botonConfirmar"
     );
 
+const botonWhatsApp =
+    document.getElementById(
+        "botonWhatsApp"
+    );
+
 const mensajeConfirmacion =
     document.getElementById(
         "mensajeConfirmacion"
@@ -2725,7 +2920,7 @@ const mensajeConfirmacion =
 
 
 /* =====================================================
-   CREAR OPCIONES DE PERSONAS
+   CREAR OPCIONES
 ===================================================== */
 
 function prepararCantidadPersonas(){
@@ -2735,22 +2930,23 @@ function prepararCantidadPersonas(){
     }
 
 
-    cantidadAsistiran.innerHTML = "";
+    cantidadAsistiran.innerHTML =
+        "";
 
 
-    const opcionInicial =
+    const inicial =
         document.createElement(
             "option"
         );
 
-    opcionInicial.value = "";
+    inicial.value =
+        "";
 
-    opcionInicial.textContent =
+    inicial.textContent =
         "Selecciona la cantidad";
 
-
     cantidadAsistiran.appendChild(
-        opcionInicial
+        inicial
     );
 
 
@@ -2765,13 +2961,13 @@ function prepararCantidadPersonas(){
                 "option"
             );
 
-        opcion.value = i;
+        opcion.value =
+            i;
 
         opcion.textContent =
             i === 1
                 ? "1 persona"
                 : i + " personas";
-
 
         cantidadAsistiran.appendChild(
             opcion
@@ -2781,12 +2977,11 @@ function prepararCantidadPersonas(){
 
 }
 
-
 prepararCantidadPersonas();
 
 
 /* =====================================================
-   MOSTRAR / OCULTAR PERSONAS
+   CAMBIO ASISTENCIA
 ===================================================== */
 
 if(asistencia){
@@ -2808,14 +3003,33 @@ if(asistencia){
                 }
 
                 if(cantidadAsistiran){
-                    cantidadAsistiran.value = "";
+                    cantidadAsistiran.value =
+                        "";
                 }
 
-                actualizarPersonas();
+                if(personasAsistiran){
+                    personasAsistiran.textContent =
+                        "0";
+                }
+
+                if(personasNoAsistiran){
+                    personasNoAsistiran.textContent =
+                        familia.lugares;
+                }
+
+                if(personasDisponibles){
+                    personasDisponibles.textContent =
+                        familia.lugares;
+                }
+
+                crearSillas(
+                    0,
+                    familia.lugares
+                );
 
             }
 
-            else{
+            else if(this.value === "No"){
 
                 if(personasConfirmacion){
                     personasConfirmacion.style.display =
@@ -2825,10 +3039,6 @@ if(asistencia){
                 if(asientosVisuales){
                     asientosVisuales.style.display =
                         "none";
-                }
-
-                if(cantidadAsistiran){
-                    cantidadAsistiran.value = "";
                 }
 
                 if(personasAsistiran){
@@ -2847,17 +3057,27 @@ if(asistencia){
                 }
 
                 if(sillas){
-                    sillas.innerHTML = "";
-                }
-
-                if(textoAsientosDisponibles){
-                    textoAsientosDisponibles.textContent =
-                        "Selecciona la cantidad de personas.";
+                    sillas.innerHTML =
+                        "";
                 }
 
                 if(estadoDisponiblesFinal){
                     estadoDisponiblesFinal.textContent =
-                        "Selecciona cuántas personas asistirán.";
+                        "Has indicado que no podrás asistir.";
+                }
+
+            }
+
+            else{
+
+                if(personasConfirmacion){
+                    personasConfirmacion.style.display =
+                        "none";
+                }
+
+                if(asientosVisuales){
+                    asientosVisuales.style.display =
+                        "none";
                 }
 
             }
@@ -2869,7 +3089,7 @@ if(asistencia){
 
 
 /* =====================================================
-   ACTUALIZAR PERSONAS Y ASIENTOS
+   CANTIDAD DE PERSONAS
 ===================================================== */
 
 if(cantidadAsistiran){
@@ -2884,19 +3104,17 @@ if(cantidadAsistiran){
 
 function actualizarPersonas(){
 
-    if(!cantidadAsistiran){
-        return;
-    }
-
-
     const cantidad =
         parseInt(
-            cantidadAsistiran.value
+            cantidadAsistiran
+                ? cantidadAsistiran.value
+                : 0
         ) || 0;
 
 
     const noAsistiran =
-        familia.lugares - cantidad;
+        familia.lugares -
+        cantidad;
 
 
     if(personasAsistiran){
@@ -2941,11 +3159,11 @@ function actualizarPersonas(){
         if(estadoDisponiblesFinal){
 
             estadoDisponiblesFinal.innerHTML =
-                "🪑 En tu invitación hay " +
+                "🪑 Tienes " +
                 "<strong>" +
                 familia.lugares +
                 "</strong> lugares asignados. " +
-                "Has confirmado " +
+                "Has seleccionado " +
                 "<strong>" +
                 cantidad +
                 "</strong>.";
@@ -2953,7 +3171,6 @@ function actualizarPersonas(){
         }
 
     }
-
     else{
 
         if(textoAsientosDisponibles){
@@ -2989,7 +3206,8 @@ function crearSillas(
     }
 
 
-    sillas.innerHTML = "";
+    sillas.innerHTML =
+        "";
 
 
     for(
@@ -3027,8 +3245,10 @@ function crearSillas(
 
         silla.style.animationDelay =
             (
-                (i - 1) * 0.08
-            ) + "s";
+                (i - 1) *
+                .08
+            ) +
+            "s";
 
 
         sillas.appendChild(
@@ -3036,6 +3256,91 @@ function crearSillas(
         );
 
     }
+
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+function mostrarMensaje(
+    mensaje,
+    correcto
+){
+
+    if(!mensajeConfirmacion){
+        return;
+    }
+
+
+    mensajeConfirmacion.style.display =
+        "block";
+
+    mensajeConfirmacion.textContent =
+        mensaje;
+
+    mensajeConfirmacion.style.color =
+        correcto
+            ? "#fff"
+            : "#ffe0d5";
+
+}
+
+
+/* =====================================================
+   DATOS PARA WHATSAPP
+===================================================== */
+
+function abrirWhatsApp(
+    asistenciaSeleccionada,
+    cantidad
+){
+
+    const mensaje =
+        "💍 CONFIRMACIÓN DE ASISTENCIA\n\n" +
+        "Familia: " +
+        familia.nombre +
+        "\n" +
+        "Código: " +
+        familiaURL +
+        "\n" +
+        "Mesa: " +
+        familia.mesa +
+        "\n" +
+        "Lugares asignados: " +
+        familia.lugares +
+        "\n" +
+        "Asistencia: " +
+        (
+            asistenciaSeleccionada === "Si"
+                ? "SÍ"
+                : "NO"
+        ) +
+        "\n" +
+        "Personas que asistirán: " +
+        cantidad +
+        "\n" +
+        "Personas que no asistirán: " +
+        (
+            familia.lugares -
+            cantidad
+        ) +
+        "\n\n" +
+        "Josué & Damaris ❤️";
+
+    const url =
+        "https://wa.me/" +
+        NUMERO_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(
+            mensaje
+        );
+
+    window.open(
+        url,
+        "_blank"
+    );
 
 }
 
@@ -3068,7 +3373,8 @@ if(botonConfirmar){
             }
 
 
-            let cantidad = 0;
+            let cantidad =
+                0;
 
 
             if(respuesta === "Si"){
@@ -3093,7 +3399,10 @@ if(botonConfirmar){
                 }
 
 
-                if(cantidad > familia.lugares){
+                if(
+                    cantidad >
+                    familia.lugares
+                ){
 
                     mostrarMensaje(
                         "⚠️ La cantidad seleccionada supera los lugares asignados.",
@@ -3139,39 +3448,34 @@ if(botonConfirmar){
                     cantidad,
 
                 fechaRegistro:
-                    new Date().toLocaleString(
-                        "es-GT"
-                    )
+                    new Date()
+                        .toLocaleString(
+                            "es-GT"
+                        )
 
             };
 
 
             try{
 
-                if(
-                    URL_APPS_SCRIPT &&
-                    !URL_APPS_SCRIPT.includes(
-                        "PEGA_AQUI"
-                    )
-                ){
+                await fetch(
+                    URL_APPS_SCRIPT,
+                    {
+                        method:"POST",
 
-                    await fetch(
-                        URL_APPS_SCRIPT,
-                        {
-                            method: "POST",
-                            mode: "no-cors",
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
-                            body:
-                                JSON.stringify(
-                                    datos
-                                )
-                        }
-                    );
+                        mode:"no-cors",
 
-                }
+                        headers:{
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                datos
+                            )
+                    }
+                );
 
 
                 mostrarMensaje(
@@ -3184,6 +3488,24 @@ if(botonConfirmar){
 
                 botonConfirmar.textContent =
                     "✅ CONFIRMACIÓN REGISTRADA";
+
+
+                if(botonWhatsApp){
+
+                    botonWhatsApp.style.display =
+                        "inline-block";
+
+                    botonWhatsApp.onclick =
+                        function(){
+
+                            abrirWhatsApp(
+                                respuesta,
+                                cantidad
+                            );
+
+                        };
+
+                }
 
 
                 if(respuesta === "Si"){
@@ -3240,36 +3562,6 @@ if(botonConfirmar){
 
         }
     );
-
-}
-
-
-/* =====================================================
-   MENSAJE DE CONFIRMACIÓN
-===================================================== */
-
-function mostrarMensaje(
-    mensaje,
-    correcto
-){
-
-    if(!mensajeConfirmacion){
-        return;
-    }
-
-
-    mensajeConfirmacion.style.display =
-        "block";
-
-
-    mensajeConfirmacion.textContent =
-        mensaje;
-
-
-    mensajeConfirmacion.style.color =
-        correcto
-            ? "#fff"
-            : "#ffe0d5";
 
 }
 
@@ -3334,7 +3626,8 @@ if(fotoInvitado){
                     "Selecciona una imagen válida."
                 );
 
-                this.value = "";
+                this.value =
+                    "";
 
                 return;
 
@@ -3395,25 +3688,28 @@ if(fotoInvitado){
             if(mensajeFoto){
 
                 mensajeFoto.innerHTML =
-                    "La foto está lista para ser compartida. ❤️";
+                    "La foto está lista para compartirla. ❤️";
 
             }
 
 
-            let progreso = 0;
+            let progreso =
+                0;
 
 
             const intervalo =
                 setInterval(
                     function(){
 
-                        progreso += 10;
+                        progreso +=
+                            10;
 
 
                         if(barraProgreso){
 
                             barraProgreso.style.width =
-                                progreso + "%";
+                                progreso +
+                                "%";
 
                         }
 
@@ -3445,7 +3741,7 @@ if(fotoInvitado){
 
 
 /* =====================================================
-   CARGAR CUANDO TODO ESTÉ LISTO
+   CARGA FINAL
 ===================================================== */
 
 window.addEventListener(
@@ -3461,7 +3757,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   PROTECCIÓN CONTRA ERRORES
+   PROTECCIÓN DE ERRORES
 ===================================================== */
 
 window.addEventListener(
@@ -3485,5 +3781,4 @@ window.addEventListener(
 
 </body>
 
-</html>
-                                                
+   </html>
