@@ -21,2450 +21,987 @@ html{
 }
 
 body{
-    font-family:Georgia,"Times New Roman",serif;
-    background:#faf7f2;
-    color:#4a4038;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f8f1ea;
+    color:#4a3830;
     overflow-x:hidden;
 }
 
-::selection{
-    background:#b89b7d;
-    color:white;
+button,
+select,
+input{
+    font-family:inherit;
+}
+
+section{
+    position:relative;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.titulo{
+    font-size:clamp(30px,7vw,48px);
+    margin-bottom:20px;
+    color:#7a4e3a;
+}
+
+.subtitulo{
+    max-width:800px;
+    margin:0 auto 30px;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.divisor{
+    margin:10px 0 30px;
+    color:#b88b68;
+    font-size:25px;
 }
 
 button,
-a,
-select,
-input{
-    -webkit-tap-highlight-color:transparent;
+.boton,
+.boton-foto,
+.boton-ubicacion{
+    display:inline-block;
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+    padding:14px 25px;
+    border-radius:30px;
+    background:#8b5e48;
+    color:white;
+    transition:.3s;
 }
 
-
-/* =====================================================
-   PARTÍCULAS
-===================================================== */
-
-.particulas{
-    position:fixed;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:rgba(184,155,125,.45);
-    pointer-events:none;
-    z-index:1;
-    animation:particulaSubir linear forwards;
+button:hover,
+.boton:hover,
+.boton-foto:hover,
+.boton-ubicacion:hover{
+    transform:translateY(-3px);
+    background:#6f4938;
 }
-
-@keyframes particulaSubir{
-
-    0%{
-        transform:translateY(0) scale(.6);
-        opacity:0;
-    }
-
-    15%{
-        opacity:.7;
-    }
-
-    80%{
-        opacity:.4;
-    }
-
-    100%{
-        transform:translateY(-100vh) scale(1.2);
-        opacity:0;
-    }
-}
-
 
 /* =====================================================
    PANTALLA INICIAL
 ===================================================== */
 
+#pantallaInicial,
 .pantalla-inicial{
-
     position:fixed;
-
     inset:0;
-
-    width:100%;
-    height:100%;
-    height:100dvh;
-
     z-index:9999;
-
     display:flex;
-
-    justify-content:center;
     align-items:center;
-
+    justify-content:center;
     text-align:center;
-
-    padding:20px;
-
-    color:white;
-
-    overflow:hidden;
-
-    background-image:
+    background:
         linear-gradient(
-            rgba(0,0,0,.55),
-            rgba(0,0,0,.72)
+            rgba(40,25,20,.55),
+            rgba(40,25,20,.65)
         ),
-        url("IMG-20260609-WA0011.jpg");
-
-    background-position:center center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease,
-        transform 1.2s ease;
+        url("IMG-20260609-WA0011.jpg")
+        center/cover no-repeat;
+    transition:opacity .7s, visibility .7s;
 }
 
+#pantallaInicial.ocultar,
 .pantalla-inicial.ocultar{
-
     opacity:0;
     visibility:hidden;
-    transform:scale(1.08);
+    pointer-events:none;
 }
 
-.inicial-contenido{
-
-    width:100%;
-    max-width:700px;
-
-    margin:auto;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    position:relative;
-    z-index:2;
-
-    animation:aparecer 1.8s ease;
-}
-
-.inicial-pequeno{
-
-    font-size:14px;
-
-    letter-spacing:5px;
-
-    margin-bottom:25px;
-}
-
-.inicial-titulo{
-
-    font-size:clamp(45px,12vw,85px);
-
-    font-style:italic;
-
-    font-weight:normal;
-
-    margin-bottom:15px;
-
-    line-height:1.1;
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.35);
-}
-
-.inicial-frase{
-
-    font-size:18px;
-
-    letter-spacing:2px;
-
-    line-height:1.6;
-
-    max-width:600px;
-
-    margin-bottom:35px;
-}
-
-.boton-abrir{
-
-    border:1px solid rgba(255,255,255,.8);
-
+.pantalla-contenido{
+    width:min(90%,600px);
+    padding:45px 25px;
+    border:1px solid rgba(255,255,255,.5);
     background:rgba(255,255,255,.12);
-
-    color:white;
-
-    padding:17px 35px;
-
-    border-radius:40px;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    letter-spacing:1px;
-
-    cursor:pointer;
-
-    transition:.4s;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.20);
-
     backdrop-filter:blur(5px);
+    border-radius:20px;
+    color:white;
 }
 
-.boton-abrir:hover{
-
-    background:white;
-    color:#5a4b40;
-
-    transform:translateY(-3px);
+.pantalla-contenido h1{
+    font-size:clamp(38px,10vw,70px);
+    margin-bottom:15px;
 }
 
+.pantalla-contenido p{
+    margin-bottom:30px;
+    line-height:1.7;
+}
+
+#abrirInvitacion{
+    background:#fff;
+    color:#704b3a;
+    font-weight:bold;
+}
 
 /* =====================================================
-   INVITACIÓN PERSONALIZADA
+   PRESENTACIÓN PERSONALIZADA
 ===================================================== */
 
 .invitacion-personalizada{
-
     min-height:100vh;
-
     display:flex;
-
-    justify-content:center;
     align-items:center;
-
-    text-align:center;
-
-    padding:70px 20px;
-
+    justify-content:center;
     background:
-        radial-gradient(
-            circle at center,
-            #fff 0%,
-            #faf5ef 55%,
-            #eee4d8 100%
+        linear-gradient(
+            rgba(255,248,242,.92),
+            rgba(255,248,242,.96)
         );
-
-    position:relative;
-
-    overflow:hidden;
-
     opacity:0;
-
+    visibility:hidden;
     transform:translateY(30px);
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+    transition:1s;
 }
 
 .invitacion-personalizada.mostrar{
-
     opacity:1;
+    visibility:visible;
     transform:translateY(0);
 }
 
 .invitacion-contenido{
-
-    width:100%;
-    max-width:750px;
-
-    position:relative;
-    z-index:2;
+    width:min(100%,900px);
+    padding:30px 10px;
 }
 
 .adorno{
-
-    font-size:34px;
-
-    color:#9a8068;
-
-    margin-bottom:25px;
-
-    animation:flotar 3s ease-in-out infinite;
+    font-size:50px;
+    color:#b88b68;
+    margin-bottom:15px;
 }
 
 .invitacion-label{
-
-    font-size:14px;
-
-    letter-spacing:4px;
-
     text-transform:uppercase;
-
-    color:#9a8068;
-
-    margin-bottom:20px;
+    letter-spacing:4px;
+    font-size:13px;
+    color:#99705b;
+    margin-bottom:15px;
 }
 
 .nombre-familia{
-
-    font-size:clamp(40px,9vw,70px);
-
-    font-style:italic;
-
-    font-weight:normal;
-
-    color:#675548;
-
-    margin-bottom:20px;
+    font-size:clamp(34px,8vw,60px);
+    color:#76503e;
 }
 
 .linea-decorativa{
-
-    width:90px;
-
-    height:1px;
-
-    background:#b89b7d;
-
-    margin:25px auto;
+    width:100px;
+    height:2px;
+    background:#b88b68;
+    margin:20px auto;
 }
 
 .invitacion-texto{
-
-    font-size:19px;
-
+    max-width:650px;
+    margin:0 auto 35px;
     line-height:1.8;
+    font-size:18px;
+}
 
-    max-width:600px;
-
+.info-familia{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    max-width:850px;
     margin:auto;
 }
 
-
-/* =====================================================
-   INFORMACIÓN FAMILIA
-===================================================== */
-
-.info-familia{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:stretch;
-
-    flex-wrap:wrap;
-
-    gap:15px;
-
-    margin-top:30px;
-}
-
 .info-caja{
-
-    min-width:145px;
-
-    padding:20px 22px;
-
-    background:rgba(255,255,255,.80);
-
-    border:1px solid #e3d4c5;
-
-    border-radius:20px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.07);
-
     position:relative;
-
+    min-height:140px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px 10px;
+    border-radius:18px;
+    background:rgba(255,255,255,.75);
+    box-shadow:0 8px 30px rgba(90,60,45,.12);
     overflow:hidden;
 }
 
 .info-icono{
-
-    font-size:25px;
-
-    margin-bottom:7px;
+    font-size:27px;
+    margin-bottom:10px;
 }
 
 .info-caja small{
-
-    display:block;
-
-    color:#9a8068;
-
-    font-size:12px;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    margin-bottom:5px;
+    color:#96715e;
+    margin-bottom:7px;
 }
 
 .info-caja strong{
-
-    display:block;
-
-    color:#675548;
-
+    color:#704b3a;
     font-size:20px;
 }
 
-
-/* =====================================================
-   MARCA DE AGUA MESA / INVITADOS
-===================================================== */
-
 .info-mesa{
-
-    min-width:220px;
-
     overflow:hidden;
-
-    position:relative;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.95),
-            rgba(248,241,233,.95)
-        );
 }
 
 .marca-agua-mesa{
-
     position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(-8deg);
-
-    font-size:80px;
-
-    opacity:.07;
-
-    white-space:nowrap;
-
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+    opacity:.08;
     pointer-events:none;
-
-    animation:
-        moverMarcaAgua 5s ease-in-out infinite;
 }
 
 .mesa-contenido{
-
     position:relative;
-
     z-index:2;
 }
 
 .mesa-titulo{
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    color:#9a8068;
-
+    font-size:14px;
+    color:#8b6857;
     margin-bottom:8px;
 }
 
-.mesa-numero{
-
-    font-size:30px !important;
-
-    color:#675548 !important;
-
-    font-weight:normal;
-}
-
+.mesa-numero,
 .invitados-numero{
-
-    font-size:24px !important;
-
-    color:#675548 !important;
-}
-
-@keyframes moverMarcaAgua{
-
-    0%,100%{
-        transform:
-            translate(-50%,-50%)
-            rotate(-8deg)
-            scale(1);
-    }
-
-    50%{
-        transform:
-            translate(-50%,-53%)
-            rotate(-5deg)
-            scale(1.06);
-    }
+    font-size:28px!important;
 }
 
 .continuar{
-
     margin-top:35px;
-
-    font-size:14px;
-
-    letter-spacing:2px;
-
-    color:#9a8068;
-
-    animation:pulsar 2s infinite;
+    color:#9b715a;
+    font-style:italic;
 }
-
 
 /* =====================================================
    PORTADA
 ===================================================== */
 
 .portada{
-
-    min-height:100svh;
-
-    background-image:
-        linear-gradient(
-            rgba(0,0,0,.48),
-            rgba(0,0,0,.58)
-        ),
-        url("IMG-20260609-WA0011.jpg");
-
-    background-position:center center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
+    min-height:100vh;
     display:flex;
-
-    justify-content:center;
     align-items:center;
-
-    text-align:center;
-
+    justify-content:center;
+    background:
+        linear-gradient(
+            rgba(40,25,20,.35),
+            rgba(40,25,20,.55)
+        ),
+        url("IMG-20260609-WA0011.jpg")
+        center/cover no-repeat;
     color:white;
-
-    padding:30px 20px;
-
-    position:relative;
-}
-
-.portada::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:20px;
-
-    border:1px solid rgba(255,255,255,.25);
-
-    pointer-events:none;
 }
 
 .portada-contenido{
-
-    width:100%;
-
-    max-width:900px;
-
-    padding:20px;
-
-    animation:aparecer 1.5s ease;
-
-    position:relative;
-
-    z-index:2;
+    width:min(95%,800px);
+    padding:30px;
 }
 
 .pequeno{
-
-    font-size:18px;
-
-    letter-spacing:5px;
-
-    margin-bottom:20px;
+    letter-spacing:6px;
+    font-size:14px;
+    margin-bottom:25px;
 }
 
 .nombres{
-
-    font-size:clamp(48px,11vw,100px);
-
+    font-size:clamp(55px,12vw,100px);
     font-weight:normal;
-
-    font-style:italic;
-
-    line-height:1.1;
-
-    margin-bottom:20px;
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.35);
+    margin-bottom:25px;
 }
 
 .fecha{
-
-    font-size:clamp(17px,4vw,24px);
-
-    letter-spacing:3px;
+    font-size:20px;
+    letter-spacing:4px;
+    margin-bottom:12px;
 }
 
 .hora-portada{
-
-    margin-top:12px;
-
-    font-size:17px;
-
-    letter-spacing:3px;
-
-    opacity:.95;
-}
-
-.boton{
-
-    display:inline-block;
-
-    margin-top:35px;
-
-    padding:15px 35px;
-
-    border:1px solid white;
-
-    border-radius:30px;
-
-    color:white;
-
-    text-decoration:none;
-
-    background:rgba(255,255,255,.12);
-
-    transition:.3s;
-
-    backdrop-filter:blur(5px);
-}
-
-.boton:hover{
-
-    background:white;
-
-    color:#5a4b40;
-}
-
-
-/* =====================================================
-   ANIMACIONES
-===================================================== */
-
-.reveal{
-
-    opacity:0;
-
-    transform:translateY(45px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-.reveal.visible{
-
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-.reveal-left{
-
-    opacity:0;
-
-    transform:translateX(-45px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-.reveal-left.visible{
-
-    opacity:1;
-
-    transform:translateX(0);
-}
-
-.reveal-right{
-
-    opacity:0;
-
-    transform:translateX(45px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-.reveal-right.visible{
-
-    opacity:1;
-
-    transform:translateX(0);
-}
-
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-section{
-
-    padding:80px 20px;
-
-    text-align:center;
-}
-
-.titulo{
-
-    font-size:clamp(30px,6vw,40px);
-
-    font-weight:normal;
-
-    font-style:italic;
-
-    margin-bottom:20px;
-
-    color:#675548;
-}
-
-.subtitulo{
-
-    max-width:700px;
-
-    margin:auto;
-
-    line-height:1.8;
-
+    margin-bottom:35px;
     font-size:18px;
 }
 
-
-/* =====================================================
-   CONTADOR
-===================================================== */
-
-.contador{
-
-    background:
-        linear-gradient(
-            135deg,
-            #eee5db,
-            #f8f2ec
-        );
-
-    position:relative;
-
-    overflow:hidden;
+.portada .boton{
+    background:rgba(255,255,255,.92);
+    color:#704b3a;
+    font-weight:bold;
 }
-
-.contador::before{
-
-    content:"✦";
-
-    position:absolute;
-
-    left:8%;
-
-    top:20%;
-
-    color:#b89b7d;
-
-    font-size:25px;
-
-    animation:flotar 4s infinite;
-}
-
-.contador::after{
-
-    content:"♡";
-
-    position:absolute;
-
-    right:8%;
-
-    bottom:20%;
-
-    color:#b89b7d;
-
-    font-size:30px;
-
-    animation:flotar 4s 1s infinite;
-}
-
-.reloj{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:stretch;
-
-    flex-wrap:wrap;
-
-    gap:15px;
-
-    margin-top:35px;
-
-    position:relative;
-
-    z-index:2;
-}
-
-.numero{
-
-    background:rgba(255,255,255,.9);
-
-    width:100px;
-
-    padding:22px 10px;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.08);
-
-    border:1px solid rgba(184,155,125,.2);
-
-    transition:.4s;
-}
-
-.numero:hover{
-
-    transform:translateY(-6px);
-}
-
-.numero strong{
-
-    display:block;
-
-    font-size:32px;
-
-    color:#675548;
-}
-
-.numero span{
-
-    font-size:13px;
-
-    text-transform:uppercase;
-
-    color:#8f7965;
-}
-
-.contador-hora{
-
-    margin-top:30px;
-
-    color:#8f7965;
-
-    font-size:15px;
-
-    letter-spacing:2px;
-}
-
 
 /* =====================================================
    HISTORIA
 ===================================================== */
 
 .historia{
-
-    max-width:800px;
-
+    width:min(100%,800px);
     margin:auto;
-
     line-height:2;
-
     font-size:18px;
 }
 
-
 /* =====================================================
-   DIVISOR
+   CONTADOR
 ===================================================== */
 
-.divisor{
-
-    margin:35px auto;
-
-    color:#a4896d;
-
-    font-size:25px;
-
-    letter-spacing:8px;
+.contador{
+    background:#efe1d6;
 }
 
+.reloj{
+    width:min(100%,850px);
+    margin:40px auto 20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.numero{
+    background:rgba(255,255,255,.75);
+    border-radius:18px;
+    padding:25px 10px;
+    box-shadow:0 8px 25px rgba(80,50,40,.1);
+}
+
+.numero strong{
+    display:block;
+    font-size:clamp(32px,7vw,55px);
+    color:#80553f;
+}
+
+.numero span{
+    color:#8f6b58;
+}
+
+.contador-hora{
+    font-style:italic;
+    color:#806150;
+}
 
 /* =====================================================
    GALERÍA
 ===================================================== */
 
 .galeria{
-
-    max-width:1050px;
-
-    margin:40px auto 0;
-
+    width:min(100%,1000px);
+    margin:35px auto 0;
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
 .galeria img{
-
     width:100%;
-
-    aspect-ratio:9 / 16;
-
-    height:auto;
-
+    height:280px;
     object-fit:cover;
-
-    border-radius:20px;
-
-    display:block;
-
-    transition:
-        transform .5s ease,
-        box-shadow .5s ease;
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.12);
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(60,40,30,.15);
 }
-
-.galeria img:hover{
-
-    transform:scale(1.025);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.18);
-}
-
 
 /* =====================================================
    VIDEO
 ===================================================== */
 
 .video-seccion{
-
-    background:#faf7f2;
+    background:#eee2d9;
 }
 
 .video-contenedor{
-
-    width:90%;
-
-    max-width:360px;
-
-    margin:30px auto 0;
-
-    display:block;
-
-    overflow:hidden;
-
-    border-radius:20px;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.15);
-
-    background:#000;
-}
-
-.video-contenedor video{
-
-    display:block;
-
-    width:100%;
-
-    max-width:360px;
-
-    height:auto;
-
+    width:min(100%,900px);
     max-height:600px;
-
-    margin:auto;
-
     border-radius:20px;
-
-    object-fit:contain;
-
+    box-shadow:0 10px 35px rgba(50,30,20,.2);
     background:#000;
 }
-
 
 /* =====================================================
-   RECUERDOS
+   MÁS RECUERDOS
 ===================================================== */
 
-.recuerdos{
-
-    background:#fff;
-}
-
 .video-grid{
-
-    max-width:1000px;
-
-    margin:40px auto;
-
+    width:min(100%,1000px);
+    margin:35px auto 0;
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:25px;
 }
 
 .video-card{
-
-    background:#f7f1eb;
-
-    padding:12px;
-
+    overflow:hidden;
     border-radius:20px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.08);
+    background:#000;
+    box-shadow:0 10px 30px rgba(50,30,20,.18);
 }
 
 .video-card video{
-
     width:100%;
-
-    max-height:500px;
-
-    border-radius:15px;
-
     display:block;
-
-    background:#000;
+    max-height:550px;
 }
 
-
 /* =====================================================
-   FOTOS DE INVITADOS
+   FOTOS INVITADOS
 ===================================================== */
 
 .fotos-invitados{
-
     background:
         linear-gradient(
-            135deg,
-            #fff,
-            #f5eee7
+            rgba(245,231,220,.93),
+            rgba(245,231,220,.96)
         );
-
-    position:relative;
-
-    scroll-margin-top:0;
 }
 
 .fotos-invitados-contenido{
-
-    max-width:700px;
-
+    width:min(100%,750px);
     margin:auto;
 }
 
 .camara-icono{
-
     font-size:55px;
-
     margin-bottom:15px;
-
-    animation:flotar 3s ease-in-out infinite;
-}
-
-.boton-foto{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:30px;
-
-    padding:17px 30px;
-
-    border:0;
-
-    border-radius:40px;
-
-    background:#8b6f47;
-
-    color:white;
-
-    font-family:inherit;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.18);
-
-    transition:.3s;
-}
-
-.boton-foto:hover{
-
-    background:#6f5636;
-
-    transform:
-        translateY(-3px)
-        scale(1.02);
 }
 
 #fotoInvitado{
-
     display:none;
+}
+
+.boton-foto{
+    margin-top:10px;
+}
+
+.preview-foto{
+    display:none;
+    width:min(100%,500px);
+    max-height:500px;
+    object-fit:cover;
+    margin:25px auto;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(60,40,30,.2);
+}
+
+.preview-foto.mostrar{
+    display:block;
 }
 
 .progreso-foto{
-
     display:none;
-
-    max-width:400px;
-
-    margin:25px auto 0;
-
-    padding:18px;
-
-    background:white;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.08);
+    max-width:600px;
+    margin:25px auto;
+    padding:20px;
+    background:rgba(255,255,255,.7);
+    border-radius:15px;
 }
 
 .progreso-foto.mostrar{
-
     display:block;
 }
 
 .barra{
-
-    width:100%;
-
-    height:9px;
-
-    margin-top:12px;
-
-    overflow:hidden;
-
+    height:12px;
+    margin:15px 0;
     border-radius:20px;
-
-    background:#eadfd3;
+    background:#e1d2c6;
+    overflow:hidden;
 }
 
 .barra-progreso{
-
-    width:0%;
-
+    width:0;
     height:100%;
-
-    border-radius:20px;
-
-    background:#8b6f47;
-
+    background:#8b5e48;
     transition:.3s;
 }
 
 .mensaje-foto{
-
-    margin-top:12px;
-
-    font-size:15px;
-
     line-height:1.6;
 }
-
-.preview-foto{
-
-    display:none;
-
-    width:100%;
-
-    max-width:360px;
-
-    aspect-ratio:9 / 16;
-
-    object-fit:cover;
-
-    margin:25px auto 0;
-
-    border-radius:20px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.15);
-}
-
-.preview-foto.mostrar{
-
-    display:block;
-}
-
 
 /* =====================================================
    INFORMACIÓN
 ===================================================== */
 
 .informacion{
-
-    background:
-        linear-gradient(
-            135deg,
-            #eee5db,
-            #f8f3ee
-        );
+    background:#faf5f0;
 }
 
 .tarjetas{
-
-    max-width:1000px;
-
+    width:min(100%,1000px);
     margin:40px auto;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
 
 .tarjeta{
-
-    background:rgba(255,255,255,.92);
-
-    padding:35px 20px;
-
-    border-radius:20px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.08);
-
-    border:1px solid rgba(184,155,125,.15);
+    padding:30px 20px;
+    border-radius:18px;
+    background:white;
+    box-shadow:0 8px 25px rgba(70,45,35,.1);
 }
 
 .icono{
-
-    font-size:40px;
-
+    font-size:35px;
     margin-bottom:15px;
 }
 
 .tarjeta h3{
+    margin-bottom:10px;
+    color:#76503e;
+}
 
-    margin-bottom:12px;
-
-    font-size:22px;
+.tarjeta p{
+    line-height:1.6;
 }
 
 .ubicacion-texto{
+    max-width:750px;
+    margin:20px auto 0;
+    line-height:1.8;
+}
 
-    margin-top:30px;
-
-    line-height:1.7;
-
-    font-size:17px;
+.ubicacion-texto h3{
+    margin-bottom:10px;
 }
 
 .boton-ubicacion{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:15px 30px;
-
-    background:#8b6f47;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:30px;
-
-    transition:.3s;
+    margin-top:20px;
 }
-
 
 /* =====================================================
    FRASE
 ===================================================== */
 
 .frase{
-
-    padding:100px 20px;
-
-    background:#fff;
+    background:#7b5948;
+    color:white;
 }
 
 .frase p{
-
     max-width:800px;
-
     margin:auto;
-
-    font-size:clamp(21px,5vw,28px);
-
-    line-height:1.7;
-
-    font-style:italic;
+    line-height:1.8;
+    font-size:20px;
 }
-
 
 /* =====================================================
    CONFIRMACIÓN
 ===================================================== */
 
 .confirmacion{
-
     background:
         linear-gradient(
-            rgba(0,0,0,.55),
-            rgba(0,0,0,.60)
-        ),
-        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80")
-        center/cover no-repeat;
-
+            rgba(120,82,65,.96),
+            rgba(91,60,47,.98)
+        );
     color:white;
-
-    position:relative;
-
-    overflow:hidden;
 }
 
 .confirmacion .titulo{
-
     color:white;
 }
 
+.confirmacion .subtitulo{
+    color:#f8eee7;
+}
+
 .confirmacion-contenido{
-
-    max-width:650px;
-
+    width:min(100%,800px);
     margin:35px auto 0;
-
-    background:rgba(255,255,255,.11);
-
-    padding:35px 25px;
-
-    border-radius:25px;
-
-    backdrop-filter:blur(10px);
-
-    border:1px solid rgba(255,255,255,.22);
 }
 
 .reservados{
-
+    padding:20px;
     margin-bottom:25px;
-
-    font-size:17px;
-
+    border-radius:15px;
+    background:rgba(255,255,255,.1);
     line-height:1.7;
 }
 
-
-/* =====================================================
-   RESUMEN
-===================================================== */
-
 .resumen-confirmacion{
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:12px;
-
-    margin-bottom:25px;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:30px;
 }
 
 .resumen-item{
-
-    background:rgba(255,255,255,.13);
-
-    border:1px solid rgba(255,255,255,.25);
-
-    border-radius:18px;
-
-    padding:17px 12px;
-
     position:relative;
-
     overflow:hidden;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,.12);
 }
 
 .resumen-item span{
-
     display:block;
-
-    font-size:11px;
-
+    font-size:14px;
     opacity:.8;
-
-    margin-bottom:7px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
+    margin-bottom:8px;
 }
 
 .resumen-item strong{
-
-    font-size:19px;
-
-    word-break:break-word;
+    font-size:20px;
 }
 
-
-/* =====================================================
-   MARCA DE AGUA EN CONFIRMACIÓN
-===================================================== */
-
 .mesa-confirmacion{
-
-    position:relative;
-
-    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .marca-agua-confirmacion{
-
     position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(-8deg);
-
-    font-size:75px;
-
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
     opacity:.08;
-
-    white-space:nowrap;
-
-    pointer-events:none;
-
-    animation:
-        moverMarcaAguaConfirmacion 5s ease-in-out infinite;
 }
 
 .mesa-confirmacion-contenido{
-
     position:relative;
-
     z-index:2;
 }
 
-@keyframes moverMarcaAguaConfirmacion{
-
-    0%,100%{
-
-        transform:
-            translate(-50%,-50%)
-            rotate(-8deg)
-            scale(1);
-    }
-
-    50%{
-
-        transform:
-            translate(-50%,-53%)
-            rotate(-4deg)
-            scale(1.08);
-    }
-}
-
-
-/* =====================================================
-   SELECTOR ASISTENCIA
-===================================================== */
-
 .selector-label{
-
     display:block;
-
-    margin-bottom:12px;
-
-    font-size:17px;
+    margin-bottom:10px;
+    font-size:18px;
 }
 
-.selector-asistencia{
-
+.selector-asistencia,
+.selector-personas{
     width:100%;
-
-    max-width:300px;
-
+    max-width:500px;
     padding:15px;
-
     border:none;
-
-    border-radius:30px;
-
-    font-family:inherit;
-
-    font-size:17px;
-
-    text-align:center;
-
-    outline:none;
-
+    border-radius:12px;
     background:white;
-
-    color:#5b4b40;
+    color:#4d392f;
+    margin-bottom:20px;
 }
-
-
-/* =====================================================
-   SELECTOR PERSONAS
-===================================================== */
 
 .personas-confirmacion{
-
-    margin-top:22px;
-
-    padding:22px 15px;
-
-    border-radius:22px;
-
-    background:rgba(255,255,255,.10);
-
-    border:1px solid rgba(255,255,255,.20);
-
-    animation:aparecerSuave .5s ease;
+    margin-top:10px;
+    padding:25px;
+    border-radius:18px;
+    background:rgba(255,255,255,.1);
 }
 
 .personas-confirmacion label{
-
     display:block;
-
-    margin-bottom:12px;
-
-    font-size:17px;
-}
-
-.selector-personas{
-
-    width:100%;
-
-    max-width:300px;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:30px;
-
-    font-family:inherit;
-
-    font-size:17px;
-
-    text-align:center;
-
-    outline:none;
-
-    color:#5b4b40;
+    margin-bottom:10px;
 }
 
 .resumen-personas{
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:10px;
-
-    margin-top:20px;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:15px;
 }
 
 .persona-dato{
-
-    padding:15px 8px;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,.12);
-
-    border:1px solid rgba(255,255,255,.18);
+    padding:15px 10px;
+    background:rgba(255,255,255,.1);
+    border-radius:12px;
 }
 
 .persona-dato span{
-
     display:block;
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-    opacity:.8;
-
-    margin-bottom:6px;
+    font-size:13px;
+    margin-bottom:5px;
 }
 
 .persona-dato strong{
-
-    display:block;
-
-    font-size:23px;
+    font-size:25px;
 }
-
-@keyframes aparecerSuave{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(10px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-    }
-}
-
-
-/* =====================================================
-   ASIENTOS
-===================================================== */
 
 .asientos-visuales{
-
-    margin-top:25px;
-
-    padding:22px 15px;
-
-    border-radius:22px;
-
-    background:rgba(255,255,255,.10);
-
-    border:1px solid rgba(255,255,255,.20);
+    margin:30px auto;
+    padding:25px 15px;
+    border-radius:20px;
+    background:rgba(255,255,255,.1);
 }
 
 .asientos-titulo{
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    margin-bottom:18px;
-
-    opacity:.9;
+    font-size:18px;
+    margin-bottom:30px;
 }
 
 .mesa-visual{
-
-    width:150px;
-
-    height:55px;
-
-    margin:0 auto 25px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.88);
-
-    color:#675548;
-
+    width:min(100%,300px);
+    height:90px;
+    margin:0 auto 45px;
     display:flex;
-
-    align-items:center;
-
     justify-content:center;
-
-    font-weight:bold;
-
-    position:relative;
-
-    box-shadow:
-        0 0 25px rgba(255,255,255,.20);
-
-    animation:
-        animacionMesa 4s ease-in-out infinite;
-}
-
-.mesa-visual::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:105px;
-
-    height:105px;
-
+    align-items:center;
+    gap:10px;
     border-radius:50%;
-
-    border:1px solid rgba(255,255,255,.20);
-
-    animation:
-        pulsoMesa 3s ease-in-out infinite;
+    background:#b98b6c;
+    color:white;
+    font-weight:bold;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .sillas{
-
     display:flex;
-
-    justify-content:center;
-
     flex-wrap:wrap;
-
-    gap:10px;
-
-    max-width:350px;
-
+    justify-content:center;
+    gap:15px;
+    max-width:600px;
     margin:auto;
 }
 
 .silla{
-
-    width:43px;
-
-    height:43px;
-
-    border-radius:50%;
-
+    width:55px;
+    height:55px;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    background:rgba(255,255,255,.20);
-
-    border:1px solid rgba(255,255,255,.30);
-
-    font-size:21px;
-
-    transition:.5s;
-
-    animation:
-        aparecerSilla .5s ease backwards;
+    border-radius:50%;
+    background:white;
+    font-size:27px;
+    animation:aparecerSilla .5s ease both;
 }
 
 .silla.ocupada{
-
-    background:rgba(255,255,255,.92);
-
-    color:#675548;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.15);
-
+    opacity:1;
     transform:scale(1.05);
 }
 
 .silla.disponible{
-
-    opacity:.45;
-
-    animation:
-        sillaDisponible 2s ease-in-out infinite;
-}
-
-@keyframes animacionMesa{
-
-    0%,100%{
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-    50%{
-
-        transform:
-            translateY(-5px)
-            scale(1.03);
-    }
-}
-
-@keyframes pulsoMesa{
-
-    0%,100%{
-
-        opacity:.15;
-
-        transform:scale(.9);
-    }
-
-    50%{
-
-        opacity:.35;
-
-        transform:scale(1.05);
-    }
+    opacity:.3;
 }
 
 @keyframes aparecerSilla{
-
     from{
-
         opacity:0;
-
-        transform:scale(.5);
+        transform:scale(.5) translateY(15px);
     }
-
     to{
-
         opacity:1;
-
-        transform:scale(1);
+        transform:scale(1) translateY(0);
     }
-}
-
-@keyframes sillaDisponible{
-
-    0%,100%{
-
-        opacity:.35;
-    }
-
-    50%{
-
-        opacity:.75;
-    }
-}
-
-
-/* =====================================================
-   BOTÓN CONFIRMAR
-===================================================== */
-
-.boton-confirmar{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:17px 35px;
-
-    background:white;
-
-    color:#5b4b40;
-
-    text-decoration:none;
-
-    border-radius:35px;
-
-    font-weight:bold;
-
-    transition:.3s;
-
-    border:none;
-
-    cursor:pointer;
-
-    font-family:inherit;
-
-    font-size:15px;
-}
-
-.boton-confirmar:hover{
-
-    transform:translateY(-3px);
-
-}
-
-.boton-confirmar:disabled{
-
-    opacity:.7;
-
-    cursor:wait;
-
-    transform:none;
-}
-
-
-/* =====================================================
-   ESTADO ASIENTOS
-===================================================== */
-
-.estado-asientos{
-
-    margin-top:25px;
-
-    padding:20px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.12);
-
-    border:1px solid rgba(255,255,255,.20);
-}
-
-.estado-asientos strong{
-
-    display:block;
-
-    font-size:28px;
-
-    margin-top:5px;
-
-    margin-bottom:8px;
 }
 
 .asientos-disponibles-texto{
-
-    margin-top:12px;
-
-    font-size:16px;
-
+    margin-top:25px;
     line-height:1.6;
 }
 
-
-/* =====================================================
-   PANEL ADMIN
-===================================================== */
-
-.admin{
-
-    display:none;
-
-    background:#f5eee6;
-
-    padding:60px 20px;
-}
-
-.admin.mostrar{
-
-    display:block;
-}
-
-.admin-contenido{
-
-    max-width:1100px;
-
-    margin:auto;
-
+.boton-confirmar{
+    margin-top:20px;
     background:white;
-
-    padding:25px;
-
-    border-radius:20px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.08);
-
-    overflow-x:auto;
+    color:#76503e;
+    font-weight:bold;
 }
 
-.admin h2{
-
-    color:#675548;
-
-    margin-bottom:20px;
-
-    text-align:center;
-}
-
-.tabla{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    min-width:700px;
-}
-
-.tabla th,
-.tabla td{
-
-    padding:12px;
-
-    border-bottom:1px solid #eadfd3;
-
-    text-align:center;
-}
-
-.tabla th{
-
-    background:#eee5db;
-
-    color:#675548;
-}
-
-.admin-resumen{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-bottom:25px;
-}
-
-.admin-caja{
-
-    background:#f8f3ed;
-
-    padding:15px 20px;
-
-    border-radius:15px;
-
-    text-align:center;
-
-    min-width:130px;
-}
-
-.admin-caja strong{
-
-    display:block;
-
-    font-size:25px;
-
-    color:#675548;
-}
-
-.boton-admin{
-
-    display:block;
-
-    width:max-content;
-
-    margin:25px auto 0;
-
-    padding:12px 20px;
-
-    border:0;
-
-    border-radius:25px;
-
-    background:#675548;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-family:inherit;
-}
-
-
-/* =====================================================
-   CORAZONES
-===================================================== */
-
-.corazones{
-
-    position:fixed;
-
-    pointer-events:none;
-
-    z-index:999;
-
-    bottom:-30px;
-
-    animation:
-        subirCorazon 6s linear forwards;
-
+.boton-confirmar:disabled{
     opacity:.7;
+    cursor:not-allowed;
 }
 
-@keyframes subirCorazon{
-
-    from{
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity:.7;
-    }
-
-    to{
-
-        transform:
-            translateY(-100vh)
-            rotate(25deg);
-
-        opacity:0;
-    }
+.estado-asientos{
+    margin-top:30px;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,.1);
+    line-height:2;
 }
 
+.estado-asientos span,
+.estado-asientos strong{
+    margin:0 8px;
+}
 
 /* =====================================================
    FOOTER
 ===================================================== */
 
 footer{
-
-    background:#3f352e;
-
-    color:white;
-
-    padding:60px 20px;
-
+    padding:50px 20px;
     text-align:center;
+    background:#38271f;
+    color:white;
 }
 
 footer h2{
-
-    font-size:clamp(32px,8vw,42px);
-
-    font-style:italic;
-
-    font-weight:normal;
+    margin-bottom:15px;
+    font-size:32px;
 }
 
 footer p{
-
-    margin-top:15px;
-
-    opacity:.9;
+    margin:8px;
+    opacity:.85;
 }
-
 
 /* =====================================================
-   KEYFRAMES
+   REVEAL
 ===================================================== */
 
-@keyframes aparecer{
+.reveal,
+.reveal-left,
+.reveal-right{
+    opacity:0;
+    transition:opacity .9s ease, transform .9s ease;
+}
 
+.reveal{
+    transform:translateY(35px);
+}
+
+.reveal-left{
+    transform:translateX(-45px);
+}
+
+.reveal-right{
+    transform:translateX(45px);
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible{
+    opacity:1;
+    transform:translate(0);
+}
+
+/* =====================================================
+   CORAZONES Y PARTÍCULAS
+===================================================== */
+
+.corazones{
+    position:fixed;
+    bottom:-40px;
+    z-index:2;
+    color:#c28d7a;
+    pointer-events:none;
+    animation:subirCorazon linear forwards;
+}
+
+@keyframes subirCorazon{
     from{
-
+        transform:translateY(0) rotate(0);
         opacity:0;
-
-        transform:translateY(30px);
     }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
+    10%{
+        opacity:.8;
     }
-}
-
-@keyframes flotar{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-@keyframes pulsar{
-
-    0%,100%{
+    90%{
         opacity:.5;
     }
-
-    50%{
-        opacity:1;
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
     }
 }
 
+.particulas{
+    position:fixed;
+    z-index:1;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#c6a58f;
+    pointer-events:none;
+    animation:subirParticula linear forwards;
+}
+
+@keyframes subirParticula{
+    from{
+        transform:translateY(0);
+        opacity:0;
+    }
+    20%{
+        opacity:.7;
+    }
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
 
 /* =====================================================
-   TABLET
+   RESPONSIVE
 ===================================================== */
 
-@media(max-width:900px){
+@media(max-width:800px){
+
+    .info-familia{
+        grid-template-columns:repeat(2,1fr);
+    }
 
     .tarjetas{
-
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .galeria{
-
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
+
 }
-
-
-/* =====================================================
-   CELULAR
-===================================================== */
 
 @media(max-width:600px){
 
     section{
-
         padding:65px 15px;
     }
 
-    .pantalla-inicial{
-
-        width:100vw;
-
-        height:100dvh;
-
-        min-height:100dvh;
-
-        padding:
-            max(20px,env(safe-area-inset-top))
-            20px
-            max(20px,env(safe-area-inset-bottom))
-            20px;
-
-        background-position:center center;
-    }
-
-    .inicial-contenido{
-
-        width:100%;
-
-        max-width:100%;
-
-        min-height:100%;
-
-        justify-content:center;
-
-        align-items:center;
-    }
-
-    .inicial-pequeno{
-
-        font-size:11px;
-
-        letter-spacing:3px;
-
-        margin-bottom:20px;
-    }
-
-    .inicial-titulo{
-
-        font-size:clamp(42px,13vw,65px);
-
-        white-space:nowrap;
-    }
-
-    .inicial-frase{
-
-        font-size:15px;
-
-        line-height:1.6;
-
-        max-width:330px;
-    }
-
-    .boton-abrir{
-
-        padding:15px 25px;
-
-        font-size:13px;
-    }
-
-    .portada{
-
-        min-height:100svh;
-
-        background-position:center center;
-    }
-
-    .portada::before{
-
-        inset:12px;
-    }
-
-    .pequeno{
-
-        font-size:13px;
-
-        letter-spacing:3px;
-    }
-
     .nombres{
-
-        font-size:clamp(45px,14vw,70px);
+        font-size:52px;
     }
 
     .fecha{
-
         font-size:16px;
-
         letter-spacing:2px;
     }
 
-    .hora-portada{
-
-        font-size:14px;
-
-        letter-spacing:2px;
-    }
-
-    .boton{
-
-        padding:14px 25px;
-
-        font-size:14px;
-    }
-
-    .reloj{
-
-        gap:8px;
-    }
-
-    .numero{
-
-        width:calc(50% - 8px);
-
-        max-width:100px;
-
-        padding:17px 5px;
-    }
-
-    .numero strong{
-
-        font-size:27px;
-    }
-
-    .numero span{
-
-        font-size:10px;
-    }
-
-    .galeria{
-
-        display:flex;
-
-        flex-direction:column;
-
-        align-items:center;
-
-        gap:22px;
-    }
-
-    .galeria img{
-
-        width:100%;
-
-        max-width:360px;
-
-        aspect-ratio:9 / 16;
-
-        height:auto;
-
-        border-radius:20px;
-    }
-
-    .video-contenedor{
-
-        width:90%;
-
-        max-width:340px;
-    }
-
-    .video-contenedor video{
-
-        width:100%;
-
-        max-width:340px;
-
-        max-height:600px;
+    .info-familia{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
     }
 
     .info-caja{
-
-        width:100%;
-
-        max-width:280px;
+        min-height:125px;
     }
 
-    .tarjetas{
+    .reloj{
+        grid-template-columns:repeat(2,1fr);
+    }
 
+    .galeria{
         grid-template-columns:1fr;
+    }
 
-        max-width:450px;
+    .galeria img{
+        height:320px;
     }
 
     .video-grid{
-
         grid-template-columns:1fr;
+    }
 
-        max-width:500px;
+    .tarjetas{
+        grid-template-columns:1fr;
     }
 
     .resumen-confirmacion{
-
         grid-template-columns:1fr;
     }
 
     .resumen-personas{
-
         grid-template-columns:1fr;
     }
 
-    .confirmacion-contenido{
-
-        padding:28px 17px;
+    .silla{
+        width:48px;
+        height:48px;
+        font-size:23px;
     }
 
-    .boton-confirmar{
-
-        width:100%;
-
-        max-width:320px;
-    }
-
-    .sillas{
-
-        max-width:280px;
-    }
 }
-
 
 /* =====================================================
-   MUY PEQUEÑO
+   FIN CSS
 ===================================================== */
-
-@media(max-width:360px){
-
-    .nombres{
-
-        font-size:42px;
-    }
-
-    .inicial-titulo{
-
-        font-size:42px;
-    }
-}
 
 </style>
 
@@ -2478,25 +1015,27 @@ footer p{
 ===================================================== -->
 
 <div
-    class="pantalla-inicial"
-    id="pantallaInicial">
+    id="pantallaInicial"
+    class="pantalla-inicial">
 
-    <div class="inicial-contenido">
+    <div class="pantalla-contenido">
 
-        <div class="inicial-pequeno">
-            💍 NUESTRA BODA 💍
+        <div class="adorno">
+            ❦
         </div>
 
-        <h1 class="inicial-titulo">
+        <h1>
             Josué & Damaris
         </h1>
 
-        <p class="inicial-frase">
-            Una historia de amor que queremos compartir contigo
+        <p>
+            Nuestra boda
+            <br>
+            16 de enero de 2027
         </p>
 
         <button
-            class="boton-abrir"
+            type="button"
             id="abrirInvitacion">
 
             ✨ ABRIR INVITACIÓN ✨
@@ -2544,9 +1083,6 @@ footer p{
 
         </p>
 
-
-        <!-- INFORMACIÓN FAMILIA -->
-
         <div class="info-familia">
 
             <div class="info-caja">
@@ -2565,7 +1101,6 @@ footer p{
 
             </div>
 
-
             <div class="info-caja">
 
                 <div class="info-icono">
@@ -2581,7 +1116,6 @@ footer p{
                 </strong>
 
             </div>
-
 
             <div class="info-caja info-mesa">
 
@@ -2606,7 +1140,6 @@ footer p{
                 </div>
 
             </div>
-
 
             <div class="info-caja info-mesa">
 
@@ -2633,7 +1166,6 @@ footer p{
             </div>
 
         </div>
-
 
         <div class="continuar">
             ✨ Con amor, Josué & Damaris ✨
@@ -2730,59 +1262,29 @@ footer p{
     <div class="reloj">
 
         <div class="numero">
-
-            <strong id="dias">
-                0
-            </strong>
-
-            <span>
-                Días
-            </span>
-
+            <strong id="dias">0</strong>
+            <span>Días</span>
         </div>
 
         <div class="numero">
-
-            <strong id="horas">
-                0
-            </strong>
-
-            <span>
-                Horas
-            </span>
-
+            <strong id="horas">0</strong>
+            <span>Horas</span>
         </div>
 
         <div class="numero">
-
-            <strong id="minutos">
-                0
-            </strong>
-
-            <span>
-                Minutos
-            </span>
-
+            <strong id="minutos">0</strong>
+            <span>Minutos</span>
         </div>
 
         <div class="numero">
-
-            <strong id="segundos">
-                0
-            </strong>
-
-            <span>
-                Segundos
-            </span>
-
+            <strong id="segundos">0</strong>
+            <span>Segundos</span>
         </div>
 
     </div>
 
     <div class="contador-hora">
-
         ⏳ El contador llegará a cero a las 5:00 PM
-
     </div>
 
 </section>
@@ -2955,9 +1457,7 @@ footer p{
     </h2>
 
     <p class="subtitulo">
-
         Cada momento cuenta una parte de nuestra historia.
-
     </p>
 
     <div class="video-grid">
@@ -3157,11 +1657,9 @@ footer p{
         </h3>
 
         <p>
-
             Marcia Jardines, Puente La Unión<br>
             Carr. San Miguel Petapa - Villa Canales<br>
             Villa Canales
-
         </p>
 
         <a
@@ -3186,10 +1684,8 @@ footer p{
 <section class="frase reveal">
 
     <p>
-
         “Y sobre todas estas cosas vestíos de amor,
         que es el vínculo perfecto.”
-
     </p>
 
     <br>
@@ -3227,9 +1723,6 @@ footer p{
 
         </div>
 
-
-        <!-- RESUMEN FAMILIA -->
-
         <div class="resumen-confirmacion">
 
             <div class="resumen-item">
@@ -3244,7 +1737,6 @@ footer p{
 
             </div>
 
-
             <div class="resumen-item">
 
                 <span>
@@ -3256,7 +1748,6 @@ footer p{
                 </strong>
 
             </div>
-
 
             <div class="resumen-item mesa-confirmacion">
 
@@ -3279,9 +1770,6 @@ footer p{
             </div>
 
         </div>
-
-
-        <!-- ASISTENCIA -->
 
         <label
             class="selector-label"
@@ -3309,9 +1797,6 @@ footer p{
 
         </select>
 
-
-        <!-- CANTIDAD DE PERSONAS -->
-
         <div
             id="personasConfirmacion"
             class="personas-confirmacion"
@@ -3327,9 +1812,7 @@ footer p{
             <select
                 id="cantidadAsistiran"
                 class="selector-personas">
-
             </select>
-
 
             <div class="resumen-personas">
 
@@ -3345,7 +1828,6 @@ footer p{
 
                 </div>
 
-
                 <div class="persona-dato">
 
                     <span>
@@ -3357,7 +1839,6 @@ footer p{
                     </strong>
 
                 </div>
-
 
                 <div class="persona-dato">
 
@@ -3375,20 +1856,14 @@ footer p{
 
         </div>
 
-
-        <!-- MESA Y ASIENTOS ANIMADOS -->
-
         <div
             id="asientosVisuales"
             class="asientos-visuales"
             style="display:none;">
 
             <div class="asientos-titulo">
-
                 🪑 Distribución de tus lugares
-
             </div>
-
 
             <div class="mesa-visual">
 
@@ -3399,12 +1874,10 @@ footer p{
 
             </div>
 
-
             <div
                 id="sillas"
                 class="sillas">
             </div>
-
 
             <div
                 class="asientos-disponibles-texto"
@@ -3416,7 +1889,6 @@ footer p{
 
         </div>
 
-
         <button
             type="button"
             id="botonConfirmar"
@@ -3426,7 +1898,6 @@ footer p{
 
         </button>
 
-
         <div
             id="mensajeConfirmacion"
             style="
@@ -3434,9 +1905,7 @@ footer p{
                 margin-top:20px;
                 line-height:1.7;
             ">
-
         </div>
-
 
         <div class="estado-asientos">
 
@@ -3490,7 +1959,6 @@ footer p{
 
 <script>
 
-
 /* =====================================================
    GOOGLE SHEETS
 ===================================================== */
@@ -3516,25 +1984,25 @@ const CLOUDINARY_UPLOAD_PRESET =
 
 const familias = {
 
-    garcia: {
+    garcia:{
         nombre:"Familia García",
         lugares:4,
         mesa:1
     },
 
-    lopez: {
+    lopez:{
         nombre:"Familia López",
         lugares:3,
         mesa:2
     },
 
-    martinez: {
+    martinez:{
         nombre:"Familia Martínez",
         lugares:5,
         mesa:3
     },
 
-    ejemplo: {
+    ejemplo:{
         nombre:"Familia Ejemplo",
         lugares:2,
         mesa:4
@@ -3544,7 +2012,7 @@ const familias = {
 
 
 /* =====================================================
-   LEER FAMILIA DESDE LA URL
+   LEER FAMILIA DESDE URL
 ===================================================== */
 
 const parametros =
@@ -3559,7 +2027,6 @@ const codigoFamilia =
     )
     .toLowerCase()
     .trim();
-
 
 const familiaActual =
     familias[codigoFamilia] || {
@@ -3761,13 +2228,10 @@ function mostrarDatosFamilia(){
 function prepararSelectorPersonas(){
 
     if(!cantidadAsistiran){
-
         return;
-
     }
 
     cantidadAsistiran.innerHTML = "";
-
 
     const opcionInicial =
         document.createElement("option");
@@ -3780,7 +2244,6 @@ function prepararSelectorPersonas(){
     cantidadAsistiran.appendChild(
         opcionInicial
     );
-
 
     for(
         let i = 1;
@@ -3808,12 +2271,10 @@ function prepararSelectorPersonas(){
 
 
 /* =====================================================
-   ACTUALIZAR ASIENTOS VISUALES
+   ACTUALIZAR ASIENTOS
 ===================================================== */
 
-function actualizarAsientos(
-    cantidad
-){
+function actualizarAsientos(cantidad){
 
     const total =
         Number(
@@ -3831,38 +2292,28 @@ function actualizarAsientos(
             0
         );
 
-
     if(personasAsistiran){
-
         personasAsistiran.textContent =
             asistentes;
-
     }
 
     if(personasNoAsistiran){
-
         personasNoAsistiran.textContent =
             noAsisten;
-
     }
 
     if(personasDisponibles){
-
         personasDisponibles.textContent =
             noAsisten;
-
     }
-
 
     if(!asientosVisuales){
-
         return;
-
     }
 
-
-    sillas.innerHTML = "";
-
+    if(sillas){
+        sillas.innerHTML = "";
+    }
 
     for(
         let i = 1;
@@ -3881,29 +2332,15 @@ function actualizarAsientos(
                 : "disponible"
             );
 
-        silla.textContent =
-            "🪑";
+        silla.textContent = "🪑";
 
         silla.style.animationDelay =
-            (
-                i * .08
-            ) +
-            "s";
+            (i * .08) + "s";
 
-
-        if(i <= asistentes){
-
-            silla.title =
-                "Asiento ocupado";
-
-        }
-        else{
-
-            silla.title =
-                "Asiento disponible";
-
-        }
-
+        silla.title =
+            i <= asistentes
+            ? "Asiento ocupado"
+            : "Asiento disponible";
 
         sillas.appendChild(
             silla
@@ -3911,14 +2348,12 @@ function actualizarAsientos(
 
     }
 
-
     if(asistentes > 0){
 
         if(noAsisten === 0){
 
             textoAsientosDisponibles.textContent =
-                "❤️ Todos los lugares estarán ocupados. " +
-                "¡Los esperamos!";
+                "❤️ Todos los lugares estarán ocupados. ¡Los esperamos!";
 
             estadoDisponiblesFinal.innerHTML =
                 "❤️ <strong>0</strong> asientos disponibles en la Mesa " +
@@ -3952,6 +2387,7 @@ function actualizarAsientos(
                 " en la Mesa " +
                 familiaActual.mesa +
                 ".";
+
         }
 
     }
@@ -3973,14 +2409,10 @@ function actualizarAsientos(
 ===================================================== */
 
 asistencia.addEventListener(
-
     "change",
-
     function(){
 
-        const opcion =
-            this.value;
-
+        const opcion = this.value;
 
         if(!opcion){
 
@@ -3990,10 +2422,12 @@ asistencia.addEventListener(
             asientosVisuales.style.display =
                 "none";
 
+            cantidadAsistiran.value = "";
+
+            actualizarAsientos(0);
+
             return;
-
         }
-
 
         personasConfirmacion.style.display =
             "block";
@@ -4001,30 +2435,22 @@ asistencia.addEventListener(
         asientosVisuales.style.display =
             "block";
 
-
         if(opcion === "No"){
 
-            cantidadAsistiran.value =
-                "0";
+            cantidadAsistiran.value = "0";
 
-            actualizarAsientos(
-                0
-            );
+            actualizarAsientos(0);
 
         }
         else{
 
-            cantidadAsistiran.value =
-                "";
+            cantidadAsistiran.value = "";
 
-            actualizarAsientos(
-                0
-            );
+            actualizarAsientos(0);
 
         }
 
     }
-
 );
 
 
@@ -4033,9 +2459,7 @@ asistencia.addEventListener(
 ===================================================== */
 
 cantidadAsistiran.addEventListener(
-
     "change",
-
     function(){
 
         const cantidad =
@@ -4043,13 +2467,11 @@ cantidadAsistiran.addEventListener(
                 this.value
             ) || 0;
 
-
         actualizarAsientos(
             cantidad
         );
 
     }
-
 );
 
 
@@ -4072,37 +2494,40 @@ const invitacionPersonalizada =
         "invitacionPersonalizada"
     );
 
+if(botonAbrir){
 
-botonAbrir.addEventListener(
-    "click",
-    function(){
+    botonAbrir.addEventListener(
+        "click",
+        function(){
 
-        pantallaInicial.classList.add(
-            "ocultar"
-        );
+            pantallaInicial.classList.add(
+                "ocultar"
+            );
 
-        setTimeout(
-            function(){
+            setTimeout(
+                function(){
 
-                invitacionPersonalizada.classList.add(
-                    "mostrar"
-                );
+                    invitacionPersonalizada.classList.add(
+                        "mostrar"
+                    );
 
-                window.scrollTo({
+                    window.scrollTo({
 
-                    top:
-                        invitacionPersonalizada.offsetTop,
+                        top:
+                            invitacionPersonalizada.offsetTop,
 
-                    behavior:"smooth"
+                        behavior:"smooth"
 
-                });
+                    });
 
-            },
-            700
-        );
+                },
+                700
+            );
 
-    }
-);
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -4114,7 +2539,6 @@ const fechaBoda =
         "2027-01-16T17:00:00-06:00"
     ).getTime();
 
-
 function actualizarContador(){
 
     const ahora =
@@ -4123,29 +2547,15 @@ function actualizarContador(){
     const distancia =
         fechaBoda - ahora;
 
-
     if(distancia <= 0){
 
-        document.getElementById(
-            "dias"
-        ).textContent = "0";
-
-        document.getElementById(
-            "horas"
-        ).textContent = "0";
-
-        document.getElementById(
-            "minutos"
-        ).textContent = "0";
-
-        document.getElementById(
-            "segundos"
-        ).textContent = "0";
+        document.getElementById("dias").textContent = "0";
+        document.getElementById("horas").textContent = "0";
+        document.getElementById("minutos").textContent = "0";
+        document.getElementById("segundos").textContent = "0";
 
         return;
-
     }
-
 
     const dias =
         Math.floor(
@@ -4180,25 +2590,12 @@ function actualizarContador(){
             1000
         );
 
-
-    document.getElementById(
-        "dias"
-    ).textContent = dias;
-
-    document.getElementById(
-        "horas"
-    ).textContent = horas;
-
-    document.getElementById(
-        "minutos"
-    ).textContent = minutos;
-
-    document.getElementById(
-        "segundos"
-    ).textContent = segundos;
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent = horas;
+    document.getElementById("minutos").textContent = minutos;
+    document.getElementById("segundos").textContent = segundos;
 
 }
-
 
 actualizarContador();
 
@@ -4217,14 +2614,12 @@ const elementosReveal =
         ".reveal,.reveal-left,.reveal-right"
     );
 
-
 const observador =
     new IntersectionObserver(
 
         function(elementos){
 
             elementos.forEach(
-
                 function(elemento){
 
                     if(
@@ -4242,7 +2637,6 @@ const observador =
                     }
 
                 }
-
             );
 
         },
@@ -4253,17 +2647,12 @@ const observador =
 
     );
 
-
 elementosReveal.forEach(
-
     elemento=>{
-
         observador.observe(
             elemento
         );
-
     }
-
 );
 
 
@@ -4314,7 +2703,6 @@ function crearCorazon(){
 
 }
 
-
 setInterval(
     crearCorazon,
     3500
@@ -4361,7 +2749,6 @@ function crearParticula(){
 
 }
 
-
 setInterval(
     crearParticula,
     1800
@@ -4407,68 +2794,61 @@ const tituloProgreso =
    SELECCIONAR FOTO
 ===================================================== */
 
-inputFoto.addEventListener(
+if(inputFoto){
 
-    "change",
+    inputFoto.addEventListener(
+        "change",
+        function(){
 
-    function(){
+            const archivo =
+                this.files[0];
 
-        const archivo =
-            this.files[0];
+            if(!archivo){
+                return;
+            }
 
-        if(!archivo){
+            if(
+                !archivo.type.startsWith(
+                    "image/"
+                )
+            ){
 
-            return;
-
-        }
-
-
-        if(
-            !archivo.type.startsWith(
-                "image/"
-            )
-        ){
-
-            alert(
-                "Por favor selecciona una imagen."
-            );
-
-            this.value="";
-
-            return;
-
-        }
-
-
-        const lector =
-            new FileReader();
-
-
-        lector.onload =
-            function(e){
-
-                previewFoto.src =
-                    e.target.result;
-
-                previewFoto.classList.add(
-                    "mostrar"
+                alert(
+                    "Por favor selecciona una imagen."
                 );
 
-            };
+                this.value = "";
 
+                return;
+            }
 
-        lector.readAsDataURL(
-            archivo
-        );
+            const lector =
+                new FileReader();
 
+            lector.onload =
+                function(e){
 
-        subirFotoCloudinary(
-            archivo
-        );
+                    previewFoto.src =
+                        e.target.result;
 
-    }
+                    previewFoto.classList.add(
+                        "mostrar"
+                    );
 
-);
+                };
+
+            lector.readAsDataURL(
+                archivo
+            );
+
+            subirFotoCloudinary(
+                archivo
+            );
+
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -4488,6 +2868,1789 @@ function subirFotoCloudinary(
 
     mensajeFoto.textContent =
         "Espera unos segundos mientras guardamos tu recuerdo. ❤️";
+
+    barraProgreso.style.width =
+        "5%";
+
+    const url =
+        "https://api.cloudinary.com/v1_1/" +
+        CLOUDINARY_CLOUD_NAME +
+        "/image/upload";
+
+    const datos =
+        new FormData();
+
+    datos.append(
+        "file",
+        archivo
+    );
+
+    datos.append(
+        "upload_preset",
+        CLOUDINARY_UPLOAD_PRESET
+    );
+
+    datos.append(
+        "context",
+        "evento=Josue-Damaris|tipo=foto-invitado|familia=" +
+        familiaActual.nombre
+    );
+
+    const xhr =
+        new XMLHttpRequest();
+
+    xhr.open(
+        "POST",
+        url,
+        true
+    );
+
+    xhr.upload.addEventListener(
+        "progress",
+        function(evento){
+
+            if(
+                evento.lengthComputable
+            ){
+
+                const porcentaje =
+                    Math.round(
+                        (
+                            evento.loaded /
+                            evento.total
+                        ) * 100
+                    );
+
+                barraProgreso.style.width =
+                    porcentaje+"%";
+
+                tituloProgreso.textContent =
+                    "📤 Subiendo foto... " +
+                    porcentaje +
+                    "%";
+
+            }
+
+        }
+    );
+
+    xhr.onload =
+        function(){
+
+            if(
+                xhr.status >= 200 &&
+                xhr.status < 300
+            ){
+
+                try{
+
+                    const respuesta =
+                        JSON.parse(
+                            xhr.responseText
+                        );
+
+                    barraProgreso.style.width =
+                        "100%";
+
+                    tituloProgreso.textContent =
+                        "❤️ ¡Foto recibida!";
+
+                    mensajeFoto.innerHTML =
+                        "Tu foto fue enviada correctamente. " +
+                        "¡Gracias por compartir este recuerdo! 💍💕";
+
+                    guardarFotoLocal(
+                        respuesta.secure_url
+                    );
+
+                    inputFoto.value = "";
+
+                }
+                catch(error){
+
+                    console.error(
+                        error
+                    );
+
+                    mostrarErrorFoto();
+
+                }
+
+            }
+            else{
+
+                console.error(
+                    "Cloudinary:",
+                    xhr.responseText
+                );
+
+                mostrarErrorFoto();
+
+            }
+
+        };
+
+    xhr.onerror =
+        function(){
+            mostrarErrorFoto();
+        };
+
+    xhr.ontimeout =
+        function(){
+            mostrarErrorFoto();
+        };
+
+    xhr.timeout = 60000;
+
+    xhr.send(
+        datos
+    );
+
+}
+
+
+/* =====================================================
+   ERROR FOTO
+===================================================== */
+
+function mostrarErrorFoto(){
+
+    tituloProgreso.textContent =
+        "❌ No se pudo subir la foto";
+
+    mensajeFoto.innerHTML =
+        "Revisa tu conexión a Internet " +
+        "e inténtalo nuevamente.";
+
+    barraProgreso.style.width =
+        "0%";
+
+}
+
+
+/* =====================================================
+   GUARDAR FOTO LOCAL
+===================================================== */
+
+function guardarFotoLocal(url){
+
+    try{
+
+        const fotos =
+            JSON.parse(
+                localStorage.getItem(
+                    "fotosInvitadosBoda"
+                ) || "[]"
+            );
+
+        fotos.push({
+
+            url:url,
+
+            familia:
+                familiaActual.nombre,
+
+            fecha:
+                new Date()
+                .toLocaleString("es-GT")
+
+        });
+
+        localStorage.setItem(
+            "fotosInvitadosBoda",
+            JSON.stringify(
+                fotos
+            )
+        );
+
+    }
+    catch(error){
+
+        console.log(
+            "No se pudo guardar localmente:",
+            error
+        );
+
+    }
+
+}
+
+ <!-- =====================================================
+     INFORMACIÓN
+===================================================== -->
+
+<section class="informacion reveal">
+
+    <h2 class="titulo">
+        Detalles de nuestro día
+    </h2>
+
+    <div class="tarjetas">
+
+        <div class="tarjeta reveal-left">
+
+            <div class="icono">📅</div>
+
+            <h3>Fecha</h3>
+
+            <p>
+                16 de Enero de 2027
+            </p>
+
+        </div>
+
+
+        <div class="tarjeta reveal">
+
+            <div class="icono">🕓</div>
+
+            <h3>Hora</h3>
+
+            <p>
+                4:30 PM
+            </p>
+
+        </div>
+
+
+        <div class="tarjeta reveal">
+
+            <div class="icono">⛪</div>
+
+            <h3>Ceremonia</h3>
+
+            <p>
+                Mismo lugar del evento
+            </p>
+
+        </div>
+
+
+        <div class="tarjeta reveal-right">
+
+            <div class="icono">🥂</div>
+
+            <h3>Recepción</h3>
+
+            <p>
+                A un costado de la ceremonia
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="ubicacion-texto">
+
+        <h3>
+            📍 Ubicación
+        </h3>
+
+        <p>
+            Marcia Jardines, Puente La Unión<br>
+            Carr. San Miguel Petapa - Villa Canales<br>
+            Villa Canales
+        </p>
+
+
+        <a
+            href="https://maps.app.goo.gl/cwevBrgk79uY8HRk9"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton-ubicacion">
+
+            📍 VER UBICACIÓN EN GOOGLE MAPS
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FRASE
+===================================================== -->
+
+<section class="frase reveal">
+
+    <p>
+
+        “Y sobre todas estas cosas vestíos de amor,
+        que es el vínculo perfecto.”
+
+    </p>
+
+    <br>
+
+    <p>
+        — Colosenses 3:14
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONFIRMACIÓN
+===================================================== -->
+
+<section class="confirmacion reveal">
+
+    <h2 class="titulo">
+        ¿Nos acompañas?
+    </h2>
+
+    <p class="subtitulo">
+
+        Será un honor compartir contigo este día
+        tan especial para nosotros.
+
+    </p>
+
+
+    <div class="confirmacion-contenido">
+
+
+        <div class="reservados">
+
+            💍 Confirma tu asistencia para ayudarnos
+            a preparar todo con mucho cariño.
+
+        </div>
+
+
+
+        <!-- RESUMEN FAMILIA -->
+
+        <div class="resumen-confirmacion">
+
+
+            <div class="resumen-item">
+
+                <span>
+                    Invitación
+                </span>
+
+                <strong id="confirmacionFamilia">
+                    Invitado
+                </strong>
+
+            </div>
+
+
+
+            <div class="resumen-item">
+
+                <span>
+                    Invitados asignados
+                </span>
+
+                <strong id="confirmacionLugares">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="resumen-item mesa-confirmacion">
+
+                <div class="marca-agua-confirmacion">
+                    🪑
+                </div>
+
+                <div class="mesa-confirmacion-contenido">
+
+                    <span>
+                        Mesa
+                    </span>
+
+                    <strong id="confirmacionMesa">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ASISTENCIA -->
+
+        <label
+            class="selector-label"
+            for="asistencia">
+
+            ¿Nos acompañas?
+
+        </label>
+
+
+        <select
+            id="asistencia"
+            class="selector-asistencia">
+
+            <option value="">
+                Selecciona una opción
+            </option>
+
+            <option value="Si">
+                ❤️ Sí, asistiré
+            </option>
+
+            <option value="No">
+                😔 No podré asistir
+            </option>
+
+        </select>
+
+
+
+        <!-- CANTIDAD DE PERSONAS -->
+
+        <div
+            id="personasConfirmacion"
+            class="personas-confirmacion"
+            style="display:none;">
+
+            <label for="cantidadAsistiran">
+
+                👨‍👩‍👧 ¿Cuántas personas asistirán?
+
+            </label>
+
+
+            <select
+                id="cantidadAsistiran"
+                class="selector-personas">
+
+            </select>
+
+
+
+            <div class="resumen-personas">
+
+
+                <div class="persona-dato">
+
+                    <span>
+                        Asistirán
+                    </span>
+
+                    <strong id="personasAsistiran">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="persona-dato">
+
+                    <span>
+                        No asistirán
+                    </span>
+
+                    <strong id="personasNoAsistiran">
+                        0
+                    </strong>
+
+                </div>
+
+
+
+                <div class="persona-dato">
+
+                    <span>
+                        Disponibles
+                    </span>
+
+                    <strong id="personasDisponibles">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MESA Y ASIENTOS ANIMADOS
+        ================================================== -->
+
+        <div
+            id="asientosVisuales"
+            class="asientos-visuales"
+            style="display:none;">
+
+            <div class="asientos-titulo">
+
+                🪑 Distribución de tus lugares
+
+            </div>
+
+
+            <div class="mesa-visual">
+
+                MESA
+
+                <span id="numeroMesaVisual">
+                    -
+                </span>
+
+            </div>
+
+
+            <div
+                id="sillas"
+                class="sillas">
+
+            </div>
+
+
+            <div
+                class="asientos-disponibles-texto"
+                id="textoAsientosDisponibles">
+
+                Selecciona la cantidad de personas.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BOTÓN CONFIRMAR -->
+
+        <button
+            type="button"
+            id="botonConfirmar"
+            class="boton-confirmar">
+
+            💍 CONFIRMAR ASISTENCIA
+
+        </button>
+
+
+
+        <div
+            id="mensajeConfirmacion"
+            style="
+                display:none;
+                margin-top:20px;
+                line-height:1.7;
+            ">
+
+        </div>
+
+
+
+        <!-- ESTADO FINAL -->
+
+        <div class="estado-asientos">
+
+            <span>
+                🪑 Lugares asignados
+            </span>
+
+            <strong id="lugaresReservados">
+                0
+            </strong>
+
+
+            <span>
+                Mesa <b id="mesaReservada">-</b>
+            </span>
+
+
+            <div
+                class="asientos-disponibles-texto"
+                id="estadoDisponiblesFinal">
+
+                Selecciona cuántas personas asistirán.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <h2>
+        Josué & Damaris
+    </h2>
+
+    <p>
+        Con amor, para siempre ❤️
+    </p>
+
+    <p>
+        16 • 01 • 2027
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   GOOGLE SHEETS
+===================================================== */
+
+const GOOGLE_SHEETS_URL =
+"https://script.google.com/macros/s/AKfycbwWWujQYCCzG1bQnO2lYoQsaW0YH00L6y-GQJzE2L7lh4QtCqSPDohllXCRwwhXY62u/exec";
+
+
+
+/* =====================================================
+   CLOUDINARY
+===================================================== */
+
+const CLOUDINARY_CLOUD_NAME =
+    "hiybqt7g";
+
+const CLOUDINARY_UPLOAD_PRESET =
+    "boda_josue_damaris_27";
+
+
+
+/* =====================================================
+   FAMILIAS
+===================================================== */
+
+const familias = {
+
+    garcia: {
+        nombre: "Familia García",
+        lugares: 4,
+        mesa: 1
+    },
+
+    lopez: {
+        nombre: "Familia López",
+        lugares: 3,
+        mesa: 2
+    },
+
+    martinez: {
+        nombre: "Familia Martínez",
+        lugares: 5,
+        mesa: 3
+    },
+
+    ejemplo: {
+        nombre: "Familia Ejemplo",
+        lugares: 2,
+        mesa: 4
+    }
+
+};
+
+
+
+/* =====================================================
+   LEER FAMILIA DESDE LA URL
+===================================================== */
+
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const codigoFamilia =
+    (
+        parametros.get("familia") ||
+        ""
+    )
+    .toLowerCase()
+    .trim();
+
+
+const familiaActual =
+    familias[codigoFamilia] || {
+
+        nombre: "Invitado especial",
+        lugares: 0,
+        mesa: "-"
+
+    };
+
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const nombreFamiliaPortada =
+    document.getElementById(
+        "nombreFamiliaPortada"
+    );
+
+
+const confirmacionFamilia =
+    document.getElementById(
+        "confirmacionFamilia"
+    );
+
+
+const confirmacionLugares =
+    document.getElementById(
+        "confirmacionLugares"
+    );
+
+
+const confirmacionMesa =
+    document.getElementById(
+        "confirmacionMesa"
+    );
+
+
+const lugaresReservados =
+    document.getElementById(
+        "lugaresReservados"
+    );
+
+
+const mesaReservada =
+    document.getElementById(
+        "mesaReservada"
+    );
+
+
+const asistencia =
+    document.getElementById(
+        "asistencia"
+    );
+
+
+const botonConfirmar =
+    document.getElementById(
+        "botonConfirmar"
+    );
+
+
+const mensajeConfirmacion =
+    document.getElementById(
+        "mensajeConfirmacion"
+    );
+
+
+const mesaFamiliaPortada =
+    document.getElementById(
+        "mesaFamiliaPortada"
+    );
+
+
+const lugaresFamiliaPortada =
+    document.getElementById(
+        "lugaresFamiliaPortada"
+    );
+
+
+const personasConfirmacion =
+    document.getElementById(
+        "personasConfirmacion"
+    );
+
+
+const cantidadAsistiran =
+    document.getElementById(
+        "cantidadAsistiran"
+    );
+
+
+const personasAsistiran =
+    document.getElementById(
+        "personasAsistiran"
+    );
+
+
+const personasNoAsistiran =
+    document.getElementById(
+        "personasNoAsistiran"
+    );
+
+
+const personasDisponibles =
+    document.getElementById(
+        "personasDisponibles"
+    );
+
+
+const asientosVisuales =
+    document.getElementById(
+        "asientosVisuales"
+    );
+
+
+const numeroMesaVisual =
+    document.getElementById(
+        "numeroMesaVisual"
+    );
+
+
+const sillas =
+    document.getElementById(
+        "sillas"
+    );
+
+
+const textoAsientosDisponibles =
+    document.getElementById(
+        "textoAsientosDisponibles"
+    );
+
+
+const estadoDisponiblesFinal =
+    document.getElementById(
+        "estadoDisponiblesFinal"
+    );
+
+
+
+/* =====================================================
+   MOSTRAR DATOS DE LA FAMILIA
+===================================================== */
+
+function mostrarDatosFamilia(){
+
+    if(nombreFamiliaPortada){
+
+        nombreFamiliaPortada.textContent =
+            familiaActual.nombre;
+
+    }
+
+
+    if(confirmacionFamilia){
+
+        confirmacionFamilia.textContent =
+            familiaActual.nombre;
+
+    }
+
+
+    if(confirmacionLugares){
+
+        confirmacionLugares.textContent =
+            familiaActual.lugares;
+
+    }
+
+
+    if(confirmacionMesa){
+
+        confirmacionMesa.textContent =
+            familiaActual.mesa;
+
+    }
+
+
+    if(lugaresReservados){
+
+        lugaresReservados.textContent =
+            familiaActual.lugares;
+
+    }
+
+
+    if(mesaReservada){
+
+        mesaReservada.textContent =
+            familiaActual.mesa;
+
+    }
+
+
+    if(mesaFamiliaPortada){
+
+        mesaFamiliaPortada.textContent =
+            "Mesa " +
+            familiaActual.mesa;
+
+    }
+
+
+    if(lugaresFamiliaPortada){
+
+        lugaresFamiliaPortada.textContent =
+            familiaActual.lugares;
+
+    }
+
+
+    if(numeroMesaVisual){
+
+        numeroMesaVisual.textContent =
+            familiaActual.mesa;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SELECTOR DE PERSONAS
+===================================================== */
+
+function prepararSelectorPersonas(){
+
+    if(!cantidadAsistiran){
+
+        return;
+
+    }
+
+
+    cantidadAsistiran.innerHTML = "";
+
+
+    const opcionInicial =
+        document.createElement(
+            "option"
+        );
+
+
+    opcionInicial.value = "";
+
+
+    opcionInicial.textContent =
+        "Selecciona cantidad";
+
+
+    cantidadAsistiran.appendChild(
+        opcionInicial
+    );
+
+
+    for(
+        let i = 1;
+        i <= familiaActual.lugares;
+        i++
+    ){
+
+        const opcion =
+            document.createElement(
+                "option"
+            );
+
+
+        opcion.value =
+            i;
+
+
+        opcion.textContent =
+            i === 1
+            ? "1 persona"
+            : i + " personas";
+
+
+        cantidadAsistiran.appendChild(
+            opcion
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ACTUALIZAR ASIENTOS
+===================================================== */
+
+function actualizarAsientos(cantidad){
+
+    const total =
+        Number(
+            familiaActual.lugares
+        ) || 0;
+
+
+    const asistentes =
+        Number(
+            cantidad
+        ) || 0;
+
+
+    const noAsisten =
+        Math.max(
+            total - asistentes,
+            0
+        );
+
+
+    if(personasAsistiran){
+
+        personasAsistiran.textContent =
+            asistentes;
+
+    }
+
+
+    if(personasNoAsistiran){
+
+        personasNoAsistiran.textContent =
+            noAsisten;
+
+    }
+
+
+    if(personasDisponibles){
+
+        personasDisponibles.textContent =
+            noAsisten;
+
+    }
+
+
+    if(!asientosVisuales){
+
+        return;
+
+    }
+
+
+    sillas.innerHTML = "";
+
+
+    for(
+        let i = 1;
+        i <= total;
+        i++
+    ){
+
+        const silla =
+            document.createElement(
+                "div"
+            );
+
+
+        silla.className =
+            "silla " +
+            (
+                i <= asistentes
+                ? "ocupada"
+                : "disponible"
+            );
+
+
+        silla.textContent =
+            "🪑";
+
+
+        silla.style.animationDelay =
+            (
+                i * .08
+            ) +
+            "s";
+
+
+        silla.title =
+            i <= asistentes
+            ? "Asiento ocupado"
+            : "Asiento disponible";
+
+
+        sillas.appendChild(
+            silla
+        );
+
+    }
+
+
+    if(asistentes > 0){
+
+        if(noAsisten === 0){
+
+            textoAsientosDisponibles.textContent =
+                "❤️ Todos los lugares estarán ocupados. ¡Los esperamos!";
+
+
+            estadoDisponiblesFinal.innerHTML =
+                "❤️ <strong>0</strong> asientos disponibles en la Mesa " +
+                familiaActual.mesa +
+                ".";
+
+        }
+        else{
+
+            textoAsientosDisponibles.textContent =
+                "🪑 Quedan " +
+                noAsisten +
+                (
+                    noAsisten === 1
+                    ? " asiento disponible "
+                    : " asientos disponibles "
+                ) +
+                "en la Mesa " +
+                familiaActual.mesa +
+                ".";
+
+
+            estadoDisponiblesFinal.innerHTML =
+                "🪑 <strong>" +
+                noAsisten +
+                "</strong> " +
+                (
+                    noAsisten === 1
+                    ? "asiento disponible"
+                    : "asientos disponibles"
+                ) +
+                " en la Mesa " +
+                familiaActual.mesa +
+                ".";
+
+        }
+
+    }
+    else{
+
+        textoAsientosDisponibles.textContent =
+            "Selecciona la cantidad de personas.";
+
+
+        estadoDisponiblesFinal.textContent =
+            "Selecciona cuántas personas asistirán.";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CAMBIO DE ASISTENCIA
+===================================================== */
+
+if(asistencia){
+
+    asistencia.addEventListener(
+        "change",
+        function(){
+
+            const opcion =
+                this.value;
+
+
+            if(!opcion){
+
+                personasConfirmacion.style.display =
+                    "none";
+
+                asientosVisuales.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            personasConfirmacion.style.display =
+                "block";
+
+
+            asientosVisuales.style.display =
+                "block";
+
+
+            if(opcion === "No"){
+
+                cantidadAsistiran.value =
+                    "0";
+
+
+                actualizarAsientos(0);
+
+            }
+            else{
+
+                cantidadAsistiran.value =
+                    "";
+
+
+                actualizarAsientos(0);
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CAMBIO DE CANTIDAD
+===================================================== */
+
+if(cantidadAsistiran){
+
+    cantidadAsistiran.addEventListener(
+        "change",
+        function(){
+
+            const cantidad =
+                Number(
+                    this.value
+                ) || 0;
+
+
+            actualizarAsientos(
+                cantidad
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   PANTALLA INICIAL
+===================================================== */
+
+const botonAbrir =
+    document.getElementById(
+        "abrirInvitacion"
+    );
+
+
+const pantallaInicial =
+    document.getElementById(
+        "pantallaInicial"
+    );
+
+
+const invitacionPersonalizada =
+    document.getElementById(
+        "invitacionPersonalizada"
+    );
+
+
+if(
+    botonAbrir &&
+    pantallaInicial &&
+    invitacionPersonalizada
+){
+
+    botonAbrir.addEventListener(
+        "click",
+        function(){
+
+            pantallaInicial.classList.add(
+                "ocultar"
+            );
+
+
+            setTimeout(
+                function(){
+
+                    invitacionPersonalizada.classList.add(
+                        "mostrar"
+                    );
+
+
+                    window.scrollTo({
+
+                        top:
+                            invitacionPersonalizada.offsetTop,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                },
+                700
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CONTADOR
+===================================================== */
+
+const fechaBoda =
+    new Date(
+        "2027-01-16T17:00:00-06:00"
+    ).getTime();
+
+
+function actualizarContador(){
+
+    const ahora =
+        new Date().getTime();
+
+
+    const distancia =
+        fechaBoda - ahora;
+
+
+    if(distancia <= 0){
+
+        document.getElementById(
+            "dias"
+        ).textContent = "0";
+
+
+        document.getElementById(
+            "horas"
+        ).textContent = "0";
+
+
+        document.getElementById(
+            "minutos"
+        ).textContent = "0";
+
+
+        document.getElementById(
+            "segundos"
+        ).textContent = "0";
+
+
+        return;
+
+    }
+
+
+    const dias =
+        Math.floor(
+            distancia /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const horas =
+        Math.floor(
+            (
+                distancia %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutos =
+        Math.floor(
+            (
+                distancia %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+
+    const segundos =
+        Math.floor(
+            (
+                distancia %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+    document.getElementById(
+        "dias"
+    ).textContent = dias;
+
+
+    document.getElementById(
+        "horas"
+    ).textContent = horas;
+
+
+    document.getElementById(
+        "minutos"
+    ).textContent = minutos;
+
+
+    document.getElementById(
+        "segundos"
+    ).textContent = segundos;
+
+}
+
+
+actualizarContador();
+
+
+setInterval(
+    actualizarContador,
+    1000
+);
+
+
+
+/* =====================================================
+   ANIMACIONES SCROLL
+===================================================== */
+
+const elementosReveal =
+    document.querySelectorAll(
+        ".reveal,.reveal-left,.reveal-right"
+    );
+
+
+if("IntersectionObserver" in window){
+
+    const observador =
+        new IntersectionObserver(
+
+            function(elementos){
+
+                elementos.forEach(
+                    function(elemento){
+
+                        if(
+                            elemento.isIntersecting
+                        ){
+
+                            elemento.target
+                                .classList
+                                .add("visible");
+
+
+                            observador.unobserve(
+                                elemento.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: .12
+            }
+
+        );
+
+
+    elementosReveal.forEach(
+        elemento => {
+
+            observador.observe(
+                elemento
+            );
+
+        }
+    );
+
+}
+else{
+
+    elementosReveal.forEach(
+        elemento => {
+
+            elemento.classList.add(
+                "visible"
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CORAZONES
+===================================================== */
+
+function crearCorazon(){
+
+    const corazon =
+        document.createElement(
+            "div"
+        );
+
+
+    corazon.className =
+        "corazones";
+
+
+    corazon.textContent =
+        Math.random() > .5
+        ? "♡"
+        : "♥";
+
+
+    corazon.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    corazon.style.fontSize =
+        (
+            15 +
+            Math.random() * 15
+        ) +
+        "px";
+
+
+    corazon.style.animationDuration =
+        (
+            5 +
+            Math.random() * 4
+        ) +
+        "s";
+
+
+    document.body.appendChild(
+        corazon
+    );
+
+
+    setTimeout(
+        () => {
+
+            corazon.remove();
+
+        },
+        9000
+    );
+
+}
+
+
+setInterval(
+    crearCorazon,
+    3500
+);
+
+
+
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+function crearParticula(){
+
+    const particula =
+        document.createElement(
+            "div"
+        );
+
+
+    particula.className =
+        "particulas";
+
+
+    particula.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    particula.style.bottom =
+        "-10px";
+
+
+    const duracion =
+        6 +
+        Math.random() * 5;
+
+
+    particula.style.animationDuration =
+        duracion +
+        "s";
+
+
+    document.body.appendChild(
+        particula
+    );
+
+
+    setTimeout(
+        () => {
+
+            particula.remove();
+
+        },
+        duracion * 1000
+    );
+
+}
+
+
+setInterval(
+    crearParticula,
+    1800
+);
+
+
+
+/* =====================================================
+   FOTOS DE INVITADOS
+===================================================== */
+
+const inputFoto =
+    document.getElementById(
+        "fotoInvitado"
+    );
+
+
+const previewFoto =
+    document.getElementById(
+        "previewFoto"
+    );
+
+
+const progresoFoto =
+    document.getElementById(
+        "progresoFoto"
+    );
+
+
+const barraProgreso =
+    document.getElementById(
+        "barraProgreso"
+    );
+
+
+const mensajeFoto =
+    document.getElementById(
+        "mensajeFoto"
+    );
+
+
+const tituloProgreso =
+    document.getElementById(
+        "tituloProgreso"
+    );
+
+
+
+if(inputFoto){
+
+    inputFoto.addEventListener(
+        "change",
+        function(){
+
+            const archivo =
+                this.files[0];
+
+
+            if(!archivo){
+
+                return;
+
+            }
+
+
+            if(
+                !archivo.type.startsWith(
+                    "image/"
+                )
+            ){
+
+                alert(
+                    "Por favor selecciona una imagen."
+                );
+
+
+                this.value = "";
+
+                return;
+
+            }
+
+
+            const lector =
+                new FileReader();
+
+
+            lector.onload =
+                function(e){
+
+                    previewFoto.src =
+                        e.target.result;
+
+
+                    previewFoto.classList.add(
+                        "mostrar"
+                    );
+
+                };
+
+
+            lector.readAsDataURL(
+                archivo
+            );
+
+
+            subirFotoCloudinary(
+                archivo
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SUBIR FOTO A CLOUDINARY
+===================================================== */
+
+function subirFotoCloudinary(
+    archivo
+){
+
+    if(
+        !progresoFoto ||
+        !barraProgreso ||
+        !tituloProgreso ||
+        !mensajeFoto
+    ){
+
+        return;
+
+    }
+
+
+    progresoFoto.classList.add(
+        "mostrar"
+    );
+
+
+    tituloProgreso.textContent =
+        "📤 Subiendo tu foto...";
+
+
+    mensajeFoto.textContent =
+        "Espera unos segundos mientras guardamos tu recuerdo. ❤️";
+
 
     barraProgreso.style.width =
         "5%";
@@ -4534,9 +4697,7 @@ function subirFotoCloudinary(
 
 
     xhr.upload.addEventListener(
-
         "progress",
-
         function(evento){
 
             if(
@@ -4548,22 +4709,24 @@ function subirFotoCloudinary(
                         (
                             evento.loaded /
                             evento.total
-                        ) * 100
+                        ) *
+                        100
                     );
 
 
                 barraProgreso.style.width =
-                    porcentaje+"%";
+                    porcentaje +
+                    "%";
 
 
                 tituloProgreso.textContent =
-                    "📤 Subiendo foto... "+
-                    porcentaje+"%";
+                    "📤 Subiendo foto... " +
+                    porcentaje +
+                    "%";
 
             }
 
         }
-
     );
 
 
@@ -4601,8 +4764,7 @@ function subirFotoCloudinary(
                     );
 
 
-                    inputFoto.value="";
-
+                    inputFoto.value = "";
 
                 }
                 catch(error){
@@ -4610,6 +4772,7 @@ function subirFotoCloudinary(
                     console.error(
                         error
                     );
+
 
                     mostrarErrorFoto();
 
@@ -4622,6 +4785,7 @@ function subirFotoCloudinary(
                     "Cloudinary:",
                     xhr.responseText
                 );
+
 
                 mostrarErrorFoto();
 
@@ -4657,34 +4821,46 @@ function subirFotoCloudinary(
 }
 
 
+
 /* =====================================================
    ERROR FOTO
 ===================================================== */
 
 function mostrarErrorFoto(){
 
-    tituloProgreso.textContent =
-        "❌ No se pudo subir la foto";
+    if(tituloProgreso){
+
+        tituloProgreso.textContent =
+            "❌ No se pudo subir la foto";
+
+    }
 
 
-    mensajeFoto.innerHTML =
-        "Revisa tu conexión a Internet " +
-        "e inténtalo nuevamente.";
+    if(mensajeFoto){
+
+        mensajeFoto.innerHTML =
+            "Revisa tu conexión a Internet " +
+            "e inténtalo nuevamente.";
+
+    }
 
 
-    barraProgreso.style.width =
-        "0%";
+    if(barraProgreso){
+
+        barraProgreso.style.width =
+            "0%";
+
+    }
 
 }
+
 
 
 /* =====================================================
    GUARDAR FOTO LOCAL
 ===================================================== */
 
-function guardarFotoLocal(
-    url
-){
+function guardarFotoLocal(url){
 
     try{
 
@@ -4692,20 +4868,23 @@ function guardarFotoLocal(
             JSON.parse(
                 localStorage.getItem(
                     "fotosInvitadosBoda"
-                ) || "[]"
+                ) ||
+                "[]"
             );
 
 
         fotos.push({
 
-            url:url,
+            url: url,
 
             familia:
                 familiaActual.nombre,
 
             fecha:
                 new Date()
-                .toLocaleString("es-GT")
+                    .toLocaleString(
+                        "es-GT"
+                    )
 
         });
 
@@ -4733,54 +4912,26 @@ function guardarFotoLocal(
 }
 
 
+
 /* =====================================================
-   CONFIRMACIÓN
+   CONFIRMACIÓN DE ASISTENCIA
 ===================================================== */
 
-botonConfirmar.addEventListener(
+if(botonConfirmar){
 
-    "click",
+    botonConfirmar.addEventListener(
+        "click",
+        async function(){
 
-    async function(){
-
-        const opcion =
-            asistencia.value;
-
-
-        if(!opcion){
-
-            mostrarMensajeConfirmacion(
-
-                "⚠️ Por favor selecciona si podrás acompañarnos.",
-
-                false
-
-            );
-
-            return;
-
-        }
+            const opcion =
+                asistencia.value;
 
 
-        let asistentes = 0;
-
-
-        if(opcion === "Si"){
-
-            asistentes =
-                Number(
-                    cantidadAsistiran.value
-                ) || 0;
-
-
-            if(
-                asistentes < 1 ||
-                asistentes > familiaActual.lugares
-            ){
+            if(!opcion){
 
                 mostrarMensajeConfirmacion(
 
-                    "⚠️ Selecciona cuántas personas asistirán.",
+                    "⚠️ Por favor selecciona si podrás acompañarnos.",
 
                     false
 
@@ -4790,194 +4941,231 @@ botonConfirmar.addEventListener(
 
             }
 
-        }
+
+            let asistentes = 0;
 
 
-        if(opcion === "No"){
+            if(opcion === "Si"){
 
-            asistentes = 0;
-
-        }
-
-
-        const noAsisten =
-            Math.max(
-                familiaActual.lugares -
-                asistentes,
-                0
-            );
+                asistentes =
+                    Number(
+                        cantidadAsistiran.value
+                    ) ||
+                    0;
 
 
-        const disponibles =
-            noAsisten;
+                if(
+                    asistentes < 1 ||
+                    asistentes > familiaActual.lugares
+                ){
 
+                    mostrarMensajeConfirmacion(
 
-        botonConfirmar.disabled =
-            true;
+                        "⚠️ Selecciona cuántas personas asistirán.",
 
-        botonConfirmar.textContent =
-            "⏳ GUARDANDO CONFIRMACIÓN...";
+                        false
 
+                    );
 
-        const fechaHora =
-            new Date()
-            .toLocaleString(
-                "es-GT",
-                {
-                    timeZone:
-                        "America/Guatemala"
-                }
-            );
-
-
-        const datosConfirmacion = {
-
-            familia:
-                familiaActual.nombre,
-
-            invitados:
-                familiaActual.lugares,
-
-            lugares:
-                familiaActual.lugares,
-
-            mesa:
-                familiaActual.mesa,
-
-            asistencia:
-                opcion,
-
-            asistiran:
-                asistentes,
-
-            noAsistiran:
-                noAsisten,
-
-            asientosDisponibles:
-                disponibles,
-
-            fecha:
-                fechaHora,
-
-            codigoFamilia:
-                codigoFamilia,
-
-            origen:
-                "Invitación digital Josué & Damaris"
-
-        };
-
-
-        try{
-
-            await fetch(
-
-                GOOGLE_SHEETS_URL,
-
-                {
-
-                    method:"POST",
-
-                    mode:"no-cors",
-
-                    headers:{
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-                    },
-
-                    body:
-                        JSON.stringify(
-                            datosConfirmacion
-                        )
+                    return;
 
                 }
 
-            );
+            }
 
 
-            mostrarMensajeConfirmacion(
+            if(opcion === "No"){
 
-                "❤️ ¡Gracias, " +
-                familiaActual.nombre +
-                "!<br><br>" +
+                asistentes = 0;
 
-                "👨‍👩‍👧 Asistirán: <strong>" +
-                asistentes +
-                "</strong><br>" +
-
-                "😔 No asistirán: <strong>" +
-                noAsisten +
-                "</strong><br>" +
-
-                "🪑 Asientos disponibles: <strong>" +
-                disponibles +
-                "</strong><br>" +
-
-                "🪑 Mesa: <strong>" +
-                familiaActual.mesa +
-                "</strong><br><br>" +
-
-                (
-                    opcion === "Si"
-
-                    ?
-
-                    "Hemos registrado tu confirmación. " +
-                    "¡Te esperamos para celebrar juntos! 💍"
-
-                    :
-
-                    "Hemos registrado que no podrán acompañarnos. " +
-                    "Gracias por avisarnos. ❤️"
-
-                ),
-
-                true
-
-            );
+            }
 
 
-            enviarWhatsApp(
-                opcion,
-                asistentes,
-                noAsisten,
-                disponibles
-            );
+            const noAsisten =
+                Math.max(
+                    familiaActual.lugares -
+                    asistentes,
+                    0
+                );
 
 
-            botonConfirmar.textContent =
-                "❤️ CONFIRMACIÓN ENVIADA";
-
-
-        }
-        catch(error){
-
-            console.error(
-                error
-            );
-
-
-            mostrarMensajeConfirmacion(
-
-                "❌ No pudimos registrar la confirmación. " +
-                "Por favor inténtalo nuevamente.",
-
-                false
-
-            );
+            const disponibles =
+                noAsisten;
 
 
             botonConfirmar.disabled =
-                false;
+                true;
+
 
             botonConfirmar.textContent =
-                "💍 CONFIRMAR ASISTENCIA";
+                "⏳ GUARDANDO CONFIRMACIÓN...";
+
+
+            const fechaHora =
+                new Date()
+                    .toLocaleString(
+                        "es-GT",
+                        {
+                            timeZone:
+                                "America/Guatemala"
+                        }
+                    );
+
+
+            const datosConfirmacion = {
+
+                familia:
+                    familiaActual.nombre,
+
+                invitados:
+                    familiaActual.lugares,
+
+                lugares:
+                    familiaActual.lugares,
+
+                mesa:
+                    familiaActual.mesa,
+
+                asistencia:
+                    opcion,
+
+                asistiran:
+                    asistentes,
+
+                noAsistiran:
+                    noAsisten,
+
+                asientosDisponibles:
+                    disponibles,
+
+                fecha:
+                    fechaHora,
+
+                codigoFamilia:
+                    codigoFamilia,
+
+                origen:
+                    "Invitación digital Josué & Damaris"
+
+            };
+
+
+            try{
+
+                await fetch(
+
+                    GOOGLE_SHEETS_URL,
+
+                    {
+
+                        method:
+                            "POST",
+
+                        mode:
+                            "no-cors",
+
+                        headers:{
+
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+
+                        },
+
+                        body:
+                            JSON.stringify(
+                                datosConfirmacion
+                            )
+
+                    }
+
+                );
+
+
+                mostrarMensajeConfirmacion(
+
+                    "❤️ ¡Gracias, " +
+                    familiaActual.nombre +
+                    "!<br><br>" +
+
+                    "👨‍👩‍👧 Asistirán: <strong>" +
+                    asistentes +
+                    "</strong><br>" +
+
+                    "😔 No asistirán: <strong>" +
+                    noAsisten +
+                    "</strong><br>" +
+
+                    "🪑 Asientos disponibles: <strong>" +
+                    disponibles +
+                    "</strong><br>" +
+
+                    "🪑 Mesa: <strong>" +
+                    familiaActual.mesa +
+                    "</strong><br><br>" +
+
+                    (
+                        opcion === "Si"
+
+                        ?
+
+                        "Hemos registrado tu confirmación. " +
+                        "¡Te esperamos para celebrar juntos! 💍"
+
+                        :
+
+                        "Hemos registrado que no podrán acompañarnos. " +
+                        "Gracias por avisarnos. ❤️"
+
+                    ),
+
+                    true
+
+                );
+
+
+                enviarWhatsApp(
+                    opcion,
+                    asistentes,
+                    noAsisten,
+                    disponibles
+                );
+
+
+                botonConfirmar.textContent =
+                    "❤️ CONFIRMACIÓN ENVIADA";
+
+            }
+            catch(error){
+
+                console.error(
+                    error
+                );
+
+
+                mostrarMensajeConfirmacion(
+
+                    "❌ No pudimos registrar la confirmación. " +
+                    "Por favor inténtalo nuevamente.",
+
+                    false
+
+                );
+
+
+                botonConfirmar.disabled =
+                    false;
+
+
+                botonConfirmar.textContent =
+                    "💍 CONFIRMAR ASISTENCIA";
+
+            }
 
         }
+    );
 
-    }
+}
 
-);
 
 
 /* =====================================================
@@ -4989,11 +5177,20 @@ function mostrarMensajeConfirmacion(
     correcto
 ){
 
+    if(!mensajeConfirmacion){
+
+        return;
+
+    }
+
+
     mensajeConfirmacion.style.display =
         "block";
 
+
     mensajeConfirmacion.innerHTML =
         mensaje;
+
 
     mensajeConfirmacion.style.color =
         correcto
@@ -5001,6 +5198,7 @@ function mostrarMensajeConfirmacion(
         : "#ffe0d0";
 
 }
+
 
 
 /* =====================================================
@@ -5081,8 +5279,9 @@ function enviarWhatsApp(
 }
 
 
+
 /* =====================================================
-   QR / ENTRADA DIRECTA A FOTOS
+   ENTRADA DIRECTA A FOTOS
 ===================================================== */
 
 function irAFotosSiCorresponde(){
@@ -5093,7 +5292,6 @@ function irAFotosSiCorresponde(){
     ){
 
         setTimeout(
-
             function(){
 
                 const seccionFotos =
@@ -5106,18 +5304,18 @@ function irAFotosSiCorresponde(){
 
                     seccionFotos.scrollIntoView({
 
-                        behavior:"smooth",
+                        behavior:
+                            "smooth",
 
-                        block:"start"
+                        block:
+                            "start"
 
                     });
 
                 }
 
             },
-
             900
-
         );
 
     }
@@ -5131,6 +5329,7 @@ window.addEventListener(
 );
 
 
+
 /* =====================================================
    INICIALIZAR
 ===================================================== */
@@ -5139,24 +5338,25 @@ mostrarDatosFamilia();
 
 prepararSelectorPersonas();
 
-actualizarAsientos(
-    0
-);
+actualizarAsientos(0);
 
 
 console.log(
     "Josué & Damaris - Invitación cargada correctamente."
 );
 
+
 console.log(
     "Familia:",
     familiaActual.nombre
 );
 
+
 console.log(
     "Lugares:",
     familiaActual.lugares
 );
+
 
 console.log(
     "Mesa:",
@@ -5167,4 +5367,4 @@ console.log(
 
 </body>
 
-</html>
+</html>   
