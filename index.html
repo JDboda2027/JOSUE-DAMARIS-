@@ -116,13 +116,21 @@ button:active,
 
     padding:20px;
 
-    background:
+    background-color:#4b352b;
+
+    background-image:
         linear-gradient(
             rgba(40,25,20,.55),
             rgba(40,25,20,.70)
         ),
-        url("IMG-20260609-WA0011.jpg")
-        center/cover no-repeat;
+        url("IMG-20260609-WA0011.jpg");
+
+    background-position:center, center;
+
+    /* IMAGEN MÁS PEQUEÑA Y CENTRADA */
+    background-size:cover, min(78vw,430px) auto;
+
+    background-repeat:no-repeat;
 
     transition:
         opacity .8s ease,
@@ -263,15 +271,17 @@ button:active,
 
 .info-familia{
     width:min(100%,850px);
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:15px;
+
     margin:auto;
 }
 
 .info-caja{
-    position:relative;
-
     min-height:140px;
 
     display:flex;
@@ -287,8 +297,6 @@ button:active,
 
     box-shadow:
         0 8px 30px rgba(90,60,45,.12);
-
-    overflow:hidden;
 }
 
 .info-icono{
@@ -304,32 +312,6 @@ button:active,
 .info-caja strong{
     color:#704b3a;
     font-size:20px;
-}
-
-.info-mesa{
-    overflow:hidden;
-}
-
-/* MARCA DE AGUA MÁS PEQUEÑA */
-
-.marca-agua-mesa{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:42px;
-
-    opacity:.055;
-
-    pointer-events:none;
-}
-
-.mesa-contenido{
-    position:relative;
-    z-index:2;
 }
 
 .mesa-titulo{
@@ -361,15 +343,23 @@ button:active,
     align-items:center;
     justify-content:center;
 
-    background:
+    color:white;
+
+    background-color:#4b352b;
+
+    background-image:
         linear-gradient(
             rgba(40,25,20,.35),
             rgba(40,25,20,.55)
         ),
-        url("IMG-20260609-WA0011.jpg")
-        center/cover no-repeat;
+        url("IMG-20260609-WA0011.jpg");
 
-    color:white;
+    /* IMAGEN CENTRADA Y MÁS PEQUEÑA */
+    background-position:center, center;
+
+    background-size:cover, min(82vw,480px) auto;
+
+    background-repeat:no-repeat;
 }
 
 .portada-contenido{
@@ -434,12 +424,15 @@ button:active,
     margin:40px auto 20px;
 
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:15px;
 }
 
 .numero{
     background:rgba(255,255,255,.75);
+
     border-radius:18px;
 
     padding:25px 10px;
@@ -450,7 +443,9 @@ button:active,
 
 .numero strong{
     display:block;
+
     font-size:clamp(32px,7vw,55px);
+
     color:#80553f;
 }
 
@@ -470,15 +465,19 @@ button:active,
 
 .galeria{
     width:min(100%,1000px);
+
     margin:35px auto 0;
 
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
 }
 
 .galeria img{
     width:100%;
+
     height:280px;
 
     object-fit:cover;
@@ -500,7 +499,9 @@ button:active,
 
 .video-contenedor{
     display:block;
+
     width:min(100%,900px);
+
     max-height:600px;
 
     margin:auto;
@@ -520,15 +521,19 @@ button:active,
 
 .video-grid{
     width:min(100%,1000px);
+
     margin:35px auto 0;
 
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:25px;
 }
 
 .video-card{
     overflow:hidden;
+
     border-radius:20px;
 
     background:#000;
@@ -545,99 +550,6 @@ button:active,
 
 
 /* =====================================================
-   FOTOS INVITADOS
-===================================================== */
-
-.fotos-invitados{
-    background:
-        linear-gradient(
-            rgba(245,231,220,.93),
-            rgba(245,231,220,.96)
-        );
-}
-
-.fotos-invitados-contenido{
-    width:min(100%,750px);
-    margin:auto;
-}
-
-.camara-icono{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-#fotoInvitado{
-    display:none;
-}
-
-.boton-foto{
-    margin-top:10px;
-}
-
-.preview-foto{
-    display:none;
-
-    width:min(100%,500px);
-    max-height:500px;
-
-    object-fit:cover;
-
-    margin:25px auto;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 8px 25px rgba(60,40,30,.2);
-}
-
-.preview-foto.mostrar{
-    display:block;
-}
-
-.progreso-foto{
-    display:none;
-
-    max-width:600px;
-    margin:25px auto;
-
-    padding:20px;
-
-    background:rgba(255,255,255,.7);
-
-    border-radius:15px;
-}
-
-.progreso-foto.mostrar{
-    display:block;
-}
-
-.barra{
-    height:12px;
-
-    margin:15px 0;
-
-    border-radius:20px;
-
-    background:#e1d2c6;
-
-    overflow:hidden;
-}
-
-.barra-progreso{
-    width:0;
-    height:100%;
-
-    background:#8b5e48;
-
-    transition:.3s;
-}
-
-.mensaje-foto{
-    line-height:1.6;
-}
-
-
-/* =====================================================
    INFORMACIÓN
 ===================================================== */
 
@@ -647,10 +559,13 @@ button:active,
 
 .tarjetas{
     width:min(100%,1000px);
+
     margin:40px auto;
 
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:20px;
 }
 
@@ -681,7 +596,9 @@ button:active,
 
 .ubicacion-texto{
     max-width:750px;
+
     margin:20px auto 0;
+
     line-height:1.8;
 }
 
@@ -705,8 +622,11 @@ button:active,
 
 .frase p{
     max-width:800px;
+
     margin:auto;
+
     line-height:1.8;
+
     font-size:20px;
 }
 
@@ -735,11 +655,13 @@ button:active,
 
 .confirmacion-contenido{
     width:min(100%,800px);
+
     margin:35px auto 0;
 }
 
 .reservados{
     padding:20px;
+
     margin-bottom:25px;
 
     border-radius:15px;
@@ -751,16 +673,15 @@ button:active,
 
 .resumen-confirmacion{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
 
     margin-bottom:30px;
 }
 
 .resumen-item{
-    position:relative;
-    overflow:hidden;
-
     padding:20px;
 
     border-radius:15px;
@@ -772,6 +693,7 @@ button:active,
     display:block;
 
     font-size:14px;
+
     opacity:.8;
 
     margin-bottom:8px;
@@ -783,45 +705,34 @@ button:active,
 
 .mesa-confirmacion{
     display:flex;
-    align-items:center;
-    justify-content:center;
-}
 
-.marca-agua-confirmacion{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
     align-items:center;
 
-    font-size:42px;
-
-    opacity:.055;
-}
-
-.mesa-confirmacion-contenido{
-    position:relative;
-    z-index:2;
+    justify-content:center;
 }
 
 .selector-label{
     display:block;
+
     margin-bottom:10px;
+
     font-size:18px;
 }
 
 .selector-asistencia,
 .selector-personas{
     width:100%;
+
     max-width:500px;
 
     padding:15px;
 
     border:none;
+
     border-radius:12px;
 
     background:white;
+
     color:#4d392f;
 
     margin-bottom:20px;
@@ -839,12 +750,15 @@ button:active,
 
 .personas-confirmacion label{
     display:block;
+
     margin-bottom:10px;
 }
 
 .resumen-personas{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:12px;
 
     margin-top:15px;
@@ -870,134 +784,21 @@ button:active,
     font-size:25px;
 }
 
-.asientos-visuales{
-    margin:30px auto;
-
-    padding:25px 15px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.1);
-}
-
-.asientos-titulo{
-    font-size:18px;
-    margin-bottom:30px;
-}
-
-.mesa-visual{
-    width:min(100%,300px);
-    height:90px;
-
-    margin:0 auto 45px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:10px;
-
-    border-radius:50%;
-
-    background:#b98b6c;
-    color:white;
-
-    font-weight:bold;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
-
-    position:relative;
-}
-
-.mesa-visual::after{
-    content:"💍";
-    position:absolute;
-    font-size:28px;
-    opacity:.45;
-}
-
-.mesa-visual span{
-    position:relative;
-    z-index:2;
-}
-
-.sillas{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-
-    gap:15px;
-
-    max-width:600px;
-
-    margin:auto;
-}
-
-.silla{
-    width:55px;
-    height:55px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:white;
-
-    font-size:27px;
-
-    animation:
-        aparecerSilla .5s ease both;
-}
-
-.silla.ocupada{
-    opacity:1;
-    transform:scale(1.05);
-}
-
-.silla.disponible{
-    opacity:.3;
-}
-
-@keyframes aparecerSilla{
-
-    from{
-        opacity:0;
-        transform:scale(.5) translateY(15px);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1) translateY(0);
-    }
-
-}
-
-.asientos-disponibles-texto{
-    margin-top:25px;
-    line-height:1.6;
-}
-
 .boton-confirmar{
     margin-top:20px;
 
     background:white;
+
     color:#76503e;
 
     font-weight:bold;
-}
-
-.boton-confirmar:disabled{
-    opacity:.7;
-    cursor:not-allowed;
 }
 
 .boton-whatsapp{
     margin-top:15px;
 
     background:#25D366;
+
     color:white;
 }
 
@@ -1017,11 +818,6 @@ button:active,
     line-height:2;
 }
 
-.estado-asientos span,
-.estado-asientos strong{
-    margin:0 8px;
-}
-
 
 /* =====================================================
    DIBUJITO DE NOVIOS
@@ -1029,7 +825,9 @@ button:active,
 
 .novios-dibujo{
     display:flex;
+
     justify-content:center;
+
     align-items:flex-end;
 
     gap:12px;
@@ -1080,11 +878,13 @@ footer{
 
 footer h2{
     margin-bottom:15px;
+
     font-size:32px;
 }
 
 footer p{
     margin:8px;
+
     opacity:.85;
 }
 
@@ -1119,6 +919,7 @@ footer p{
 .reveal-left.visible,
 .reveal-right.visible{
     opacity:1;
+
     transform:translate(0);
 }
 
@@ -1146,6 +947,7 @@ footer p{
 
     from{
         transform:translateY(0) rotate(0);
+
         opacity:0;
     }
 
@@ -1178,6 +980,7 @@ footer p{
     z-index:1;
 
     width:5px;
+
     height:5px;
 
     border-radius:50%;
@@ -1194,6 +997,7 @@ footer p{
 
     from{
         transform:translateY(0);
+
         opacity:0;
     }
 
@@ -1203,6 +1007,7 @@ footer p{
 
     to{
         transform:translateY(-110vh);
+
         opacity:0;
     }
 
@@ -1242,11 +1047,13 @@ footer p{
 
     .fecha{
         font-size:16px;
+
         letter-spacing:2px;
     }
 
     .info-familia{
         grid-template-columns:1fr 1fr;
+
         gap:10px;
     }
 
@@ -1282,14 +1089,22 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .silla{
-        width:48px;
-        height:48px;
-        font-size:23px;
-    }
-
     .novios-dibujo{
         font-size:35px;
+    }
+
+    /* PORTADAS MÁS PEQUEÑAS EN CELULAR */
+
+    #pantallaInicial{
+        background-size:
+            cover,
+            min(72vw,340px) auto;
+    }
+
+    .portada{
+        background-size:
+            cover,
+            min(72vw,350px) auto;
     }
 
 }
@@ -1321,9 +1136,19 @@ footer p{
         </div>
 
         <div class="novios-dibujo">
-            <span class="novio">🤵🏻</span>
-            <span>💍</span>
-            <span class="novia">👰🏻</span>
+
+            <span class="novio">
+                🤵🏻
+            </span>
+
+            <span>
+                💍
+            </span>
+
+            <span class="novia">
+                👰🏻
+            </span>
+
         </div>
 
         <h1>
@@ -1364,9 +1189,19 @@ footer p{
         </div>
 
         <div class="novios-dibujo">
-            <span class="novio">🤵🏻</span>
-            <span>💍</span>
-            <span class="novia">👰🏻</span>
+
+            <span class="novio">
+                🤵🏻
+            </span>
+
+            <span>
+                💍
+            </span>
+
+            <span class="novia">
+                👰🏻
+            </span>
+
         </div>
 
         <div class="invitacion-label">
@@ -1427,52 +1262,44 @@ footer p{
             </div>
 
 
-            <div class="info-caja info-mesa">
+            <div class="info-caja">
 
-                <div class="marca-agua-mesa">
+                <div class="info-icono">
                     🪑
                 </div>
 
-                <div class="mesa-contenido">
-
-                    <div class="mesa-titulo">
-                        🪑 Mesa asignada
-                    </div>
-
-                    <strong
-                        class="mesa-numero"
-                        id="mesaFamiliaPortada">
-
-                        -
-
-                    </strong>
-
+                <div class="mesa-titulo">
+                    Mesa asignada
                 </div>
+
+                <strong
+                    class="mesa-numero"
+                    id="mesaFamiliaPortada">
+
+                    -
+
+                </strong>
 
             </div>
 
 
-            <div class="info-caja info-mesa">
+            <div class="info-caja">
 
-                <div class="marca-agua-mesa">
+                <div class="info-icono">
                     👨‍👩‍👧
                 </div>
 
-                <div class="mesa-contenido">
-
-                    <div class="mesa-titulo">
-                        👨‍👩‍👧 Invitados asignados
-                    </div>
-
-                    <strong
-                        class="invitados-numero"
-                        id="lugaresFamiliaPortada">
-
-                        0
-
-                    </strong>
-
+                <div class="mesa-titulo">
+                    Invitados asignados
                 </div>
+
+                <strong
+                    class="invitados-numero"
+                    id="lugaresFamiliaPortada">
+
+                    0
+
+                </strong>
 
             </div>
 
@@ -1496,9 +1323,19 @@ footer p{
     <div class="portada-contenido">
 
         <div class="novios-dibujo">
-            <span class="novio">🤵🏻</span>
-            <span>💍</span>
-            <span class="novia">👰🏻</span>
+
+            <span class="novio">
+                🤵🏻
+            </span>
+
+            <span>
+                💍
+            </span>
+
+            <span class="novia">
+                👰🏻
+            </span>
+
         </div>
 
         <div class="pequeno">
@@ -1815,81 +1652,6 @@ footer p{
 
 
 <!-- =====================================================
-     FOTOS DE INVITADOS
-===================================================== -->
-
-<section
-    class="fotos-invitados reveal"
-    id="fotos-invitados">
-
-    <div class="fotos-invitados-contenido">
-
-        <div class="camara-icono">
-            📸
-        </div>
-
-        <h2 class="titulo">
-            ¡Comparte tus fotos!
-        </h2>
-
-        <p class="subtitulo">
-
-            ¿Tomaste una foto durante nuestra boda?
-
-            Compártela con nosotros para guardar
-            este hermoso recuerdo. ❤️
-
-        </p>
-
-        <label
-            for="fotoInvitado"
-            class="boton-foto">
-
-            📷 TOMAR / SUBIR FOTO
-
-        </label>
-
-        <input
-            type="file"
-            id="fotoInvitado"
-            accept="image/*"
-            capture="environment">
-
-        <img
-            id="previewFoto"
-            class="preview-foto"
-            alt="Vista previa">
-
-        <div
-            id="progresoFoto"
-            class="progreso-foto">
-
-            <strong id="tituloProgreso">
-                📤 Preparando foto...
-            </strong>
-
-            <div class="barra">
-
-                <div
-                    id="barraProgreso"
-                    class="barra-progreso">
-                </div>
-
-            </div>
-
-            <div
-                id="mensajeFoto"
-                class="mensaje-foto">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
      INFORMACIÓN
 ===================================================== -->
 
@@ -2025,9 +1787,19 @@ footer p{
 <section class="confirmacion reveal">
 
     <div class="novios-dibujo">
-        <span class="novio">🤵🏻</span>
-        <span>💍</span>
-        <span class="novia">👰🏻</span>
+
+        <span class="novio">
+            🤵🏻
+        </span>
+
+        <span>
+            💍
+        </span>
+
+        <span class="novia">
+            👰🏻
+        </span>
+
     </div>
 
     <h2 class="titulo">
@@ -2082,21 +1854,13 @@ footer p{
 
             <div class="resumen-item mesa-confirmacion">
 
-                <div class="marca-agua-confirmacion">
-                    🪑
-                </div>
+                <span>
+                    Mesa
+                </span>
 
-                <div class="mesa-confirmacion-contenido">
-
-                    <span>
-                        Mesa
-                    </span>
-
-                    <strong id="confirmacionMesa">
-                        -
-                    </strong>
-
-                </div>
+                <strong id="confirmacionMesa">
+                    -
+                </strong>
 
             </div>
 
@@ -2195,61 +1959,12 @@ footer p{
         </div>
 
 
-        <div
-            id="asientosVisuales"
-            class="asientos-visuales"
-            style="display:none;">
-
-            <div class="asientos-titulo">
-                🪑 Distribución de tus lugares
-            </div>
-
-
-            <div class="mesa-visual">
-
-                MESA
-
-                <span id="numeroMesaVisual">
-                    -
-                </span>
-
-            </div>
-
-
-            <div
-                id="sillas"
-                class="sillas">
-            </div>
-
-
-            <div
-                class="asientos-disponibles-texto"
-                id="textoAsientosDisponibles">
-
-                Selecciona la cantidad de personas.
-
-            </div>
-
-        </div>
-
-
         <button
             type="button"
             id="botonConfirmar"
             class="boton-confirmar">
 
-            💍 CONFIRMAR ASISTENCIA
-
-        </button>
-
-
-        <button
-            type="button"
-            id="botonWhatsApp"
-            class="boton-whatsapp"
-            style="display:none;">
-
-            📲 ENVIAR CONFIRMACIÓN POR WHATSAPP
+            📲 CONFIRMAR POR WHATSAPP
 
         </button>
 
@@ -2275,7 +1990,10 @@ footer p{
             </strong>
 
             <span>
-                Mesa <b id="mesaReservada">-</b>
+                · Mesa
+                <b id="mesaReservada">
+                    -
+                </b>
             </span>
 
 
@@ -2301,9 +2019,19 @@ footer p{
 <footer>
 
     <div class="novios-dibujo">
-        <span class="novio">🤵🏻</span>
-        <span>💍</span>
-        <span class="novia">👰🏻</span>
+
+        <span class="novio">
+            🤵🏻
+        </span>
+
+        <span>
+            💍
+        </span>
+
+        <span class="novia">
+            👰🏻
+        </span>
+
     </div>
 
     <h2>
@@ -2331,10 +2059,6 @@ footer p{
    CONFIGURACIÓN
 ===================================================== */
 
-const URL_APPS_SCRIPT =
-    "https://script.google.com/macros/s/AKfycbxOk30Yn_R8BTxI4g--JnbkwxqXnlpOGEJfthzym5JMzUZVl8ZGZrZLuf0tTp_sUi5q/exec";
-
-
 const NUMERO_WHATSAPP =
     "50242008319";
 
@@ -2345,25 +2069,25 @@ const NUMERO_WHATSAPP =
 
 const familias = {
 
-    garcia: {
+    garcia:{
         nombre:"Familia García",
         lugares:4,
         mesa:1
     },
 
-    lopez: {
+    lopez:{
         nombre:"Familia López",
         lugares:3,
         mesa:2
     },
 
-    martinez: {
+    martinez:{
         nombre:"Familia Martínez",
         lugares:5,
         mesa:3
     },
 
-    ejemplo: {
+    ejemplo:{
         nombre:"Familia Ejemplo",
         lugares:2,
         mesa:4
@@ -2436,11 +2160,6 @@ const mesaReservada =
         "mesaReservada"
     );
 
-const numeroMesaVisual =
-    document.getElementById(
-        "numeroMesaVisual"
-    );
-
 
 /* =====================================================
    FAMILIA DESDE URL
@@ -2471,48 +2190,59 @@ const familia =
 function cargarDatosFamilia(){
 
     if(nombreFamiliaPortada){
+
         nombreFamiliaPortada.textContent =
             familia.nombre;
+
     }
 
     if(lugaresFamiliaPortada){
+
         lugaresFamiliaPortada.textContent =
             familia.lugares;
+
     }
 
     if(mesaFamiliaPortada){
+
         mesaFamiliaPortada.textContent =
             familia.mesa;
+
     }
 
     if(confirmacionFamilia){
+
         confirmacionFamilia.textContent =
             familia.nombre;
+
     }
 
     if(confirmacionLugares){
+
         confirmacionLugares.textContent =
             familia.lugares;
+
     }
 
     if(confirmacionMesa){
+
         confirmacionMesa.textContent =
             familia.mesa;
+
     }
 
     if(lugaresReservados){
+
         lugaresReservados.textContent =
             familia.lugares;
+
     }
 
     if(mesaReservada){
+
         mesaReservada.textContent =
             familia.mesa;
-    }
 
-    if(numeroMesaVisual){
-        numeroMesaVisual.textContent =
-            familia.mesa;
     }
 
 }
@@ -2588,11 +2318,9 @@ const fechaObjetivo =
 
 function actualizarContador(){
 
-    const ahora =
-        Date.now();
-
     const diferencia =
-        fechaObjetivo - ahora;
+        fechaObjetivo -
+        Date.now();
 
 
     const dias =
@@ -2645,19 +2373,20 @@ function actualizarContador(){
 
     horas.textContent =
         Math.floor(
-            (totalSegundos % 86400) / 3600
+            (totalSegundos % 86400) /
+            3600
         );
 
     minutos.textContent =
         Math.floor(
-            (totalSegundos % 3600) / 60
+            (totalSegundos % 3600) /
+            60
         );
 
     segundos.textContent =
         totalSegundos % 60;
 
 }
-
 
 actualizarContador();
 
@@ -2791,7 +2520,6 @@ function crearCorazon(){
 
 }
 
-
 setInterval(
     crearCorazon,
     1800
@@ -2842,7 +2570,6 @@ function crearParticula(){
 
 }
 
-
 setInterval(
     crearParticula,
     1200
@@ -2883,21 +2610,6 @@ const personasDisponibles =
         "personasDisponibles"
     );
 
-const asientosVisuales =
-    document.getElementById(
-        "asientosVisuales"
-    );
-
-const sillas =
-    document.getElementById(
-        "sillas"
-    );
-
-const textoAsientosDisponibles =
-    document.getElementById(
-        "textoAsientosDisponibles"
-    );
-
 const estadoDisponiblesFinal =
     document.getElementById(
         "estadoDisponiblesFinal"
@@ -2908,11 +2620,6 @@ const botonConfirmar =
         "botonConfirmar"
     );
 
-const botonWhatsApp =
-    document.getElementById(
-        "botonWhatsApp"
-    );
-
 const mensajeConfirmacion =
     document.getElementById(
         "mensajeConfirmacion"
@@ -2920,7 +2627,7 @@ const mensajeConfirmacion =
 
 
 /* =====================================================
-   CREAR OPCIONES
+   CREAR OPCIONES DE PERSONAS
 ===================================================== */
 
 function prepararCantidadPersonas(){
@@ -2981,7 +2688,7 @@ prepararCantidadPersonas();
 
 
 /* =====================================================
-   CAMBIO ASISTENCIA
+   CAMBIO DE ASISTENCIA
 ===================================================== */
 
 if(asistencia){
@@ -2993,77 +2700,84 @@ if(asistencia){
             if(this.value === "Si"){
 
                 if(personasConfirmacion){
+
                     personasConfirmacion.style.display =
                         "block";
-                }
 
-                if(asientosVisuales){
-                    asientosVisuales.style.display =
-                        "block";
                 }
 
                 if(cantidadAsistiran){
+
                     cantidadAsistiran.value =
                         "";
+
                 }
 
                 if(personasAsistiran){
+
                     personasAsistiran.textContent =
                         "0";
+
                 }
 
                 if(personasNoAsistiran){
+
                     personasNoAsistiran.textContent =
                         familia.lugares;
+
                 }
 
                 if(personasDisponibles){
+
                     personasDisponibles.textContent =
                         familia.lugares;
+
                 }
 
-                crearSillas(
-                    0,
-                    familia.lugares
-                );
+                if(estadoDisponiblesFinal){
+
+                    estadoDisponiblesFinal.textContent =
+                        "Selecciona cuántas personas asistirán.";
+
+                }
 
             }
 
             else if(this.value === "No"){
 
                 if(personasConfirmacion){
+
                     personasConfirmacion.style.display =
                         "none";
-                }
 
-                if(asientosVisuales){
-                    asientosVisuales.style.display =
-                        "none";
                 }
 
                 if(personasAsistiran){
+
                     personasAsistiran.textContent =
                         "0";
+
                 }
 
                 if(personasNoAsistiran){
+
                     personasNoAsistiran.textContent =
                         familia.lugares;
+
                 }
 
                 if(personasDisponibles){
+
                     personasDisponibles.textContent =
                         familia.lugares;
-                }
 
-                if(sillas){
-                    sillas.innerHTML =
-                        "";
                 }
 
                 if(estadoDisponiblesFinal){
+
                     estadoDisponiblesFinal.textContent =
                         "Has indicado que no podrás asistir.";
+
                 }
 
             }
@@ -3071,13 +2785,10 @@ if(asistencia){
             else{
 
                 if(personasConfirmacion){
+
                     personasConfirmacion.style.display =
                         "none";
-                }
 
-                if(asientosVisuales){
-                    asientosVisuales.style.display =
-                        "none";
                 }
 
             }
@@ -3118,43 +2829,28 @@ function actualizarPersonas(){
 
 
     if(personasAsistiran){
+
         personasAsistiran.textContent =
             cantidad;
+
     }
 
     if(personasNoAsistiran){
+
         personasNoAsistiran.textContent =
             noAsistiran;
+
     }
 
     if(personasDisponibles){
+
         personasDisponibles.textContent =
             noAsistiran;
+
     }
 
 
-    crearSillas(
-        cantidad,
-        familia.lugares
-    );
-
-
     if(cantidad > 0){
-
-        if(textoAsientosDisponibles){
-
-            textoAsientosDisponibles.innerHTML =
-                "❤️ <strong>" +
-                cantidad +
-                "</strong> de " +
-                familia.lugares +
-                " lugares serán utilizados.<br>" +
-                "🪑 Quedan <strong>" +
-                noAsistiran +
-                "</strong> lugares disponibles.";
-
-        }
-
 
         if(estadoDisponiblesFinal){
 
@@ -3166,6 +2862,10 @@ function actualizarPersonas(){
                 "Has seleccionado " +
                 "<strong>" +
                 cantidad +
+                "</strong>. " +
+                "No asistirán " +
+                "<strong>" +
+                noAsistiran +
                 "</strong>.";
 
         }
@@ -3173,87 +2873,12 @@ function actualizarPersonas(){
     }
     else{
 
-        if(textoAsientosDisponibles){
-
-            textoAsientosDisponibles.textContent =
-                "Selecciona la cantidad de personas.";
-
-        }
-
         if(estadoDisponiblesFinal){
 
             estadoDisponiblesFinal.textContent =
                 "Selecciona cuántas personas asistirán.";
 
         }
-
-    }
-
-}
-
-
-/* =====================================================
-   CREAR SILLAS
-===================================================== */
-
-function crearSillas(
-    ocupadas,
-    total
-){
-
-    if(!sillas){
-        return;
-    }
-
-
-    sillas.innerHTML =
-        "";
-
-
-    for(
-        let i = 1;
-        i <= total;
-        i++
-    ){
-
-        const silla =
-            document.createElement(
-                "div"
-            );
-
-
-        silla.className =
-            "silla " +
-            (
-                i <= ocupadas
-                    ? "ocupada"
-                    : "disponible"
-            );
-
-
-        silla.textContent =
-            i <= ocupadas
-                ? "❤️"
-                : "🪑";
-
-
-        silla.title =
-            i <= ocupadas
-                ? "Lugar confirmado"
-                : "Lugar disponible";
-
-
-        silla.style.animationDelay =
-            (
-                (i - 1) *
-                .08
-            ) +
-            "s";
-
-
-        sillas.appendChild(
-            silla
-        );
 
     }
 
@@ -3289,7 +2914,7 @@ function mostrarMensaje(
 
 
 /* =====================================================
-   DATOS PARA WHATSAPP
+   WHATSAPP
 ===================================================== */
 
 function abrirWhatsApp(
@@ -3299,18 +2924,23 @@ function abrirWhatsApp(
 
     const mensaje =
         "💍 CONFIRMACIÓN DE ASISTENCIA\n\n" +
+
         "Familia: " +
         familia.nombre +
         "\n" +
+
         "Código: " +
         familiaURL +
         "\n" +
+
         "Mesa: " +
         familia.mesa +
         "\n" +
+
         "Lugares asignados: " +
         familia.lugares +
         "\n" +
+
         "Asistencia: " +
         (
             asistenciaSeleccionada === "Si"
@@ -3318,16 +2948,21 @@ function abrirWhatsApp(
                 : "NO"
         ) +
         "\n" +
+
         "Personas que asistirán: " +
         cantidad +
         "\n" +
+
         "Personas que no asistirán: " +
         (
             familia.lugares -
             cantidad
         ) +
+
         "\n\n" +
+
         "Josué & Damaris ❤️";
+
 
     const url =
         "https://wa.me/" +
@@ -3336,6 +2971,7 @@ function abrirWhatsApp(
         encodeURIComponent(
             mensaje
         );
+
 
     window.open(
         url,
@@ -3346,14 +2982,14 @@ function abrirWhatsApp(
 
 
 /* =====================================================
-   CONFIRMAR ASISTENCIA
+   CONFIRMAR POR WHATSAPP
 ===================================================== */
 
 if(botonConfirmar){
 
     botonConfirmar.addEventListener(
         "click",
-        async function(){
+        function(){
 
             const respuesta =
                 asistencia
@@ -3416,323 +3052,18 @@ if(botonConfirmar){
             }
 
 
-            botonConfirmar.disabled =
-                true;
-
-            botonConfirmar.textContent =
-                "⏳ GUARDANDO...";
-
-
-            const datos = {
-
-                familia:
-                    familia.nombre,
-
-                codigoFamilia:
-                    familiaURL,
-
-                lugaresAsignados:
-                    familia.lugares,
-
-                mesa:
-                    familia.mesa,
-
-                asistencia:
-                    respuesta,
-
-                personasAsistiran:
-                    cantidad,
-
-                personasNoAsistiran:
-                    familia.lugares -
-                    cantidad,
-
-                fechaRegistro:
-                    new Date()
-                        .toLocaleString(
-                            "es-GT"
-                        )
-
-            };
-
-
-            try{
-
-                await fetch(
-                    URL_APPS_SCRIPT,
-                    {
-                        method:"POST",
-
-                        mode:"no-cors",
-
-                        headers:{
-                            "Content-Type":
-                                "text/plain;charset=utf-8"
-                        },
-
-                        body:
-                            JSON.stringify(
-                                datos
-                            )
-                    }
-                );
-
-
-                mostrarMensaje(
-                    respuesta === "Si"
-                        ? "💍 ¡Gracias! Hemos registrado tu confirmación. Te esperamos con mucho cariño. ❤️"
-                        : "❤️ Gracias por avisarnos. Sentiremos mucho que no puedas acompañarnos.",
-                    true
-                );
-
-
-                botonConfirmar.textContent =
-                    "✅ CONFIRMACIÓN REGISTRADA";
-
-
-                if(botonWhatsApp){
-
-                    botonWhatsApp.style.display =
-                        "inline-block";
-
-                    botonWhatsApp.onclick =
-                        function(){
-
-                            abrirWhatsApp(
-                                respuesta,
-                                cantidad
-                            );
-
-                        };
-
-                }
-
-
-                if(respuesta === "Si"){
-
-                    if(lugaresReservados){
-
-                        lugaresReservados.textContent =
-                            cantidad;
-
-                    }
-
-
-                    if(estadoDisponiblesFinal){
-
-                        estadoDisponiblesFinal.innerHTML =
-                            "✅ Confirmados: " +
-                            "<strong>" +
-                            cantidad +
-                            "</strong> · " +
-                            "Disponibles: " +
-                            "<strong>" +
-                            (
-                                familia.lugares -
-                                cantidad
-                            ) +
-                            "</strong>";
-
-                    }
-
-                }
-
-            }
-            catch(error){
-
-                console.error(
-                    "Error al guardar:",
-                    error
-                );
-
-
-                mostrarMensaje(
-                    "⚠️ No se pudo completar el registro. Intenta nuevamente.",
-                    false
-                );
-
-
-                botonConfirmar.disabled =
-                    false;
-
-                botonConfirmar.textContent =
-                    "💍 CONFIRMAR ASISTENCIA";
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   FOTOS DE INVITADOS
-===================================================== */
-
-const fotoInvitado =
-    document.getElementById(
-        "fotoInvitado"
-    );
-
-const previewFoto =
-    document.getElementById(
-        "previewFoto"
-    );
-
-const progresoFoto =
-    document.getElementById(
-        "progresoFoto"
-    );
-
-const barraProgreso =
-    document.getElementById(
-        "barraProgreso"
-    );
-
-const tituloProgreso =
-    document.getElementById(
-        "tituloProgreso"
-    );
-
-const mensajeFoto =
-    document.getElementById(
-        "mensajeFoto"
-    );
-
-
-if(fotoInvitado){
-
-    fotoInvitado.addEventListener(
-        "change",
-        function(){
-
-            const archivo =
-                this.files[0];
-
-
-            if(!archivo){
-                return;
-            }
-
-
-            if(
-                !archivo.type.startsWith(
-                    "image/"
-                )
-            ){
-
-                alert(
-                    "Selecciona una imagen válida."
-                );
-
-                this.value =
-                    "";
-
-                return;
-
-            }
-
-
-            const lector =
-                new FileReader();
-
-
-            lector.onload =
-                function(e){
-
-                    if(previewFoto){
-
-                        previewFoto.src =
-                            e.target.result;
-
-                        previewFoto.classList.add(
-                            "mostrar"
-                        );
-
-                    }
-
-                };
-
-
-            lector.readAsDataURL(
-                archivo
+            mostrarMensaje(
+                respuesta === "Si"
+                    ? "💍 Abriendo WhatsApp para enviar tu confirmación. ❤️"
+                    : "❤️ Abriendo WhatsApp para avisar que no podrás asistir.",
+                true
             );
 
 
-            if(progresoFoto){
-
-                progresoFoto.classList.add(
-                    "mostrar"
-                );
-
-            }
-
-
-            if(barraProgreso){
-
-                barraProgreso.style.width =
-                    "0%";
-
-            }
-
-
-            if(tituloProgreso){
-
-                tituloProgreso.textContent =
-                    "📤 Foto seleccionada";
-
-            }
-
-
-            if(mensajeFoto){
-
-                mensajeFoto.innerHTML =
-                    "La foto está lista para compartirla. ❤️";
-
-            }
-
-
-            let progreso =
-                0;
-
-
-            const intervalo =
-                setInterval(
-                    function(){
-
-                        progreso +=
-                            10;
-
-
-                        if(barraProgreso){
-
-                            barraProgreso.style.width =
-                                progreso +
-                                "%";
-
-                        }
-
-
-                        if(progreso >= 100){
-
-                            clearInterval(
-                                intervalo
-                            );
-
-
-                            if(tituloProgreso){
-
-                                tituloProgreso.textContent =
-                                    "✅ Foto preparada";
-
-                            }
-
-                        }
-
-                    },
-                    80
-                );
+            abrirWhatsApp(
+                respuesta,
+                cantidad
+            );
 
         }
     );
