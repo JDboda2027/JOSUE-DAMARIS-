@@ -339,6 +339,11 @@ input{
     margin:auto;
 }
 
+
+/* =====================================================
+   INFORMACIÓN FAMILIA
+===================================================== */
+
 .info-familia{
 
     display:flex;
@@ -368,6 +373,10 @@ input{
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.07);
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 .info-icono{
@@ -399,6 +408,104 @@ input{
     color:#675548;
 
     font-size:20px;
+}
+
+
+/* =====================================================
+   MARCA DE AGUA MESA / INVITADOS
+===================================================== */
+
+.info-mesa{
+
+    min-width:220px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(248,241,233,.95)
+        );
+}
+
+.marca-agua-mesa{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-8deg);
+
+    font-size:80px;
+
+    opacity:.07;
+
+    white-space:nowrap;
+
+    pointer-events:none;
+
+    animation:
+        moverMarcaAgua 5s ease-in-out infinite;
+}
+
+.mesa-contenido{
+
+    position:relative;
+
+    z-index:2;
+}
+
+.mesa-titulo{
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#9a8068;
+
+    margin-bottom:8px;
+}
+
+.mesa-numero{
+
+    font-size:30px !important;
+
+    color:#675548 !important;
+
+    font-weight:normal;
+}
+
+.invitados-numero{
+
+    font-size:24px !important;
+
+    color:#675548 !important;
+}
+
+@keyframes moverMarcaAgua{
+
+    0%,100%{
+        transform:
+            translate(-50%,-50%)
+            rotate(-8deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-53%)
+            rotate(-5deg)
+            scale(1.06);
+    }
 }
 
 .continuar{
@@ -1280,6 +1387,11 @@ section{
     line-height:1.7;
 }
 
+
+/* =====================================================
+   RESUMEN
+===================================================== */
+
 .resumen-confirmacion{
 
     display:grid;
@@ -1301,6 +1413,10 @@ section{
     border-radius:18px;
 
     padding:17px 12px;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 .resumen-item span{
@@ -1324,6 +1440,73 @@ section{
 
     word-break:break-word;
 }
+
+
+/* =====================================================
+   MARCA DE AGUA EN CONFIRMACIÓN
+===================================================== */
+
+.mesa-confirmacion{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.marca-agua-confirmacion{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-8deg);
+
+    font-size:75px;
+
+    opacity:.08;
+
+    white-space:nowrap;
+
+    pointer-events:none;
+
+    animation:
+        moverMarcaAguaConfirmacion 5s ease-in-out infinite;
+}
+
+.mesa-confirmacion-contenido{
+
+    position:relative;
+
+    z-index:2;
+}
+
+@keyframes moverMarcaAguaConfirmacion{
+
+    0%,100%{
+
+        transform:
+            translate(-50%,-50%)
+            rotate(-8deg)
+            scale(1);
+    }
+
+    50%{
+
+        transform:
+            translate(-50%,-53%)
+            rotate(-4deg)
+            scale(1.08);
+    }
+}
+
+
+/* =====================================================
+   SELECTOR ASISTENCIA
+===================================================== */
 
 .selector-label{
 
@@ -1358,6 +1541,330 @@ section{
 
     color:#5b4b40;
 }
+
+
+/* =====================================================
+   SELECTOR PERSONAS
+===================================================== */
+
+.personas-confirmacion{
+
+    margin-top:22px;
+
+    padding:22px 15px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    animation:aparecerSuave .5s ease;
+}
+
+.personas-confirmacion label{
+
+    display:block;
+
+    margin-bottom:12px;
+
+    font-size:17px;
+}
+
+.selector-personas{
+
+    width:100%;
+
+    max-width:300px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:30px;
+
+    font-family:inherit;
+
+    font-size:17px;
+
+    text-align:center;
+
+    outline:none;
+
+    color:#5b4b40;
+}
+
+.resumen-personas{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.persona-dato{
+
+    padding:15px 8px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.18);
+}
+
+.persona-dato span{
+
+    display:block;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    opacity:.8;
+
+    margin-bottom:6px;
+}
+
+.persona-dato strong{
+
+    display:block;
+
+    font-size:23px;
+}
+
+@keyframes aparecerSuave{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
+   ASIENTOS
+===================================================== */
+
+.asientos-visuales{
+
+    margin-top:25px;
+
+    padding:22px 15px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.20);
+}
+
+.asientos-titulo{
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+
+    opacity:.9;
+}
+
+.mesa-visual{
+
+    width:150px;
+
+    height:55px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.88);
+
+    color:#675548;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+    position:relative;
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.20);
+
+    animation:
+        animacionMesa 4s ease-in-out infinite;
+}
+
+.mesa-visual::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:105px;
+
+    height:105px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.20);
+
+    animation:
+        pulsoMesa 3s ease-in-out infinite;
+}
+
+.sillas{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    max-width:350px;
+
+    margin:auto;
+}
+
+.silla{
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.20);
+
+    border:1px solid rgba(255,255,255,.30);
+
+    font-size:21px;
+
+    transition:.5s;
+
+    animation:
+        aparecerSilla .5s ease backwards;
+}
+
+.silla.ocupada{
+
+    background:rgba(255,255,255,.92);
+
+    color:#675548;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.15);
+
+    transform:scale(1.05);
+}
+
+.silla.disponible{
+
+    opacity:.45;
+
+    animation:
+        sillaDisponible 2s ease-in-out infinite;
+}
+
+@keyframes animacionMesa{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50%{
+
+        transform:
+            translateY(-5px)
+            scale(1.03);
+    }
+}
+
+@keyframes pulsoMesa{
+
+    0%,100%{
+
+        opacity:.15;
+
+        transform:scale(.9);
+    }
+
+    50%{
+
+        opacity:.35;
+
+        transform:scale(1.05);
+    }
+}
+
+@keyframes aparecerSilla{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.5);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+    }
+}
+
+@keyframes sillaDisponible{
+
+    0%,100%{
+
+        opacity:.35;
+    }
+
+    50%{
+
+        opacity:.75;
+    }
+}
+
+
+/* =====================================================
+   BOTÓN CONFIRMAR
+===================================================== */
 
 .boton-confirmar{
 
@@ -1403,6 +1910,11 @@ section{
     transform:none;
 }
 
+
+/* =====================================================
+   ESTADO ASIENTOS
+===================================================== */
+
 .estado-asientos{
 
     margin-top:25px;
@@ -1425,6 +1937,15 @@ section{
     margin-top:5px;
 
     margin-bottom:8px;
+}
+
+.asientos-disponibles-texto{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    line-height:1.6;
 }
 
 
@@ -1882,7 +2403,7 @@ footer p{
 
         width:100%;
 
-        max-width:250px;
+        max-width:280px;
     }
 
     .tarjetas{
@@ -1904,6 +2425,11 @@ footer p{
         grid-template-columns:1fr;
     }
 
+    .resumen-personas{
+
+        grid-template-columns:1fr;
+    }
+
     .confirmacion-contenido{
 
         padding:28px 17px;
@@ -1914,6 +2440,11 @@ footer p{
         width:100%;
 
         max-width:320px;
+    }
+
+    .sillas{
+
+        max-width:280px;
     }
 }
 
@@ -2013,6 +2544,9 @@ footer p{
 
         </p>
 
+
+        <!-- INFORMACIÓN FAMILIA -->
+
         <div class="info-familia">
 
             <div class="info-caja">
@@ -2031,6 +2565,7 @@ footer p{
 
             </div>
 
+
             <div class="info-caja">
 
                 <div class="info-icono">
@@ -2047,7 +2582,58 @@ footer p{
 
             </div>
 
+
+            <div class="info-caja info-mesa">
+
+                <div class="marca-agua-mesa">
+                    🪑
+                </div>
+
+                <div class="mesa-contenido">
+
+                    <div class="mesa-titulo">
+                        🪑 Mesa asignada
+                    </div>
+
+                    <strong
+                        class="mesa-numero"
+                        id="mesaFamiliaPortada">
+
+                        -
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-caja info-mesa">
+
+                <div class="marca-agua-mesa">
+                    👨‍👩‍👧
+                </div>
+
+                <div class="mesa-contenido">
+
+                    <div class="mesa-titulo">
+                        👨‍👩‍👧 Invitados asignados
+                    </div>
+
+                    <strong
+                        class="invitados-numero"
+                        id="lugaresFamiliaPortada">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+            </div>
+
         </div>
+
 
         <div class="continuar">
             ✨ Con amor, Josué & Damaris ✨
@@ -2641,6 +3227,9 @@ footer p{
 
         </div>
 
+
+        <!-- RESUMEN FAMILIA -->
+
         <div class="resumen-confirmacion">
 
             <div class="resumen-item">
@@ -2655,10 +3244,11 @@ footer p{
 
             </div>
 
+
             <div class="resumen-item">
 
                 <span>
-                    Invitados
+                    Invitados asignados
                 </span>
 
                 <strong id="confirmacionLugares">
@@ -2667,19 +3257,31 @@ footer p{
 
             </div>
 
-            <div class="resumen-item">
 
-                <span>
-                    Mesa
-                </span>
+            <div class="resumen-item mesa-confirmacion">
 
-                <strong id="confirmacionMesa">
-                    -
-                </strong>
+                <div class="marca-agua-confirmacion">
+                    🪑
+                </div>
+
+                <div class="mesa-confirmacion-contenido">
+
+                    <span>
+                        Mesa
+                    </span>
+
+                    <strong id="confirmacionMesa">
+                        -
+                    </strong>
+
+                </div>
 
             </div>
 
         </div>
+
+
+        <!-- ASISTENCIA -->
 
         <label
             class="selector-label"
@@ -2707,6 +3309,114 @@ footer p{
 
         </select>
 
+
+        <!-- CANTIDAD DE PERSONAS -->
+
+        <div
+            id="personasConfirmacion"
+            class="personas-confirmacion"
+            style="display:none;">
+
+            <label
+                for="cantidadAsistiran">
+
+                👨‍👩‍👧 ¿Cuántas personas asistirán?
+
+            </label>
+
+            <select
+                id="cantidadAsistiran"
+                class="selector-personas">
+
+            </select>
+
+
+            <div class="resumen-personas">
+
+                <div class="persona-dato">
+
+                    <span>
+                        Asistirán
+                    </span>
+
+                    <strong id="personasAsistiran">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="persona-dato">
+
+                    <span>
+                        No asistirán
+                    </span>
+
+                    <strong id="personasNoAsistiran">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="persona-dato">
+
+                    <span>
+                        Disponibles
+                    </span>
+
+                    <strong id="personasDisponibles">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESA Y ASIENTOS ANIMADOS -->
+
+        <div
+            id="asientosVisuales"
+            class="asientos-visuales"
+            style="display:none;">
+
+            <div class="asientos-titulo">
+
+                🪑 Distribución de tus lugares
+
+            </div>
+
+
+            <div class="mesa-visual">
+
+                MESA
+                <span id="numeroMesaVisual">
+                    -
+                </span>
+
+            </div>
+
+
+            <div
+                id="sillas"
+                class="sillas">
+            </div>
+
+
+            <div
+                class="asientos-disponibles-texto"
+                id="textoAsientosDisponibles">
+
+                Selecciona la cantidad de personas.
+
+            </div>
+
+        </div>
+
+
         <button
             type="button"
             id="botonConfirmar"
@@ -2715,6 +3425,7 @@ footer p{
             💍 CONFIRMAR ASISTENCIA
 
         </button>
+
 
         <div
             id="mensajeConfirmacion"
@@ -2726,10 +3437,11 @@ footer p{
 
         </div>
 
+
         <div class="estado-asientos">
 
             <span>
-                🪑 Lugares reservados para ti
+                🪑 Lugares asignados
             </span>
 
             <strong id="lugaresReservados">
@@ -2739,6 +3451,14 @@ footer p{
             <span>
                 Mesa <b id="mesaReservada">-</b>
             </span>
+
+            <div
+                class="asientos-disponibles-texto"
+                id="estadoDisponiblesFinal">
+
+                Selecciona cuántas personas asistirán.
+
+            </div>
 
         </div>
 
@@ -2770,12 +3490,13 @@ footer p{
 
 <script>
 
+
 /* =====================================================
    GOOGLE SHEETS
 ===================================================== */
 
 const GOOGLE_SHEETS_URL =
-"https://script.google.com/macros/s/AKfycbzFo1IPmdem7iv4Gw67txCEyjD8ol3TBJ8ziw-Sp2PFpItSNXG4KOEojs848AKcQk6F/exec";
+"https://script.google.com/macros/s/AKfycbwWWujQYCCzG1bQnO2lYoQsaW0YH00L6y-GQJzE2L7lh4QtCqSPDohllXCRwwhXY62u/exec";
 
 
 /* =====================================================
@@ -2899,6 +3620,66 @@ const mensajeConfirmacion =
         "mensajeConfirmacion"
     );
 
+const mesaFamiliaPortada =
+    document.getElementById(
+        "mesaFamiliaPortada"
+    );
+
+const lugaresFamiliaPortada =
+    document.getElementById(
+        "lugaresFamiliaPortada"
+    );
+
+const personasConfirmacion =
+    document.getElementById(
+        "personasConfirmacion"
+    );
+
+const cantidadAsistiran =
+    document.getElementById(
+        "cantidadAsistiran"
+    );
+
+const personasAsistiran =
+    document.getElementById(
+        "personasAsistiran"
+    );
+
+const personasNoAsistiran =
+    document.getElementById(
+        "personasNoAsistiran"
+    );
+
+const personasDisponibles =
+    document.getElementById(
+        "personasDisponibles"
+    );
+
+const asientosVisuales =
+    document.getElementById(
+        "asientosVisuales"
+    );
+
+const numeroMesaVisual =
+    document.getElementById(
+        "numeroMesaVisual"
+    );
+
+const sillas =
+    document.getElementById(
+        "sillas"
+    );
+
+const textoAsientosDisponibles =
+    document.getElementById(
+        "textoAsientosDisponibles"
+    );
+
+const estadoDisponiblesFinal =
+    document.getElementById(
+        "estadoDisponiblesFinal"
+    );
+
 
 /* =====================================================
    MOSTRAR DATOS FAMILIA
@@ -2948,7 +3729,328 @@ function mostrarDatosFamilia(){
 
     }
 
+    if(mesaFamiliaPortada){
+
+        mesaFamiliaPortada.textContent =
+            "Mesa " +
+            familiaActual.mesa;
+
+    }
+
+    if(lugaresFamiliaPortada){
+
+        lugaresFamiliaPortada.textContent =
+            familiaActual.lugares;
+
+    }
+
+    if(numeroMesaVisual){
+
+        numeroMesaVisual.textContent =
+            familiaActual.mesa;
+
+    }
+
 }
+
+
+/* =====================================================
+   CREAR SELECTOR DE PERSONAS
+===================================================== */
+
+function prepararSelectorPersonas(){
+
+    if(!cantidadAsistiran){
+
+        return;
+
+    }
+
+    cantidadAsistiran.innerHTML = "";
+
+
+    const opcionInicial =
+        document.createElement("option");
+
+    opcionInicial.value = "";
+
+    opcionInicial.textContent =
+        "Selecciona cantidad";
+
+    cantidadAsistiran.appendChild(
+        opcionInicial
+    );
+
+
+    for(
+        let i = 1;
+        i <= familiaActual.lugares;
+        i++
+    ){
+
+        const opcion =
+            document.createElement("option");
+
+        opcion.value = i;
+
+        opcion.textContent =
+            i === 1
+            ? "1 persona"
+            : i + " personas";
+
+        cantidadAsistiran.appendChild(
+            opcion
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ACTUALIZAR ASIENTOS VISUALES
+===================================================== */
+
+function actualizarAsientos(
+    cantidad
+){
+
+    const total =
+        Number(
+            familiaActual.lugares
+        ) || 0;
+
+    const asistentes =
+        Number(
+            cantidad
+        ) || 0;
+
+    const noAsisten =
+        Math.max(
+            total - asistentes,
+            0
+        );
+
+
+    if(personasAsistiran){
+
+        personasAsistiran.textContent =
+            asistentes;
+
+    }
+
+    if(personasNoAsistiran){
+
+        personasNoAsistiran.textContent =
+            noAsisten;
+
+    }
+
+    if(personasDisponibles){
+
+        personasDisponibles.textContent =
+            noAsisten;
+
+    }
+
+
+    if(!asientosVisuales){
+
+        return;
+
+    }
+
+
+    sillas.innerHTML = "";
+
+
+    for(
+        let i = 1;
+        i <= total;
+        i++
+    ){
+
+        const silla =
+            document.createElement("div");
+
+        silla.className =
+            "silla " +
+            (
+                i <= asistentes
+                ? "ocupada"
+                : "disponible"
+            );
+
+        silla.textContent =
+            "🪑";
+
+        silla.style.animationDelay =
+            (
+                i * .08
+            ) +
+            "s";
+
+
+        if(i <= asistentes){
+
+            silla.title =
+                "Asiento ocupado";
+
+        }
+        else{
+
+            silla.title =
+                "Asiento disponible";
+
+        }
+
+
+        sillas.appendChild(
+            silla
+        );
+
+    }
+
+
+    if(asistentes > 0){
+
+        if(noAsisten === 0){
+
+            textoAsientosDisponibles.textContent =
+                "❤️ Todos los lugares estarán ocupados. " +
+                "¡Los esperamos!";
+
+            estadoDisponiblesFinal.innerHTML =
+                "❤️ <strong>0</strong> asientos disponibles en la Mesa " +
+                familiaActual.mesa +
+                ".";
+
+        }
+        else{
+
+            textoAsientosDisponibles.textContent =
+                "🪑 Quedan " +
+                noAsisten +
+                (
+                    noAsisten === 1
+                    ? " asiento disponible "
+                    : " asientos disponibles "
+                ) +
+                "en la Mesa " +
+                familiaActual.mesa +
+                ".";
+
+            estadoDisponiblesFinal.innerHTML =
+                "🪑 <strong>" +
+                noAsisten +
+                "</strong> " +
+                (
+                    noAsisten === 1
+                    ? "asiento disponible"
+                    : "asientos disponibles"
+                ) +
+                " en la Mesa " +
+                familiaActual.mesa +
+                ".";
+        }
+
+    }
+    else{
+
+        textoAsientosDisponibles.textContent =
+            "Selecciona la cantidad de personas.";
+
+        estadoDisponiblesFinal.textContent =
+            "Selecciona cuántas personas asistirán.";
+
+    }
+
+}
+
+
+/* =====================================================
+   CAMBIO DE ASISTENCIA
+===================================================== */
+
+asistencia.addEventListener(
+
+    "change",
+
+    function(){
+
+        const opcion =
+            this.value;
+
+
+        if(!opcion){
+
+            personasConfirmacion.style.display =
+                "none";
+
+            asientosVisuales.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        personasConfirmacion.style.display =
+            "block";
+
+        asientosVisuales.style.display =
+            "block";
+
+
+        if(opcion === "No"){
+
+            cantidadAsistiran.value =
+                "0";
+
+            actualizarAsientos(
+                0
+            );
+
+        }
+        else{
+
+            cantidadAsistiran.value =
+                "";
+
+            actualizarAsientos(
+                0
+            );
+
+        }
+
+    }
+
+);
+
+
+/* =====================================================
+   CAMBIO DE CANTIDAD
+===================================================== */
+
+cantidadAsistiran.addEventListener(
+
+    "change",
+
+    function(){
+
+        const cantidad =
+            Number(
+                this.value
+            ) || 0;
+
+
+        actualizarAsientos(
+            cantidad
+        );
+
+    }
+
+);
 
 
 /* =====================================================
@@ -3660,6 +4762,56 @@ botonConfirmar.addEventListener(
         }
 
 
+        let asistentes = 0;
+
+
+        if(opcion === "Si"){
+
+            asistentes =
+                Number(
+                    cantidadAsistiran.value
+                ) || 0;
+
+
+            if(
+                asistentes < 1 ||
+                asistentes > familiaActual.lugares
+            ){
+
+                mostrarMensajeConfirmacion(
+
+                    "⚠️ Selecciona cuántas personas asistirán.",
+
+                    false
+
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        if(opcion === "No"){
+
+            asistentes = 0;
+
+        }
+
+
+        const noAsisten =
+            Math.max(
+                familiaActual.lugares -
+                asistentes,
+                0
+            );
+
+
+        const disponibles =
+            noAsisten;
+
+
         botonConfirmar.disabled =
             true;
 
@@ -3694,6 +4846,15 @@ botonConfirmar.addEventListener(
 
             asistencia:
                 opcion,
+
+            asistiran:
+                asistentes,
+
+            noAsistiran:
+                noAsisten,
+
+            asientosDisponibles:
+                disponibles,
 
             fecha:
                 fechaHora,
@@ -3734,20 +4895,27 @@ botonConfirmar.addEventListener(
             );
 
 
-            /*
-              Como usamos no-cors,
-              el navegador no puede leer
-              la respuesta del servidor.
-
-              Pero la petición sí se envía.
-            */
-
-
             mostrarMensajeConfirmacion(
 
                 "❤️ ¡Gracias, " +
                 familiaActual.nombre +
                 "!<br><br>" +
+
+                "👨‍👩‍👧 Asistirán: <strong>" +
+                asistentes +
+                "</strong><br>" +
+
+                "😔 No asistirán: <strong>" +
+                noAsisten +
+                "</strong><br>" +
+
+                "🪑 Asientos disponibles: <strong>" +
+                disponibles +
+                "</strong><br>" +
+
+                "🪑 Mesa: <strong>" +
+                familiaActual.mesa +
+                "</strong><br><br>" +
 
                 (
                     opcion === "Si"
@@ -3759,7 +4927,7 @@ botonConfirmar.addEventListener(
 
                     :
 
-                    "Hemos registrado que no podrás acompañarnos. " +
+                    "Hemos registrado que no podrán acompañarnos. " +
                     "Gracias por avisarnos. ❤️"
 
                 ),
@@ -3770,7 +4938,10 @@ botonConfirmar.addEventListener(
 
 
             enviarWhatsApp(
-                opcion
+                opcion,
+                asistentes,
+                noAsisten,
+                disponibles
             );
 
 
@@ -3837,7 +5008,10 @@ function mostrarMensajeConfirmacion(
 ===================================================== */
 
 function enviarWhatsApp(
-    opcion
+    opcion,
+    asistentes,
+    noAsisten,
+    disponibles
 ){
 
     const telefono =
@@ -3856,20 +5030,32 @@ function enviarWhatsApp(
         familiaActual.nombre +
         "\n" +
 
-        "🪑 Lugares: " +
-        familiaActual.lugares +
-        "\n" +
-
-        "🍽️ Mesa: " +
+        "🪑 Mesa: " +
         familiaActual.mesa +
         "\n" +
 
-        "❤️ Asistencia: " +
+        "👥 Invitados asignados: " +
+        familiaActual.lugares +
+        "\n" +
+
+        "❤️ Asistirán: " +
+        asistentes +
+        "\n" +
+
+        "😔 No asistirán: " +
+        noAsisten +
+        "\n" +
+
+        "🪑 Asientos disponibles: " +
+        disponibles +
+        "\n" +
+
+        "❤️ Asistencia general: " +
 
         (
             opcion === "Si"
-            ? "SÍ, asistiré"
-            : "NO podré asistir"
+            ? "SÍ"
+            : "NO"
         ) +
 
         "\n\n" +
@@ -3950,6 +5136,12 @@ window.addEventListener(
 ===================================================== */
 
 mostrarDatosFamilia();
+
+prepararSelectorPersonas();
+
+actualizarAsientos(
+    0
+);
 
 
 console.log(
