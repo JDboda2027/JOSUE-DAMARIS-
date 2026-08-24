@@ -25,7 +25,7 @@ html{
 }
 
 body{
-    font-family:Georgia, "Times New Roman", serif;
+    font-family:Georgia,"Times New Roman",serif;
     background:#f8f1ea;
     color:#4a3830;
     overflow-x:hidden;
@@ -104,8 +104,10 @@ button:active,
 ===================================================== */
 
 #pantallaInicial{
+
     position:fixed;
     inset:0;
+
     z-index:9999;
 
     display:flex;
@@ -116,77 +118,209 @@ button:active,
 
     padding:20px;
 
-    background-color:#4b352b;
-
-    background-image:
+    background:
         linear-gradient(
-            rgba(40,25,20,.55),
-            rgba(40,25,20,.70)
+            rgba(35,20,15,.25),
+            rgba(35,20,15,.45)
         ),
         url("IMG-20260609-WA0011.jpg");
 
-    background-position:center, center;
+    background-position:center center;
 
-    /* IMAGEN MÁS PEQUEÑA Y CENTRADA */
-    background-size:cover, min(78vw,430px) auto;
+    background-size:cover;
 
     background-repeat:no-repeat;
 
     transition:
-        opacity .8s ease,
-        visibility .8s ease;
+        opacity .9s ease,
+        visibility .9s ease;
+
 }
 
 #pantallaInicial.ocultar{
+
     opacity:0;
+
     visibility:hidden;
+
     pointer-events:none;
+
 }
 
+
+/* =====================================================
+   CONTENIDO PANTALLA INICIAL
+   SIN RECUADRO BLANCO
+===================================================== */
+
 .pantalla-contenido{
-    width:min(92%,600px);
 
-    padding:45px 25px;
+    width:min(95%,800px);
 
-    border:1px solid rgba(255,255,255,.55);
-
-    background:rgba(255,255,255,.12);
-
-    backdrop-filter:blur(7px);
-
-    -webkit-backdrop-filter:blur(7px);
-
-    border-radius:25px;
+    padding:35px 20px;
 
     color:white;
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.25);
+    text-align:center;
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
+    backdrop-filter:none;
+
+    -webkit-backdrop-filter:none;
+
 }
 
 .pantalla-contenido .adorno{
-    font-size:45px;
+
+    font-size:50px;
+
     margin-bottom:10px;
+
+    color:#f4d9b8;
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,.5);
+
 }
 
 .pantalla-contenido h1{
-    font-size:clamp(38px,10vw,70px);
+
+    font-size:clamp(45px,11vw,85px);
+
     font-weight:normal;
+
     margin-bottom:15px;
+
+    text-shadow:
+        0 4px 18px rgba(0,0,0,.65);
+
 }
 
 .pantalla-contenido p{
-    margin-bottom:30px;
+
+    margin-bottom:35px;
+
     line-height:1.8;
-    font-size:18px;
+
+    font-size:19px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.7);
+
 }
 
+
+/* =====================================================
+   BOTÓN ABRIR ELEGANTE
+===================================================== */
+
 #abrirInvitacion{
-    background:#fff;
-    color:#704b3a;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf3,
+            #ead4b8
+        );
+
+    color:#6f4938;
+
     font-weight:bold;
-    padding:16px 28px;
-    box-shadow:0 8px 25px rgba(0,0,0,.2);
+
+    letter-spacing:1.5px;
+
+    padding:17px 34px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.28),
+        0 0 0 1px rgba(255,255,255,.15);
+
+    animation:
+        pulsoBoton 2.5s ease-in-out infinite;
+
+}
+
+#abrirInvitacion::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.8),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:
+        brilloBoton 3.5s infinite;
+
+}
+
+#abrirInvitacion:hover{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #e6c7a5
+        );
+
+    color:#5f3e2f;
+
+    transform:translateY(-4px) scale(1.03);
+
+}
+
+@keyframes pulsoBoton{
+
+    0%,100%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.28),
+            0 0 0 0 rgba(255,255,255,.25);
+    }
+
+    50%{
+        box-shadow:
+            0 12px 35px rgba(0,0,0,.35),
+            0 0 0 8px rgba(255,255,255,.06);
+    }
+
+}
+
+@keyframes brilloBoton{
+
+    0%{
+        left:-120%;
+    }
+
+    35%,100%{
+        left:140%;
+    }
+
 }
 
 
@@ -195,10 +329,13 @@ button:active,
 ===================================================== */
 
 .invitacion-personalizada{
+
     min-height:100vh;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     background:
@@ -213,6 +350,7 @@ button:active,
         );
 
     opacity:0;
+
     visibility:hidden;
 
     transform:translateY(30px);
@@ -221,55 +359,89 @@ button:active,
         opacity 1s ease,
         visibility 1s ease,
         transform 1s ease;
+
 }
 
 .invitacion-personalizada.mostrar{
+
     opacity:1;
+
     visibility:visible;
+
     transform:translateY(0);
+
 }
 
 .invitacion-contenido{
+
     width:min(100%,950px);
+
     padding:30px 10px;
+
     text-align:center;
+
 }
 
 .adorno{
+
     font-size:50px;
+
     color:#b88b68;
+
     margin-bottom:15px;
+
 }
 
 .invitacion-label{
+
     text-transform:uppercase;
+
     letter-spacing:4px;
+
     font-size:13px;
+
     color:#99705b;
+
     margin-bottom:15px;
+
 }
 
 .nombre-familia{
+
     font-size:clamp(34px,8vw,60px);
+
     color:#76503e;
+
     font-weight:normal;
+
 }
 
 .linea-decorativa{
+
     width:100px;
+
     height:2px;
+
     background:#b88b68;
+
     margin:20px auto;
+
 }
 
 .invitacion-texto{
+
     max-width:650px;
+
     margin:0 auto 35px;
+
     line-height:1.8;
+
     font-size:18px;
+
 }
 
 .info-familia{
+
     width:min(100%,850px);
 
     display:grid;
@@ -279,14 +451,19 @@ button:active,
     gap:15px;
 
     margin:auto;
+
 }
 
 .info-caja{
+
     min-height:140px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
     padding:20px 10px;
@@ -297,105 +474,172 @@ button:active,
 
     box-shadow:
         0 8px 30px rgba(90,60,45,.12);
+
 }
 
 .info-icono{
+
     font-size:27px;
+
     margin-bottom:10px;
+
 }
 
 .info-caja small{
+
     color:#96715e;
+
     margin-bottom:7px;
+
 }
 
 .info-caja strong{
+
     color:#704b3a;
+
     font-size:20px;
+
 }
 
 .mesa-titulo{
+
     font-size:14px;
+
     color:#8b6857;
+
     margin-bottom:8px;
+
 }
 
 .mesa-numero,
 .invitados-numero{
+
     font-size:28px !important;
+
 }
 
 .continuar{
+
     margin-top:35px;
+
     color:#9b715a;
+
     font-style:italic;
+
 }
 
 
 /* =====================================================
-   PORTADA
+   PORTADA GRANDE Y CENTRADA
 ===================================================== */
 
 .portada{
+
     min-height:100vh;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     color:white;
 
-    background-color:#4b352b;
-
-    background-image:
+    background:
         linear-gradient(
-            rgba(40,25,20,.35),
-            rgba(40,25,20,.55)
+            rgba(40,25,20,.25),
+            rgba(40,25,20,.48)
         ),
         url("IMG-20260609-WA0011.jpg");
 
-    /* IMAGEN CENTRADA Y MÁS PEQUEÑA */
-    background-position:center, center;
+    background-position:center center;
 
-    background-size:cover, min(82vw,480px) auto;
+    background-size:cover;
 
     background-repeat:no-repeat;
+
 }
 
 .portada-contenido{
-    width:min(95%,850px);
+
+    width:min(95%,900px);
+
     padding:30px;
+
     text-align:center;
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
 }
 
 .pequeno{
-    letter-spacing:6px;
+
+    letter-spacing:7px;
+
     font-size:14px;
+
     margin-bottom:25px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.8);
+
 }
 
 .nombres{
-    font-size:clamp(55px,12vw,100px);
+
+    font-size:clamp(55px,12vw,105px);
+
     font-weight:normal;
+
     margin-bottom:25px;
+
     line-height:1.05;
+
+    text-shadow:
+        0 5px 22px rgba(0,0,0,.75);
+
 }
 
 .fecha{
+
     font-size:20px;
+
     letter-spacing:4px;
+
     margin-bottom:12px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.8);
+
 }
 
 .hora-portada{
+
     margin-bottom:35px;
+
     font-size:18px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.8);
+
 }
 
 .portada .boton{
-    background:rgba(255,255,255,.92);
+
+    background:
+        rgba(255,250,243,.94);
+
     color:#704b3a;
+
     font-weight:bold;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.3);
+
 }
 
 
@@ -404,10 +648,15 @@ button:active,
 ===================================================== */
 
 .historia{
+
     width:min(100%,800px);
+
     margin:auto;
+
     line-height:2;
+
     font-size:18px;
+
 }
 
 
@@ -416,11 +665,15 @@ button:active,
 ===================================================== */
 
 .contador{
+
     background:#efe1d6;
+
 }
 
 .reloj{
+
     width:min(100%,850px);
+
     margin:40px auto 20px;
 
     display:grid;
@@ -428,9 +681,11 @@ button:active,
     grid-template-columns:repeat(4,1fr);
 
     gap:15px;
+
 }
 
 .numero{
+
     background:rgba(255,255,255,.75);
 
     border-radius:18px;
@@ -439,53 +694,261 @@ button:active,
 
     box-shadow:
         0 8px 25px rgba(80,50,40,.1);
+
 }
 
 .numero strong{
+
     display:block;
 
     font-size:clamp(32px,7vw,55px);
 
     color:#80553f;
+
 }
 
 .numero span{
+
     color:#8f6b58;
+
 }
 
 .contador-hora{
+
     font-style:italic;
+
     color:#806150;
+
 }
 
 
 /* =====================================================
-   GALERÍA
+   GALERÍA TIPO HISTORIA WHATSAPP
 ===================================================== */
 
 .galeria{
-    width:min(100%,1000px);
+
+    width:min(100%,900px);
+
+    height:min(75vh,650px);
 
     margin:35px auto 0;
 
-    display:grid;
+    position:relative;
 
-    grid-template-columns:repeat(3,1fr);
+    overflow:hidden;
 
-    gap:15px;
+    border-radius:25px;
+
+    background:#211712;
+
+    box-shadow:
+        0 15px 45px rgba(50,30,20,.25);
+
 }
 
-.galeria img{
+
+/* FOTO */
+
+.historia-foto{
+
+    position:absolute;
+
+    inset:0;
+
     width:100%;
 
-    height:280px;
+    height:100%;
 
     object-fit:cover;
 
-    border-radius:18px;
+    opacity:0;
 
-    box-shadow:
-        0 8px 25px rgba(60,40,30,.15);
+    transform:scale(1.03);
+
+    transition:
+        opacity .7s ease,
+        transform 15s linear;
+
+}
+
+.historia-foto.activa{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+
+/* OSCURECIMIENTO */
+
+.galeria::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.45),
+            transparent 20%,
+            transparent 75%,
+            rgba(0,0,0,.45)
+        );
+
+}
+
+
+/* BARRAS */
+
+.historia-progreso{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    right:15px;
+
+    z-index:10;
+
+    display:flex;
+
+    gap:5px;
+
+}
+
+.historia-barra{
+
+    height:4px;
+
+    flex:1;
+
+    background:rgba(255,255,255,.35);
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.historia-barra span{
+
+    display:block;
+
+    height:100%;
+
+    width:0;
+
+    background:white;
+
+    border-radius:10px;
+
+}
+
+.historia-barra.completa span{
+
+    width:100%;
+
+}
+
+.historia-barra.activa span{
+
+    animation:
+        progresoHistoria 15s linear forwards;
+
+}
+
+@keyframes progresoHistoria{
+
+    from{
+        width:0;
+    }
+
+    to{
+        width:100%;
+    }
+
+}
+
+
+/* TEXTO SOBRE HISTORIA */
+
+.historia-texto{
+
+    position:absolute;
+
+    z-index:8;
+
+    left:25px;
+
+    right:25px;
+
+    bottom:30px;
+
+    color:white;
+
+    text-align:left;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.8);
+
+}
+
+.historia-texto strong{
+
+    display:block;
+
+    font-size:22px;
+
+    margin-bottom:5px;
+
+}
+
+.historia-texto span{
+
+    font-size:14px;
+
+    opacity:.9;
+
+}
+
+
+/* ZONAS PARA TOCAR */
+
+.historia-zona{
+
+    position:absolute;
+
+    top:0;
+
+    bottom:0;
+
+    width:50%;
+
+    z-index:12;
+
+    cursor:pointer;
+
+}
+
+.historia-zona.izquierda{
+
+    left:0;
+
+}
+
+.historia-zona.derecha{
+
+    right:0;
+
 }
 
 
@@ -494,10 +957,13 @@ button:active,
 ===================================================== */
 
 .video-seccion{
+
     background:#eee2d9;
+
 }
 
 .video-contenedor{
+
     display:block;
 
     width:min(100%,900px);
@@ -512,6 +978,7 @@ button:active,
         0 10px 35px rgba(50,30,20,.2);
 
     background:#000;
+
 }
 
 
@@ -520,6 +987,7 @@ button:active,
 ===================================================== */
 
 .video-grid{
+
     width:min(100%,1000px);
 
     margin:35px auto 0;
@@ -529,9 +997,11 @@ button:active,
     grid-template-columns:repeat(2,1fr);
 
     gap:25px;
+
 }
 
 .video-card{
+
     overflow:hidden;
 
     border-radius:20px;
@@ -540,12 +1010,17 @@ button:active,
 
     box-shadow:
         0 10px 30px rgba(50,30,20,.18);
+
 }
 
 .video-card video{
+
     width:100%;
+
     display:block;
+
     max-height:550px;
+
 }
 
 
@@ -554,10 +1029,13 @@ button:active,
 ===================================================== */
 
 .informacion{
+
     background:#faf5f0;
+
 }
 
 .tarjetas{
+
     width:min(100%,1000px);
 
     margin:40px auto;
@@ -567,9 +1045,11 @@ button:active,
     grid-template-columns:repeat(4,1fr);
 
     gap:20px;
+
 }
 
 .tarjeta{
+
     padding:30px 20px;
 
     border-radius:18px;
@@ -578,36 +1058,51 @@ button:active,
 
     box-shadow:
         0 8px 25px rgba(70,45,35,.1);
+
 }
 
 .icono{
+
     font-size:35px;
+
     margin-bottom:15px;
+
 }
 
 .tarjeta h3{
+
     margin-bottom:10px;
+
     color:#76503e;
+
 }
 
 .tarjeta p{
+
     line-height:1.6;
+
 }
 
 .ubicacion-texto{
+
     max-width:750px;
 
     margin:20px auto 0;
 
     line-height:1.8;
+
 }
 
 .ubicacion-texto h3{
+
     margin-bottom:10px;
+
 }
 
 .boton-ubicacion{
+
     margin-top:20px;
+
 }
 
 
@@ -616,11 +1111,15 @@ button:active,
 ===================================================== */
 
 .frase{
+
     background:#7b5948;
+
     color:white;
+
 }
 
 .frase p{
+
     max-width:800px;
 
     margin:auto;
@@ -628,6 +1127,7 @@ button:active,
     line-height:1.8;
 
     font-size:20px;
+
 }
 
 
@@ -636,6 +1136,7 @@ button:active,
 ===================================================== */
 
 .confirmacion{
+
     background:
         linear-gradient(
             rgba(120,82,65,.96),
@@ -643,23 +1144,31 @@ button:active,
         );
 
     color:white;
+
 }
 
 .confirmacion .titulo{
+
     color:white;
+
 }
 
 .confirmacion .subtitulo{
+
     color:#f8eee7;
+
 }
 
 .confirmacion-contenido{
+
     width:min(100%,800px);
 
     margin:35px auto 0;
+
 }
 
 .reservados{
+
     padding:20px;
 
     margin-bottom:25px;
@@ -669,9 +1178,11 @@ button:active,
     background:rgba(255,255,255,.1);
 
     line-height:1.7;
+
 }
 
 .resumen-confirmacion{
+
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
@@ -679,17 +1190,21 @@ button:active,
     gap:15px;
 
     margin-bottom:30px;
+
 }
 
 .resumen-item{
+
     padding:20px;
 
     border-radius:15px;
 
     background:rgba(255,255,255,.12);
+
 }
 
 .resumen-item span{
+
     display:block;
 
     font-size:14px;
@@ -697,30 +1212,38 @@ button:active,
     opacity:.8;
 
     margin-bottom:8px;
+
 }
 
 .resumen-item strong{
+
     font-size:20px;
+
 }
 
 .mesa-confirmacion{
+
     display:flex;
 
     align-items:center;
 
     justify-content:center;
+
 }
 
 .selector-label{
+
     display:block;
 
     margin-bottom:10px;
 
     font-size:18px;
+
 }
 
 .selector-asistencia,
 .selector-personas{
+
     width:100%;
 
     max-width:500px;
@@ -736,9 +1259,11 @@ button:active,
     color:#4d392f;
 
     margin-bottom:20px;
+
 }
 
 .personas-confirmacion{
+
     margin-top:10px;
 
     padding:25px;
@@ -746,15 +1271,19 @@ button:active,
     border-radius:18px;
 
     background:rgba(255,255,255,.1);
+
 }
 
 .personas-confirmacion label{
+
     display:block;
 
     margin-bottom:10px;
+
 }
 
 .resumen-personas{
+
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
@@ -762,29 +1291,37 @@ button:active,
     gap:12px;
 
     margin-top:15px;
+
 }
 
 .persona-dato{
+
     padding:15px 10px;
 
     background:rgba(255,255,255,.1);
 
     border-radius:12px;
+
 }
 
 .persona-dato span{
+
     display:block;
 
     font-size:13px;
 
     margin-bottom:5px;
+
 }
 
 .persona-dato strong{
+
     font-size:25px;
+
 }
 
 .boton-confirmar{
+
     margin-top:20px;
 
     background:white;
@@ -792,21 +1329,27 @@ button:active,
     color:#76503e;
 
     font-weight:bold;
+
 }
 
 .boton-whatsapp{
+
     margin-top:15px;
 
     background:#25D366;
 
     color:white;
+
 }
 
 .boton-whatsapp:hover{
+
     background:#1da851;
+
 }
 
 .estado-asientos{
+
     margin-top:30px;
 
     padding:20px;
@@ -816,14 +1359,16 @@ button:active,
     background:rgba(255,255,255,.1);
 
     line-height:2;
+
 }
 
 
 /* =====================================================
-   DIBUJITO DE NOVIOS
+   NOVIOS
 ===================================================== */
 
 .novios-dibujo{
+
     display:flex;
 
     justify-content:center;
@@ -838,20 +1383,24 @@ button:active,
 
     animation:
         flotarNovios 3s ease-in-out infinite;
+
 }
 
 .novios-dibujo .novia{
+
     transform:translateY(4px);
+
 }
 
 .novios-dibujo .novio{
+
     transform:translateY(0);
+
 }
 
 @keyframes flotarNovios{
 
-    0%,
-    100%{
+    0%,100%{
         transform:translateY(0);
     }
 
@@ -867,6 +1416,7 @@ button:active,
 ===================================================== */
 
 footer{
+
     padding:50px 20px;
 
     text-align:center;
@@ -874,53 +1424,68 @@ footer{
     background:#38271f;
 
     color:white;
+
 }
 
 footer h2{
+
     margin-bottom:15px;
 
     font-size:32px;
+
 }
 
 footer p{
+
     margin:8px;
 
     opacity:.85;
+
 }
 
 
 /* =====================================================
-   ANIMACIONES REVEAL
+   ANIMACIONES
 ===================================================== */
 
 .reveal,
 .reveal-left,
 .reveal-right{
+
     opacity:0;
 
     transition:
         opacity .9s ease,
         transform .9s ease;
+
 }
 
 .reveal{
+
     transform:translateY(35px);
+
 }
 
 .reveal-left{
+
     transform:translateX(-45px);
+
 }
 
 .reveal-right{
+
     transform:translateX(45px);
+
 }
 
 .reveal.visible,
 .reveal-left.visible,
 .reveal-right.visible{
+
     opacity:1;
 
     transform:translate(0);
+
 }
 
 
@@ -929,6 +1494,7 @@ footer p{
 ===================================================== */
 
 .corazones{
+
     position:fixed;
 
     bottom:-40px;
@@ -941,14 +1507,19 @@ footer p{
 
     animation:
         subirCorazon linear forwards;
+
 }
 
 @keyframes subirCorazon{
 
     from{
-        transform:translateY(0) rotate(0);
+
+        transform:
+            translateY(0)
+            rotate(0);
 
         opacity:0;
+
     }
 
     10%{
@@ -960,11 +1531,13 @@ footer p{
     }
 
     to{
+
         transform:
             translateY(-110vh)
             rotate(360deg);
 
         opacity:0;
+
     }
 
 }
@@ -975,6 +1548,7 @@ footer p{
 ===================================================== */
 
 .particulas{
+
     position:fixed;
 
     z-index:1;
@@ -991,14 +1565,17 @@ footer p{
 
     animation:
         subirParticula linear forwards;
+
 }
 
 @keyframes subirParticula{
 
     from{
+
         transform:translateY(0);
 
         opacity:0;
+
     }
 
     20%{
@@ -1006,9 +1583,12 @@ footer p{
     }
 
     to{
-        transform:translateY(-110vh);
+
+        transform:
+            translateY(-110vh);
 
         opacity:0;
+
     }
 
 }
@@ -1021,15 +1601,25 @@ footer p{
 @media(max-width:800px){
 
     .info-familia{
+
         grid-template-columns:repeat(2,1fr);
+
     }
 
     .tarjetas{
+
         grid-template-columns:repeat(2,1fr);
+
     }
 
     .galeria{
-        grid-template-columns:repeat(2,1fr);
+
+        width:100%;
+
+        height:70vh;
+
+        min-height:480px;
+
     }
 
 }
@@ -1038,73 +1628,101 @@ footer p{
 @media(max-width:600px){
 
     section{
+
         padding:65px 15px;
+
     }
 
     .nombres{
+
         font-size:52px;
+
     }
 
     .fecha{
+
         font-size:16px;
 
         letter-spacing:2px;
+
     }
 
     .info-familia{
+
         grid-template-columns:1fr 1fr;
 
         gap:10px;
+
     }
 
     .info-caja{
+
         min-height:125px;
+
     }
 
     .reloj{
+
         grid-template-columns:repeat(2,1fr);
+
     }
 
     .galeria{
-        grid-template-columns:1fr;
-    }
 
-    .galeria img{
-        height:320px;
+        height:70vh;
+
+        min-height:500px;
+
+        border-radius:18px;
+
     }
 
     .video-grid{
+
         grid-template-columns:1fr;
+
     }
 
     .tarjetas{
+
         grid-template-columns:1fr;
+
     }
 
     .resumen-confirmacion{
+
         grid-template-columns:1fr;
+
     }
 
     .resumen-personas{
+
         grid-template-columns:1fr;
+
     }
 
     .novios-dibujo{
+
         font-size:35px;
+
     }
 
-    /* PORTADAS MÁS PEQUEÑAS EN CELULAR */
+    #abrirInvitacion{
 
-    #pantallaInicial{
-        background-size:
-            cover,
-            min(72vw,340px) auto;
+        padding:16px 25px;
+
+        font-size:14px;
+
     }
 
-    .portada{
-        background-size:
-            cover,
-            min(72vw,350px) auto;
+    .historia-texto{
+
+        left:20px;
+
+        right:20px;
+
+        bottom:25px;
+
     }
 
 }
@@ -1117,6 +1735,7 @@ footer p{
 </style>
 
 </head>
+
 
 <body>
 
@@ -1156,9 +1775,12 @@ footer p{
         </h1>
 
         <p>
+
             Nuestra boda
             <br>
+
             16 de enero de 2027
+
         </p>
 
         <button
@@ -1205,7 +1827,9 @@ footer p{
         </div>
 
         <div class="invitacion-label">
+
             Invitación especial para
+
         </div>
 
         <h2
@@ -1244,7 +1868,6 @@ footer p{
 
             </div>
 
-
             <div class="info-caja">
 
                 <div class="info-icono">
@@ -1260,7 +1883,6 @@ footer p{
                 </strong>
 
             </div>
-
 
             <div class="info-caja">
 
@@ -1281,7 +1903,6 @@ footer p{
                 </strong>
 
             </div>
-
 
             <div class="info-caja">
 
@@ -1306,7 +1927,9 @@ footer p{
         </div>
 
         <div class="continuar">
+
             ✨ Con amor, Josué & Damaris ✨
+
         </div>
 
     </div>
@@ -1416,29 +2039,59 @@ footer p{
     <div class="reloj">
 
         <div class="numero">
-            <strong id="dias">0</strong>
-            <span>Días</span>
+
+            <strong id="dias">
+                0
+            </strong>
+
+            <span>
+                Días
+            </span>
+
         </div>
 
         <div class="numero">
-            <strong id="horas">0</strong>
-            <span>Horas</span>
+
+            <strong id="horas">
+                0
+            </strong>
+
+            <span>
+                Horas
+            </span>
+
         </div>
 
         <div class="numero">
-            <strong id="minutos">0</strong>
-            <span>Minutos</span>
+
+            <strong id="minutos">
+                0
+            </strong>
+
+            <span>
+                Minutos
+            </span>
+
         </div>
 
         <div class="numero">
-            <strong id="segundos">0</strong>
-            <span>Segundos</span>
+
+            <strong id="segundos">
+                0
+            </strong>
+
+            <span>
+                Segundos
+            </span>
+
         </div>
 
     </div>
 
     <div class="contador-hora">
+
         ⏳ El contador llegará a cero a las 5:00 PM
+
     </div>
 
 </section>
@@ -1467,17 +2120,21 @@ footer p{
         <br>
 
         <p>
+
             Hoy comenzamos una nueva etapa juntos,
             rodeados de las personas que amamos
             y agradecidos con Dios por permitirnos
             llegar hasta este momento.
+
         </p>
 
         <br>
 
         <p>
+
             Queremos que seas parte de este recuerdo
             que quedará para siempre en nuestros corazones.
+
         </p>
 
     </div>
@@ -1486,7 +2143,7 @@ footer p{
 
 
 <!-- =====================================================
-     GALERÍA
+     GALERÍA ESTILO ESTADOS
 ===================================================== -->
 
 <section class="reveal">
@@ -1502,61 +2159,87 @@ footer p{
 
     </p>
 
-    <div class="galeria">
+
+    <div
+        class="galeria"
+        id="galeriaHistoria">
+
+
+        <div
+            class="historia-progreso"
+            id="historiaProgreso">
+
+        </div>
+
 
         <img
-            class="reveal-left"
-            src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80"
-            alt="Momento de boda"
-            loading="lazy">
+            class="historia-foto activa"
+            src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=90"
+            alt="Momento de boda">
 
         <img
-            class="reveal"
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
-            alt="Pareja de novios"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=90"
+            alt="Pareja de novios">
 
         <img
-            class="reveal-right"
-            src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80"
-            alt="Boda"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1600&q=90"
+            alt="Boda">
 
         <img
-            class="reveal-left"
-            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
-            alt="Decoración de boda"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=90"
+            alt="Decoración de boda">
 
         <img
-            class="reveal"
-            src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80"
-            alt="Novios"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1600&q=90"
+            alt="Novios">
 
         <img
-            class="reveal-right"
-            src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80"
-            alt="Celebración"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1600&q=90"
+            alt="Celebración">
 
         <img
-            class="reveal-left"
-            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
-            alt="Celebración"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=90"
+            alt="Celebración">
 
         <img
-            class="reveal"
-            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80"
-            alt="Decoración"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=90"
+            alt="Decoración">
 
         <img
-            class="reveal-right"
-            src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=900&q=80"
-            alt="Pareja"
-            loading="lazy">
+            class="historia-foto"
+            src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=1600&q=90"
+            alt="Pareja">
+
+
+        <div class="historia-texto">
+
+            <strong>
+                Josué & Damaris ❤️
+            </strong>
+
+            <span>
+                Nuestros recuerdos
+            </span>
+
+        </div>
+
+
+        <div
+            class="historia-zona izquierda"
+            id="historiaAnterior">
+        </div>
+
+        <div
+            class="historia-zona derecha"
+            id="historiaSiguiente">
+        </div>
 
     </div>
 
@@ -1611,7 +2294,9 @@ footer p{
     </h2>
 
     <p class="subtitulo">
+
         Cada momento cuenta una parte de nuestra historia.
+
     </p>
 
     <div class="video-grid">
@@ -1679,7 +2364,6 @@ footer p{
 
         </div>
 
-
         <div class="tarjeta reveal">
 
             <div class="icono">
@@ -1696,7 +2380,6 @@ footer p{
 
         </div>
 
-
         <div class="tarjeta reveal">
 
             <div class="icono">
@@ -1712,7 +2395,6 @@ footer p{
             </p>
 
         </div>
-
 
         <div class="tarjeta reveal-right">
 
@@ -1740,9 +2422,11 @@ footer p{
         </h3>
 
         <p>
+
             Marcia Jardines, Puente La Unión<br>
             Carr. San Miguel Petapa - Villa Canales<br>
             Villa Canales
+
         </p>
 
         <a
@@ -1767,8 +2451,10 @@ footer p{
 <section class="frase reveal">
 
     <p>
+
         “Y sobre todas estas cosas vestíos de amor,
         que es el vínculo perfecto.”
+
     </p>
 
     <br>
@@ -1838,7 +2524,6 @@ footer p{
 
             </div>
 
-
             <div class="resumen-item">
 
                 <span>
@@ -1850,7 +2535,6 @@ footer p{
                 </strong>
 
             </div>
-
 
             <div class="resumen-item mesa-confirmacion">
 
@@ -1907,7 +2591,6 @@ footer p{
 
             </label>
 
-
             <select
                 id="cantidadAsistiran"
                 class="selector-personas">
@@ -1928,7 +2611,6 @@ footer p{
 
                 </div>
 
-
                 <div class="persona-dato">
 
                     <span>
@@ -1940,7 +2622,6 @@ footer p{
                     </strong>
 
                 </div>
-
 
                 <div class="persona-dato">
 
@@ -1990,10 +2671,13 @@ footer p{
             </strong>
 
             <span>
+
                 · Mesa
+
                 <b id="mesaReservada">
                     -
                 </b>
+
             </span>
 
 
@@ -2054,6 +2738,7 @@ footer p{
 ===================================================== -->
 
 <script>
+
 
 /* =====================================================
    CONFIGURACIÓN
@@ -2577,6 +3262,312 @@ setInterval(
 
 
 /* =====================================================
+   HISTORIA TIPO WHATSAPP
+   15 SEGUNDOS POR FOTO
+===================================================== */
+
+const galeriaHistoria =
+    document.getElementById(
+        "galeriaHistoria"
+    );
+
+const fotosHistoria =
+    galeriaHistoria
+        ? galeriaHistoria.querySelectorAll(
+            ".historia-foto"
+        )
+        : [];
+
+const historiaProgreso =
+    document.getElementById(
+        "historiaProgreso"
+    );
+
+const historiaAnterior =
+    document.getElementById(
+        "historiaAnterior"
+    );
+
+const historiaSiguiente =
+    document.getElementById(
+        "historiaSiguiente"
+    );
+
+
+let historiaActual = 0;
+
+let historiaTemporizador = null;
+
+
+/* =====================================================
+   CREAR BARRAS
+===================================================== */
+
+function crearBarrasHistoria(){
+
+    if(!historiaProgreso){
+        return;
+    }
+
+    historiaProgreso.innerHTML = "";
+
+    fotosHistoria.forEach(
+        function(){
+
+            const barra =
+                document.createElement(
+                    "div"
+                );
+
+            barra.className =
+                "historia-barra";
+
+            const relleno =
+                document.createElement(
+                    "span"
+                );
+
+            barra.appendChild(
+                relleno
+            );
+
+            historiaProgreso.appendChild(
+                barra
+            );
+
+        }
+    );
+
+}
+
+crearBarrasHistoria();
+
+
+/* =====================================================
+   MOSTRAR FOTO
+===================================================== */
+
+function mostrarHistoria(indice){
+
+    if(!fotosHistoria.length){
+        return;
+    }
+
+
+    if(indice >= fotosHistoria.length){
+
+        indice = 0;
+
+    }
+
+    if(indice < 0){
+
+        indice =
+            fotosHistoria.length - 1;
+
+    }
+
+
+    historiaActual =
+        indice;
+
+
+    fotosHistoria.forEach(
+        function(foto,i){
+
+            foto.classList.toggle(
+                "activa",
+                i === historiaActual
+            );
+
+        }
+    );
+
+
+    const barras =
+        historiaProgreso
+            ? historiaProgreso.querySelectorAll(
+                ".historia-barra"
+            )
+            : [];
+
+
+    barras.forEach(
+        function(barra,i){
+
+            barra.classList.remove(
+                "activa"
+            );
+
+            barra.classList.remove(
+                "completa"
+            );
+
+
+            if(
+                i < historiaActual
+            ){
+
+                barra.classList.add(
+                    "completa"
+                );
+
+            }
+
+        }
+    );
+
+
+    if(barras[historiaActual]){
+
+        barras[historiaActual].classList.add(
+            "activa"
+        );
+
+    }
+
+
+    clearTimeout(
+        historiaTemporizador
+    );
+
+
+    historiaTemporizador =
+        setTimeout(
+            function(){
+
+                mostrarHistoria(
+                    historiaActual + 1
+                );
+
+            },
+            15000
+        );
+
+}
+
+
+/* =====================================================
+   SIGUIENTE
+===================================================== */
+
+function siguienteHistoria(){
+
+    mostrarHistoria(
+        historiaActual + 1
+    );
+
+}
+
+
+/* =====================================================
+   ANTERIOR
+===================================================== */
+
+function anteriorHistoria(){
+
+    mostrarHistoria(
+        historiaActual - 1
+    );
+
+}
+
+
+/* =====================================================
+   BOTONES TÁCTILES
+===================================================== */
+
+if(historiaSiguiente){
+
+    historiaSiguiente.addEventListener(
+        "click",
+        siguienteHistoria
+    );
+
+}
+
+if(historiaAnterior){
+
+    historiaAnterior.addEventListener(
+        "click",
+        anteriorHistoria
+    );
+
+}
+
+
+/* =====================================================
+   SOPORTE PARA DESLIZAR EN CELULAR
+===================================================== */
+
+let posicionInicioX = 0;
+
+if(galeriaHistoria){
+
+    galeriaHistoria.addEventListener(
+        "touchstart",
+        function(event){
+
+            posicionInicioX =
+                event.touches[0].clientX;
+
+        },
+        {
+            passive:true
+        }
+    );
+
+
+    galeriaHistoria.addEventListener(
+        "touchend",
+        function(event){
+
+            const posicionFinalX =
+                event.changedTouches[0].clientX;
+
+            const diferencia =
+                posicionFinalX -
+                posicionInicioX;
+
+
+            if(
+                Math.abs(diferencia) > 50
+            ){
+
+                if(diferencia < 0){
+
+                    siguienteHistoria();
+
+                }
+                else{
+
+                    anteriorHistoria();
+
+                }
+
+            }
+
+        },
+        {
+            passive:true
+        }
+    );
+
+}
+
+
+/* =====================================================
+   INICIAR HISTORIA
+===================================================== */
+
+if(fotosHistoria.length){
+
+    mostrarHistoria(0);
+
+}
+
+
+/* =====================================================
    CONFIRMACIÓN
 ===================================================== */
 
@@ -2627,7 +3618,7 @@ const mensajeConfirmacion =
 
 
 /* =====================================================
-   CREAR OPCIONES DE PERSONAS
+   CREAR OPCIONES
 ===================================================== */
 
 function prepararCantidadPersonas(){
@@ -2688,7 +3679,7 @@ prepararCantidadPersonas();
 
 
 /* =====================================================
-   CAMBIO DE ASISTENCIA
+   CAMBIO ASISTENCIA
 ===================================================== */
 
 if(asistencia){
@@ -2800,7 +3791,7 @@ if(asistencia){
 
 
 /* =====================================================
-   CANTIDAD DE PERSONAS
+   CANTIDAD PERSONAS
 ===================================================== */
 
 if(cantidadAsistiran){
@@ -2855,15 +3846,21 @@ function actualizarPersonas(){
         if(estadoDisponiblesFinal){
 
             estadoDisponiblesFinal.innerHTML =
+
                 "🪑 Tienes " +
+
                 "<strong>" +
                 familia.lugares +
                 "</strong> lugares asignados. " +
+
                 "Has seleccionado " +
+
                 "<strong>" +
                 cantidad +
                 "</strong>. " +
+
                 "No asistirán " +
+
                 "<strong>" +
                 noAsistiran +
                 "</strong>.";
@@ -2923,6 +3920,7 @@ function abrirWhatsApp(
 ){
 
     const mensaje =
+
         "💍 CONFIRMACIÓN DE ASISTENCIA\n\n" +
 
         "Familia: " +
@@ -2942,18 +3940,22 @@ function abrirWhatsApp(
         "\n" +
 
         "Asistencia: " +
+
         (
             asistenciaSeleccionada === "Si"
                 ? "SÍ"
                 : "NO"
         ) +
+
         "\n" +
 
         "Personas que asistirán: " +
         cantidad +
+
         "\n" +
 
         "Personas que no asistirán: " +
+
         (
             familia.lugares -
             cantidad
@@ -2965,6 +3967,7 @@ function abrirWhatsApp(
 
 
     const url =
+
         "https://wa.me/" +
         NUMERO_WHATSAPP +
         "?text=" +
@@ -2982,7 +3985,7 @@ function abrirWhatsApp(
 
 
 /* =====================================================
-   CONFIRMAR POR WHATSAPP
+   CONFIRMAR WHATSAPP
 ===================================================== */
 
 if(botonConfirmar){
@@ -3053,10 +4056,15 @@ if(botonConfirmar){
 
 
             mostrarMensaje(
+
                 respuesta === "Si"
+
                     ? "💍 Abriendo WhatsApp para enviar tu confirmación. ❤️"
+
                     : "❤️ Abriendo WhatsApp para avisar que no podrás asistir.",
+
                 true
+
             );
 
 
@@ -3112,4 +4120,4 @@ window.addEventListener(
 
 </body>
 
-   </html>
+           </html>
